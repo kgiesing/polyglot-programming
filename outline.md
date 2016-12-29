@@ -439,6 +439,8 @@
   - I use `DEBUG`
 
 ## REPRESENTING DATA ##
+see also:
+[POD Types](http://www.fnal.gov/docs/working-groups/fpcltf/Pkg/ISOcxx/doc/POD.html)
 
 ### TYPE SYSTEMS ###
 - A type is metadata
