@@ -1575,3 +1575,70 @@ Languages: C++, Java, PHP; JavaScript adopts some of it (more later)
   - In compiled languages, they often signify a scope, so the compiler can
     optimize them away (they aren't in bytecode)
   - In interpreted languages,
+
+# Appendix A: Language Specifications, with References, Guides, and Tutorials #
+Links are to English language versions. Other languages are usually available
+on the same site.
+
+## C ##
+### Specification ###
+- [ISO/IEC 9899:201x](http://www.open-std.org/JTC1/SC22/WG14/www/docs/n1570.pdf) (PDF)
+    *Note:* This is the final working draft before the specification became
+    final. It is provided free of charge from
+    [Open Standards](http://www.open-std.org/).
+    The final specification is not openly available, and must be purchased from
+    [ANSI](http://webstore.ansi.org/default.aspx).
+
+### References, Guides, Tutorials ###
+- [C Language Reference (MSDN)](https://msdn.microsoft.com/en-us/library/fw5abdx6.aspx)
+- [GNU C Reference Manual](https://www.gnu.org/software/gnu-c-manual/)
+- [IBM C/C++ Language Reference](http://www-01.ibm.com/support/docview.wss?uid=swg27002103&aid=1)
+- [C reference (cppreference.com)](http://en.cppreference.com/w/c)
+
+## C++ ##
+### Specification ###
+- [ISO/IEC 14882:2014](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4296.pdf)
+    *Note:* This is the final working draft before the specification became
+    final. It is provided free of charge from
+    [Open Standards](http://www.open-std.org/).
+    The final specification is not openly available, and must be purchased from
+    [ANSI](http://webstore.ansi.org/default.aspx).
+
+### References, Guides, Tutorials ###
+- [C++ Language Reference (MSDN)](https://msdn.microsoft.com/en-us/library/3bstk3k5.aspx)
+- [IBM C/C++ Language Reference](http://www-01.ibm.com/support/docview.wss?uid=swg27002103&aid=1)
+- [C++ reference (cppreference.com)](http://en.cppreference.com/w/cpp/language)
+- [cplusplus.com](http://www.cplusplus.com/reference/)
+
+## C# ##
+### Specification ###
+- [C# Language Specification (MSDN)](https://msdn.microsoft.com/en-us/library/ms228593.aspx)
+- [ECMA-334](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-334.pdf) (PDF)
+
+### References, Guides, Tutorials ###
+- [C# Reference (MSDN)](https://msdn.microsoft.com/en-us/library/618ayhy6.aspx)
+- [C# Programming Guide (MSDN)](https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx)
+
+## Java ##
+### Specification ###
+- [Java Language and Virtual Machine Specifications (Oracle)](https://docs.oracle.com/javase/specs/)
+
+### References, Guides, Tutorials ###
+- [The Java Tutorials](http://docs.oracle.com/javase/tutorial/index.html)
+
+## JavaScript ##
+### Specification ###
+[- ECMAScript 2016 Language Specification](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
+
+### References, Guides, Tutorials ###
+- [JavaScript reference (MDN)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)
+- [JavaScript Language Reference (MSDN)](https://msdn.microsoft.com/en-us/library/yek4tbz0.aspx)
+- [JavaScript and HTML DOM Reference (w3schools)](http://www.w3schools.com/jsref/)
+
+## PHP ##
+- [PHP Manual](http://us3.php.net/manual/en/index.php)
+    *Note:* This is the closest thing PHP has to an official specification.
+    A WIP specification can be found [here](https://github.com/php/php-langspec).
+
+- [PHP Language Reference](http://us3.php.net/manual/en/langref.php)
+    The portion of the PHP Manual that covers only the language reference.
