@@ -51,6 +51,27 @@ Once this change is made, they could then combine the different parts into
 their own "edition," to use or distribute as they please.
 I'm hoping that the organization will make this sort of thing easier.
 
+## Creating a Full Book ##
+For those who want to create an entire book out of the Markdown files, I have
+included a simple Makefile that will use Pandoc to create the book. 
+This is provided as a convenience, and you may use whatever method you like,
+and/or modify the Makefile to suit your own purposes.
+
+This currently has two targets: `html` and `pdf`. These targets will produce
+HTML and PDF versions of the book (respectively) in the `output` directory.
+The book's filename will be `polyglot_programming` with the appropriate
+extension.
+
+Obviously, to use the Makefile, you will need to install both
+[GNU Make](https://www.gnu.org/software/make/) and
+[Pandoc](http://pandoc.org/).
+
+Note that PDF creation requires a version of LaTeX to be installed. If you
+don't have it already, [Pandoc recommends](http://pandoc.org/installing.html):
+* Windows: [MiKTeX](http://miktex.org/)
+* OS X: [Basic TeX](http://www.tug.org/mactex/morepackages.html)
+* Linux: [TeX Live](https://www.tug.org/texlive/)
+
 ## Content changes ##
 If you have found a mistake in any part of the book, I would appreciated it if
 you raised an issue in the GitHub issue tracker. Grammar Nazis are welcome.
