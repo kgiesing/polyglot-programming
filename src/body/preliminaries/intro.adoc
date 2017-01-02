@@ -1,0 +1,10 @@
+// Introduction to this section.
+= Preliminaries
+
+Before we get started with learning about programming, there are a couple of preliminaries we should cover.
+
+This book assumes no prior knowledge of writing code.
+So, this section is for readers who need a basic knowledge of programming - what it is and how to do it.
+
+I will also give some brief information about each language covered in the book.
+This will include the language features, a brief history of the language, and basic installation instructions.

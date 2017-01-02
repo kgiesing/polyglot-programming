@@ -1,0 +1,13 @@
+// Comments and code documentation
+
+include::intro.adoc[]
+
+// Push titles down one level.
+:leveloffset: 1
+
+include::syntax.adoc[]
+include::doc_generators.adoc[]
+include::ide_tags.adoc[]
+
+// Return to normal title levels.
+:leveloffset: 0

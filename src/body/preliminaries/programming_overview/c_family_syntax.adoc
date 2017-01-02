@@ -1,0 +1,20 @@
+= C-family programming languages
+
+== Why C-style?
+- It's the most widely-used family of syntaxes
+- Different semantics for same syntax, so we can discuss semantics separately
+- I know it better than anything else...
+
+== What constitutes a "C-family" syntax?
+- Statements end with a semicolon
+- Statement blocks delimited by curly braces ("Curly-bracket languages"),
+  not indentation ("off-side rule")
+- Uses infix operator notation (not e.g. Hungarian)
+- Extra whitespace is ignored
+- Uses C syntax for calling functions
+
+== Which languages?
+- C, C++, C=, Java, JavaScript, PHP
+- Almost but not quite: Swift, Perl
+- Not C-style: BASIC, Lua, Pascal, Python, Ruby, Smalltalk, Objective-C,
+  F=, most functional languages (Scheme, Lisp, Haskell), XSLT

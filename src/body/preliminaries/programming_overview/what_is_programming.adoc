@@ -1,0 +1,53 @@
+= What is programming?
+
+== Single-purpose vs. general-purpose computers
+  - Single-purpose: the computer has one program, and can only run that
+    program
+    - also called fixed-program computer
+    - Examples: calculator, ATM, traffic light control systems
+  - General-purpose: the computer can take a program as input data - also
+    called stored program computer
+    - Since a program is data, a general-purpose computer can also give
+      back another program as output; important when we talk about compilers
+      and interpreters
+    - Examples: PC's, smart phones
+
+== Programming languages
+  - A language that is used to create a program for a (general-purpose) computer
+    - Why not "duh?"
+  - What a program does
+    - represents data and metadata ("nouns" and "adjectives")
+    - operates upon that data ("verbs")
+    - input and output
+      - input data; operate on that data; output (new) data
+      - "input" and "output" are abstract concepts
+        - UI (keyboard, mouse, (touch)screen); hard disk; DB; tape drive;
+          call to Web API; etc.
+  - Program follows an *algorithm* for its operations
+    - sequence of instructions that perform a task
+      - Recipe analogy
+    - Flow control
+      - branching, iteration
+      - termination condition(s)
+
+=== Language syntax vs. semantics
+
+Syntax:: determines what constitutes a well-formed string in a specific programming language
+    Example: infix - `2 + 3` is syntactically correct; `+ 2 3` is not
+
+Semantics:: deals with the meaning of programming languages; how the syntax is interpreted in an abstract sense
+    originates with advanced theories of computation; won't cover that +
+    (theories largely due to Robert W. Floyd, 1936 - 2001)
+
+    Static semantics;;
+        whether a well-formed string has meaning +
+        Example: `2 + '5'` may be syntactically correct, but what is the result?
+          .. `'25'` (2 converted to char)
+          .. `7` ('5' converted to number)
+          .. `55` (2 + ASCII value of '5')
+          .. Nothing; `+` requires numbers on both sides, so it's semantically incorrect
+
+    Language semantics;;
+        what the meaning of a semantically correct string actually is +
+        In above example, language semantics would choose between a, b, and
+          c; d cannot be part of language semantics (since it's incorrect)

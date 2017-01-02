@@ -1,0 +1,12 @@
+// Introduction to this section.
+= Source Code Writing Tools
+
+There are a number of different tools that you can use to write source code.
+
+The source code itself is simply a plain text file (with a different file extension), so you can use any text editor to write it.
+However, there are certain tools that will make the process much easier.
+I have covered some of the more popular tools below.
+
+NOTE: Source code must be *plain* text, without any formatting or page information.
+    This means that word processors (such as Microsoft Word or Google Docs) are ill-suited for writing source code.
+    Word processors save their files in a format that cannot be read by either compilers or interpreters.

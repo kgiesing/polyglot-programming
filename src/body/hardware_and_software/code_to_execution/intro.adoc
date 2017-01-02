@@ -1,0 +1,6 @@
+= From Source Code to Execution
+
+This section discusses the various ways that source code is executed.
+It covers parsing (and sometimes pre-processing) the source code,
+directly interpreting source code,
+and compiling source code (to binary or to another programming language).

@@ -1,0 +1,33 @@
+= Comment Syntax
+
+- Comments do *not* need to be at the start of a line
+
+== "C-style" multiline comments
+[source, c]
+----
+/* Comment here */
+
+/*
+   Comments may span
+   multiple lines
+ */
+----
+- Everything from `/*` to `*/` is ignored, including whitespace
+- Supported by all languages
+
+== "C++-style" single-line comments
+[source, c++]
+----
+// Comment here
+----
+- Everything from `//` to end of line is ignored
+- Not supported by C, but supported by every other language
+
+== "Shell-style" single-line comments
+[source, php]
+----
+# Comment here
+----
+- Everything from `#` to end of line is ignored
+- Of languages covered in this book, supported only by PHP (and discouraged)
+- but, common in non-C-style lang's, so worth mentioning

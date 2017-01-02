@@ -1,0 +1,70 @@
+= Language Specifications, References, Guides, and Tutorials
+Links are to English language versions.
+Other languages are usually available on the same site.
+
+== C
+
+=== Specification
+- http://www.open-std.org/JTC1/SC22/WG14/www/docs/n1570.pdf[ISO/IEC 9899:201x] (PDF) +
+    *Note:* This is the final working draft before the specification became final.
+    It is provided free of charge from http://www.open-std.org/[Open Standards].
+    The final specification is not openly available, and must be purchased from
+    http://webstore.ansi.org/default.aspx[ANSI].
+
+=== References, Guides, Tutorials
+- https://msdn.microsoft.com/en-us/library/fw5abdx6.aspx[C Language Reference (MSDN)]
+- https://www.gnu.org/software/gnu-c-manual/[GNU C Reference Manual]
+- http://www-01.ibm.com/support/docview.wss?uid=swg27002103&aid=1[IBM C/C++ Language Reference (IBM)]
+- http://en.cppreference.com/w/c[C reference (cppreference.com)]
+
+== C++
+
+=== Specification
+- http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4296.pdf[ISO/IEC 14882:2014] +
+    *Note:* This is the final working draft before the specification became final.
+    It is provided free of charge from http://www.open-std.org/[Open Standards].
+    The final specification is not openly available, and must be purchased from
+    http://webstore.ansi.org/default.aspx[ANSI].
+
+=== References, Guides, Tutorials
+- https://msdn.microsoft.com/en-us/library/3bstk3k5.aspx[C++ Language Reference (MSDN)]
+- http://www-01.ibm.com/support/docview.wss?uid=swg27002103&aid=1[IBM C/C++ Language Reference]
+- http://en.cppreference.com/w/cpp/language[C++ reference (cppreference.com)]
+- http://www.cplusplus.com/reference/[C++ reference (cplusplus.com)]
+
+== C#
+
+=== Specification
+- https://msdn.microsoft.com/en-us/library/ms228593.aspx[C# Language Specification (MSDN)]
+- http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-334.pdf[C# Language Specification (ECMA-334)] (PDF)
+
+=== References, Guides, Tutorials
+- https://msdn.microsoft.com/en-us/library/618ayhy6.aspx[C# Reference (MSDN)]
+- https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx[C# Programming Guide (MSDN)]
+
+== Java
+
+=== Specification
+- https://docs.oracle.com/javase/specs/[Java Language and Virtual Machine Specifications (Oracle)]
+
+=== References, Guides, Tutorials
+- http://docs.oracle.com/javase/tutorial/index.html[The Java Tutorials (Oracle)]
+
+== JavaScript
+
+=== Specification
+- http://www.ecma-international.org/publications/standards/Ecma-262.htm[ECMAScript 2016 Language Specification]
+
+=== References, Guides, Tutorials
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference[JavaScript reference (MDN)]
+- https://msdn.microsoft.com/en-us/library/yek4tbz0.aspx[JavaScript Language Reference (MSDN)]
+- http://www.w3schools.com/jsref/[JavaScript and HTML DOM Reference (w3schools)]
+
+== PHP
+
+- http://us3.php.net/manual/en/index.php[PHP Manual] +
+    *Note:* This is the closest thing PHP has to an official specification.
+    A WIP specification can be found https://github.com/php/php-langspec[here].
+
+- http://us3.php.net/manual/en/langref.php[PHP Language Reference] +
+    The portion of the PHP Manual that covers only the language reference.

@@ -1,0 +1,7 @@
+= JavaScript
+
+== About
+
+== Installation
+
+== Execution from the command line
