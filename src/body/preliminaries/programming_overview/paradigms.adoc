@@ -8,10 +8,8 @@ Originates from theory of knowledge.
 _Declarative knowledge_ involves statements of facts about the world.
 Includes axioms, definitions, etc.
 Example from math is the definition of a square root:
-[asciimath]
-----
-sqrt(x) = y | y^2 = x
-----
+
+asciimath:[sqrt(x) = y | y^2 = x]
 
 _Imperative knowledge_ involves descriptions of how to do something (i.e. how to obtain declarative knowledge).
 In computer science, imperative knowledge is
@@ -19,7 +17,7 @@ Example from math is the algorithm to find a square root, `y`, of `x`:
 
 1. Guess a square root, `G`
 2. If asciimath:[G^2 ~~ x] then asciimath:[y = G] and stop
-3. asciimath:[G = (G + x/G)/2 ]
+3. asciimath:[G = (G + x/G)/2]
 4. Go to 2.
 
 
@@ -48,7 +46,6 @@ Pseudocode:
 - `RESULT:` ends the execution and gives the right-hand-side as result
 
 Imperative:
-[source]
 ----
 LET sum EQUAL 0
 LET len EQUAL (LENGTH-OF n)
@@ -60,7 +57,6 @@ RESULT: sum
 ----
 
 Declarative:
-[source]
 ----
 RESULT: (WITH-EACH-VALUE-OF n
     ACCUMULATE (CURRENT-VALUE-OF n)

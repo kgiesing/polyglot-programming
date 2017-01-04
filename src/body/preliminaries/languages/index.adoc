@@ -6,10 +6,15 @@ include::intro.adoc[]
 :leveloffset: 1
 
 include::c.adoc[]
+
 include::cpp.adoc[]
+
 include::java.adoc[]
+
 include::csharp.adoc[]
+
 include::javascript.adoc[]
+
 include::php.adoc[]
 
 // Return to normal title levels.

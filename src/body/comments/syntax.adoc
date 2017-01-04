@@ -16,7 +16,7 @@
 - Supported by all languages
 
 == "C++-style" single-line comments
-[source, c++]
+[source,{cpp}]
 ----
 // Comment here
 ----

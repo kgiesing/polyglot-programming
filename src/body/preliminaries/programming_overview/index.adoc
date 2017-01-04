@@ -6,7 +6,9 @@ include::intro.adoc[]
 :leveloffset: 1
 
 include::what_is_programming.adoc[]
+
 include::c_family_syntax.adoc[]
+
 include::paradigms.adoc[]
 
 // Return to normal title levels.

@@ -3,11 +3,17 @@
 Karl Giesing <khzmusik@hotmail.com>
 :doctype: book
 
+// "Global" definition of the C++ language tag.
+// See: http://asciidoc.org/faq.html#_one_liner_ifdef_s_are_disproportionately_verbose_can_they_shortened
+:cpp: {basebackend@docbook:c++:cpp}
+
 // Push titles down one level.
 :leveloffset: 1
 
 include::front/index.adoc[]
+
 include::body/index.adoc[]
+
 include::back/index.adoc[]
 
 // Return to normal title levels.

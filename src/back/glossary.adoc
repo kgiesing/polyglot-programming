@@ -1,6 +1,6 @@
 // This is the glossary of terms used in the book.
 // Terminology is especially important in computer science, so if I am wrong, corrections are especially welcome.
-
+= Glossary
 [glossary]
 
 Keyword::

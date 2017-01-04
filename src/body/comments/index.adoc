@@ -6,7 +6,9 @@ include::intro.adoc[]
 :leveloffset: 1
 
 include::syntax.adoc[]
+
 include::doc_generators.adoc[]
+
 include::ide_tags.adoc[]
 
 // Return to normal title levels.

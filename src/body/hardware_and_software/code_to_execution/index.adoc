@@ -1,9 +1,19 @@
-// The book's body matter (sections and chapters).
+// From source code to execution
+
+include::intro.adoc[]
 
 // Push titles down one level.
 :leveloffset: 1
 
-include::preliminaries/index.adoc[]
+include::parsing_and_preprocessing.adoc[]
+
+include::interpretation.adoc[]
+
+include::compilation.adoc[]
+
+include::vm.adoc[]
+
+include::transpile.adoc[]
 
 // Return to normal title levels.
 :leveloffset: 0

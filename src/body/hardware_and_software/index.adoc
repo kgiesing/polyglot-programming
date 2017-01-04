@@ -6,6 +6,7 @@ include::intro.adoc[]
 :leveloffset: 1
 
 include::hardware_to_software/index.adoc[]
+
 include::code_to_execution/index.adoc[]
 
 // Return to normal title levels.

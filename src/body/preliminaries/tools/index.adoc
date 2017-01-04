@@ -6,8 +6,11 @@ include::intro.adoc[]
 :leveloffset: 1
 
 include::text_editors.adoc[]
+
 include::ide.adoc[]
+
 include::vcs.adoc[]
+
 // TODO Build tools here...? Probably not.
 
 // Return to normal title levels.
