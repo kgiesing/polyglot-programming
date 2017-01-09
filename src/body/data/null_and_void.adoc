@@ -1,0 +1,24 @@
+== Null and void
+- "null" is reference type; signifies that nothing is referenced
+    - Evaluates to false in Boolean expression
+    - C/C++: `NULL` is macro (`#define`) for integer 0 - not type safe!
+    - C++11: `nullptr`
+    - C#/Java/JavaScript: `null` keyword
+    - JavaScript: `undefined` keyword
+        - represents and undefined variable or object property
+
+- uninitialized variables
+    - C/C++: garbage (whatever was previously in memory)
+    - C#/Java: reference types are null, primitive types are "zero"
+    - JavaScript: `undefined`
+      - var's must be explicitly assigned the value null
+
+- void:
+    - explicitly typed lang's: return type of fn that doesn't return value
+    - C: `void*`
+    - pointer with no explicit type ("raw" pointer)
+    - Uses:
+        - returned from memory allocation functions (`malloc`, `calloc`)
+        - may be used in compound data structures
+    - must be cast to actual type when dereferenced:
+        `char* str = (char*) malloc(LENGTH * sizeof(char));`

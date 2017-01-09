@@ -1,0 +1,17 @@
+= Compilation
+- Source code is translated into executable machine code
+    - AST from parser is "walked" to generate machine code
+    - Machine code is determined by compilation target (e.g. computer architecture)
+
+- Linking
+    - Not all of the program needs to be compiled at once (e.g. one file is compiled)
+    - When executable is created, different compiled sources are linked
+    - Re-compilation can be avoided if code hasn't changed
+
+- Advantages and disadvantages
+    - Advantages: compile-time code validation, faster, distribute binary file
+    - Disadvantages: executable is specific to architecture/OS
+
+- Many vendors; compete for speed, architecture optimization, etc.
+
+- Languages: C, C++

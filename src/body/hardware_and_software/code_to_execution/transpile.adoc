@@ -1,0 +1,7 @@
+= Source-to-source compilation (aka transpiling)
+- Takes one higher-level language, compiles it to another higher-level
+    language (or even the same language)
+- Uses: refactor legacy code, add additional functionality, minimization
+- Common use today is to compile to JavaScript for Web applications:
+    Google Dart, Google Closure compiler, CoffeeScript, TypeScript
+    https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-JS

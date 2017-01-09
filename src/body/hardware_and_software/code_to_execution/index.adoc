@@ -5,6 +5,8 @@ include::intro.adoc[]
 // Push titles down one level.
 :leveloffset: 1
 
+include::source.adoc[]
+
 include::parsing_and_preprocessing.adoc[]
 
 include::interpretation.adoc[]

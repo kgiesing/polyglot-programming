@@ -1,0 +1,5 @@
+= Literals
+- direct representation of rvalue in source code
+  e.g. `2`, `3.14159`, `'x'`,` "Hello, world!"`
+  - literals are immutable, being rvalues
+  - string vs. char literals (lang. dependent)

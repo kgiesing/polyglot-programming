@@ -1,0 +1,23 @@
+= Virtual Machine Compilation
+
+- Code is compiled to VM-specific bytecode (not native machine code)
+
+- VM takes its own bytecode, translates to native machine code while running
+    - VM bytecode instructions very close to native machine instructions
+    - Often done at runtime; "Just-In-Time" (JIT)
+    - Blocks of machine code can be cached (improves performance)
+
+- Memory is managed; unused objects are destroyed
+    - garbage collection (GC): destroying objects that are not referenced
+    - usually, GC is done by a "mark-and-sweep" algorithm
+    - takes time, and predicting when it happens often difficult/impossible
+
+- Advantages and disadvantages
+    - compiled adv.: compile-time validation, bin. file dist.
+    - interpreted adv.: cross-platform, managed environment
+    - disadvantages: still needs compilation stage (no on-the-fly execution),
+      slower(?) than native-machine compilation, overhead from VM & GC
+
+- Note that these VM's are not hypervisors (like VMWare or VirtualBox)
+
+- Languages: Java (JVM), C# (CLR, Mono)

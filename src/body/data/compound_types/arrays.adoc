@@ -1,0 +1,59 @@
+= Arrays
+- array: numerically-ordered sequence of values
+- Terminology
+    - element: the data that is stored at one position
+    - index: the position number of the element
+- indexes:
+    - arrays are always zero-indexed
+    - index must be integer type (`char`, `byte` or `int`, w/modifiers)
+    - index must be positive (negative = runtime error)
+- elements:
+    - elements are mutable
+    - Homogeneous vs. heterogeneous arrays
+      - Homogeneous: elements must be of same type
+        C, C++
+      - Heterogeneous: elements may be of different types
+        Java, JavaScript
+    - C++: cannot be references - use pointers instead
+      (reference types in other lang's behave like ptrs, so they're OK)
+- array lengths (sizes):
+    - in static (usually compiled) languages, must be explicitly fixed
+    - in dynamic (usually interpreted) languages, is not fixed
+- Syntax
+    - array literals
+      - C/C++/C#/Java:
+        `int[] arr = {5, 4, 3, 2, 1}; // length fixed at 5`
+      - JavaScript:
+        `var arr = [5, 4, 3, 2, 1];`
+      - PHP:
+        ```
+        $arr = array(5, 4, 3, 2, 1); // All versions
+        $arr = [5, 4, 3, 2, 1];      // PHP >= 5.4
+        ```
+    - accessing elements
+      - access array element by its index: square brackets
+        `x = arr[1]; // x has value of 4`
+        `$x = $arr[1];   // PHP (and Perl)`
+      - each element can be assigned a value independently
+        `arr[2] = 6;  // arr is now [5, 4, 6, 2, 1]`
+        `$arr[2] = 6; // PHP (and Perl)`
+- Semantics
+    - C/C++:
+      - array value is location of base address: `(&arr[0])`
+        - "simulated reference" - ptr that doesn't use ptr notation
+      - array access uses pointer arithmetic
+        `arr[2] == *(arr + 2 * sizeof(arr[0]))`
+      - Danger! No bounds checking!
+        `arr[100] = 5; // C/C++ will do this w/out error`
+        - Especially dangerous for C-string functions
+        - May be exploited for buffer overflow attacks
+    - C#/Java/JavaScript: arrays are objects
+      - Out-of-bounds access/assignment caught & handled
+        - JavaScript: access -> 'undefined', assignment -> expands array
+        - Others: results in runtime error
+      - Arrays have methods/properties - see sect. on objects
+    - PHP: arrays are dictionaries (see below)
+      ```
+      $arr[1];   // 4
+      $arr["1"]; // also 4 - string is cast to integer
+      ```

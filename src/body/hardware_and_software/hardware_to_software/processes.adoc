@@ -1,0 +1,22 @@
+== Processes, threads, and the OS
+== OS: hardware I/O, executing programs, memory, security
+- Types questions the OS must answer:
+      - Which program responds to UI's (mouse/keyboard/screen touch)?
+      - If more than 1 prog, which one should be running on the CPU?
+      - When should memory be reclaimed/paged (swapped to disk)?
+      - Can this user/program write to this file?
+- GUI technically not part of OS, but most OS's come with one
+
+== process: instance of a running program
+- "program" does not mean "launched by user, with UI" - process can create ("spawn") other processes; so does OS
+- each process has its own allocated memory
+- most OS's are multi-process (even iOS devices)
+
+== thread: a "lightweight" process
+- same code as parent, but independent execution
+- shares parts of memory with parent process (see next section)
+- "Thread safe:" operations in one thread don't interfere with operations in another thread (or parent process)
+    - One thread operates on shared data in memory.
+        Does it change that data in another thread?
+        If yes, the operation is not thread-safe;
+        if not, it's thread-safe
