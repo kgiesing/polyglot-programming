@@ -2,6 +2,8 @@
 
 - Code is compiled to VM-specific bytecode (not native machine code)
 
+- Note that these VM's are not hypervisors (like VMWare or VirtualBox)
+
 - VM takes its own bytecode, translates to native machine code while running
     - VM bytecode instructions very close to native machine instructions
     - Often done at runtime; "Just-In-Time" (JIT)
@@ -18,6 +20,20 @@
     - disadvantages: still needs compilation stage (no on-the-fly execution),
       slower(?) than native-machine compilation, overhead from VM & GC
 
-- Note that these VM's are not hypervisors (like VMWare or VirtualBox)
+== Common VM's
+- JVM (Java Virtual Machine)
+    - Created by Sun (now Oracle)
+    - Java; also Closure, Groovy, Scala, implementations of Python, Ruby
 
-- Languages: Java (JVM), C# (CLR, Mono)
+- CLR (Common Language Runtime)
+    - VM component of Microsoft .NET
+    - C#; also VB.NET, implementations of Python, Scheme, Lisp
+    - PHP compilation with Phalanger
+
+- Mono
+    - FOSS implementation of CLR and .NET from Xamarin (now under MS)
+    - Any languages that compile to CLR can use Mono
+
+- ART (Android Runtime)
+    - Java VM used by Android OS
+    - Replaced Dalvik as of Android 5.0

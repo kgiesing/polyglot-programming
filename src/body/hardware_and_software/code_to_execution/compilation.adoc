@@ -15,3 +15,17 @@
 - Many vendors; compete for speed, architecture optimization, etc.
 
 - Languages: C, C++
+
+== Common compilers
+- GCC (GNU Compiler Collection)
+    - FOSS compiler suite
+    - C, C++; Objective-C, Fortran, Ada, Go
+    - https://gcc.gnu.org/[GCC website]
+
+- LLVM and Clang
+    - FOSS compiler and VM
+    - originally "low level virtual machine," but that acronym is now obsolete
+    - Clang is the front-end that compiles the source to LLVM bytecode;
+        designed to replace the GCC
+    - C, C++; Objective-C (arguably most common)
+    - http://llvm.org/[LLVM website]

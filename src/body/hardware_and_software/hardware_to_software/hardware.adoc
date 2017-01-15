@@ -12,15 +12,15 @@
 
 - Control Unit: handles control flow
 
-- Registers: one word of memory in ALU, used to hold transitory data needed for computation
+- Register: one word of hardware memory in ALU, used to hold transitory data needed for computation
+    - Electronically, are usually flip-flop circuits
     - Processor-specific; different architectures have different approaches
-    - General-purpose registers: can hold any value (data or address),
+    - General-purpose registers: can hold any value (data or address);
           meaning determined by program (not CPU)
     - Special-purpose registers: data has special meaning to CPU
-        - instruction pointer/program counter: address of next instruction
-            to perform
+        - instruction pointer/program counter: address of next instruction to perform
         - stack pointer: address of the start of stack memory (see below)
-        - others: segment (memory), control, program status, interrupt
+        - others: segment (memory), control, program status (flag), interrupt
             - highly architecture-dependent
             - not handled by programmers (outside of ASM)
 
@@ -44,10 +44,21 @@
 
 == Representation of program
 - "program" is simply a set of electronic signals in memory
-      - Often thought of as sequence of 1's and 0's - but this is an abstraction!
+    - Often thought of as sequence of 1's and 0's - but this is an abstraction!
         Really, it's +5V (high, "1") or 0V (low, "0"), +/-
+    - Sequences of 1's and 0's are _binary numbers_ - see next section
+
 - Machine instruction set: set of commands that a processor can run;
-      pre-defined by CPU manufacturer
-      (commands: "instruction codes" or "processor instructions")
-        - very simple: math operations, compare, jump, move to/from reg.
-- Machine code: a binary representation of machine instructions
+    pre-defined by CPU manufacturer
+    (commands: "instruction codes" or "processor instructions")
+    - very simple: math operations, compare, jump, move data to/from register.
+// TODO: x86 machine instruction set in appendix?
+
+- Machine code: a binary representation of machine instructions and binary data
+
+- Assembly language (asm): a human-readable representation of machine code
+    - also called "machine language"
+    - binary information is represented by _mnemonic_
+        - machine instruction is represented by _opcode_
+
+// TODO: x86 machine instruction set in appendix?

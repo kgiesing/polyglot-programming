@@ -73,6 +73,25 @@ Each language has at least one data type that is native to itself, but not nativ
 For example, there is no `struct` type in Java or JavaScript.
 Nonetheless, these data types will be covered in this book.
 
-One reason is pedagogical: the various data types are often language-specific solutions to the same problem,
+One reason is pedagogical:
+the various data types are often language-specific solutions to the same problem,
 and it is useful to compare and contrast them.
-Another is practical: knowledge of native data types is fundamental to learning the language itself.
+Another is practical:
+knowledge of native data types is fundamental to learning the language itself.
+
+== How this book is organized
+- "Bottom to top": least abstract to most abstract
+  - "Abstract:" relative to the physical computer
+  - "Abstract" is not necessarily "complex" (to humans)
+
+- Theory and code
+  1. General concepts - terminology, etc.
+  2. Syntax - common, then lang-specific
+  3. Advanced concepts
+     - Beginning programmers don't need to know to write code, but will need to learn eventually
+     - Put at the end, to be less confusing
+     - Often language-specific
+
+- Use of analogies
+  - remember that they're only analogies; there to help clarify concepts
+  - math (basic), cooking, everyday items (biased towards Americans...)
