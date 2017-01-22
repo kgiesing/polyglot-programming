@@ -1,0 +1,9 @@
+= The Comma Operator
+operator: `,`
+- evaluates expressions, LTR, returns results of last one, discards the other results
+    - in strongly-typed languages, all expressions must return the same type
+
+- most common use is declaring/defining multiple variables at once
+    - [show example]
+
+- not to be confused with comma as separator (e.g. fn. params)

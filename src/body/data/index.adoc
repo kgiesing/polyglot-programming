@@ -1,4 +1,4 @@
-// Compound types
+// Representing Data
 
 see also:
 [POD Types](http://www.fnal.gov/docs/working-groups/fpcltf/Pkg/ISOcxx/doc/POD.html)
@@ -19,6 +19,8 @@ include::strings.adoc[]
 include::pointers_and_references.adoc[]
 
 include::compound_types/index.adoc[]
+
+include::parameterized_types.adoc[]
 
 // Return to normal title levels.
 :leveloffset: 0

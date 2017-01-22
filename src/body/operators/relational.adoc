@@ -1,0 +1,13 @@
+= Relational Operators
+operators: `==, ===, <, <=, >, >=, !=, !==, (PHP) <>`
+- result is always Boolean (`true`/`false`)
+- no assign. variations
+- JavaScript/PHP: "equality" vs. "equivalence:" `===` vs. `==`
+    - Used in weakly-typed languages: JavaScript, PHP
+    - "equivalence" compares values _after type juggling_
+        - Example: `0 == "0"` is `true`
+        - PHP/JS: "equal"
+    - "equality" compares values _without type juggling_
+        - Example: `0 === "0"` is `false`
+        - PHP: "identical"
+        - JavaScript: "strict equal"

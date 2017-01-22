@@ -1,0 +1,8 @@
+= Logical Operators
+operators: `&&, ||, !`
+- In strongly typed languages, result is always Boolean (true/false)
+- In loosely typed languages, result is *the value of the final operand*
+    - Example: JavaScript - setting a default value
+        `x = x || 'hello'; // If x is undefined, it will now be "hello"`
+        This **will not work** in strongly-typed lang.'s like Java or C++!
+- short-circuiting

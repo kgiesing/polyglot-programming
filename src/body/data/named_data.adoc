@@ -74,9 +74,9 @@
     - names should be semantic - describe what the variable (&etc.) represents
     - names should be as short as practical
     - borrow names from math when applicable
-      i, j: iteration, position (from sigma notation, linear algebra, etc.)
+      i, j, k: iteration, position (from sigma notation, linear algebra, etc.)
       x, y, z: numbers (from algebra, calculus, etc.)
-    - follow conventions for language's libraries
+    - follow conventions from language's libraries
     - all of these rules can be overridden by teachers, employers, teams, etc.
 
 == declaration, initialization, and assignment
@@ -114,3 +114,24 @@
       `x = 7;`
     PHP:
       `$x = 7;`
+
+== Scope
+- The _scope_ of an identifier is the part of the program where that identifier is valid
+    - A valid identifier is said to be _visible_
+    - Two identifiers will clash if they have the same name, and are in the same namespace
+    - If an identifier is visible throught the entire program, it is in the _global scope_
+    - In C-syntax languages, a variable's scope depends upon where it is _declared_
+        - Technical term for this is _lexical scope_
+        - There is also _dynamic scope,_ but it is not used in any languages covered in this book
+
+=== Namespaces
+A _namespace_ is an explicit declaration of a scope in the source code
+
+- Not all languages have explicitly declared scope
+    - C++, C#, and PHP (>5.3.0) use namespaces
+    - Java uses packages
+    - JavaScript uses modules (which are different for Node.js and ES6)
+- Most libraries declare their own scope
+    - The C++ standard libraries use the `std` namespace
+    - The C# standard libraries use the `System` namespace
+    - Java uses various different packages

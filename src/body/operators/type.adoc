@@ -1,0 +1,7 @@
+== Type Operators
+- comparison: `typeof`, `instanceof` (language-dependent)
+- cast operator: `(type) exp`
+- object creation: `new`
+    - creates object on heap
+- object destruction: `delete`, `delete[]`
+    - C++ only - other lang's have memory management

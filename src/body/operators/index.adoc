@@ -1,0 +1,34 @@
+// Operators
+
+
+// Push titles down one level.
+:leveloffset: 1
+
+include::intro.adoc[]
+
+include::assignment.adoc[]
+
+include::comma.adoc[]
+
+include::mathematical.adoc[]
+
+include::logical.adoc[]
+
+include::relational.adoc[]
+
+include::conditional.adoc[]
+
+include::bitwise.adoc[]
+
+include::string.adoc[]
+
+include::array.adoc[]
+
+include::member_resolution.adoc[]
+
+include::type.adoc[]
+
+include::other.adoc[]
+
+// Return to normal title levels.
+:leveloffset: 0

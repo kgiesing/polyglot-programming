@@ -1,0 +1,21 @@
+= String Operators
+- All string operators are _overloaded_ operators
+
+== string concatenation
+operators: `+` (most), `.` (PHP)
+
+== compound assignment
+operators: `+=` (most), `.=` (PHP)
+- can think of it as "append operator"
+
+== equality operators
+operators: `==` (all), `===` (JS, PHP)
+- strict equality compares _references_ (i.e. whether it's the same object/array)
+- non-strict equality compares strings by value
+    - only in interpreted languages
+
+== comparison operators
+operators: `<`, `<=`, `>`, `>=`
+- lexicographical comparison: C, C++, JS, PHP
+- not allowed: Java, C#
+// TODO: Double-check these...
