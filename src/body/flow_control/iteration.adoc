@@ -1,0 +1,125 @@
+= Iteration statements
+Iteration statements are used to execute other statements in a loop, until some condition is reached.
+
+The statement _to_ loop is the actual iteration statement.
+The statements that tell the computer _what to do_ in the loop are sometimes called the _embedded statements._
+Embedded statements are considered the _body_ of the iteration statement.
+
+The body usually has more than one statement in it.
+In this case, the statement body must be a block of statements, delimited by curly braces.
+However, the body is not _required_ to have more than one statement in it.
+In this case, the curly braces may be omitted.
+
+CAUTION: You _must_ include the curly braces if the body has more than one statement.
+    If you leave them out, the parser will only consider _the first statement_ to be the body.
+    This is a very common mistake, and it can lead to hard-to-find bugs.
+    Many people choose to include the curly braces even if the body has one statement,
+    precisely to avoid this common pitfall.
+    I will always include curly braces in statement bodies.
+
+== `while` statements
+```
+while (expression) {
+    // Body: statements to execute
+}
+```
+- Evaluates the statements in the body until `expression` evaluates to Boolean false
+    - this means that the value of `expression` must be modified in the body of the loop!
+        Otherwise, you get an infinite loop.
+- If `expression` is initially false, the body of the loop will never execute
+    - technical term is a _zero-trip loop_
+
+=== When to use `while` statements
+You should use a `while` loop when you do not know in advance how many iterations you must have,
+and you might not need any iterations at all.
+
+An example is validating user input.
+You first ask for the input, and if it is not valid, you ask for it again.
+Users may enter invalid input as many times as they want, so you do not know how many times you need to ask.
+On the other hand, they may enter valid input the first time, so you may not have to ask again at all.
+
+== `do`/`while` statements
+```
+do {
+    // Body: statements to execute
+} while (expression);
+```
+. execute the the statements in the body
+. evaluate `expression` as a Boolean
+. if `expression` is true, go back to first step
+
+- Body will always execute at least once, even if `expression` is initially false
+
+=== When to use `do`/`while` statements
+You should use a `while` loop when you do not know in advance how many iterations you must have,
+but you know you will need to execute the body at least once.
+
+An example is when you present your user with an options menu.
+You need to present the user with the options menu at least once: when the program is run.
+The only time that you would break out of the loop is if the user entered the option to quit.
+
+== `for` statements
+```
+for (initialization; conditional; iteration) {
+    // Body: statements to execute
+}
+```
+
+- `initialization` is a statement that is executed once, before the loop is entered
+    - Usually used to initialize an iteration variable to zero: `i = 0`
+    - C++, C#, Java, and ES6's `let` declare local variables
+        i.e. variables declared in initialization statement have scope that is local to the `if` statement
+    - JavaScript allows `var` declarations, but they are _not_ local
+    - C does not allow variable declaration at all; must be declared beforehand (and are not local)
+
+- `condition` is an expression that is evaluated as a Boolean
+    - if true, body is then executed; otherwise, body is skipped
+    - usually used to test if the iteration variable is below some limit
+    - evaluated before body is entered; zero-trip loop
+
+- `iteration` is statement that is evaluated after the body is executed
+    - usually used to increment the iteration variable: `i++` or `++i`
+
+=== When to use `for` statements
+You should use a `for` loop when the number of iterations has a set limit.
+For example, if you know an array has exactly 100 elements, and you need to loop through all of them.
+If you do not know how many iterations you need, then you should use a `while` or `do`/`while` loop instead.
+
+== "foreach" statements
+- iterate over all members of collection/array
+- only works with iterable types; lang. specific
+
+C: none (some non-std libs implement)
+
+C++98: only in std lib (not lang. construct)
+```
+// x must be iterable; callback is single-arg fn)
+std::for_each(x.begin(), x.end(), callback);
+```
+Added in C++11:
+```
+for (int elem : arr) {...} // same as Java
+```
+
+C#:
+`foreach (int elem in arr) {...}`
+
+Java:
+`for (int elem : arr) {...}`
+
+JavaScript:
+`for (prop in obj) {...} // Objects only! Use "for" with arrays`
+
+PHP:
+```
+foreach (arr as $elem) {...} // Numeric array
+foreach (arr as $key => $value) {...} // Assoc. array
+```
+
+=== When to use "foreach" statements
+You should use a "foreach" loop when you are iterating through a collection,
+and you know you are going to do some operation on every item in that collection.
+
+== Jumping out of iterations before the condition is reached
+- Use a `break` statement if you want to jump out of all iterations
+- Use a `continue` statement if you want to jump out of _this_ iteration, but continue to the next

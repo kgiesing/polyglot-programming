@@ -1,0 +1,10 @@
+= Error-related statements
+- `throw`
+- `try`/`catch`
+- `finally`
+- assertion checking
+    - assertions are checked at runtime
+    - usually need a library: `assert.h` (C), `<cassert>` (C++);
+      Java 7 is native;
+    - assert fn: throws an error if expression evals. to false
+      `assert(x > 0); // If x is 0 or less, throws exception`

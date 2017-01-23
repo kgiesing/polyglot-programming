@@ -9,5 +9,17 @@ include::hardware_and_software/index.adoc[]
 
 include::comments/index.adoc[]
 
+include::data/index.adoc[]
+
+include::operators/index.adoc[]
+
+include::flow_control/index.adoc[]
+
+// include::functions/index.adoc[]
+
+// include::oop/index.adoc[]
+
+// include::namespaces/index.adoc[]
+
 // Return to normal title levels.
 :leveloffset: 0

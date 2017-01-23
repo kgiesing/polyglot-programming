@@ -1027,15 +1027,15 @@ Note: defining objects in code will wait until section on OOP
 
 ### Control structures ###
 
-#### Testing and branching ####
-- if statement:
+#### Selection Statements ####
+- `if` statement:
     ```
       if (expression) {
           // Statement(s) to evaluate if expression is true
       }
     ```
     - `expression` is anything that evaluates to a Boolean
-- else statement:
+- `else` statement:
     ```
     if (expression) {
         // Statement(s) to evaluate if expression is true
@@ -1044,9 +1044,22 @@ Note: defining objects in code will wait until section on OOP
         // Statement(s) to evaluate if expression is false
     }
     ```
-- "else if" also possible, but must come before final "else"
+- `else if` also possible, but must come before final "else"
+- switch/case statements:
+    ```
+    switch(variable) {
+    case CONSTANT:
+        // STATEMENTS
+        break;
+    }
+    ```
+    - C, C++, Java < 7: "variable" must be integral type
+        - `char`
+        - `int` (`signed` or `unsigned`, `long` or `short`)
+    - PHP, JavaScript, Java >= 7: "variable" can also be string type
+    - `break` is optional, but if omitted, will _fall through_ to next case
 
-#### Iteration (Looping) ####
+#### Iteration statements ####
     - `while`
     - `do`/`while`
     - `for`
@@ -1073,7 +1086,7 @@ Note: defining objects in code will wait until section on OOP
         foreach (arr as $key => $value) {...} // Assoc. array
         ```
 
-### Handling errors ###
+### Error handling statements ###
 - `throw`
 - `try`/`catch`
 - `finally`

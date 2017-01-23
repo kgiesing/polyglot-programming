@@ -1,0 +1,48 @@
+= Selection Statements
+== `if` statements
+```
+  if (expression) {
+      // Statement(s) to evaluate if expression is true
+  }
+```
+- `expression` is anything that evaluates to a Boolean
+
+== `else` statements
+- Must follow an `if` statement
+```
+if (expression) {
+    // Statement(s) to evaluate if expression is true
+}
+else {
+    // Statement(s) to evaluate if expression is false
+}
+```
+
+
+- `else if` also possible, but must come before final `else`
+```
+if (expression1) {
+    // Statement(s) to evaluate if expression1 is true
+}
+else if (expression2) {
+    // Statement(s) to evaluate if expression1 is false, and expression2 is true
+}
+else {
+    // Statement(s) to evaluate if expression1 and expression2 are false
+}
+```
+
+== `switch` and `case` statements
+
+```
+switch(variable) {
+case CONSTANT:
+    // Statement(s) to evaluate if variable == CONSTANT
+    break;
+}
+```
+- C, C++, Java < 7: "variable" must be integral type
+    - `char`
+    - `int` (`signed` or `unsigned`, `long` or `short`)
+- PHP, JavaScript, Java >= 7: "variable" can also be string type
+- `break` is optional, but if omitted, will _fall through_ to next case
