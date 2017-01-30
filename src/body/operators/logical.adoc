@@ -5,4 +5,20 @@ operators: `&&, ||, !`
     - Example: JavaScript - setting a default value
         `x = x || 'hello'; // If x is undefined, it will now be "hello"`
         This **will not work** in strongly-typed lang.'s like Java or C++!
-- short-circuiting
+- Most often used in flow control statements, such as `if` or `while`
+
+== Short-Circuit Evaluation
+the second argument is only evaluated if the first argument is not sufficient for determining the result
+
+- `&&` (AND): the second argument is only evaluated if the first argument is true
+- `||` (OR): the second argument is only evaluated if the first argument is false
+
+NOTE: Because the second argument is not even _evaluated,_ any errors it may cause will not be caught.
+    This is often intentional.
+
+example:
+[source,c]
+-----
+// Avoid divide-by-zero error
+denominator != 0 && numerator / denominator < 0
+-----

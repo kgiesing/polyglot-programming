@@ -1,0 +1,14 @@
+= Grouping Operator
+Parentheses: `(`, `)`
+
+- determine precedence
+- may be nested; if so, evaluated in-to-out
+- result is single value
+
+Example:
+[source,{cpp}]
+-----
+x / y + z // "x / y" evaluated first
+x / (y + z) // "y + z" evaluated first
+c * (x / (y + z)) // "y + z", then (x / result)
+-----

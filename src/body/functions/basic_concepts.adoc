@@ -1,0 +1,237 @@
+= Basic Concepts and terminology
+
+A function is a named block of statements, that potentially accepts values as inputs, and potentially returns a value as output.
+
+The concept should be familiar to anyone who has studied mathematics.
+Mathematical functions also take values (usually variables) as input, and produce an output value.
+But there are a number of differences between mathematical functions, and functions in programming languages:
+
+- Mathematical functions do not change the variables used as input.
+- Mathematical functions must return a unique output for each different set of inputs.
+    That is, asciimath:[`f(1)`] cannot produce the same value as asciimath:[`f(3)`] (provided those numbers are in its domain).
+- Mathematical functions must produce an output value.
+
+None of those constraints exist with functions in programming languages.
+Functions can take any number of inputs, including zero.
+They can provide any value as output, including no value at all.
+
+This has led programmers to put functions into two broad classifications.
+Those classifications are called _pure_ and _impure._
+
+== Pure vs. Impure Functions
+To be classified as a pure function, a function must:
+
+1. be deterministic.
+    The output value must be solely determined by the input values.
+    It cannot be determined by anything else, such as global variables or constants.
+
+2. have no side effects.
+    A side effect is a change in the system state, outside of the function itself.
+    For example, it cannot change the state of input or output devices, or set global variables.
+    Furthermore, it cannot change the input passed to the function;
+    after the function has finished executing, the values used as input must remain the same.
+
+An example of a pure function would be a function that performs a mathematical operation.
+Let's say you're using a function that computes powers.
+It is given a base, `b`, and an exponent, `e`.
+For this example, we'll say that `b` is 10 and `e` is 2.
+The function would not use anything other than `b` and `e` to compute the output value (here, 100).
+And, when it was finished executing, `b` would still be 10, and `e` would still be 2.
+
+An impure function is any function that is not a pure function.
+Impure functions commonly change the state of the system in some way, or modify the input value.
+They may also use a value that is not part of the input to produce the output value.
+
+Here are some examples of impure functions:
+
+- A random number generator.
+    To generate a random number, it would need to use some value that wasn't given as input,
+    such as a current timestamp.
+    (Otherwise it wouldn't be random.)
+
+- A function that reads from a file.
+    Unless you're actually using the contents of the file as input,
+    the function would return a different value depending upon the file's contents.
+    (And if you _were_ using the contents as input, then what's the point?)
+
+- A function that prints a message to the console.
+    The console is part of the system state, and writing to it modifies that state.
+
+As a general rule, pure functions are more desirable than impure functions.
+They are usually easier to comprehend, easier to re-use, and easier to write.
+Since they don't modify system state, there's little chance of them interfering with other functions.
+And so on.
+
+But, as you can see from the examples, a program that consists _only_ of pure functions would be useless.
+The point of a program is to give an output value in some way, and that requires modifying the system state.
+
+Choosing when to make a function impure is a design choice programmers constantly have to make.
+Whatever the case, it is important to document any side effects a function might have.
+Aside from the actual documentation, there are certain conventions that are used when writing impure functions.
+I'll explain these conventions as they arise.
+
+== Procedures, subroutines, and methods
+The terms "procedure," "subroutine," and "method" are often used instead of the term "function."
+This has led to a great deal of confusion about which term to use.
+
+This is most especially true of the terms "procedure" and "subroutine."
+And, unfortunately, that confusion remains to this day.
+Programmers in different languages tend to use these terms in their own way,
+and argue with other programmers who use them in a different way.
+Things fall apart, the centre cannot hold, and we all slouch towards Bethlehem.
+
+But each term is _usually_ used to mean a specific kind of function.
+And luckily, there _is_ a standard usage of the term "method."
+
+=== Procedures
+To C or C++ programmers, a procedure is _a function that does not return a value._
+All procedures are impure functions (there would be no reason to write one otherwise).
+The usual purpose of a procedure is to modify a value given as input.
+
+This distinction is also reflected in other languages, such as Ada and Pascal.
+On the other hand, some functional programmers use the term "procedure" for any function.
+This is usually to distinguish between computer procedures and _mathematical_ functions.
+For example, see
+https://mitpress.mit.edu/books/structure-and-interpretation-computer-programs[Structure and Interpretation of Computer Programs]
+by Ableson, Sussman, and Sussman.
+(But only if you really want to learn the Scheme programming language.)
+
+Because of this confusion, I will avoid using the term "procedure" altogether.
+
+=== Subroutines
+The term "subroutine" started out as a synonym for "function."
+From what I can tell, computational theorists used "function," and practical programmers used "subroutine."
+
+Today, the term seems to have fallen out of widespread use among practical programmers.
+The main exceptions are in assembly language, and in Fortran.
+
+In assembly language, a subroutine is _a named location where program execution can jump._
+It is essentially the equivalent of a `goto` statement.
+Returning from the subroutine involves jumping back to the place where the subroutine was called.
+In this context, a subroutine is about as impure as a function can get.
+It both uses and modifies data that is stored "globally" (in machine registers),
+and "returns" nothing.
+
+In Fortran, "functions" are pure functions, and "subroutines" are impure functions.
+(The term "subroutine" is used in the same way a Pascal programmer would use "procedure.")
+They are treated differently in the language syntax, and are defined and used in separate ways.
+But Fortran is not covered in this book, so I will say no more about it.
+
+I will also be avoiding the term "subroutine" in this book.
+
+=== Methods
+This term definitely _is_ in widespread use among programmers, and definitely _does_ have an accepted definition.
+
+A method is _a function that is associated with an object._
+A method is not considered an entity unto itself, but is considered a member of that object.
+
+The purpose of a method is to modify the state of the object in some way,
+or to return a value that is dependent upon the object's state.
+In this sense, methods could be considered impure functions.
+However, in all other respects, methods are usually designed to be pure functions.
+They do not modify _global_ state, and they do not modify their input values.
+
+Even though the term is pretty well established, there are a couple of times when other terms are used.
+
+- In C++ literature, methods are called _member functions._
+    (But even so, plenty of C++ programmers use the term "method.")
+
+- Some programmers use the term _message_ instead.
+    This reflects the idea that using a method is "sending a message" to the object.
+
+I'll use those terms when appropriate, but like most other programmers, I'll usually use the term "method."
+
+== Parts of a function
+- identifier: name
+- formal parameters: variables that represent the function's input values
+    - parameters vs. arguments
+    - variadic: variable # of args ("varargs")
+- return type: value representing the function's output value passed back to caller
+    - omitted in implicitly-typed languages: JavaScript, PHP
+    - "void functions"
+- body: statements that are executed when the function is called
+    - body may include any kind of statements: variable definitions, operations,
+      or other function calls
+    - however, except for JavaScript, functions cannot be DEFINED inside another
+      function
+
+== Using functions
+The first thing we should cover is how to actually use functions.
+Later, we'll cover how to write your own.
+
+=== Function Terminology
+These are the terms that programmers use when talking about functions.
+
+call::
+    to use a function in the code.
+    The part of the code that calls the function is the _caller._
+
+invoke::
+    A synonym for "call."
+    It seems to be used more often with methods than with functions.
+
+pass::
+    to send input values from the caller to the function.
+
+return::
+    to send an output value from the function to the caller.
+
+arguments::
+    the values that are passed to the function as input.
+
+=== Syntax
+. function name
+. opening parentheses
+. list of arguments, separated by commas
+. closing parentheses
+
+For example, let's say you have two variables, `x` and `y`.
+You want to raise `x` to the power of `y` using a the `pow` function,
+and store the result in a variable called `p`.
+(We'll assume `p` is already defined.)
+Here is the code:
+[source, c]
+----
+p = pow(x, y);
+----
+
+In this example, `x` and `y` would be the arguments that are passed to the function.
+The function would use the _value_ of those variables when calculating the power.
+
+=== Evaluation Strategy
+A function's arguments do not have to be literals or variables.
+They can be anything that results in a value.
+This means that any expression can be used as a function argument.
+
+This is how function calls are evaluated:
+
+. All expressions in the argument list are evaluated
+
+. The results of the evaluated expressions are passed into the function as arguments
+
+. The body of the function is evaluated, and a value is returned from the function
+
+. This return value is "substituted" for the function call in the code
+
+This evaluation strategy is called _eager evaluation._
+There are other kinds of evaluation strategies, which will be covered in a later section.
+However, eager evaluation is the only evaluation strategy used by the languages covered in this book.
+
+=== Expressions as function arguments
+
+=== Function calls as expressions
+Function calls are _expressions,_ not _statements._
+Their return values can be used anywhere a value is expected.
+
+A trivial example is to assign the return value to a variable:
+[source,c]
+-----
+double p = pow(2, 5);
+-----
+
+But you can also use the return value as an argument to another function:
+[source,c]
+-----
+// degree_to_radian called with 180; sin called with its return value
+double s = sin(degree_to_radian(180));
+-----

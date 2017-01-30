@@ -12,6 +12,8 @@ include::comma.adoc[]
 
 include::mathematical.adoc[]
 
+include::grouping.adoc[]
+
 include::logical.adoc[]
 
 include::relational.adoc[]

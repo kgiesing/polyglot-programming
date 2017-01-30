@@ -21,7 +21,6 @@
             - this results in an error in C# and a warning in everything else
 - Some people (who?) call statements "commands"
 
-
 == Statement Blocks
 - Syntax: `{ }`
 - Defines a separate block of code
