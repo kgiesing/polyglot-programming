@@ -24,7 +24,7 @@ Does not include:
     - param type modifiers (const, reference, etc.)
     - body
 
-== Function Overloading
+=== Function Overloading
 When two functions have the same name in the same scope, the compiler or interpreter uses the function signature to determine which function to call.
 
 Here is an example:
@@ -42,3 +42,9 @@ NOTE: There is a similar-sounding term, which applies to methods, called _method
 Arguments are matched according to these rules:
 - an exact match was found for the argument's type (e.g. `int` to `int`)
 - a match can be found by type promotion (e.g. `int` to `double`)
+
+== Nested Functions
+* PHP: functions can be defined inside other functions, but are always global in scope
+* JavaScript: functions are first-class objects
+* All other languages: functions can *not* be defined inside other functions
+* See section on function scope

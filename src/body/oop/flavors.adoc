@@ -1,0 +1,19 @@
+= Flavors of OOP
+
+== Classical OOP
+("Classical" refers to the use of classes; not like "classical music")
+
+* most common form: C++, C#, Java; JavaScript simulates it
+** ECMAScript 2014 (aka ES6) has "syntactic sugar" that allows JavaScript syntax to mimic classical OOP syntax
+* objects are instances of a class (abstract data type)
+* objects are instantiated using a class's constructor
+* inheritance relationships must be explicitly declared when declaring the class - esp. for explicitly typed languages
+
+== Prototypal OOP
+(Note: no relation at all to function prototypes!)
+
+* objects are "cloned" from another object (their prototype)
+** "cloning" may not be copying; obj. may contain reference
+** once cloned, a specific object may be given its own properties
+** prototyping achieves inheritance
+* JavaScript is only C-syntax lang. Lua is another; lib support in Perl, Python, R

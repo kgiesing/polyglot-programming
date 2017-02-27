@@ -1,0 +1,127 @@
+= Functional Programming
+== Functions as first-class objects
+* JavaScript is only C-syntax language with function objects
+
+* May be assigned to variable, passed to function as argument, returned from function as a return value
+** Variable or parameter becomes the function identifier
+** Function is not called until
+
+* May be anonymous; "function literal"
+
+* Instead of stack frame, function is "object"
+** Context object is allocated when fn. is called, garbage collected when no more references to it
+** Probably stored in heap memory (implementation detail)
+
+== Closures
+Variables still have function scope, so what about nested functions?
+
+* Nested function contains reference to its enclosing scope
+* When interpreter sees variable that's not in the immediate function's scope, it searches the parent scope
+* Functions can be infinitely "nested," so parent scope may itself be searched
+* If no parent scope, and variable still isn't found, error is thrown
+
+
+[source, javascript]
+----
+// This does NOT work
+function divideBy(x) {
+    // This will NOT work, since a and be are not in scope;
+    // both will be undefined and you'll get an error
+    return (a + b) / x;
+}
+function average(a, b) {
+    return divideBy(2);
+}
+
+// This does work, since a and b are in the enclosing function's scope
+// (here, "average" is the enclosing function)
+function average(a, b) {
+    function divideBy(x) {
+        // This works - but how?
+        return (a + b) / x;
+    }
+    return divideBy(2);
+}
+----
+
+== Functional Programming Techniques
+
+=== Partial Application/Currying
+* Partial application: a function that takes only some of another function's arguments,
+    returning a function with only parameters representing the remaining arguments
+* Function currying: partial application where the result is a function with _one_ parameter
+
+Example: Offsets a point by specified amounts
+[source, javascript]
+----
+// Adds an offset to a number
+function offset(point, x, y) {
+    point.x += x;
+    point.y += y;
+    return point;
+}
+// Usage
+var pt = { x: 2, y: 3 };
+offset(pt, 5, 2); // pt is (7, 5)
+offset(pt, 5, 2); // pt is (12, 7)
+----
+Notice that we must specify `5` and `2` every time we call the function.
+It would be much more convenient (and less error-prone) if we could specify them just once.
+
+We can do that using function currying:
+[source, javascript]
+----
+// Adds an offset to a number (as above)
+function offset(point, x, y) {
+    point.x += x;
+    point.y += y;
+    return point;
+}
+// Curries the offset function
+function offsetBy(x, y) {
+    return function(p) {
+        return offset(p, x, y);
+    }
+}
+// Usage
+var translate = offsetBy(5, 2);
+var pt = { x: 2, y: 5 };
+translate(pt); // pt is (7, 5)
+translate(pt); // pt is (12, 7)
+----
+
+=== Simulating call-by-name
+[source, javascript]
+----
+// Function definition
+function if_then_else(if_fn, then_fn, else_fn) {
+   if (if_fn()) {
+       return then_fn();
+   }
+   else {
+       return else_fn();
+   }
+}
+
+// Function call - ES5 and below
+a = 1;
+b = 0;
+if_then_else(
+    function() {
+        return (b > 0);
+    },
+    function() {
+        return (5 / b);
+    },
+    function() {
+        return (5 / a);
+    }
+);
+
+// Function call - ES6 arrow functions
+if_then_else(
+    () => b > 0, // equivalent to: () => { return (b > 0); }
+    () => 5 / b,
+    () => 5 / a
+);
+----

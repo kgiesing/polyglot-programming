@@ -16,9 +16,15 @@
 - void:
     - explicitly typed lang's: return type of fn that doesn't return value
     - C: `void*`
-    - pointer with no explicit type ("raw" pointer)
-    - Uses:
-        - returned from memory allocation functions (`malloc`, `calloc`)
-        - may be used in compound data structures
-    - must be cast to actual type when dereferenced:
-        `char* str = (char*) malloc(LENGTH * sizeof(char));`
+        - pointer with no explicit type ("raw" pointer)
+        - Uses:
+            - returned from memory allocation functions (`malloc`, `calloc`)
+            - may be used in compound types
+        - must be cast to actual type when dereferenced:
+            `char* str = (char*) malloc(LENGTH * sizeof(char));`
+
+- others
+    - JavaScript: `NaN`
+        - unequal to anything else, including `NaN`
+    - PHP: `NAN`
+        - because it's a non-zero floating-point number, coerced to `TRUE`

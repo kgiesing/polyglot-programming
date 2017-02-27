@@ -1,0 +1,33 @@
+= Inheritance
+
+== Superclasses and Subclasses
+a.k.a. base classes and derived classes
+
+== Multiple Inheritance
+* Only in C++; C#, Java, PHP support only single inheritance
+
+=== Deadly Diamond of Death
+image::https://commons.wikimedia.org/wiki/File:Diamond_inheritance.svg#/media/File:Diamond_inheritance.svg[A diamond class inheritance diagram.]
+
+== Virtual Methods
+* C++: must be explicitly declared using `virtual` keyword
+* C#/Java/PHP: methods are always virtual
+
+=== Virtual Methods and Lookup Tables
+
+== Abstract Classes and Methods
+abstract method:: virtual method that has no implementation
+* called a _pure virtual_ method in C++
+
+abstract class:: class with one or more pure virtual methods
+* Abstract classes cannot be instantiated
+* Meant to be a base class for derived classes to implement
+* Usually a "partial implementation" of some kind of functionality,
+    _or_ implements helper methods for derived classes
+
+== Interfaces
+interface:: a class with nothing but abstract/pure virtual methods
+* Purpose is to define an interface that an object must follow (hence the name)
+* In C++, these are simply pure virtual classes
+* In C#/Java/PHP, defined using `interface` keyword (rather than `class`)
+** Because there is no conflicting implementation, _inheriting multiple interfaces is allowed_

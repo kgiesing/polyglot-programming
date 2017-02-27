@@ -1,0 +1,26 @@
+= Access Modifiers
+
+Applies to:
+* methods (member functions)
+* fields (member variables)
+* nested classes (Java)
+
+== Public
+* Visible to all users of an instance
+* If a field, any part of the code can read _or modify_ the field
+* If a method, any part of the code can invoke the method
+
+== Private
+* Visible only to instances of that class
+
+== Protected
+* Accessible to instances of defining class, and subclasses/derived classes
+
+== "Friends"
+* Java: package visibility
+* C++: explicitly declared using `friend` keyword
+
+== Default Visibility
+* C++: private
+* Java: package ("friend")
+* PHP: public
