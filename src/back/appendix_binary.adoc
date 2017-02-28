@@ -28,16 +28,16 @@ and produce a single Boolean value as a result.
 
 These are the basic Boolean operations, and their logical symbols:
 
-- asciimath:[^^]:
+asciimath:[^^]::
     AND - true, if all operands are true; otherwise, false
 
-- asciimath:[vv]:
+asciimath:[vv]::
     OR - false, if all operands are false; otherwise, true
 
-- asciimath:[o+]:
+asciimath:[o+]::
     XOR (eXclusive OR) - true, if only one of the operands is true; otherwise, false
 
-- asciimath:[not]:
+asciimath:[not]::
     NOT - true, if the operand is false; otherwise, false
 
 The electronic device that performs a Boolean operation is called a _logic gate._
@@ -56,7 +56,7 @@ For a right bit shift, add `0` to the left, and remove the last digit on the rig
 
 For a left bit shift, add `0` to the right.
 *If necessary,* remove last digit on the left.
-if the number of bits can still be stored in a word, don't do this!
+If the number of bits can still be stored in a word, don't do this!
 
 The mathematical results of bit shifting turn out to be significant.
 A right bit shift is the mathematical equivalent of _dividing_ by two (and ignoring the remainder).
@@ -106,7 +106,7 @@ The algorithm:
 *****
 
 This algorithm is base agnostic.
-In other words, it can be used with numbers in any base: decimal, hexadecimal, octal, binary,
+In other words, it can be used with numbers in any base: decimal, hexadecimal, octal, binary, etc.
 
 But for processors, the algorithm is very different.
 

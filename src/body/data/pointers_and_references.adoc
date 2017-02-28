@@ -3,9 +3,9 @@
 NOTE: This entire section is fairly language-specific.
 
 == pointers: C, C++
-- Value is a memory location (usually size of int in system)
-- Must still have type (incl. modifiers)
-    - void*: type returned by memory allocation call; rarely used otherwise
+* Value is a memory location (usually size of int in system)
+* Must still have type (incl. modifiers)
+** `void*`: type returned by memory allocation call; rarely used otherwise
 
 === Syntax:
 [source,{cpp}]
@@ -16,11 +16,11 @@ x = &y; // value of x is y's memory address
 ----
 
 == references: C++, PHP
-- an alias for another variable
-- behave like const ptr's that are automatically dereferenced
-    - PHP: alias to another var. in symbol table
+* an alias for another variable
+* behave like const ptr's that are automatically dereferenced
+** PHP: alias to another var. in symbol table:
       http://php.net/manual/en/language.references.php
-- reference is fixed when initialized; cannot be re-assigned
+* reference is fixed when initialized; cannot be re-assigned
 
 === Syntax
 C++: `&` type specifier
@@ -41,18 +41,19 @@ $rx = 5;   // assigns 5 to $rx AND $x
 ----
 
 == handles and resources: C, PHP
-- similar to ptr, but value is number representing location of something
+* similar to ptr, but value is number representing location of something
     other than a memory location
     (database connection, file descriptor, socket, etc.)
-- No special syntax
-    C: handle is pointer:
+* No special syntax
+** C: handle is pointer:
       `FILE* fp = fopen("filename.txt");`
-    PHP: handle is returned from built-in fn, assigned to var:
+** PHP: handle is returned from built-in fn, assigned to var:
       `$conn = ftp_connect($ftp_server);`
-- OOP languages use objects to represent resources
+* OOP languages use objects to represent resources
 
 == Reference types in other languages
-- Reference types behave like ptr's (and are likely implemented as ptr's)
-    - BUT, no special syntax; same as value types
-- Reference types in most languages do NOT behave like C++ references;
+* Reference types behave like ptr's (and are likely implemented as ptr's)
+** BUT, no special syntax; same as value types
+
+* Reference types in most languages do NOT behave like C++ references;
     details later (fn's and objects)

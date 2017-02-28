@@ -1,6 +1,6 @@
 = Comments: in-code documentation
 
 == Why start with comments?
-  - Always comment your code!
-  - 90% of programming does not involve writing code;
+* Always comment your code!
+* 90% of programming does not involve writing code;
     mainly algorithms, design - turn these into comments first

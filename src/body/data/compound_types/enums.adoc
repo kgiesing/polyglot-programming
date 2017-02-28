@@ -1,20 +1,22 @@
 = Enums
-- enum: "enumerated type"/"enumeration"
-- collection of named values, usually immutable
-- Rationale: type safety
-- Referred to by name - value itself is not important
-- Value is considered "numeric" type (can be used in switch, etc.)
-- Examples: days of the week, suit in deck of cards
-    ```
-    if (day == Days.MONDAY) ...
-    if (suit == Suits.HEARTS) ...
-    ```
-- Syntax:
-    - Basic definition (C/C++/C#/Java):
-      ```
-      enum Day {
-          SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
-          THURSDAY, FRIDAY, SATURDAY
-      }; // Semicolon necessary in C/C++; not Java/C#
-      ```
-    - C/C++: can use `typedef` to avoid typing "enum":
+* enum: "enumerated type"/"enumeration"
+* collection of named values, usually immutable
+* Rationale: type safety
+* Referred to by name - value itself is not important
+* Value is considered "numeric" type (can be used in switch, etc.)
+* Examples: days of the week, suit in deck of cards
+[source, c]
+-----
+if (day == Days.MONDAY) /* ...etc. */
+if (suit == Suits.HEARTS) /* ...etc. */
+-----
+
+== Syntax
+* Basic definition (C/C++/C#/Java):
+[source, c]
+-----
+enum Day {
+    SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
+}; /* Semicolon necessary in C/C++; not Java/C# */
+-----
+* C/C++: can use `typedef` to avoid typing "enum":

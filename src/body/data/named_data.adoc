@@ -2,136 +2,145 @@
 
 == Explicit vs. Implicit Typing
 // TODO: Moar research!
-- explicit typing (aka manifest typing)
-    - representation of data must specify a data type
-    - usually, static typed: types determined at compile time (when parsed)
+* explicit typing (aka manifest typing)
+** representation of data must specify a data type
+** usually, static typed: types determined at compile time (when parsed)
         commonly used in compiled languages
-    - usually, strongly typed: variables may only represent data that matches its
+** usually, strongly typed: variables may only represent data that matches its
         explicit type
-    - Languages: C, C++, Java, C#
-- implicit typing (aka latent typing)
-    - representation of data does not have a type
-        - data itself, however, always has a type
-    - usually, dynamically typed: types determined at runtime
-        - commonly used in interpreted languages
-    - usually, weakly typed: variables may represent any type of data
-    - Languages: JavaScript, PHP
+** Languages: C, C++, Java, C#
+
+* implicit typing (aka latent typing)
+** representation of data does not have a type
+*** data itself, however, always has a type
+** usually, dynamically typed: types determined at runtime
+*** commonly used in interpreted languages
+** usually, weakly typed: variables may represent any type of data
+** Languages: JavaScript, PHP
 
 == Variables
-- variables: named, mutable lvalues
-    - similar to variables in mathematics:
-        `y = 2x + 5 (here, "x" and "y" are variables)`
-- identifier: variable's name
-- value: data that variable represents
-    - variable identifier is lvalue; data it stores is rvalue
-    - when var used as rvalue, the data it represents is used
-- sigil: special character to signify that a string of char's is a variable
-    - PHP: `$`
-    - comes from Perl: `$`, `#` (hash), `%` (array)
+* variables: named, mutable lvalues
+** similar to variables in mathematics:
+        `y = 2x + 5` (here, `x` and `y` are variables)
+
+* identifier: variable's name
+
+* value: data that variable represents
+** variable identifier is lvalue; data it stores is rvalue
+** when var used as rvalue, the data it represents is used
+
+* sigil: special character to signify that a string of char's is a variable
+** PHP: `$`
+** comes from Perl: `$`, `#` (hash), `%` (array)
 
 == Constants
-- constants: named, immutable lvalues
-- signify a constant using a type qualifier
-    - `const`: C99, C++, C#, PHP > 5.3.0
+* constants: named, immutable lvalues
+* signify a constant using a type qualifier
+** `const`: C99, C++, C#, PHP > 5.3.0
         - JavaScript ES6 added `const` qualifier
-    - `final`: Java
-    - C (before C99) used `#define` preprocessor directive
+** `final`: Java
+** C (before C99) used `#define` preprocessor directive
 
 == Static Data
-- only one copy of data exists in memory; kept with global variables in
+* only one copy of data exists in memory; kept with global variables in
     compiled lang's
-- however, still follows scope rules
-- `static` keyword: C, C++, Java
+* however, still follows scope rules
+* `static` keyword: C, C++, Java
 
 == naming identifiers
-- applies not only to vars, but fn's/methods
-- general rules:
-    1. only upper/lower letters, numbers, underscore
-      - no whitespace (space, tab, return, etc.)
-      - no operator tokens (+, -, =, ., etc)
-      - identifiers are case sensitive (car is not Car)
-    2. cannot start with number
-    3. cannot be reserved word
-        - Exception: modern JavaScript allows *object property names*
-            to be reserved words, e.g. `dog.catch()`
-    Language-specific rules:
-    - JavaScript: in addition to #1, can use most Unicode chars (but, don't)
+* applies not only to vars, but fn's/methods
+* general rules:
+1. only upper/lower letters, numbers, underscore
+** no whitespace (space, tab, return, etc.)
+** no operator tokens (+, -, =, ., etc)
+** identifiers are case sensitive (car is not Car)
+2. cannot start with number
+3. cannot be reserved word
+** Exception: modern JavaScript allows *object property names*
+        to be reserved words, e.g. `dog.catch()`
+* Language-specific rules:
+** JavaScript: in addition to #1, can use most Unicode chars (but, don't)
       - Many JS lib's use `$` as fn. name (JQuery, etc.)
-    - PHP: start with `$` sigil
-- conventions:
-    - const: all upper-case, with underscores separating words
-    - variable names:
-      - *usually* start with lower-case letter
-        - Exception: user-defined types - class names, interfaces (Java),
+** PHP: start with `$` sigil
+* conventions:
+** const: all upper-case, with underscores separating words
+** variable names:
+*** *usually* start with lower-case letter
+**** Exception: user-defined types - class names, interfaces (Java),
             constructor functions (JavaScript) - more on these later
-        - Microsoft often starts method names with upper case
-      - start with underscore only for "library" or "private" identifiers
-        - symbolizes that client code shouldn't use it
-      - representing two or more words:
-        - procedural: underscore - `two_words`
-        - OOP: camel case - `twoWords`
-- guidelines:
-    - names should be semantic - describe what the variable (&etc.) represents
-    - names should be as short as practical
-    - borrow names from math when applicable
-      i, j, k: iteration, position (from sigma notation, linear algebra, etc.)
-      x, y, z: numbers (from algebra, calculus, etc.)
-    - follow conventions from language's libraries
-    - all of these rules can be overridden by teachers, employers, teams, etc.
+**** Microsoft often starts method names with upper case
+*** start with underscore only for "library" or "private" identifiers
+**** symbolizes that client code shouldn't use it
+*** representing two or more words:
+**** procedural: underscore - `two_words`
+**** OOP: camel case - `twoWords`
+* guidelines:
+** names should be semantic - describe what the variable (&etc.) represents
+** names should be as short as practical
+** borrow names from math when applicable
+      `i`, `j`, `k`: iteration, position (from sigma notation, linear algebra, etc.)
+      `x`, `y`, `z`: numbers (from algebra, calculus, etc.)
+** follow conventions from language's libraries
+** all of these rules can be overridden by teachers, employers, teams, etc.
 
 == declaration, initialization, and assignment
-- declaration: identifier (& type) of variable is introduced
-    - not all languages require declaration (PHP doesn't)
-    - explicitly typed: preceded by type name
-    - implicitly typed: preceded by "var" keyword (or similar)
-- initialization: variable is given initial value
-    - Often, but not always, done
-- assignment: variable is given value (initial or not)
-- Both initialization and assignment use the assignment operator: =
-    - Don't confuse this with testing for equality! Rookie mistake.
-- Language support
-    - Default values (declared but uninitialized)
-      - C/C++: garbage - whatever value was previously at memory location
-      - C#, Java: zero (primitive), false (Boolean), or null (reference)
-      - JavaScript: undefined
-    - C++: init and assign are separate operations
-    - PHP does not have separate declaration; declared when initialized
-- Syntax
-- declare variable x (as an integer) without initialization
-    C/C++/Java:
+* declaration: identifier (& type) of variable is introduced
+** not all languages require declaration (PHP doesn't)
+** explicitly typed: preceded by type name
+** implicitly typed: preceded by "var" keyword (or similar)
+* initialization: variable is given initial value
+** Often, but not always, done
+* assignment: variable is given value (initial or not)
+* Both initialization and assignment use the assignment operator: =
+** Don't confuse this with testing for equality! Rookie mistake.
+* Language support
+** Default values (declared but uninitialized)
+*** C/C++: garbage - whatever value was previously at memory location
+*** C#, Java: zero (numeric primitive), `false` (Boolean), or `null` (reference)
+*** JavaScript: `undefined`
+** C++: init and assign are separate operations
+** PHP does not have separate declaration; declared when initialized
+
+== Syntax
+* declare variable `x` (as an integer) without initialization
+** C/C++/Java:
       `int x;`
-    JavaScript:
-      `var x;`
-- declare variable x (as an integer), initialize to 5
-    C/C++/Java:
+** JavaScript:
+      `var x; // ES5 and below`
+      `let x; // ES6`
+* declare variable `x` (as an integer), initialize to 5
+** C/C++/Java:
       `int x = 5;`
-    JavaScript:
-      `var x = 5;`
-    PHP:
+** JavaScript:
+      `var x = 5; // ES5 and below`
+      `let x = 5; // ES6`
+** PHP:
       `$x = 5;`
-- assign 7 to that variable
-    C/C++/Java/JavaScript:
+* assign 7 to that variable
+** C/C++/Java/JavaScript:
       `x = 7;`
-    PHP:
+** PHP:
       `$x = 7;`
 
 == Scope
-- The _scope_ of an identifier is the part of the program where that identifier is valid
-    - A valid identifier is said to be _visible_
-    - Two identifiers will clash if they have the same name, and are in the same namespace
-    - If an identifier is visible throught the entire program, it is in the _global scope_
-    - In C-syntax languages, a variable's scope depends upon where it is _declared_
-        - Technical term for this is _lexical scope_
-        - There is also _dynamic scope,_ but it is not used in any languages covered in this book
+* The _scope_ of an identifier is the part of the program where that identifier is valid
+** A valid identifier is said to be _visible_
+** Two identifiers will clash if they have the same name, and are in the same namespace
+** If an identifier is visible throught the entire program, it is in the _global scope_
+** In C-syntax languages, a variable's scope depends upon where it is _declared_
+*** Technical term for this is _lexical scope_
+*** There is also _dynamic scope,_ but it is not used in any languages covered in this book
 
 === Namespaces
 A _namespace_ is an explicit declaration of a scope in the source code
 
-- Not all languages have explicitly declared scope
-    - C++, C#, and PHP (>5.3.0) use namespaces
-    - Java uses packages
-    - JavaScript uses modules (which are different for Node.js and ES6)
-- Most libraries declare their own scope
-    - The C++ standard libraries use the `std` namespace
-    - The C# standard libraries use the `System` namespace
-    - Java uses various different packages
+* Not all languages have explicitly declared scope
+** C++, C#, and PHP (>5.3.0) use namespaces
+** Java uses packages
+** JavaScript uses modules (which are different for Node.js and ES6)
+* Most libraries declare their own scope
+** The C++ standard libraries use the `std` namespace
+** The C# standard libraries use the `System` namespace
+** Java uses various different packages
+
+See section on namespaces
