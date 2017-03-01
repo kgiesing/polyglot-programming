@@ -5,9 +5,9 @@ All of the operators in this section are language-specific.
 == PHP's Execution Operator
 operator: `\`` (backtick)
 
-- anything enclosed in backticks is executed as a shell command on the underlying OS
-- result of operator is the output of the shell command
-- dangerous! Handle with caution
+* anything enclosed in backticks is executed as a shell command on the underlying OS
+* result of operator is the output of the shell command
+* dangerous! Handle with caution
 [source,php]
 -----
 // List directory contents on a POSIX system, save output to a variable
@@ -17,8 +17,8 @@ $contents = `ls -al`;
 == PHP's Error Control Operator
 operator: `@` (unary)
 
-- when prepended to an expression, any error messages are ignored
-- "expression" must be an RHS (variable, constant, function call, `include` call, etc.)
+* when prepended to an expression, any error messages are ignored
+* "expression" must be an RHS (variable, constant, function call, `include` call, etc.)
 [source,php]
 -----
 // If the key 'bar' doesn't exist in $foo, a notice will NOT be issued

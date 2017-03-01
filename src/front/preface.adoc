@@ -27,11 +27,11 @@ As far as I know, no book of this nature currently exists.
 
 The languages covered in this book are:
 
-- C
-- C++
-- Java
-- JavaScript (ECMAScript)
-- PHP
+* C
+* C++
+* Java
+* JavaScript (ECMAScript)
+* PHP
 
 This is a book about basic programming and syntax, and is organized by programming topic.
 The emphasis of this book will be the core language syntax, and features that are common to all these languages.
@@ -53,10 +53,10 @@ Details are covered in the preliminaries, under the Languages section.
 === Not all language features are covered
 Because of this book's focus on common features and the command line, certain language features will not be covered at all:
 
-- GUI programming (e.g. Java Swing, Windows Forms)
-- HTML DOM manipulation
-- Database interaction
-- Web services (e.g. Node.js HTTP server)
+* GUI programming (e.g. Java Swing, Windows Forms)
+* HTML DOM manipulation
+* Database interaction
+* Web services (e.g. Node.js HTTP server)
 
 === Most libraries are not covered
 
@@ -80,18 +80,18 @@ Another is practical:
 knowledge of native data types is fundamental to learning the language itself.
 
 == How this book is organized
-- "Bottom to top": least abstract to most abstract
-  - "Abstract:" relative to the physical computer
-  - "Abstract" is not necessarily "complex" (to humans)
+* "Bottom to top": least abstract to most abstract
+** "Abstract:" relative to the physical computer
+** "Abstract" is not necessarily "complex" (to humans)
 
-- Theory and code
+* Theory and code
   1. General concepts - terminology, etc.
   2. Syntax - common, then lang-specific
   3. Advanced concepts
-     - Beginning programmers don't need to know to write code, but will need to learn eventually
-     - Put at the end, to be less confusing
-     - Often language-specific
+*** Beginning programmers don't need to know to write code, but will need to learn eventually
+*** Put at the end, to be less confusing
+*** Often language-specific
 
-- Use of analogies
-  - remember that they're only analogies; there to help clarify concepts
-  - math (basic), cooking, everyday items (biased towards Americans...)
+* Use of analogies
+** remember that they're only analogies; there to help clarify concepts
+** math (basic), cooking, everyday items (biased towards Americans...)

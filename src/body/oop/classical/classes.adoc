@@ -9,6 +9,8 @@
 ** Constructing an object is the same as _instantiating_ a class
 
 == Instantiation
+// TODO: "Life cycle" instead? Gives a chance to talk about object destruction
+// Also, maybe put life cycle section first?
 * The `new` keyword
 
 * C++: objects can be instantiated on stack _or_ on heap
@@ -26,3 +28,5 @@
 *** often distributed pre-compiled
 
 == Nested Classes
+// TODO Find out about nested classes in different languages
+// TODO Find umbrella term for both "inner classes" and "nested classes"

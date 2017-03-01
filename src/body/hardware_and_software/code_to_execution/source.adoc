@@ -1,19 +1,19 @@
 = Source Code
 
-- source code: string of text written in prog. language
-    - it really is just plain text
-    - WARNING: Windows vs. POSIX line endings
+* source code: string of text written in prog. language
+** it really is just plain text
+** WARNING: Windows vs. POSIX line endings
 
-- source file: plaintext file containing source code
-    - header file (C, C++): file containing source code representing headers.
+* source file: plaintext file containing source code
+** header file (C, C++): file containing source code representing headers. +
         More on this when we talk about classes and functions
 
-- File extensions:
-    - C: `.c` (source), `.h` (header)
-    - C++:
-        most common: `.cpp` (source), `.h` (header)
-        others: `.cc`, `.cxx`, `.C` (source); `.hpp`, `.hxx` (header)
-    - C#: `.cs`
-    - Java: `.java`
-    - JavaScript: `.js`
-    - PHP: `.php`
+* File extensions:
+** C: `.c` (source), `.h` (header)
+** C++:
+*** most common: `.cpp` (source), `.h` (header)
+*** others: `.cc`, `.cxx`, `.C` (source); `.hpp`, `.hxx` (header)
+** C#: `.cs`
+** Java: `.java`
+** JavaScript: `.js`
+** PHP: `.php`

@@ -5,13 +5,13 @@ The _member resolution operator_ signifies that an identifier refers to a member
 In this context, "member" can mean a field (member variable) or method (member function).
 
 "dot operator": `.`
-- Used by all languages except PHP (in PHP, this is string concatenation)
-- In C, used with `struct` type
-- In C/C++, cannot be used with pointers; must be dereferenced (but see below)
+* Used by all languages except PHP (in PHP, this is string concatenation)
+* In C, used with `struct` type
+* In C/C++, cannot be used with pointers; must be dereferenced (but see below)
 
 "arrow operator": `->`
 
-- Used in C/C++ with pointers; syntactic sugar for "dereference and resolve"
+* Used in C/C++ with pointers; syntactic sugar for "dereference and resolve"
 [source, {cpp}]
 -----
 MyObject* obj = new MyObject();
@@ -21,7 +21,7 @@ MyObject* obj = new MyObject();
 obj->myMethod();
 -----
 
-- Used in PHP as object resolution operator
+* Used in PHP as object resolution operator
 
 == Namespace Resolution
 In this section, a namespace refers to an _explicitly declared_ namespace.
@@ -42,7 +42,7 @@ NOTE: C++ also uses the namespace resolution operator when defining a method (cl
     We will cover this when we talk about creating classes in the section on Object-Oriented Programming.
 
 Java,  C#: `.`
-- In Java, namespaces are called _packages._
+* In Java, namespaces are called _packages._
 
 PHP: `\`
 

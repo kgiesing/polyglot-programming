@@ -1,24 +1,24 @@
-= PARAMETERIZED TYPES
-- Purpose: type safety - so only used with explicitly typed languages
+= Parameterized Types
+* Purpose: type safety - so only used with explicitly typed languages
 
-- Commonly used with collections
-    - Collection is a "container" object
+* Commonly used with collections
+** Collection is a "container" object: hash table, list, set, etc.
 
-- Example: Stack data structure (explain)
-      `push(value`): what type is `value`?
+* Example: Stack data structure (explain) +
+      `push(value`): what type is `value`? +
       `pop()`: what type is returned?
-    - Without parameterized types, it would have to be a "generic" object
+** Without parameterized types, it would have to be a "generic" object
       (e.g. type "Object" in Java), with all the implied casting; both
       inconvenient, and not type-safe (compiler won't catch)
 
 == Generics
 Java (>= 5.0)/C# (>= 2.0)
-  - Type parameters must be reference types; no primitives - use wrapper
+* Type parameters must be reference types; no primitives - use wrapper
     classes (`Integer`, `Float`, etc.)
 
 == Templates
 C++
-  - Type parameters may be primitive types or reference types
+* Type parameters may be primitive types or reference types
 
 == Creating parametrized objects
 The syntax is identical in Java, C++, and C#:

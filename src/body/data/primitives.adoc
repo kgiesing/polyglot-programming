@@ -1,31 +1,31 @@
 = PRIMITIVE TYPES
-- Primitive types are value types
+* Primitive types are value types
 
-- Explicitly typed languages (C/C++/C#/Java):
-    - `bool`: true/false
-        - C is only language w/out this; most lib's implement TRUE=1, FALSE=0
-    - `char`: single letter - "letter" lang-dep.
-        - ASCII: 1 byte
-        - non-ASCII (e.g. UTF-8) have `byte` type
-            - C/C++ support wchar_t ("wide char type") - 2/4 bytes
-    - `int`: integer (whole number) - usually 4 bytes
-    - `float`: floating-point (w/decimal) - usually 4 bytes
-    - `double`: "double-precision floating point" - usually 8 bytes
-    - Type specifiers
-        - `signed`/`unsigned`:
-            - `signed` = +/- values; specifying is redundant
-            - `unsigned` = no neg. values
-            - last bit is sign bit; if we don't use it, we can hold
+== Explicitly typed languages (C/C++/C#/Java):
+* `bool`: true/false
+** C is only language w/out this; most lib's implement TRUE=1, FALSE=0
+* `char`: single letter - "letter" lang-dep.
+** ASCII: 1 byte
+** non-ASCII (e.g. UTF-8) have `byte` type
+*** C/C++ support `wchar_t` ("wide char type") - 2/4 bytes
+* `int`: integer (whole number) - usually 4 bytes
+* `float`: floating-point (w/decimal) - usually 4 bytes
+* `double`: "double-precision floating point" - usually 8 bytes
+* Type specifiers
+** `signed`/`unsigned`:
+*** `signed` = +/- values; specifying is redundant
+*** `unsigned` = no neg. values
+*** last bit is sign bit; if we don't use it, we can hold
                 larger values
-            - Java doesn't have unsigned numeric types at all
-            - C#: `sbyte`, `uint`, `ushort`, `ulong`
-        - `long`/`short`: implies double/half #bytes
-            - "implies" = C/C++ are system-dependent; Java standardizes
-                - most implement "long double" as just "double" (8 bytes)
-            - if no type specified, `int` assumed
+*** Java doesn't have unsigned numeric types at all
+*** C#: `sbyte`, `uint`, `ushort`, `ulong`
+** `long`/`short`: implies double/half #bytes
+*** "implies" = C/C++ are system-dependent; Java standardizes
+**** most implement "long double" as just "double" (8 bytes)
+*** if no type specified, `int` assumed
 
-- Implicitly typed languages (PHP/JavaScript):
-    - Simplified numeric types
-        - No distinction between signed and unsigned
-        - No distinction between integer and floating-point
-    - Usually no `char` type; string only
+== Implicitly typed languages (PHP/JavaScript):
+* Simplified numeric types
+** No distinction between signed and unsigned
+** No distinction between integer and floating-point
+* Usually no `char` type; string only

@@ -1,5 +1,0 @@
-= Methods and Member Functions
-
-== The `this` Reference
-
-== Static Methods

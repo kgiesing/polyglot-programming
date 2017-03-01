@@ -1,26 +1,28 @@
 = Selection Statements
 == `if` statements
-```
+[source, c]
+-----
   if (expression) {
       // Statement(s) to evaluate if expression is true
   }
-```
-- `expression` is anything that evaluates to a Boolean
+-----
+* `expression` is anything that evaluates to a Boolean
 
 == `else` statements
-- Must follow an `if` statement
-```
+* Must follow an `if` statement
+[source, c]
+-----
 if (expression) {
     // Statement(s) to evaluate if expression is true
 }
 else {
     // Statement(s) to evaluate if expression is false
 }
-```
+-----
 
-
-- `else if` also possible, but must come before final `else`
-```
+* `else if` also possible, but must come before final `else`
+[source, c]
+-----
 if (expression1) {
     // Statement(s) to evaluate if expression1 is true
 }
@@ -30,19 +32,22 @@ else if (expression2) {
 else {
     // Statement(s) to evaluate if expression1 and expression2 are false
 }
-```
+-----
 
 == `switch` and `case` statements
 
-```
+[source, c]
+-----
 switch(variable) {
 case CONSTANT:
     // Statement(s) to evaluate if variable == CONSTANT
     break;
 }
-```
-- C, C++, Java < 7: "variable" must be integral type
-    - `char`
-    - `int` (`signed` or `unsigned`, `long` or `short`)
-- PHP, JavaScript, Java >= 7: "variable" can also be string type
-- `break` is optional, but if omitted, will _fall through_ to next case
+-----
+* C, C++, Java < 7: "variable" must be integral type
+** `char`
+** `int` (`signed` or `unsigned`, `long` or `short`)
+
+* PHP, JavaScript, Java >= 7: "variable" can also be string type
+
+* `break` is optional, but if omitted, will _fall through_ to next case

@@ -24,26 +24,26 @@ Example from math is the algorithm to find a square root, `y`, of `x`:
 imperative::
     program is an explicit sequence of steps that alter state
 
-- focuses on the "how" of algorithms
-- imperative process is the basis for algorithms
-- majority of programming languages are imperative
+* focuses on the "how" of algorithms
+* imperative process is the basis for algorithms
+* majority of programming languages are imperative
 
 declarative::
     program is a sequence of declarations about what the program should do
 
-- focuses on the "what" of algorithms; "how" is handled by language semantics, and program state is not managed directly
-- control flow is secondary or even absent altogether
-- based on "declarative knowledge" - statements about the world that are true or false (i.e. "5 is a prime number")
-- adds a layer of abstraction; often based on formal logic
+* focuses on the "what" of algorithms; "how" is handled by language semantics, and program state is not managed directly
+* control flow is secondary or even absent altogether
+* based on "declarative knowledge" - statements about the world that are true or false (i.e. "5 is a prime number")
+* adds a layer of abstraction; often based on formal logic
 
 Example:
 You are given a list of numbers (`n`), and you want to sum them.
 
 Pseudocode:
-- upper-case words are are part of the programming language
-- lower-case words are programmer-defined variables
-- parentheses are used for grouping (for readability)
-- `RESULT:` ends the execution and gives the right-hand-side as result
+* upper-case words are are part of the programming language
+* lower-case words are programmer-defined variables
+* parentheses are used for grouping (for readability)
+* `RESULT:` ends the execution and gives the right-hand-side as result
 
 Imperative:
 ----
@@ -66,34 +66,34 @@ RESULT: (WITH-EACH-VALUE-OF n
 == Common programming paradigms
 
 === Procedural
-- Program is a sequence of function calls, which may alter global state
-- Imperative
-- Languages: C, PHP 4
+* Program is a sequence of function calls, which may alter global state
+* Imperative
+* Languages: C, PHP 4
 
 === Object-oriented programming (OOP)
-      - Program is a collection of objects, each with their own state, that
+* Program is a collection of objects, each with their own state, that
         interact with each other
-      - Imperative
-      - Languages: C++, C=, Java, JavaScript, PHP 5
+* Imperative
+* Languages: C++, C=, Java, JavaScript, PHP 5
 
 === Functional
 Note: need to read section on functions to truly understand this
-- Has roots in Church's Lambda Calculus, a formal system in math. logic;
+* Has roots in Church's Lambda Calculus, a formal system in math. logic;
 first functional language was Lisp (by John McCarthey, 1958-1960)
-- Declarative
-- Common features:
-- Focus on immutable data, lack of program state
-    - Functions are pure functions (to the degree possible)
-    - vars discouraged; "mutation" is achieved by passing the result of fn call (e.g. "add") to another fn as arg.
-- Uses tail recursion instead of iteration
-- Functions are first-class objects: may be assigned to vars, passed
+* Declarative
+* Common features:
+* Focus on immutable data, lack of program state
+** Functions are pure functions (to the degree possible)
+** vars discouraged; "mutation" is achieved by passing the result of fn call (e.g. "add") to another fn as arg.
+* Uses tail recursion instead of iteration
+* Functions are first-class objects: may be assigned to vars, passed
   to other fn's, returned from other fn's
-- Function passing and returning allows:
-    - Closures
-    - Function currying/partial application (not quite the same)
-    - Delayed evaluation/continuations
+* Function passing and returning allows:
+** Closures
+** Function currying/partial application (not quite the same)
+** Delayed evaluation/continuations
   These will be briefly discussed in section on functions.
-- Languages: Lisp family (incl. Scheme), Haskell, XSLT
-- None of the C-syntax languages are purely functional,
+* Languages: Lisp family (incl. Scheme), Haskell, XSLT
+* None of the C-syntax languages are purely functional,
     but JavaScript can implement most of these features;
     others can achieve similar features with different implementations

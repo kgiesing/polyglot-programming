@@ -1,14 +1,14 @@
 = Jump statements
 
 == `return` statements
-- used within a function or method to return a value
-- will be covered in section on functions
+* used within a function or method to return a value
+* will be covered in section on functions
 
 == `break` statements
-- used to break out of an iteration statement
+* used to break out of an iteration statement
 
 == `continue` statements
-- used to ignore the rest of the body of an iteration statement, but keep iterating
+* used to ignore the rest of the body of an iteration statement, but keep iterating
 
 == `goto` statements and labels
 WARNING: The use of a `goto` statement is considered bad practice.
@@ -18,20 +18,23 @@ WARNING: The use of a `goto` statement is considered bad practice.
 
 image::https://imgs.xkcd.com/comics/goto.png[xkcd: goto]
 
-- used to go to a labeled part of the code
-- labels are defined as an identifier folowed by a colon
-```
+* used to go to a labeled part of the code
+* labels are defined as an identifier folowed by a colon
+[source, c]
+-----
 a:
 x = y - 1;
 // ...some more statements...
 
 goto a; // jumps back to line before "x = y - 1"
-```
+-----
+
 Supported languages: C, C++, C#
-- in C#, designed to be used inside `switch` statements to jump to a case
 
-- Java has `goto` as a reserved word, but deliberately removed support for it
+* in C#, designed to be used inside `switch` statements to jump to a case
 
-- ECMAScript deliberately decided to not support it
+* Java has `goto` as a reserved word, but deliberately removed support for it
 
-- PHP added support for it in 5.3
+* ECMAScript deliberately decided to not support it
+
+* PHP added support for it in 5.3

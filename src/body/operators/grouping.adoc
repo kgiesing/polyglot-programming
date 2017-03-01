@@ -1,9 +1,9 @@
 = Grouping Operator
 Parentheses: `(`, `)`
 
-- determine precedence
-- may be nested; if so, evaluated in-to-out
-- result is single value
+* determine precedence
+* may be nested; if so, evaluated in-to-out
+* result is single value
 
 Example:
 [source,{cpp}]

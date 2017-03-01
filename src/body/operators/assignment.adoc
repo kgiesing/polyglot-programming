@@ -1,20 +1,20 @@
 = Assignment
 operator: `=`
 
-- Assigns value to a variable, and returns that value
+* Assigns value to a variable, and returns that value
 
-    - Can be chained; RTL associativity
+** Can be chained; RTL associativity
         `var x = y = z = 0;`
 
 // TODO: Cover this after math. operators?
-- compound assignment ops: append "=" after the other operator symbols
+* compound assignment ops: append "=" after the other operator symbols
 
-    - Operators that can have compound assignment:
+** Operators that can have compound assignment:
 
-        - mathematical
-        - bitwise
-        - string concatenation
+*** mathematical
+*** bitwise
+*** string concatenation
 
 
-- non-numeric values; pitfalls
+* non-numeric values; pitfalls
 // TODO: I don't know what I meant here... Type matching? Conversion?

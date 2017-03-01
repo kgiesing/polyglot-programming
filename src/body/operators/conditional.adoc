@@ -1,5 +1,5 @@
 = Conditional Operator
 operator: `?:`
-- only ternary operator in C-style languages
-- useful for conditional assignment
-- in strongly-typed languages, must return same type
+* only ternary operator in C-style languages
+* useful for conditional assignment
+* in strongly-typed languages, must return same type

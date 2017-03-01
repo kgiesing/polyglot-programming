@@ -1,17 +1,17 @@
 = Source-to-source compilation (aka transpiling)
-- Takes one higher-level language, compiles it to another higher-level
+* Takes one higher-level language, compiles it to another higher-level
     language (or even the same language)
 
 == Compile source to same language:
-- create backwards-compatible source code
-    - example: ES6 to JS for older browsers
+* create backwards-compatible source code
+** example: ES6 to JS for older browsers
 
-- source code minimization
+* source code minimization
 
 == Compile source to different language:
-- compile to JavaScript for Web deployment:
+* compile to JavaScript for Web deployment:
     Google Dart, Google Closure compiler, CoffeeScript, TypeScript
     https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-JS
 
-- compile Web applications to native application code for mobile devices:
+* compile Web applications to native application code for mobile devices:
     React Native

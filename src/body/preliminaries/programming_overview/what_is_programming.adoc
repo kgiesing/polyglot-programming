@@ -1,64 +1,64 @@
 = What is programming?
 
 == Computers and Programs
-- Computer is a machine that can be instructed to perform operations on data
-    - Accepts data as input, process data using instructions, sends processed data to output
-- Digital computer: a computer that processes data as _discrete_ values
-    - Contrast to analog computer, that processes data as _continuous_ values
-    - Electronically, discrete values are represented by voltage threshholds
-        - example: 3V - 5V = "on", -3V - -5V = "off"
-        - switching in modern computers is done by a _transistor_ (old computers used vaccuum tubes)
-    - Numerically, discrete values are represented (by humans) as _binary digits_
-        - "off" = 0, "on" = 1
+* Computer is a machine that can be instructed to perform operations on data
+** Accepts data as input, process data using instructions, sends processed data to output
+* Digital computer: a computer that processes data as _discrete_ values
+** Contrast to analog computer, that processes data as _continuous_ values
+** Electronically, discrete values are represented by voltage threshholds
+**** example: 3V - 5V = "on", -3V - -5V = "off"
+**** switching in modern computers is done by a _transistor_ (old computers used vaccuum tubes)
+** Numerically, discrete values are represented (by humans) as _binary digits_
+**** "off" = 0, "on" = 1
 
-- Program: the set of instructions for a computer
-    - Theoretically, may be either analog or digital instructions
+* Program: the set of instructions for a computer
+** Theoretically, may be either analog or digital instructions
 
-- Hardware: the parts of a computer that exist as physical objects
-    - Not all computers have hardware
-        - Example: http://minecraft.gamepedia.com/Tutorials/Redstone_computers[Redstone computers]
+* Hardware: the parts of a computer that exist as physical objects
+** Not all computers have hardware
+**** Example: http://minecraft.gamepedia.com/Tutorials/Redstone_computers[Redstone computers]
 
-- Software: a program, or set of programs, distributed separately from the hardware on which it runs
-    - Often, people also use it to include things that are part of the distribution but are not programs:
-        - Assets such as images, audio, video files
-        - Configuration files
-        - Instruction manuals
-    - The only thing "software" does _not_ include is computer hardware
+* Software: a program, or set of programs, distributed separately from the hardware on which it runs
+** Often, people also use it to include things that are part of the distribution but are not programs:
+**** Assets such as images, audio, video files
+**** Configuration files
+**** Instruction manuals
+** The only thing "software" does _not_ include is computer hardware
 
 == Single-purpose vs. general-purpose computers
-- Single-purpose: the computer has one program, and can only run that program
-    - also called _fixed-program_ computer
-    - Examples: calculator, ATM, traffic light control systems
-- General-purpose: the computer can take a program as input data
-    - also called _stored program_ computer
-    - Since a program is data, a general-purpose computer can also give
+* Single-purpose: the computer has one program, and can only run that program
+** also called _fixed-program_ computer
+** Examples: calculator, ATM, traffic light control systems
+* General-purpose: the computer can take a program as input data
+** also called _stored program_ computer
+** Since a program is data, a general-purpose computer can also give
       back another program as output; important when we talk about compilers
       and interpreters
-    - Allows program to be distributed separately from the physical machine
-    - Examples: PC's, smart phones
+** Allows program to be distributed separately from the physical machine
+** Examples: PC's, smart phones
 
 == Programming languages
-- A language that is used to create a program for a (general-purpose) computer
-    - Not programming languages:
-        - _markup_ languages (Markdown, AsciiDoc, HTML)
-        - _style sheet_ languages (CSS)
-        - _data format_ languages (JSON, CSV)
-    - Above is not intended to be derrogatory!
+* A language that is used to create a program for a (general-purpose) computer
+** Not programming languages:
+**** _markup_ languages (Markdown, AsciiDoc, HTML)
+**** _style sheet_ languages (CSS)
+**** _data format_ languages (JSON, CSV)
+** Above is not intended to be derrogatory!
 
-- What a program does
-    - represents data and metadata ("nouns" and "adjectives")
-    - operates upon that data ("verbs")
-    - input and output
-      - input data; operate on that data; output (new) data
-      - "input" and "output" are abstract concepts
-        - UI (keyboard, mouse, (touch)screen); hard disk; DB; tape drive;
+* What a program does
+** represents data and metadata ("nouns" and "adjectives")
+** operates upon that data ("verbs")
+** input and output
+*** input data; operate on that data; output (new) data
+*** "input" and "output" are abstract concepts
+**** UI (keyboard, mouse, (touch)screen); hard disk; DB; tape drive;
           call to Web API; etc.
-- Program follows an *algorithm* for its operations
-    - sequence of instructions that perform a task
-      - Recipe analogy
-    - Flow control
-      - branching, iteration
-      - termination condition(s)
+* Program follows an *algorithm* for its operations
+** sequence of instructions that perform a task
+*** Recipe analogy
+** Flow control
+*** branching, iteration
+*** termination condition(s)
 
 === Language syntax vs. semantics
 

@@ -6,41 +6,41 @@ Binary number systems, and their relevance to computer hardware and software
 For a more in-depth discussion, see the Appendix on Binary Mathematics.
 
 === Numbers in different bases
-- terminology
-    - digit: unique symbol used to represent a numeric value
-    - base: number of unique digits in a positional numeral system (incl. zero)
+* terminology
+** digit: unique symbol used to represent a numeric value
+** base: number of unique digits in a positional numeral system (incl. zero)
         - also called radix
 
-- decimal: base 10
-    - number system we're familiar with
-    - digits: `0` - `9`
+* decimal: base 10
+** number system we're familiar with
+** digits: `0` - `9`
 
-- binary: base 2
-    - number system used to represent computer state
-    - digits: `0` and `1`
+* binary: base 2
+** number system used to represent computer state
+** digits: `0` and `1`
 
-- others (see below)
-    - hexadecimal: base 16
-    - octal: base 8
+* others (see below)
+** hexadecimal: base 16
+** octal: base 8
 
 === Calculating a numeric value
 Calculating each digit:
 asciimath:[d * b^i], where:
-- _b_ is the base
-- _i_ is the position of the digit, *zero-indexed and starting from the right*
-- _d_ is the numeric value of the digit
+* _b_ is the base
+* _i_ is the position of the digit, *zero-indexed and starting from the right*
+* _d_ is the numeric value of the digit
 
 Example: value of `2` in decimal number `6521044`
-- _b_ is 10 (because decimal)
-- _i_ is 4 (from the right, counting from zero)
-- _d_ is 2
+* _b_ is 10 (because decimal)
+* _i_ is 4 (from the right, counting from zero)
+* _d_ is 2
 
 value: asciimath:[2 xx 10^4 = 20000]
 
 Example: value of middle `1` in binary number `01001001`
-- _b_ is 2 (because binary)
-- _i_ is 3 (from the right, counting from zero)
-- _d_ is 1
+* _b_ is 2 (because binary)
+* _i_ is 3 (from the right, counting from zero)
+* _d_ is 1
 
 value: asciimath:[1 xx 2^3 = 8]
 
@@ -52,36 +52,36 @@ Example: binary number `1001`
 value: asciimath:[(1 xx 2^0) + (0 xx 2^1) + (0 xx 2^2) + (1 xx 2^3) = 9]
 
 == Binary and computers
-- bit: Binary digIT
+* bit: Binary digIT
 
-- byte: 8 bits, e.g. `01101101`
-    - range: asciimath:[2^8], or 256 values (incl. 0)
-    - smallest addressable unit of memory
-    - historically, bytes could have other numbers of bits, but now it's standardized
+* byte: 8 bits, e.g. `01101101`
+** range: asciimath:[2^8], or 256 values (incl. 0)
+** smallest addressable unit of memory
+** historically, bytes could have other numbers of bits, but now it's standardized
 
-- word: number of bits that can be stored a machine register
-    - 32 bit (4 byte): older x86 processors, ARM (mobile)
+* word: number of bits that can be stored a machine register
+** 32 bit (4 byte): older x86 processors, ARM (mobile)
         - range: asciimath:[2^32], or 4,294,967,296 values (incl. 0)
-    - 64 bit (8 byte): new x86 processors (often called x64)
+** 64 bit (8 byte): new x86 processors (often called x64)
         - range: asciimath:[2^64], or asciimath:[1.8446744 xx 10^19] values (incl. 0)
 
 === Representing Negative Numbers
-- signed vs. unsigned
+* signed vs. unsigned
 
-- a negative number must allocate one bit as the _sign bit_
-    - usually, "leftmost" bit
-    - usually, `0` = positive and `1` = negative
+* a negative number must allocate one bit as the _sign bit_
+** usually, "leftmost" bit
+** usually, `0` = positive and `1` = negative
 
-- signed integers have a lower positive bound
-    - No matter what, 8 bits can only represent 256 values
-    - unsigned: 0 - 255
-    - signed: -127 - 127
+* signed integers have a lower positive bound
+** No matter what, 8 bits can only represent 256 values
+** unsigned: 0 - 255
+** signed: -127 - 127
 
-- whither negative zero?
+* whither negative zero?
 
 === Representing Floating Point Numbers
-- remember, rational numbers are any number that can be expressed as a fraction
-- any rational number can be represented as a _floating point_ number;
+* remember, rational numbers are any number that can be expressed as a fraction
+* any rational number can be represented as a _floating point_ number;
     binary systems use floating point
 
 
@@ -95,28 +95,28 @@ These number systems have bases that are multiples of two.
 Because of this, they have a convenient relationship to binary numbers.
 
 === Hexadecimal
-- usually shortened to "hex"
-- base 16
-- digits: `0`-`9` plus `A`-`F` (case unimportant; I'll use upper-case)
-- because asciimath:[16 = 2^4], one hex digit = 4 bits, and two hex digits = 1 byte;
+* usually shortened to "hex"
+* base 16
+* digits: `0`-`9` plus `A`-`F` (case unimportant; I'll use upper-case)
+* because asciimath:[16 = 2^4], one hex digit = 4 bits, and two hex digits = 1 byte;
     makes it very useful to represent byte values
 
 ==== Converting binary to hex
 1. Group binary numbers into 4-digit sections: `1011 0100 1001`
-    - add leading 0's to leftmost section if necessary
+** add leading 0's to leftmost section if necessary
 2. Convert each section into one hex digit
-    - One option: convert to base 10, then base 10 to base 16 digit
-    - Another option: convert directly to base 16 digit - not difficult to memorize
+** One option: convert to base 10, then base 10 to base 16 digit
+** Another option: convert directly to base 16 digit - not difficult to memorize
 
 === Octal
-- less common that hex, but still used enough to discuss
-- base 8
-- digits: `0`-`7`
-- because asciimath:[8 = 2^3], one hex digit = 3 bits
+* less common that hex, but still used enough to discuss
+* base 8
+* digits: `0`-`7`
+* because asciimath:[8 = 2^3], one hex digit = 3 bits
 
 ==== Converting binary to octal
 1. Group binary numbers into 3-digit secions: `101 101 001 001`
-    - add leading 0's to leftmost section if necessary
+** add leading 0's to leftmost section if necessary
 2. Convert each section into one hex digit
-    - Since hex digits are a subset of decimals,
+** Since hex digits are a subset of decimals,
         converting each section to decimal will also convert it to hex

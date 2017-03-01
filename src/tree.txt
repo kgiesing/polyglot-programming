@@ -1,3 +1,138 @@
-+---back
-+---body
-+---front
+.
+├── back
+│   ├── appendix_binary.adoc
+│   ├── glossary.adoc
+│   ├── index.adoc
+│   └── references.adoc
+├── body
+│   ├── comments
+│   │   ├── doc_generators.adoc
+│   │   ├── ide_tags.adoc
+│   │   ├── index.adoc
+│   │   ├── intro.adoc
+│   │   └── syntax.adoc
+│   ├── data
+│   │   ├── compound_types
+│   │   │   ├── arrays.adoc
+│   │   │   ├── assoc_arrays.adoc
+│   │   │   ├── enums.adoc
+│   │   │   ├── index.adoc
+│   │   │   ├── objects.adoc
+│   │   │   └── structs.adoc
+│   │   ├── index.adoc
+│   │   ├── literals.adoc
+│   │   ├── named_data.adoc
+│   │   ├── null_and_void.adoc
+│   │   ├── parameterized_types.adoc
+│   │   ├── pointers_and_references.adoc
+│   │   ├── primitives.adoc
+│   │   ├── strings.adoc
+│   │   └── type_systems.adoc
+│   ├── flow_control
+│   │   ├── errors.adoc
+│   │   ├── expressions_statements_blocks.adoc
+│   │   ├── index.adoc
+│   │   ├── intro.adoc
+│   │   ├── iteration.adoc
+│   │   ├── jump.adoc
+│   │   └── selection.adoc
+│   ├── functions
+│   │   ├── argument_passing.adoc
+│   │   ├── basic_concepts.adoc
+│   │   ├── creating_functions.adoc
+│   │   ├── decomposition_abstraction.adoc
+│   │   ├── function_scope.adoc
+│   │   ├── functional_programming.adoc
+│   │   ├── functions_and_memory.adoc
+│   │   ├── index.adoc
+│   │   ├── intro.adoc
+│   │   ├── recursion.adoc
+│   │   └── using_functions.adoc
+│   ├── hardware_and_software
+│   │   ├── code_to_execution
+│   │   │   ├── compilation.adoc
+│   │   │   ├── index.adoc
+│   │   │   ├── interpretation.adoc
+│   │   │   ├── intro.adoc
+│   │   │   ├── parsing_and_preprocessing.adoc
+│   │   │   ├── source.adoc
+│   │   │   ├── transpile.adoc
+│   │   │   └── vm.adoc
+│   │   ├── hardware_to_software
+│   │   │   ├── binary.adoc
+│   │   │   ├── hardware.adoc
+│   │   │   ├── index.adoc
+│   │   │   ├── intro.adoc
+│   │   │   ├── memory.adoc
+│   │   │   └── processes.adoc
+│   │   ├── index.adoc
+│   │   └── intro.adoc
+│   ├── index.adoc
+│   ├── libraries
+│   │   ├── index.adoc
+│   │   ├── intro.adoc
+│   │   ├── modules.adoc
+│   │   ├── namespaces.adoc
+│   │   └── packages.adoc
+│   ├── oop
+│   │   ├── classical
+│   │   │   ├── access_modifiers.adoc
+│   │   │   ├── classes.adoc
+│   │   │   ├── constructors.adoc
+│   │   │   ├── index.adoc
+│   │   │   ├── inheritance.adoc
+│   │   │   └── members.adoc
+│   │   ├── flavors.adoc
+│   │   ├── index.adoc
+│   │   ├── intro.adoc
+│   │   ├── principles.adoc
+│   │   └── prototypal
+│   │       └── index.adoc
+│   ├── operators
+│   │   ├── array.adoc
+│   │   ├── assignment.adoc
+│   │   ├── bitwise.adoc
+│   │   ├── comma.adoc
+│   │   ├── conditional.adoc
+│   │   ├── grouping.adoc
+│   │   ├── index.adoc
+│   │   ├── intro.adoc
+│   │   ├── logical.adoc
+│   │   ├── mathematical.adoc
+│   │   ├── other.adoc
+│   │   ├── relational.adoc
+│   │   ├── scope_resolution.adoc
+│   │   ├── string.adoc
+│   │   └── type.adoc
+│   └── preliminaries
+│       ├── index.adoc
+│       ├── intro.adoc
+│       ├── languages
+│       │   ├── c.adoc
+│       │   ├── cpp.adoc
+│       │   ├── csharp.adoc
+│       │   ├── index.adoc
+│       │   ├── intro.adoc
+│       │   ├── java.adoc
+│       │   ├── javascript.adoc
+│       │   └── php.adoc
+│       ├── programming_overview
+│       │   ├── c_family_syntax.adoc
+│       │   ├── index.adoc
+│       │   ├── intro.adoc
+│       │   ├── paradigms.adoc
+│       │   └── what_is_programming.adoc
+│       └── tools
+│           ├── build.adoc
+│           ├── ide.adoc
+│           ├── index.adoc
+│           ├── intro.adoc
+│           ├── text_editors.adoc
+│           └── vcs.adoc
+├── front
+│   ├── index.adoc
+│   ├── license.adoc
+│   ├── preface.adoc
+│   └── toc.adoc
+├── index.adoc
+└── tree.txt
