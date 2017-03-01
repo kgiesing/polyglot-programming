@@ -54,16 +54,9 @@ The purpose of this file is to import all the other AsciiDoc documents that make
 If you would like to remix the book, the easiest way is to fork the repo, and simply change the `index.adoc` files.
 You can include the files in any order you prefer, or not include specific files at all.
 
-NOTE: There are some files in the `src` folder that are not included by the `index.adoc` file.
+NOTE: There may be some files in the `src` folder that are not included by any `index.adoc` file.
     These files should be regarded as working files that are not yet ready to be included in the book itself.
     (In most cases they are outlines, and named as such.)
-
-=== Markdown files
-I had originally planned to write the book using the Markdown syntax.
-Unfortunately, though great and powerful, Markdown is not well-suited to writing entire books.
-
-The old Markdown files still exist in a folder called `markdown`.
-These are kept mainly as notes until the converstion to AsciiDoc is complete.
 
 == Content changes
 If you have found a mistake in any part of the book, I would appreciated it if you raised an issue in the GitHub issue tracker.
