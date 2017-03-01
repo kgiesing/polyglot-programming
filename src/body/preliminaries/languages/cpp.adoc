@@ -1,7 +1,11 @@
 = C++
+the C++ language
 
 == About
+about the C++ language
 
 == Installation
+installing C++
 
 == Execution
+compiling & executing C++

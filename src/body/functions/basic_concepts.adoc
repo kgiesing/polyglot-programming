@@ -8,7 +8,7 @@ But there are a number of differences between mathematical functions, and functi
 
 * Mathematical functions do not change the variables used as input.
 * Mathematical functions must return a unique output for each different set of inputs.
-    That is, asciimath:[`f(1)`] cannot produce the same value as asciimath:[`f(3)`] (provided those numbers are in its domain).
+    That is, asciimath:[f(1)] cannot produce the same value as asciimath:[f(3)] (provided those numbers are in its domain).
 * Mathematical functions must produce an output value.
 
 None of those constraints exist with functions in programming languages.

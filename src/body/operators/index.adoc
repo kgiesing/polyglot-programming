@@ -26,7 +26,7 @@ include::string.adoc[]
 
 include::array.adoc[]
 
-include::member_resolution.adoc[]
+include::scope_resolution.adoc[]
 
 include::type.adoc[]
 

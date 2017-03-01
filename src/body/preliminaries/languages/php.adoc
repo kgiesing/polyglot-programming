@@ -1,7 +1,11 @@
 = PHP
+the PHP language
 
 == About
+about the PHP language
 
 == Installation
+installing PHP
 
-== Execution from the Command Line
+== Execution
+executing PHP

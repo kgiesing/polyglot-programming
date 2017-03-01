@@ -1,17 +1,11 @@
 // OOP
 
-include::intro.adoc[]
+// include::intro.adoc[]
 
 // Push titles down one level.
 :leveloffset: 1
 
-include::principles.adoc[]
-
-include::flavors.adoc[]
-
-include::classical/index.adoc[]
-
-include::prototypal/index.adoc[]
+// TODO
 
 // Return to normal title levels.
 :leveloffset: 0

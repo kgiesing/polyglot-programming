@@ -11,12 +11,11 @@
 
 Example: `2 + 3` is something like:
 // TODO Replace with an image
-[source, x]
------
+
             (operator +)
            /            \
       (literal 2)   (literal 3)
------
+
 *** If tree is more closely related to a specific language, it's called a "parse tree"
 *** Interpreted languages may use a simpler internal data structure, to improve performance
 
