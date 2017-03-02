@@ -1,0 +1,59 @@
+= POINTERS AND REFERENCES
+
+NOTE: This entire section is fairly language-specific.
+
+== pointers: C, C++
+* Value is a memory location (usually size of int in system)
+* Must still have type (incl. modifiers)
+** `void*`: type returned by memory allocation call; rarely used otherwise
+
+=== Syntax:
+[source,{cpp}]
+----
+int* x; // declare ptr to int, with ID of x - "\*" may be grouped w/name
+x = &y; // value of x is y's memory address
+*x = 5; // dereference
+----
+
+== references: C++, PHP
+* an alias for another variable
+* behave like const ptr's that are automatically dereferenced
+** PHP: alias to another var. in symbol table:
+      http://php.net/manual/en/language.references.php
+* reference is fixed when initialized; cannot be re-assigned
+
+=== Syntax
+C++: `&` type specifier
+[source,{cpp}]
+----
+int& rx = x; // reference to x - "&" may be grouped w/name
+rx = 5;      // assigns 5 to rx AND x
+// reference must be initialized with an lvalue!
+int& r = 5;     // Error - 5 is a literal
+int& r = x + 2; // Error - x + 2 is temporary
+----
+
+PHP: `=&` operator (assign-by-reference)
+[source,php]
+----
+$rx =& $x; // reference to $x
+$rx = 5;   // assigns 5 to $rx AND $x
+----
+
+== handles and resources: C, PHP
+* similar to ptr, but value is number representing location of something
+    other than a memory location
+    (database connection, file descriptor, socket, etc.)
+* No special syntax
+** C: handle is pointer:
+      `FILE* fp = fopen("filename.txt");`
+** PHP: handle is returned from built-in fn, assigned to var:
+      `$conn = ftp_connect($ftp_server);`
+* OOP languages use objects to represent resources
+
+== Reference types in other languages
+* Reference types behave like ptr's (and are likely implemented as ptr's)
+** BUT, no special syntax; same as value types
+
+* Reference types in most languages do NOT behave like C++ references;
+    details later (fn's and objects)

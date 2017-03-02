@@ -1,0 +1,75 @@
+= Objects
+
+Note: defining objects in code will wait until section on OOP
+
+* Like structs, but encapsulate *behavior* as well as data
+
+* fields/member var's: variables that hold data (just like a struct)
+** represent an object's state
+
+* methods/member fn's: functions that operate on, or return data from,
+    the object's state
+
+* accessing fields or methods is done with member access operator
+** C++/Java/JavaScript:
+[source, c]
+-----
+x = obj.field;
+y = obj.method();
+-----
+** C/C++: use arrow operator with pointer to object
+[source, c]
+-----
+x = ptrToObj->field;
+y = ptrToObj->method();
+-----
+
+** PHP uses arrow operator exclusively ("dot operator" is string concatenation operator)
+[source, php]
+-----
+$x = $obj->field;
+$y = $obj->method();
+-----
+
+== JavaScript object literals
+* basis for JSON (JavaScript Object Notation), a message format
+* properties are either identifiers, or strings
+
+=== Syntax:
+* Creating
+[source, javascript]
+-----
+var obj = {
+    x: 5,
+    y: 7 // Note: comma on last member isn't required
+};
+// "Associative arrays" are just objects:
+var dict = {
+    "foo" : "bar",
+    "baz" : "bash"
+}
+// Objects can contain other objects
+var point = {
+    x: 0,
+    y: 0,
+    details: {
+        'name': 'origin',
+        'description': 'the origin of a two-dimensional graph'
+    }
+}
+-----
+
+* Accessing
+
+** May be accessed with the dot operator:
+[source, javascript]
+-----
+f = dict.foo; // retrieves value of foo
+dict.foo = f; // sets value of foo
+-----
+** May also be accessed as assoc.array:
+[source, javascript]
+-----
+f = dict['foo']; // retrieves value of foo
+dict['foo'] = f; // sets value of foo
+-----

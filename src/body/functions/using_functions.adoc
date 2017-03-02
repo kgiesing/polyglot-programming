@@ -1,0 +1,152 @@
+= Using functions
+The first thing we should cover is how to actually use functions.
+Later, we'll cover how to write your own.
+
+== Function Terminology
+These are the terms that programmers use when talking about functions.
+
+call::
+    to use a function in the code.
+    The part of the code that calls the function is the _caller._
+
+invoke::
+    A synonym for "call."
+    It seems to be used more often with methods than with functions.
+
+pass::
+    to send input values from the caller to the function.
+
+return::
+    to send an output value from the function to the caller.
+
+arguments::
+    the values that are passed to the function as input.
+
+== Syntax
+. function name
+. opening parentheses
+. list of arguments, separated by commas
+. closing parentheses
+
+For example, let's say you have two variables, `x` and `y`.
+You want to raise `x` to the power of `y` using a the `pow` function,
+and store the result in a variable called `p`.
+(We'll assume `p` is already defined.)
+Here is the code:
+[source, c]
+----
+p = pow(x, y);
+----
+
+In this example, `x` and `y` would be the arguments that are passed to the function.
+The function would use the _value_ of those variables when calculating the power.
+
+== Argument Evaluation Strategy
+A function's arguments do not have to be literals or variables.
+They can be anything that results in a value.
+This means that any expression can be used as a function argument.
+How the language evaluates these expressions is called its _evaluation strategy._
+
+All C-syntax languages use one evaluation strategy.
+And here it is:
+
+. All expressions in the argument list are evaluated.
+
+. The results of the evaluated expressions are passed into the function as arguments.
+
+. The body of the function is evaluated, and a value is returned from the function.
+
+. This return value is "substituted" for the function call.
+
+This evaluation strategy is called _eager evaluation_ or _strict evaluation._
+There are other kinds of evaluation strategies, which will be covered in a later section.
+However, eager evaluation is the only evaluation strategy used by the languages covered in this book.
+
+== Functions and return values
+Function calls are _expressions,_ not _statements._
+Their return values can be used anywhere a value is expected.
+(In other words, the result of a function call is an _rvalue._)
+
+A trivial example is to assign the return value to a variable:
+[source,c]
+-----
+double p = pow(2, 5);
+-----
+
+But you can also use the return value as an argument to another function:
+[source,c]
+-----
+// degree_to_radian called with 180; sin called with its return value
+double s = sin(degree_to_radian(180));
+-----
+
+This does not mean that function calls cannot be used _as_ a statement.
+For example, this is a valid function call:
+[source,c]
+-----
+// the return value is not used
+pow(2, 5);
+-----
+
+If the return value of a function is not used, it is simply discarded.
+
+Though syntactically correct, this is _probably_ a programming mistake.
+If a function returns a value, and you're not using it, then why call the function at all?
+
+In compiled languages, not using a function's return value will usually result in a warning from the compiler.
+However, the code will still compile.
+Most compilers have an option to turn off this warning (though I recommend leaving it on).
+
+=== Functions that do not return a value
+Recall that functions do not _necessarily_ return a value.
+They may be impure functions, which either change their arguments, or use something in the global state.
+
+For example, let's say you have a `print` function that prints a message to the console.
+It uses some sort of global object that represents the console, and does not return any value.
+
+Unlike functions that return a value, these function calls _should_ be used as statements.
+This is how you would normally call such a function:
+[source,c]
+-----
+print("Hello, world!");
+-----
+
+This function call will not result in any sort of warning from a compiler or interpreter.
+
+Things get a little trickier if you use the (non-existent) return value from this function.
+What happens if you try to assign the return value to a variable, or pass it as an argument?
+
+In strongly-typed languages, you cannot even attempt to use the function's return value.
+It cannot be assigned to any variable, and it cannot be used as arguments for another function call.
+Most strongly-typed languages (and all languages covered in this book) are compiled.
+This means that attempting to do this will cause a compiler error.
+
+In C, C++, C#, and Java, this would not compile:
+[source,c]
+-----
+x = print("Hello, world!");
+-----
+
+In weakly-typed languages, the return type of these functions is some variant of "not a value."
+The actual value that is used, varies by programming language.
+
+- In JavaScript, the return type is `undefined`.
+- In PHP, the return type is `NULL`.
+
+That value _can be_ used, and may be assigned to a variable, or passed as an argument.
+In these languages, the interpreter will execute the code without any problems.
+(You probably will not even get a warning.)
+
+So in JavaScript, this is perfectly legal:
+[source,javascript]
+-----
+x = print("Hello, world!");
+-----
+After the statement is evaluated, the value of `x` would be `undefined`.
+
+Likewise, in PHP, this is perfectly legal:
+[source,PHP]
+-----
+$x = print("Hello, world!");
+-----
+After this statement is evaluated, the value of `$x` would be `NULL`.

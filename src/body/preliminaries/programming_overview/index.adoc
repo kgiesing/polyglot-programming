@@ -1,0 +1,15 @@
+// An overview of programming
+
+include::intro.adoc[]
+
+// Push titles down one level.
+:leveloffset: 1
+
+include::what_is_programming.adoc[]
+
+include::c_family_syntax.adoc[]
+
+include::paradigms.adoc[]
+
+// Return to normal title levels.
+:leveloffset: 0

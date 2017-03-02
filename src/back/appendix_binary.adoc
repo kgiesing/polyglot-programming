@@ -1,0 +1,196 @@
+= Binary Mathematics
+This Appendix takes an in-depth look at binary mathematics.
+
+Because we're largely dealing with binary mathematics as performed on a computer,
+I'll describe binary numbers in terms of _words_ and _bits_.
+
+NOTE: For brevity, this Appendix only covers mathematics with unsigned binary integers.
+    The same principles can be applied to signed integers and floating-point numbers.
+
+== Bitwise Operations
+These are operations that are performed on the individual bits of a binary number.
+Why would a computer use these operations?
+
+For one thing, the electronics required to do bitwise operations are very inexpensive.
+More importantly, it turns out that all arithmetic operations can be done using bitwise operations.
+We'll go into details when we discuss arithmetic operations.
+
+=== Logical Operations
+Because a bit only has two values, we can use logical operations on them.
+When we do, we consider `1` to be "true," and `0` to be "false."
+
+These operations are exactly the same operations you would see in any formal logic course.
+They called _Boolean operations,_ after the mathematician George Boole.
+
+Values that can only be "true" or "false" are called _Boolean values._
+To be a Boolean operation, that operation must accept only Boolean values as operands,
+and produce a single Boolean value as a result.
+
+These are the basic Boolean operations, and their logical symbols:
+
+asciimath:[^^]::
+    AND - true, if all operands are true; otherwise, false
+
+asciimath:[vv]::
+    OR - false, if all operands are false; otherwise, true
+
+asciimath:[o+]::
+    XOR (eXclusive OR) - true, if only one of the operands is true; otherwise, false
+
+asciimath:[not]::
+    NOT - true, if the operand is false; otherwise, false
+
+The electronic device that performs a Boolean operation is called a _logic gate._
+Logic gates are simple electronic switches (usually consisting of a single transistor).
+They are so simple, in fact, that a modern computer chip may contain tens of millions of them.
+
+=== Bit shifting
+With bit shifting, each binary digit is shifted in position, either to the right or to the left.
+Any values that "drop off" are no longer part of the number and discarded.
+For the sake of simplicity, we'll only discuss shifting digits by one position,
+though it is possible to shift by any number of positions.
+
+If you're a human, it's probably easier to just add and remove bits from either end of the number.
+
+For a right bit shift, add `0` to the left, and remove the last digit on the right.
+
+For a left bit shift, add `0` to the right.
+*If necessary,* remove last digit on the left.
+If the number of bits can still be stored in a word, don't do this!
+
+The mathematical results of bit shifting turn out to be significant.
+A right bit shift is the mathematical equivalent of _dividing_ by two (and ignoring the remainder).
+A left bit shift is the mathematical equivalent of _multiplying_ by two.
+We will go into more detail when we discuss addition and subtraction.
+
+== Binary Arithmetic
+This section covers what we humans consider normal mathematic operations.
+But, as we'll soon see, humans and computers are very different.
+
+=== Addition
+Addition in binary works basically the same as in decimal
+(and in all positional number systems, in fact).
+
+This is the formal algorithm for performing addition.
+*****
+Given two numbers, _x_ and _y_, of word size _n_:
+Find the result, _r_, where _r = x + y_.
+
+First, define some variables:
+
+- Let _i_ represent the position ("index" or "column") in the number that we're currently examining, starting from the right.
+
+- Let _c_ represent the carry-over from the previous operation, starting with 0.
+        (If you're doing this on paper, this is the number that you write above the numbers in the next column.)
+
+The algorithm:
+
+1. To _c_, add the two numbers represented by digits at position _i_: +
+    _c = c + x~i~ + y~i~_ +
+    If a number has no such digit, then use zero instead.
+    (This represents padding the number with leading zeros.)
+
+2. Assign the rightmost digit of _c_ to the result's digit at this position: +
+    _r~i~ = d~1~_
+
+3. Assign the second-to-right digit of _c_ to _c_ itself: +
+    _c = c~1~_ +
+    If there is no such digit, _c_ is zero.
+    (Astute readers will recognize this as a right bit shift.)
+
+4. Move _i_ one digit to the left.
+
+5. If _i > n_, then stop - you're done.
+
+6. Otherwise, go to step 1.
+*****
+
+This algorithm is base agnostic.
+In other words, it can be used with numbers in any base: decimal, hexadecimal, octal, binary, etc.
+
+But for processors, the algorithm is very different.
+
+==== Addition and Boolean Operations
+
+Processors don't actually have an "add gate," so how do they add numbers?
+It turns out that binary addition can be performed with only Boolean operations.
+
+Think about what happens when you add two bits, _x_ and _y_.
+There can only be four cases, with three results:
+
+1. Both _x_ and _y_ are `0`.
+    In this case, the result is `0` with a carry bit of `0`.
+
+2. _x_ is `0` and _y_ is `1`.
+    In this case, the result is `1` with a carry bit of `0`.
+
+3. _x_ is `1` and _y_ is `0`.
+    Like the previous case, the result is `1` with a carry bit of `0`.
+    (The two cases have the same result due to the fact that addition is commutative.)
+
+4. Both _x_ and _y_ are `1`.
+    In this case, the result is `0` with a carry bit of `1`.
+
+Putting the above cases in terms of Boolean operations:
+
+- The result is always asciimath:[x o+ y] (XOR).
+
+- The carry-over is always asciimath:[x ^^ y] (AND).
+
+Electronically, the circuit that performs these operations is called a _half adder_ circuit.
+A half-adder circuit takes two inputs (_A_, and _B_), and provides two outputs (_SUM_ and carry bit _C~out~_).
+
+Things get slightly more complicated when we have to add the carry-over from a previous addition.
+We have to do another addition of the result with the carry bit.
+
+This requires a circuit that is essentially two half adder circuits.
+It takes three inputs (_A_, _B_, and carry bit _C~in~_), and again provides two outputs (_SUM_ and _C~out~_).
+Unsurprisingly, this kind of circuit is called a _full adder_ circuit.
+
+=== Subtraction
+At first glance, subtraction and addition have very similar algorithms.
+The main difference is that instead of a _carry_ digit, you use a _borrow_ digit.
+
+This is the formal algorithm for performing subtraction.
+*****
+Given two numbers, _x_ and _y_, of word size _n_:
+Find the result, _r_, where _r = a - b_.
+
+- Let _i_ represent the position ("index" or "column") in the number that we're currently examining, starting from the right.
+
+- Let _c_ represent the borrowed value from the previous operation, starting with 0.
+
+1. Subtract _c_ from the value of _x_ at position _i_: +
+    _x~i~ = x~i~ - c_
+
+2. Set _c_ to `0` (since you just subtracted the borrowed value).
+
+3. While _x~i~ < y~i~_:
+    a. Add `1` to _c_, to signify that you're borrowing from the next digit to the left.
+    b. Add `10` to _x~i~_. +
+        (Note: this is not necessarily the decimal value ten.
+        It is the number signified by the digits `1` and `0` in whatever base you're working in.)
+
+4. Subtract _x~i~_ from _y~i~_, and store it in the result's digit at this position: +
+    _r~i~ = x~i~ - y~i~_
+
+5. Move _i_ one digit to the left.
+
+6. If _i > n_, then:
+    a. If _c_ is `1` then the result is negative.
+        Signify this in some way (usually by putting `-` to the left of the result).
+    b. Stop: you're done.
+
+7. Otherwise, go to step 1.
+*****
+
+Like the algorithm for addition, this is base agnostic.
+For humans, it is probably the easiest way to do binary subtraction.
+
+==== Subtraction and Boolean Operations
+
+
+
+=== Multiplication
+
+=== Division

@@ -1,0 +1,5 @@
+= Packages
+(Java)
+
+* Java packages are similar to C++ namespaces
+* Java packages must have a folder structure that matches the package name

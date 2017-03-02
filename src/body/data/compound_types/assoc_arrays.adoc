@@ -1,0 +1,24 @@
+= Associative arrays
+(JavaScript/PHP)
+* Theoretically correct term is "dictionary," but a.a. is widely used
+* Collection of key/value pairs, where key is string
+** Value can be any type
+* Like arrays, dictionaries are mutable
+* arrays and dictionaries share syntax
+** key is accessed like index: `arr["hello"]`
+** each element can be assigned: `arr["hello"] = "world"`
+* PHP: all arrays are associative +
+[source, php]
+-----
+$dict = array("foo" => "bar", "baz" => "bash"); // all versions
+$dict = ["foo" => "bar", "baz" => "bash"];      // PHP >= 5.4
+-----
+* JavaScript: Dictionaries are objects; see section on objects +
+    `dict = {"foo" : "bar", "baz" : "bash"};`
+* C/C++: <map> library
+* Java: java.util.Hashtable +
+    `Hashtable<String, String> $dict = new Hashtable<String, Integer>();`
+** Key can be any serializable object
+** Value must be object type - use boxing for primitive types
+* C#: `System.Collections.Generic.Dictionary` +
+    `Dictionary<string, string> dictionary = new Dictionary<string, string>();`

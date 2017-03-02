@@ -1,0 +1,10 @@
+= Literals
+* direct representation of rvalue in source code
+  e.g. `2`, `3.14159`, `'x'`,` "Hello, world!"`
+** literals are immutable, being rvalues
+** string vs. char literals (lang. dependent)
+
+* string interning: Java, C#, PHP >= 5.4 (Zend implementation), some JS interpreters (V8)
+** string literals of the same value are stored (globally) as the same data
+** global storage of string literals is called _string pool_
+** happens at parse time

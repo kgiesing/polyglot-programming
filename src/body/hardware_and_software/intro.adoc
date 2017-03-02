@@ -1,0 +1,12 @@
+// Introduction to this section.
+= Hardware and Software
+
+This section talks about the relationship between computer hardware and software.
+
+This book takes a "bottom-up" approach to discussing this topic.
+We start with a description of the computer hardware,
+and end with how source code is executed on the machine.
+Along the way, we will talk about the role of the operating system,
+processes and threads,
+process memory structure,
+and compiling or interpreting code.

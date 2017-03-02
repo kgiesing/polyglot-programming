@@ -1,0 +1,14 @@
+// The book's front matter.
+
+// Push titles down one level.
+:leveloffset: 1
+
+include::license.adoc[License]
+
+// Placeholder for the auto-generated table of contents.
+:toc:
+
+include::preface.adoc[]
+
+// Return to normal title levels.
+:leveloffset: 0

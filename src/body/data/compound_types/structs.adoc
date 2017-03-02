@@ -1,0 +1,73 @@
+= Structures ("structs")
+
+* Used widely in C (and available in C++/C#) - why talk about it?
+** Classes have their origins in structs (C -> C++ -> Java -> C#)
+** You should know about them anyway
+
+* Named collection of variables, of any type
+** Similar to associative array, but "keys" are variable identifiers
+** a struct's variables are called members or fields
+
+* Member access operator: "dot operator"
+
+* structs are value types! All fields copied on assignment
+
+* Pointers to structs:
+** Unwieldy syntax: `*(ptr).x`
+** "Arrow operator:" another member access operator, specifically for ptrs: +
+      `ptr->x`
+** PHP uses this operator to access properties of objects; more later
+
+== Syntax:
+* creating struct: (Remember semicolon!)
+[source, c]
+-----
+struct Point {
+    int x;
+    int y;
+} a, b, c; /* Declares variables of "struct Point" type - optional */
+
+struct {
+    int x;
+    int y;
+} a, b, c; /* Declares variables of "struct Point" type - optional */
+-----
+
+* using struct:
+[source, c]
+-----
+struct Point min = {1, 1}; /* Declaration and initialization */
+-----
+
+== Defining types with structs
+* Uses `typedef` keyword
+[source, c]
+-----
+typedef struct {
+    int x;
+    int y;
+} Point; /* Point is type identifier, not variable declaration! */
+-----
+
+** Why?
+[source, c]
+-----
+Point min = {1, 1}; /* No "struct" keyword */
+-----
+
+== Using forward declarations
+
+* when you need struct to contain pointer to its own type
+
+[source, c]
+-----
+/* Won't compile! "Node" isn't yet declared */
+typedef struct {
+  Node* next;
+} Node;
+
+/* "N" declared - will compile */
+typedef struct N {
+  N* next;
+} Node;
+-----

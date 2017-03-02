@@ -1,0 +1,11 @@
+// The book's back matter (end matter).
+
+// Push titles down one level.
+:leveloffset: 1
+
+include::references.adoc[]
+
+include::glossary.adoc[]
+
+// Return to normal title levels.
+:leveloffset: 0

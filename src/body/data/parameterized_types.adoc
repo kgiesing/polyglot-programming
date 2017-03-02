@@ -1,0 +1,35 @@
+= Parameterized Types
+* Purpose: type safety - so only used with explicitly typed languages
+
+* Commonly used with collections
+** Collection is a "container" object: hash table, list, set, etc.
+
+* Example: Stack data structure (explain) +
+      `push(value`): what type is `value`? +
+      `pop()`: what type is returned?
+** Without parameterized types, it would have to be a "generic" object
+      (e.g. type "Object" in Java), with all the implied casting; both
+      inconvenient, and not type-safe (compiler won't catch)
+
+== Generics
+Java (>= 5.0)/C# (>= 2.0)
+* Type parameters must be reference types; no primitives - use wrapper
+    classes (`Integer`, `Float`, etc.)
+
+== Templates
+C++
+* Type parameters may be primitive types or reference types
+
+== Creating parametrized objects
+The syntax is identical in Java, C++, and C#:
+[source,java]
+-----
+Hashtable<String, String> dict = new Hashtable<String, String>();
+-----
+
+Defining your own parameterized types will be covered in the section on OOP.
+
+== Tutorials
+http://www.cplusplus.com/doc/oldtutorial/templates/[Templates] (cplusplus.com)
+https://docs.oracle.com/javase/tutorial/java/generics/[Lesson: Generics] (Oracle Java tutorials)
+https://msdn.microsoft.com/en-us/library/0x6a29h6(v=vs.120).aspx[Introduction to Generics (C# Programming Guide)] (MSDN)

@@ -1,0 +1,32 @@
+= Classes and Instances
+
+* Classes are like a blueprint for an object
+** Classes are not themselves objects
+
+* Classes can be considered user-defined types
+
+* Objects created from a class, are _instances_ of that class
+** Constructing an object is the same as _instantiating_ a class
+
+== Instantiation
+// TODO: "Life cycle" instead? Gives a chance to talk about object destruction
+// Also, maybe put life cycle section first?
+* The `new` keyword
+
+* C++: objects can be instantiated on stack _or_ on heap
+
+* C#/Java/PHP: objects are instantiated on heap
+
+== Class Declaration and Definition
+* C#/Java/PHP: classes are declared and defined at same time
+* C++: classes declaration and definition are separate
+** declaration: specifies the class's _interface_
+*** kept in `.h` files
+*** usually distributed uncompiled
+** definition: specifies the class methods' _implementation_
+*** kept in `.cpp` files
+*** often distributed pre-compiled
+
+== Nested Classes
+// TODO Find out about nested classes in different languages
+// TODO Find umbrella term for both "inner classes" and "nested classes"

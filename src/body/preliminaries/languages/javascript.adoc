@@ -1,0 +1,11 @@
+= JavaScript
+the JavaScript language
+
+== About
+about the JavaScript language
+
+== Installation
+installing JavaScript
+
+== Execution
+executing JavaScript

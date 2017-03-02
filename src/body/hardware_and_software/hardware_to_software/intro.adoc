@@ -1,0 +1,6 @@
+= Hardware to Software
+
+This section offers an overview of computer hardware,
+the binary representation of software and data,
+the operating system running on the hardware,
+and how processes and threads use memory.

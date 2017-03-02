@@ -1,0 +1,94 @@
+// This is the glossary of terms used in the book.
+// Terminology is especially important in computer science, so if I am wrong, corrections are especially welcome.
+= Glossary
+[glossary]
+
+Keyword::
+    a sequence of characters that have special meaning in a language.
+    Keywords are considered part of the language syntax, so they can't be used as an identifier.
+
+Reserved word::
+    a sequence of characters that have special meaning in a language, but are not necessarily part of the syntax.
+    Examples: `goto` in Java, `super` in JavaScript.
+    In nearly all languages, keywords are a subset of reserved words.
+
+State::
+    the values of data represented by the program, at a particular point in the program's execution.
+    * "State" can also refer to the state of execution itself, i.e. which operations have been done, and which are next.
+        Most languages can't access this information directly.
+
+Global state::
+    the state that is in scope throughout the entire codebase.
+
+Literal::
+    a direct representation of data in the source code.
+    Examples: `5`, `3.14159`, or `"Sam"`.
+
+Variable::
+    a named representation of data, whose value can change
+    * similar to math variables, but can represent more than numbers
+
+Constant::
+    a named representation of data, whose value cannot change
+    * analogies from natural sciences: pi, e (Euler's number), c (speed of light in a vacuum), number of protons in a carbon atom, etc.
+
+Scope::
+    the parts of a program where a name has meaning (visible)
+    * two identical names will not conflict, only if they have different scopes
+    * global: available throughout the entire code (e.g. "global variable," "global state")
+
+
+Operator::
+    a token representing an operation on data.
+    Examples: `+` for addition, `-` for subtraction, `=` for assignment.
+
+Operand::
+    a piece of data that is operated on by an operator.
+    Example: in the expression `2 + 3`, `+` is the operator, while `2` and `3` are the operands.
+
+Function::
+    a named, complex operation on data, often consisting of multiple statements.
+    See also: call, invoke, method, parameter, argument
+
+    * similar to math functions, but can have same output for different input
+    * method: a function that is associated with an object (see below)
+    * call: what you do when you use a function
+    ** caller: the code that calls a function
+    ** invoke: generally, a synonym; colloquially, sometimes functions are
+        "called" while methods are "invoked"
+    * pass: communicate value(s) between caller and function
+    * argument: a value passed into a function by the caller
+    * parameter: a representation of an argument, for use inside function
+    ** You can think of them as variables
+    * body: the "interior" of a function - the code that accomplishes the
+      complex operation; not available to the caller
+    * return value: the result of the function's operation, passed back to
+      the caller
+    * recursion: generally, when a function calls itself (but also: mutual
+      recursion)
+    ** Why: a problem can be solved by finding the solution to smaller
+        subsets of the problem; function calls itself with subset as arg(s)
+    * more in section on functions
+
+Object::
+    "theoretical" definition;;
+        any abstract entity that can be represented as data in the code.
+        Example: the phrase "functions are first-class objects" means that functions can be represented as data;
+        they can be assigned to variables, passed as function arguments, etc.
+    OOP definition;;
+        an instance of a class.
+        * holds data that represent state (member variables, fields)
+        * has methods that operate according to state (member functions)
+        * more in section on OOP
+
+Whitespace::
+    Characters that represent horizontal or vertical space
+    * Taken from typography
+    * In C-syntax languages, whitespace is a delimiter; extra whitespace is ignored
+    * Whitespace characters, and their literal equivalents (usually an escape sequence):
+    ** space: `' '`
+    ** newline: `'\n'`
+    ** carriage return: `'\r'`
+    ** horizontal tab: `'\t'`
+    ** vertical tab: `'\v'`
+    ** form feed: `'\f'`

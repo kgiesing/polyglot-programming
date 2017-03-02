@@ -1,0 +1,30 @@
+= Expressions, Statements, and Blocks
+
+== Expressions
+* Expression: any piece of code that will produce a result when executed
+    (could be a literal, the result of an operation, fn call, etc.)
+* Analogy: a "clause" or "sentence fragment"
+
+== Statements
+* Statement is a "line" of code that does something
+* Analogy: a "sentence"
+* Statements can contain multiple expressions
+* In C-style languages, statements are followed by a semicolon: `;`
+* If a statement results in a value, that value is usually ignored;
+  thus, statements usually have side effects (e.g. assignment, output)
+* Some languages (e.g. C#) place limits on what can be considered a statement, by the last operation
+** declaration statements (declare a variable/constant)
+** expression statements (store a value in a variable)
+** flow control statements (`if`, `while`, `for`) - see next sections
+** _not_ allowed: merely computing a value without storing it:
+        `counter + 1;`
+            - this results in an error in C# and a warning in everything else
+* Some people (who?) call statements "commands"
+
+== Statement Blocks
+* Syntax: `{ }`
+* Defines a separate block of code
+* Used in control structures, functions, etc.
+* In most languages, a block creates a separate scope
+** but not JavaScript - has function scope; see section on functions
+* Many languages allow stand-alone blocks

@@ -1,0 +1,97 @@
+= Preface
+
+== About the Book
+
+My intent is that this book will serve as:
+
+* An introduction to programming, for relative beginners, in languages that share their basic syntax with C.
+
+* A compare-and-contrast between how these languages accomplish the same task, for those who are familiar with one language (e.g. JavaScript) but not the others.
+
+* An introduction to the different programming paradigms and semantics that these languages support, e.g. procedural vs. object-oriented vs. functional.
+
+* A way to broaden my own knowledge.
+
+I will be releasing the book under an open license.
+For the moment, the license I have chosen is the
+http://creativecommons.org/licenses/by-nc/4.0/[Creative Commons Attribution-NonCommercial 4.0 International License].
+This way, it can be extensively quoted, remixed, and built upon by others, so long as they do not sell it.
+If the book turns out to be good enough, I'm hoping that it could also serve as teaching materials or a textbook for lower-level computer science courses.
+
+The main reason that I am writing this book is because I would love to have learned to program from a book like this.
+It would have saved me a lot of time when moving from one language to another.
+It also would have made it *much* easier to learn programming languages like Scheme, where both the syntax *and* semantics are fundamentally different than, say, C or Java.
+As far as I know, no book of this nature currently exists.
+
+== Languages Covered
+
+The languages covered in this book are:
+
+* C
+* C++
+* Java
+* JavaScript (ECMAScript)
+* PHP
+
+This is a book about basic programming and syntax, and is organized by programming topic.
+The emphasis of this book will be the core language syntax, and features that are common to all these languages.
+
+As such, there are a number of subjects that are not covered, even though they are commonly covered in books devoted to that specific language.
+
+=== The command line is the primary interface
+This book places a heavy focus on the *command line* as the interface to the program.
+
+For some of the languages covered (mainly JavaScript and PHP), interaction with the command line is somewhat rare.
+Nonetheless, I believe this is the best option.
+Part of the purpose of this book is to learn to do _the same task_ in different programming languages,
+and changing the tasks themselves because of the language is bad practice (to me, at least).
+
+This requirement dictates some installation and usage requirements.
+For example, I will be using Node.js as the environment for learning JavaScript.
+Details are covered in the preliminaries, under the Languages section.
+
+=== Not all language features are covered
+Because of this book's focus on common features and the command line, certain language features will not be covered at all:
+
+* GUI programming (e.g. Java Swing, Windows Forms)
+* HTML DOM manipulation
+* Database interaction
+* Web services (e.g. Node.js HTTP server)
+
+=== Most libraries are not covered
+
+The only libraries that are covered in this book are standard libraries (or packages) for each language.
+The main reason for this is because these libraries are very language-specific, and learning them is likely to be distracting for most readers.
+
+However, with most languages, it is not even possible to write a basic "Hello, world!" program without using a library
+(such as `cout` from the C++ `<iostream>` library).
+Because of this, standard libraries will be covered as necessary.
+Even then, the focus will be on core language features.
+
+=== Native data types *are* covered
+Each language has at least one data type that is native to itself, but not native in other languages.
+For example, there is no `struct` type in Java or JavaScript.
+Nonetheless, these data types will be covered in this book.
+
+One reason is pedagogical:
+the various data types are often language-specific solutions to the same problem,
+and it is useful to compare and contrast them.
+Another is practical:
+knowledge of native data types is fundamental to learning the language itself.
+
+== How this book is organized
+* "Bottom to top": least abstract to most abstract
+** "Abstract:" relative to the physical computer
+** "Abstract" is not necessarily "complex" (to humans)
+
+* Theory and code
+  1. General concepts - terminology, etc.
+  2. Syntax - common, then lang-specific
+  3. Advanced concepts
+*** Beginning programmers don't need to know to write code, but will need to learn eventually
+*** Put at the end, to be less confusing
+*** Often language-specific
+
+* Use of analogies
+** remember that they're only analogies; there to help clarify concepts
+** math (basic), cooking, everyday items (biased towards Americans...)

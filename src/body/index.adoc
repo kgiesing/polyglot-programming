@@ -1,0 +1,25 @@
+// The book's body matter (sections and chapters).
+
+// Push titles down one level.
+:leveloffset: 1
+
+include::preliminaries/index.adoc[]
+
+include::hardware_and_software/index.adoc[]
+
+include::comments/index.adoc[]
+
+include::data/index.adoc[]
+
+include::operators/index.adoc[]
+
+include::flow_control/index.adoc[]
+
+include::functions/index.adoc[]
+
+include::oop/index.adoc[]
+
+include::libraries/index.adoc[]
+
+// Return to normal title levels.
+:leveloffset: 0

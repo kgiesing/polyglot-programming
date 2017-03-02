@@ -1,0 +1,11 @@
+= Decomposition and abstraction
+
+- Decomposition: breaking a complex problem/system into smaller parts
+    (sometimes called "modules," but this is has a different meaning)
+    - creates structure
+    - self-contained
+    - promotes code re-use
+
+- Abstraction: suppressed details of implementation
+    - code is "black box:" takes inputs, responds with output, but how it
+      produces that output is immaterial (provided it's correct)

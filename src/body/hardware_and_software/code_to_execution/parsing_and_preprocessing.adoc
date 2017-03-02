@@ -1,0 +1,73 @@
+= Parsing and Preprocessing
+
+== Parsing
+* parsing: analyzing the source code
+* Done by anything that "recognizes" code: compiler, intepreter, some
+    syntax highlighters
+* Format and language used by parser has nothing to do with language of source code;
+    e.g. parser for Java can be written in C
+* Input is string of characters; result is syntax tree (usually), and symbol table
+** syntax tree: tree-like data structure, representing code's syntax in an abstract way
+
+Example: `2 + 3` is something like:
+// TODO Replace with an image
+
+            (operator +)
+           /            \
+      (literal 2)   (literal 3)
+
+*** If tree is more closely related to a specific language, it's called a "parse tree"
+*** Interpreted languages may use a simpler internal data structure, to improve performance
+
+** symbol table: a map of all the identifiers (names of vars, fns, classes, etc.) to what they represent
+
+=== Parsing Stages
+** Lexical analysis (scanning): characters -> tokens
+      e.g. "+" -> "addition" token
+*** Identifiers (names of vars, functions, consts, classes, etc.) placed
+        in symbol table
+
+** Syntactical analysis: tokens -> syntax tree (parse tree, AST)
+*** syntax errors are caught; semantic errors are not
+        e.g. "+ 2 3" won't be caught
+*** technically, this is the part that is really "parsing"
+
+** Semantic analysis: syntax tree -> semantically-correct syntax tree
+*** static semantic errors are caught
+*** type checking performed
+
+== Preprocessing
+* handled while parsing
+* lexical preprocessor: handled during lexical analysis (C/C++)
+* syntactic preprocessor: handled during later stages of parsing,
+    e.g. semantic analysis (Lisp family, XSLT, OCaml, etc.)
+
+=== preprocessor directives
+(mainly used in C/C++)
+
+* include other source files:
+[source, c]
+-----
+        #include "somefile.h"
+-----
+
+* text substitution macros:
+[source, c]
+-----
+        #define ARRAY_SIZE 100
+-----
+
+* conditional compilation (e.g. preventing multiple includes):
+[source, c]
+-----
+#ifndef MYLIB_H
+#define MYLIB_H
+//... Your code here
+#endif
+-----
+
+* pragma: compiler-specific directive
+[source, c]
+-----
+#pragma once; // common in Windows; prevents multiple includes
+-----

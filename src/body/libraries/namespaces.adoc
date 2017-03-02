@@ -1,0 +1,13 @@
+= Namespaces
+* Grouping of identifiers (names) under one, overarching identifier (name)
+* Purpose:
+** Reduce naming conflicts (scope)
+** Conceptual convenience
+** Effecient inclusion - include/require only what is needed
+** Information hiding (somewhat)
+** File system organization - each is its own file or sub-folder
+
+* What are the difference between namespaces and static classes?
+** You can't instantiate them
+** In compiled languages, they only define a scope, so the compiler can
+    optimize them away (they aren't in bytecode)
