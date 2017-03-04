@@ -1,0 +1,71 @@
+= Version Control Systems ##
+
+* A directed acyclical graph (DAG) in graph theory
+
+* include image here
+
+== Centralized vs. Distributed
+
+* Centralized: client-server approach
+** Single server acts as the *repository* (a.k.a. "repo") of source code
+** Each programmer's machine is a client
+** Centralized VCS's:
+*** CVS
+*** Subversion
+
+* Distributed: peer-to-peer approach
+** Each programmer's machine holds an entire copy of the repo
+** Distributed VCS's:
+*** Git
+**** GitHub
+**** Atlassian Bitbucket
+*** Mercurial
+
+== Repos and Local Copies
+
+* repository (aka "repo"): a location where the source code and its complete
+    revision history is held
+
+* local copy/working copy: the copy of the code on the user's machine
+** "working copy" may also refer to a local copy at a specific time
+
+* pull: to retrieve all revisions from a repo to a local copy
+
+* push: to submit all revisions from a local copy to a repo
+
+* clone vs. check out
+** clone: to initially create a local copy of a repo
+*** Term is usually used with distributed VCS's like Git; centralized
+            VCS's don't copy the revision history (just code)
+** check out: to update a local copy
+
+* commit: a set of revisions added to the repo at one time
+** Commits are done manually, not when files are changed on disk
+** Commits include messages, to explain what changes were made
+** For centralized VCS's, commits must be pushed when made; for distributed
+        VCS's, commits only affect the local copy of the repo until pushed
+
+== Branching and Merging
+
+* branch: a separate "track" of code; exists separately from other branches,
+    so that they can be revised separately, without conflicts
+** Example: a "main" branch for software that represents a released version,
+        and another branch for working on a specific feature
+
+* merge: to take the code from one branch, and include it into another branch
+** Most commonly, you merge a branch into the master branch (but not always)
+** merge vs. rebase (Git)
+
+== Further Reading
+*Note:* These books are all released under open licenses, such as the
+https://www.gnu.org/copyleft/gpl.html[GNU GPL]
+or a https://creativecommons.org[Creative Commons] license.
+See each link for details.
+
+* http://cvsbook.red-bean.com[Open Source Development with CVS]
+
+* http://svnbook.red-bean.com[Version Control with Subversion]
+
+* https://git-scm.com/book[Pro Git]
+
+* http://hgbook.red-bean.com[Mercurial: The Definitive Guide]
