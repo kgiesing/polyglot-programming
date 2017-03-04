@@ -1,12 +1,11 @@
 = Preface
 
 == About the Book
-
-My intent is that this book will serve as:
+My goal is that this book will serve as:
 
 * An introduction to programming, for relative beginners, in languages that share their basic syntax with C.
 
-* A compare-and-contrast between how these languages accomplish the same task, for those who are familiar with one language (e.g. JavaScript) but not the others.
+* A compare-and-contrast between how these languages accomplish the same task, for those who are familiar with one language but not the others.
 
 * An introduction to the different programming paradigms and semantics that these languages support, e.g. procedural vs. object-oriented vs. functional.
 
@@ -16,59 +15,129 @@ I will be releasing the book under an open license.
 For the moment, the license I have chosen is the
 http://creativecommons.org/licenses/by-nc/4.0/[Creative Commons Attribution-NonCommercial 4.0 International License].
 This way, it can be extensively quoted, remixed, and built upon by others, so long as they do not sell it.
-If the book turns out to be good enough, I'm hoping that it could also serve as teaching materials or a textbook for lower-level computer science courses.
+(I may change that license, but if I do, it will be to a _less_ restrictive license that allows commercial use.)
 
-The main reason that I am writing this book is because I would love to have learned to program from a book like this.
-It would have saved me a lot of time when moving from one language to another.
-It also would have made it *much* easier to learn programming languages like Scheme, where both the syntax *and* semantics are fundamentally different than, say, C or Java.
+If the book turns out to be good enough, I'm hoping that it could also serve as teaching material for lower-level computer science courses.
+And, if it turns out *not* to be good enough, I'm open to suggestions about improving it.
+
+The main reason that I am writing a book like this, is because I want to read a book like this.
+I would love to have learned to program from a book that covered many languages at once.
+It would have saved me a lot of time and confusion when moving from one language to another.
+It also would have made it *much* easier to learn programming languages like Scheme,
+where both the syntax *and* semantics are fundamentally different than, say, C or Java.
 As far as I know, no book of this nature currently exists.
 
-== Languages Covered
+== Who This Book Is For
+The intended audience includes anyone who is (still) learning to write code.
+Previous programming experience is _not_ assumed.
+Nonetheless, I think it will be equally valuable to those who have _some_ programming experience.
+For example, people who have learned some JavaScript while doing web design.
 
+This book does cover a lot of theory, but it is not the _formal_ theory learned in most university CS courses.
+Readers do _not_ need to know subjects like discrete mathematics, finite state machines, or Big O notation.
+These subjects are obviously important, but are too advanced for this book.
+Covering those subjects would only confuse readers (who will already find enough things to be confused about).
+
+I do assume some knowledge of _basic_ mathematics, such as algebra and trigonometry.
+But mathematics is only used in examples, or as analogies.
+For instance, I may use `sin` as an example of a function that calculates the trigonometric sine of a number.
+Obviously, this presumes that the reader knows what a "sine" is.
+(If not, it's easy enough to
+https://en.wikipedia.org/wiki/Trigonometric_functions#Sine.2C_cosine_and_tangent[look it up on Wikipedia].)
+
+== Languages Covered
 The languages covered in this book are:
 
 * C
 * C++
+* C#
 * Java
-* JavaScript (ECMAScript)
+* JavaScript (technically, ECMAScript)
 * PHP
 
+These languages were chosen according to two criteria:
+1. They share their basic syntax with the C language (they have a "C-style" syntax).
+2. They are widely used and in demand.
+
+You probably have questions about these criteria and why I chose them.
+
+The first question, and probably most obvious, is "what do you mean by 'C-style' syntax?"
+After all, no language shares its _entire_ syntax with C (if it did, it would be C).
+And there are plenty of languages not on this list that share _some_ syntax with C.
+
+For the purposes of this book, a "C-style" syntax has all of these attributes:
+* Extra whitespace is ignored.
+* Statements are distinct from expressions, and end with a semicolon.
+* Statement blocks are delimited by curly braces ("{" and "}"),
+    and not by indentation (a.k.a. "off-side rule"), or by explicitly ending them (with `end` or similar).
+* The language shares most of C's operators, and uses infix notation (not e.g. Hungarian notation).
+* Functions are called using C's syntax (the function name, followed by arguments enclosed in parentheses).
+
+This eliminates a huge swath of languages: Python, Ruby, Visual Basic, Lua, Lisp, assembly, XSLT, SQL, etc.
+Still, there are some that seem like they should make the cut but don't, such as Swift and Perl.
+This is because they are not widely used or in demand (right now).
+
+This leads to a second question: "how do you determine 'widely used and in demand'?"
+It's a good question, because the answer is often driven by opinion or bias.
+
+Here, "widely used and in demand" means that it has consistently been in the top 10 of rankings of popular languages.
+I use a couple widely-known rankings for this:
+* The http://www.tiobe.com/tiobe-index/[Tiobe Index]
+* The http://pypl.github.io/PYPL.html[PYPL PopularitY of Programming Language Index]
+
+I chose these because they show historical data, and not just current trends.
+Having said that, if a programming language does make it into the top 10 and stays there,
+I will probably add it to a later "edition" of the book.
+(And I would want to learn that language anyway.)
+
+I am also open to suggestions for any other ranking sites.
+
+[NOTE]
+=====
+Though the above languages are the only ones _covered_ in this book, they are not the only languages _mentioned._
+If appropriate, I will mention other programming languages to add context to a relevant topic.
+For instance, when discussing the difference between the terms "function" and "procedure,"
+I mention that they actually have a different syntax in Ada and Pascal.
+I do not assume any knowledge of either Ada or Pascal; I mention it merely to illustrate that there _is_ a difference.
+(And it's a good thing I don't assume this knowledge, since I don't have much of it myself.)
+=====
+
+== Topics Covered
 This is a book about basic programming and syntax, and is organized by programming topic.
 The emphasis of this book will be the core language syntax, and features that are common to all these languages.
 
-As such, there are a number of subjects that are not covered, even though they are commonly covered in books devoted to that specific language.
+As such, there are a number of subjects that are not covered,
+even though they are commonly covered in books devoted to that specific language.
 
 === The command line is the primary interface
 This book places a heavy focus on the *command line* as the interface to the program.
 
-For some of the languages covered (mainly JavaScript and PHP), interaction with the command line is somewhat rare.
-Nonetheless, I believe this is the best option.
+For some of the languages covered (mainly JavaScript and PHP), interaction with the command line is uncommon.
+Nonetheless, I believe focusing on the command line is the best option.
 Part of the purpose of this book is to learn to do _the same task_ in different programming languages,
 and changing the tasks themselves because of the language is bad practice (to me, at least).
 
-This requirement dictates some installation and usage requirements.
+The focus on the command line does influence how each language is installed and used.
 For example, I will be using Node.js as the environment for learning JavaScript.
 Details are covered in the preliminaries, under the Languages section.
 
 === Not all language features are covered
-Because of this book's focus on common features and the command line, certain language features will not be covered at all:
+Because of this book's focus on common features and the command line, certain language features will not be covered:
 
 * GUI programming (e.g. Java Swing, Windows Forms)
 * HTML DOM manipulation
 * Database interaction
 * Web services (e.g. Node.js HTTP server)
+* Asynchronous execution (threads, continuations, Promise objects, etc.)
 
-=== Most libraries are not covered
+Each of these topics deserves a book of their own.
 
-The only libraries that are covered in this book are standard libraries (or packages) for each language.
-The main reason for this is because these libraries are very language-specific, and learning them is likely to be distracting for most readers.
+However, these are still important topics, and are often the reason for choosing one language over another.
+(For example, most programmers will use JavaScript to manipulate the HTML DOM.)
+Though I will not _cover_ these topics, I will _mention_ them when appropriate.
+When I do, I will always provide sources for further reading.
 
-However, with most languages, it is not even possible to write a basic "Hello, world!" program without using a library
-(such as `cout` from the C++ `<iostream>` library).
-Because of this, standard libraries will be covered as necessary.
-Even then, the focus will be on core language features.
-
-=== Native data types *are* covered
+=== All native data types *are* covered
 Each language has at least one data type that is native to itself, but not native in other languages.
 For example, there is no `struct` type in Java or JavaScript.
 Nonetheless, these data types will be covered in this book.
@@ -79,19 +148,70 @@ and it is useful to compare and contrast them.
 Another is practical:
 knowledge of native data types is fundamental to learning the language itself.
 
+=== Libraries are only minimally covered
+Most programming language implementations ship with a standard set of libraries.
+In addition, there are many libraries that are commonly used, but are not shipped with the language implementation.
+(The http://www.boost.org/[Boost library for C++] is an example.)
+
+All of these libraries are very language-specific.
+The knowledge of one language's libraries usually does not translate well to other languages.
+Learning them is likely to be distracting for most readers.
+If I were to cover them all, it would run counter to the purpose of the book.
+(It would also increase the book's size by thousands of pages!)
+
+But there are exceptions to every rule, and libraries will be covered in certain circumstances:
+
+. When using a library is essential for a common task.
+    For example, with most languages, it is not even possible to write a basic "Hello, world!" program without using a library
+    (such as `cout` from the C++ `<iostream>` library).
+
+. When one language has a native feature that can only be achieved in others by using libraries.
+    Most of the time, this will involve the library equivalent of another language's native data type.
+    For example, PHP natively supports associative arrays (a.k.a. "hashes" or "dictionaries").
+    JavaScript can achieve the same semantics by using native objects, but the others do not have native support at all.
+    Instead, they use a library's collection class, like Java's `HashMap<String, String>`,
+    or `Dictionary<string, string>` in .NET.
+
+Even in those circumstances, libraries will be covered only to the extent necessary.
+Links and references will be provided for any reader who wants to dive into the deep end.
+
 == How this book is organized
-* "Bottom to top": least abstract to most abstract
-** "Abstract:" relative to the physical computer
-** "Abstract" is not necessarily "complex" (to humans)
+This book takes a "bottom to top" approach to learning programming.
+It starts with subjects that are the least abstract, and moves to the most abstract.
 
-* Theory and code
-  1. General concepts - terminology, etc.
-  2. Syntax - common, then lang-specific
-  3. Advanced concepts
-*** Beginning programmers don't need to know to write code, but will need to learn eventually
-*** Put at the end, to be less confusing
-*** Often language-specific
+In this context, "abstract" is relative to the representation of the program in _hardware._
+It does *not* mean "least complicated" to "most complicated."
+(As anyone who programs in assembly language can tell you,
+the hardware representation of a program is probably the most complicated thing to learn.)
 
-* Use of analogies
-** remember that they're only analogies; there to help clarify concepts
-** math (basic), cooking, everyday items (biased towards Americans...)
+When approaching a specific subject, I will introduce the theory first, and the syntax afterwards.
+In other words, I start with the "what," then move on to the "how."
+I personally find it much easier to learn this way, and I think I'm not alone.
+From what I've seen, starting with "how" merely teaches people to copy-and-paste code.
+
+When covering an overall topic (such as data types), I try to cover _all_ of that topic at once.
+This is probably a controversial decision, since most other programming books don't do this.
+Instead, they cover the basics of one topic (such as primitive data types) in one section,
+then cover more advanced subjects of the topic (such as generics) in a later section of the book.
+
+I completely understand why this is done in most books.
+There is a very real danger of oversaturating beginners with too much knowledge.
+By separating topics into "beginner" and "advanced" sections, they are attempting to lessen that danger.
+
+But, in my opinion, this won't work for a book like this.
+Part of the intended audience is people who have _some_ programming experience.
+In my experience, people like this often skip over entire chapters of those books.
+As a result, they never end up learning concepts that are vital for understanding later topics.
+(And when I say "people like this," I of course mean me.)
+
+Having said that, I try to start with the simplest concepts, and cover more advanced concepts later.
+I also try to separate the more advanced concepts into their own chapters.
+My intent is to make it easier to move those chapters around, or skip them entirely if desired.
+
+Of course, one person's "basic" is another person's "overwhelming."
+Like everyone else, I find it easier to understand the things I am interested in.
+This is obviously biased towards my point of view.
+
+So, I definitely will accept suggestions about this.
+If you find something confusing, or introduced to soon, or what have you,
+then please feel free to contact me.
