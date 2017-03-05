@@ -1,16 +1,6 @@
 = Operators
-* Tokens that represent operations on values (like math symbols)
+
 
 == Terminology and concepts
-* Arity: # of operands
-** unary, binary, or ternary (1, 2, or 3 respectively) - most are binary
-* Associativity (RTL vs. LTR)
-* Operator precedence
-* Operator overloading: same token may represent different operation, depending upon operand types
-** A variety of _ad hoc polymorphism_
-** in many C-style languages, "+" can mean either numeric addition,
-      or string concatenation (but not PHP)
-** C++ allows programmers to overload operators; others don't (the
-      overloading is part of the language specification)
 
 == Next: Operators by type

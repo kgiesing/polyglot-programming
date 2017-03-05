@@ -1,63 +1,20 @@
 = Computer hardware
 
 == Components
-* motherboard, SoC ("system on chip")
+
 
 === CPU
-* ALU: Arithmetic Logic Unit (aka Execution Unit, Processing Unit)
-** performs all computations
-** integer and floating-point computations are usually separate parts
-          of the ALU (or, perhapes, separate ALU's)
-** Modern processors have many ALU's, called "cores"
 
-* Control Unit: handles control flow
-
-* Register: one word of hardware memory in ALU, used to hold transitory data needed for computation
-** Electronically, are usually flip-flop circuits
-** Processor-specific; different architectures have different approaches
-** General-purpose registers: can hold any value (data or address);
-          meaning determined by program (not CPU)
-** Special-purpose registers: data has special meaning to CPU
-*** instruction pointer/program counter: address of next instruction to perform
-*** stack pointer: address of the start of stack memory (see below)
-*** others: segment (memory), control, program status (flag), interrupt
-**** highly architecture-dependent
-**** not handled by programmers (outside of ASM)
-
-* cache memory: small amount of memory stored directly on processor
-** used to hold instructions or data that are commonly used, so they won't have to be repeatedly copied from RAM
-** organized by levels: L1, L2, (sometimes) L3
-*** lower number mean less memory, but faster
 
 === RAM (random-access memory): volatile (erased after powered off)
-* when most CS people say "memory," they really mean "RAM";
-        most programmers won't have to worry about other kinds
+
 
 === I/O (Input/Output): keyboard, mouse, GPU, USB, network card, etc.
-* Including hard drives, CD/DVD/Blu-Ray, memory cards, and other varieties of persistent storage
+
 
 === Clock generator
-* synchronizes the system
-* square wave; at each edge, a new cycle of operations is performed
 
-=== Bus: handles data transfer between components
 
-== Representation of program
-* "program" is simply a set of electronic signals in memory
-** Often thought of as sequence of 1's and 0's - but this is an abstraction!
-        Really, it's +5V (high, "1") or 0V (low, "0"), +/-
-** Sequences of 1's and 0's are _binary numbers_ - see next section
+=== Bus
 
-* Machine instruction set: set of commands that a processor can run;
-    pre-defined by CPU manufacturer
-    (commands: "instruction codes" or "processor instructions")
-** very simple: math operations, compare, jump, move data to/from register.
-
-* Machine code: a binary representation of machine instructions and binary data
-
-* Assembly language (asm): a human-readable representation of machine code
-** also called "machine language"
-** binary information is represented by _mnemonic_
-*** machine instruction is represented by _opcode_
-
-// TODO: x86 machine instruction set in appendix?
+== Hardware representations of programs

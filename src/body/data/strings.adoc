@@ -1,36 +1,9 @@
 = STRINGS
-== lang. semantics
-* C/C++: null-terminated array of char elements ("C-string")
-* others (managed): immutable object
-** can still access as array, but can't assign to it
-** JavaScript, PHP: string LITERALS are also objects
-      `"Hello, world"[5]; // Comma`
-*** Also: Python, Ruby
+
+== String Semantics
 
 == Syntax
-* Double quotes: all interpret as multi-char string
-* single quotes:
-** C/C++/C#/Java: must be single char or escape sequence
-** PHP: single-quotes do not interpret escape sequences
-** JavaScript: no difference (convention is single quotes)
 
-== Escape sequences
-* Often used to represent control characters
-* Table:
-    https://en.wikipedia.org/wiki/Escape_sequences_in_C#Table_of_escape_sequences
+== Escape Sequences
 
-== String formatting
-* `printf` format:
-  https://en.wikipedia.org/wiki/Printf_format_string#Format_placeholder_specification
-
-* String interpolation: variables/expressions in string literals
-
-** PHP: `"` instead of `'`
-*** Only works with vars, not expressions
-
-** JavaScript ES6: ``${expression}``
-
-** C#:
-*** before 6.0: `String.format("{0}", <expression>)`
-*** after 6.0: `$"{<expression>}"`
-    https://msdn.microsoft.com/en-us/library/dn961160.aspx
+== String Formatting

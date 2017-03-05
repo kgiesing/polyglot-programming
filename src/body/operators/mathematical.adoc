@@ -1,3 +1,21 @@
 = Mathematical Operators
-* mathematical: `+, -, *, /, %, ++, --` (pre/post-fix)
-* pitfalls: string concatenation, type promotion
+
+== Addition
+
+== Subtraction
+
+== Integer promotion
+
+== Additive inverse
+
+== Increment
+
+== Decrement
+
+== Multiplication
+
+== Division
+
+=== Integer Division
+
+== Modulus

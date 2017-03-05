@@ -1,24 +1,7 @@
 = Comments for Automatic Documentation Generators
 
 == how it works
-* Documentation generator scans code for comments, outputs human-readable
-    documentation: HTML, Linux `man` files, etc.
-* Google Closure uses these comments for transpiling
 
-== brands:
-* Javadoc
-* Doxygen (NOTE: multiple syntaxes - "Javadoc" style is only one of many)
-* PHPDoc/phpDocumentor
-* JSdoc
-** Google Closure compiler
+== brands
 
-== common tags:
-* `@author`: author of code (usually file, could be block)
-* `@deprecated`: deprecated code
-    "deprecated" = code that is old, and discouraged, but still supported
-    (usually for backwards compatibility)
-* `@param`: param type/description
-* `@return`: return type/description
-* `@see`: "see also" link
-* `@throws`: if function/method/etc. throws error type
-* `@version`: version number
+== common tags

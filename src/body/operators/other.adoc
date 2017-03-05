@@ -3,59 +3,7 @@ This section covers operators that do not fit into the other categories.
 All of the operators in this section are language-specific.
 
 == PHP's Execution Operator
-operator: `\`` (backtick)
-
-* anything enclosed in backticks is executed as a shell command on the underlying OS
-* result of operator is the output of the shell command
-* dangerous! Handle with caution
-[source,php]
------
-// List directory contents on a POSIX system, save output to a variable
-$contents = `ls -al`;
------
 
 == PHP's Error Control Operator
-operator: `@` (unary)
-
-* when prepended to an expression, any error messages are ignored
-* "expression" must be an RHS (variable, constant, function call, `include` call, etc.)
-[source,php]
------
-// If the key 'bar' doesn't exist in $foo, a notice will NOT be issued
-$contents = @$foo['bar'];
------
 
 == The C/C++ `sizeof` Operator
-operator: `sizeof` (unary)
-
-The result of this operator is the size of the data type, in number of characters (`char` type).
-
-The operand may be a type name.
-If so, it must be enclosed in parentheses:
-[source,{cpp}]
------
-// This will always be 1
-sizeof (char);
-// On most systems, this will be 4
-sizeof (int);
------
-
-The operand may also be any primitive type, or variable that holds a primitive type:
-[source,{cpp}]
------
-int num = 4;
-// On most systems, these will be 4
-sizeof num;
-sizeof 5;
------
-
-The operand may also be an array.
-If so, the operator will return the total storage size:
-[source,{cpp}]
------
-char hello[] = "Hello, world!";
-// This will be 14 (13 letters + null terminator)
-sizeof hello;
-// But, since this is just the first letter, this will always be 1
-sizeof hello[0];
------

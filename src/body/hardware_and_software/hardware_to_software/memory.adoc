@@ -1,25 +1,9 @@
 = Process memory
 
-== static memory
-* essentially a copy of the executable file
-* usually, fills up lower part of memory; never grows/shrinks (hence the name)
-* shared among threads (not copied on thread creation)
-* parts ("segments"):
-** code (.text): executable instructions - read-only (OS enforced?)
-** read-only (.rodata): constants (e.g. PI) - read-only (duh)
-** initialized (non-null) data (.data): global var's
-** uninitialized data (.bss): global var's
+== Static memory
 
-== stack memory
-* automatically created/destroyed with fn call/return (fn's later)
-* usually, starts at end of allocated memory, "grows downwards"
-* easy to manage; only need to increase/decrease stack pointer
-* NOT shared among threads
 
-== heap memory (aka free store)
-* creation/destruction is not automatic
-* POSIX: starts just past static memory, "grows upwards"
-** Windows is more complicated; there can be multiple heaps
-        http://advancedwindowsdebugging.com/ch06.pdf
-* harder to manage
-* shared among threads
+== Stack memory
+
+
+== Heap memory

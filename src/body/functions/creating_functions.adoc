@@ -1,50 +1,13 @@
 = Creating your own functions
 
 == Declaration and definition
-declare: to signify that a name refers to a function
-define: to specify the implementation of that function
-
-- in most languages, these are done simultaneously
-- in C and C++, these are often done separately
-    Can be held in different files:
-    - declaration: `.h` (header) file
-    - definition: `.c` or `.cpp` file
 
 == Signatures and Overloading
-- functions may have the same name, in the same scope, if they have different signatures
-- only possible in strongly-typed languages
 
 === Function Signature
-Includes:
-    - name
-    - number of params
-    - type of params
-Does not include:
-    - return type
-    - param type modifiers (const, reference, etc.)
-    - body
 
 === Function Overloading
-When two functions have the same name in the same scope, the compiler or interpreter uses the function signature to determine which function to call.
-
-Here is an example:
-[source,{cpp}]
------
-print("Hello, world!"); // print called with string value
-print(5); // print called with integer value
------
-
-NOTE: There is a similar-sounding term, which applies to methods, called _method overriding._
-    The two terms are not the same, and should not be confused!
-    Method overriding will be covered in the section on object-oriented programming.
 
 === Argument Matching
-Arguments are matched according to these rules:
-- an exact match was found for the argument's type (e.g. `int` to `int`)
-- a match can be found by type promotion (e.g. `int` to `double`)
 
 == Nested Functions
-* PHP: functions can be defined inside other functions, but are always global in scope
-* JavaScript: functions are first-class objects
-* All other languages: functions can *not* be defined inside other functions
-* See section on function scope

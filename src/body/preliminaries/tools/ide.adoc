@@ -1,27 +1,3 @@
 = Integrated Development Environments
-Include all the features of a source code editor, plus:
-* One-click build and run of a project
-* Integrated command-line interface
-* Hierarchical view of classes, objects, methods, etc.
-* Wizards for creation of source code files
-* GUI code creation (for e.g. programming graphical interfaces)
-* Specialized for a particular language (either by design, or through "flavors")
-* Integration with VCS
 
 == Popular IDE's
-* Visual Studio (Microsoft, closed-source)
-** Xamarin Studio
-
-* Eclipse (cross-platform, open source)
-** Spring Tools Suite
-** Aptana
-** ADT (deprecated Android IDE)
-
-* IntelliJ IDEA
-** Android Studio
-
-* XCode (OS X, closed-source)
-
-* NetBeans (cross-platform, open source)
-
-* Cloud9 (cross-platform, NC-free)

@@ -1,119 +1,17 @@
 = Function Scope
-* local vars and params are not available outside function body
-* vars defined in calling function are not available inside function body
-* vars defined in enclosing scope ARE available inside function body
-    What is an enclosing scope? The scope in which the function is DEFINED.
-** Globals - vars/consts defined outside any other functions
-** If function is a member of a class: class variables
-** If function is part of a namespace: namespace variables
-** If function is defined within another function: vars
-        available in "parent" function
-*** Only C-style language that allows such definitions is JavaScript;
-          see section about functions as first-class objects
-** If a local variable is declared with the *same name* as a variable in the
-        enclosing scope, the local variable *shadows* the other variable
-*** Not possible in PHP, because variables aren't declared
-* Returning values from functions
-** `return` keyword: defines a return statement, which returns to the caller
-** if an expression follows the return keyword, the result of that expression
-    is returned to the caller
-** in explicitly typed languages, the result of the expression must match the
-    declared return type; or a type that can be implicitly converted
-*** void functions cannot return any type, so no expression can follow the
-        `return` keyword
-** in languages without explicit types, return value can be anything
-** `return` statement is optional
-*** if no value is returned, the function "returns" a null value
-        PHP: `NULL`; JavaScript: `undefined`
-*** In C-style languages, equivalent to `return;` at the end of the body
-*** In some other languages, the result of the _last expression in the body_ is returned;
-    the result of all other expressions are ignored
 
 == PHP and nested function scope
+
 === PHP functions can be defined within other functions
-[source, php]
------
-<?php
-function foo() {
-    // When called the bar function is defined
-    function bar() {
-        echo "Hello, world!";
-    }
-}
------
+
 === PHP functions always exist in global scope
-[source, php]
------
-<?php
-function foo() {
-    function bar() {
-        echo "Hello, world!";
-    }
-}
-// Error, since bar isn't defined yet
-bar();
-// Calling foo creates bar
-foo();
-// Now, bar can be called
-bar(); // echoes "I don't exist until foo() is called."
------
 
 === PHP nested functions *do not* have access to enclosing function's variables
-[source, php]
------
-<?php
-function average($a, $b) {
-    function divideBy($x) {
-        // This will not work, since $a and $b are not in global scope,
-        // and are not defined in divideBy's function body
-        return ($a + $b) / $x;
-    }
-    return divideBy(2);
-}
-// This will generate a warning, since $a and $b are not defined
-echo average(2,4); // Coerces $a and $b to zero, and echoes zero
------
 
 == JavaScript and nested function scope
 
 === JavaScript functions can be defined within other functions
-[source, javascript]
------
-// When foo() called, the bar() function is defined (but not called)
-function foo() {
-    function bar() {
-        echo "Hello, world!";
-    }
-}
------
 
 === JavaScript nested functions do not exist in global scope
-[source, javascript]
------
-function foo() {
-    function bar() {
-        echo "Hello, world!";
-    }
-}
-
-// Calling foo creates bar (but does nothing with it)
-foo();
-// This will always be an error, since bar is only visible in foo's scope
-bar();
------
 
 === JavaScript nested functions *do* have access to enclosing function's variables
-[source, javascript]
------
-function average(a, b) {
-    function divideBy(x) {
-        // This will work, since a and b are visible in average's scope
-        return (a + b) / x;
-    }
-    return divideBy(2);
-}
-
-average(2, 4); // 3
------
-
-For more information, see the section on Functional Programming.

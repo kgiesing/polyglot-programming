@@ -1,41 +1,11 @@
 = Null and void
 
 == Null references
-* `null` is reference type; signifies that nothing is referenced
-** Evaluates to false in Boolean expression
-** C/C++: `NULL` is macro (`#define`) for integer 0 - not type safe!
-** C++11: `nullptr`
-** C#/Java/JavaScript: `null` keyword
-** JavaScript: `undefined` keyword
-*** represents and undefined variable or object property
 
 == uninitialized variables
-* C/C++: garbage (whatever was previously in memory)
-* C#/Java: reference types are `null`, primitive types are "zero"
-* JavaScript: `undefined`
-** var's must be explicitly assigned the value null
 
 == the `void` type
-explicitly typed lang's: return type of fn that doesn't return value
 
 === pointers to `void`
-C: `void*`
 
-* pointer with no explicit type ("raw" pointer)
-
-* Uses:
-** returned from memory allocation functions (`malloc`, `calloc`)
-** may be used in compound types
-
-* must be cast to actual type when dereferenced:
-[source, c]
------
-char* str = (char*) malloc(LENGTH * sizeof(char));
------
-
-== others
-* JavaScript: `NaN`
-** unequal to anything else, including `NaN`
-
-* PHP: `NAN`
-** because it's a non-zero floating-point number, coerced to `TRUE`
+== Not a Number

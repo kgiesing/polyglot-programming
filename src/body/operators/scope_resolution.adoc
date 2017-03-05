@@ -1,55 +1,5 @@
 = Scope Resolution Operators
 
 == Member Resolution Operators
-The _member resolution operator_ signifies that an identifier refers to a member of an object.
-In this context, "member" can mean a field (member variable) or method (member function).
-
-"dot operator": `.`
-* Used by all languages except PHP (in PHP, this is string concatenation)
-* In C, used with `struct` type
-* In C/C++, cannot be used with pointers; must be dereferenced (but see below)
-
-"arrow operator": `->`
-
-* Used in C/C++ with pointers; syntactic sugar for "dereference and resolve"
-[source, {cpp}]
------
-MyObject* obj = new MyObject();
-// Without the arrow operator
-(*obj).myMethod();
-// With the arrow operator
-obj->myMethod();
------
-
-* Used in PHP as object resolution operator
 
 == Namespace Resolution
-In this section, a namespace refers to an _explicitly declared_ namespace.
-Explicit declarations of namespaces are not supported by all languages.
-We will go into detail later in the book, when we cover declaring our own namespaces.
-
-C++: `::`
-[source, {cpp}]
------
-#include <iostream>
-int main()
-{
-    // Signify that "cout" is from the "std" namespace
-    std::cout << "Hello World!";
-}
------
-NOTE: C++ also uses the namespace resolution operator when defining a method (class member function).
-    We will cover this when we talk about creating classes in the section on Object-Oriented Programming.
-
-Java,  C#: `.`
-* In Java, namespaces are called _packages._
-
-PHP: `\`
-
-C doesn't have explicitly declared namespaces.
-
-JavaScript doesn't have explicitly declared namespaces either.
-In versions prior to ES6, a workaround was to use a named object as a namespace.
-In this case, the "dot operator" (`.`) is used as if it were a namespace resolution operator.
-ES6 added modules to the JavaScript syntax.
-However, modules are also named objects, so they also use the "dot operator."

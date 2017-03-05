@@ -1,42 +1,6 @@
 = Principles
 
 == Terminology
-encapsulation::
-    related data and functions are grouped together into one data structure
-information hiding::
-    data in an object may not be available to client code
-    * fields and methods have object scope, not function or global scope
-    * strongly related to encapsulation, but encapsulated info may not
-      necessarily be hidden (C/C++ struct, JavaScript object)
-inheritance:: an object or type may reuse the behavior of another object or type (it inherits the behavior)
-polymorphism:: object of a subtype can be used as if it were an object of its supertype
-** subclass polymorphism is technical term (but most people mean this);
-      occasionally called "inclusion polymorphism"
-** not the same as inheritance; inheritance is necessary for polymorphism,
-      but the reverse is not true
+
 
 === Other terms
-class:: a kind of "blueprint" for creating an object
-** a class defines a data type
-instance:: an object that is created and resides in memory; usually an object
-    of a class type (e.g. "an instance of the String class")
-member:: general term for any data or functionality that is associated with a
-    class or object, and can be referred to by name
-field:: a variable that is a member of an object or class
-** other terms: member variable (C++), attribute
-** if a field is specific to an instance, it is called an instance variable;
-    if it is shared among all instances, it is called a class variable
-    (most fields are instance variables)
-method:: a function that is a member of an object or class
-** other terms: member function (C++), message (Objective-C)
-** Accessor and mutator methods
-*** accessor ("getter"): a method that returns the value of a field;
-              usually does not take any arguments
-*** mutator ("setter"): a method that assigns a value to a field;
-              usually returns nothing (void)
-*** used when fields aren't directly accessible (see below)
-property:: two different meanings
-    1. an object member that is accessed like a field, syntactically;
-       but "behind the scenes," these are getter/setter calls
-       ** supporting languages: C#, PHP
-    2. JavaScript: any member of an object

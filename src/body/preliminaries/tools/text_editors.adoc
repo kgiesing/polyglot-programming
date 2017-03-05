@@ -1,22 +1,5 @@
 = Text Editors
 
 == "Vanilla" text editors (usually bundled with OS)
-* Notepad (Windows)
-* TextEdit (OSX)
-* vi/vim (Linux) - can be specialized
 
 == Source code editors
-* More features:
-** Syntax highlighting
-** Automatic indentation
-** Code auto-completion
-** "Code folding" - ability to show/hide blocks of code at a time
-** Extensible, by plugins or scripts
-* Popular source code editors
-** Notepad++ (Windows; proprietary)
-** SublimeText (OSX, started porting to other OS's; proprietary)
-** Atom (cross-platform, open source)
-** GNU Emacs (Linux, ported to other OS's; open source)
-*** Note: Emacs is not a source code editor out of the box, and must
-    be customized; but it is highly customizable, and many
-    programmers use it for source code

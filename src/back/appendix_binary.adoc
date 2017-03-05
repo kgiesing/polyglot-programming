@@ -189,8 +189,6 @@ For humans, it is probably the easiest way to do binary subtraction.
 
 ==== Subtraction and Boolean Operations
 
-
-
 === Multiplication
 
 === Division

@@ -1,14 +1,6 @@
 = Functions and memory
 
 == Functions as imperative language constructs
-* Function declaration; function signature
-* Function compiled as code; calling location is address in program itself
+
 
 == Functions and stack memory
-* Params/local vars are located in stack memory
-* Stack frame: data that is created when fn is called - creates context
-    (Note: OS's have different implementations)
-** argument values (parameters)
-** instruction pointer (location of caller)
-** local vars
-** space for return val can be part of stack frame, but often it is a register (OS dependent)

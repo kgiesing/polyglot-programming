@@ -1,11 +1,1 @@
 = Bitwise Operators
-operators: `&`, `|`, `^`, `~`, `<<`, `>>`, `>>>` (Java, JavaScript)
-* Operate on the bits of binary numbers
-
-* Operands must be "integer" type: `int`, `char`; `number`
-** Issue: negative integers - remember 2's compliment!
-** Issue, weakly-typed languages: non-integer operands
-
-* May have compound assignment
-
-// TODO: Section on binary arithmetic here?

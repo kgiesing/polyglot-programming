@@ -1,12 +1,4 @@
 = Modules
-(mainly JavaScript)
 
-* Modules, unlike packages or namespaces, are objects in memory
 
 == JavaScript modules
-* JavaScript standards
-** CommonJS: used by Node.js
-** AMD: used by client-side libs
-** ES6 (Harmony): variation on AMD
-
-* Module Pattern

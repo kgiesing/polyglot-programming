@@ -1,14 +1,1 @@
 = Interpretation
-* Interpreter: takes code as input, parses and executes it
-** Interpreter acts as environment for code execution; e.g. memory management
-
-* Code is executed "on the fly"
-** As soon as a statement is parsed, that statement is executed
-
-* Advantages and disadvantages
-** Advantages: cross-platform, easier development, managed environment,
-      may be very high-level/programmer-friendly
-** Disadvantages: runtime validation, slower, overhead, must distribute
-      source code
-
-* Languages: JavaScript, PHP
