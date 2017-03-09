@@ -8,7 +8,7 @@ Karl Giesing <khzmusik@hotmail.com>
 :cpp: {basebackend@docbook:c++:cpp}
 
 // Push titles down one level.
-:leveloffset: 1
+:leveloffset: +1
 
 include::front/index.adoc[]
 
@@ -17,4 +17,4 @@ include::body/index.adoc[]
 include::back/index.adoc[]
 
 // Return to normal title levels.
-:leveloffset: 0
+:leveloffset: -1

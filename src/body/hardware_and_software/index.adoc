@@ -3,11 +3,11 @@
 include::intro.adoc[]
 
 // Push titles down one level.
-:leveloffset: 1
+:leveloffset: +1
 
 include::hardware_to_software/index.adoc[]
 
 include::code_to_execution/index.adoc[]
 
 // Return to normal title levels.
-:leveloffset: 0
+:leveloffset: -1
