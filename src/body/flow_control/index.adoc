@@ -1,7 +1,7 @@
 // Flow control
 
 // Push titles down one level.
-:leveloffset: 1
+:leveloffset: +1
 
 include::intro.adoc[]
 
@@ -14,4 +14,4 @@ include::selection.adoc[]
 include::iteration.adoc[]
 
 // Return to normal title levels.
-:leveloffset: 0
+:leveloffset: -1

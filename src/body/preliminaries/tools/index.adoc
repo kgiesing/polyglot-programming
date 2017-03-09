@@ -3,7 +3,7 @@
 include::intro.adoc[]
 
 // Push titles down one level.
-:leveloffset: 1
+:leveloffset: +1
 
 include::text_editors.adoc[]
 
@@ -14,4 +14,4 @@ include::vcs.adoc[]
 // TODO Build tools here...? Probably not.
 
 // Return to normal title levels.
-:leveloffset: 0
+:leveloffset: -1

@@ -3,7 +3,7 @@
 include::intro.adoc[]
 
 // Push titles down one level.
-:leveloffset: 1
+:leveloffset: +1
 
 include::namespaces.adoc[]
 
@@ -12,4 +12,4 @@ include::packages.adoc[]
 include::modules.adoc[]
 
 // Return to normal title levels.
-:leveloffset: 0
+:leveloffset: -1

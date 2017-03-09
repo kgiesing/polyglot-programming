@@ -3,7 +3,7 @@
 include::intro.adoc[]
 
 // Push titles down one level.
-:leveloffset: 1
+:leveloffset: +1
 
 include::c.adoc[]
 
@@ -18,4 +18,4 @@ include::javascript.adoc[]
 include::php.adoc[]
 
 // Return to normal title levels.
-:leveloffset: 0
+:leveloffset: -1
