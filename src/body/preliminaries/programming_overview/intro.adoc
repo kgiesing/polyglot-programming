@@ -1,1 +1,12 @@
 = An overview of programming
+
+This section provides a general overview of programming and programming languages.
+
+In order to learn how to program, we need to answer several questions.
+What are computers and programs?
+What is a programming language, and how is it used?
+What are the differences between programming languages?
+
+This section also includes information on the specific programming languages covered in this book.
+It will cover their common use cases, how to install them on your computer,
+and include a simple "Hello, world!" program.

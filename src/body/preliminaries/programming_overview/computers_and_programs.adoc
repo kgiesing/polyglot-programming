@@ -1,0 +1,158 @@
+= Computers and Programs
+
+A _computer_ is a machine that can be instructed to perform operations on data.
+The computer accepts data as input, processes data using instructions, and sends the processed data to output.
+
+A _program_ is the set of instructions given to a computer.
+The computer uses those instructions to operate on its data.
+When the computer does this, it is _executing_ or _running_ the program.
+
+Keep in mind that "input" and "output" are intentionally abstract concepts.
+Anything that provides data can be considered an input,
+and anything that accepts data can be considered an output.
+
+When most people say "computer," they are talking about a _digital computer._
+Digital computers process data as _discrete_ values.
+There are also _analog computers,_ which process data as _continuous_ values.
+But digital computers are far, far more common.
+
+Digital computers use only two discrete values: "on" or "off."
+Electronically, these discrete values are represented by voltage thresholds.
+For example, the range of +3 volts to +5 volts is considered "on,"
+and the range of -3 volts to -5 volts is considered "off."
+
+Numerically, humans represent "on" or "off" as _bits._
+The term "bit" is a shortened form of "binary digit," meaning a digit in the binary numeral system.
+The digit `1` corresponds to "on," while `0` corresponds to "off."
+
+This may seem limited, but in fact it makes digital computers very powerful.
+It means _anything that can be represented by a number_ can be used as data.
+This can include nearly everything, from the running speed of an antelope, to the number of stripes on a zebra.
+
+== Single-purpose vs. general-purpose computers
+A _single-purpose_ computer has one program, and can only run that program.
+Single-purpose computers are also called _fixed-program_ computers.
+These computers give up versatility in favor of simplicity.
+This usually means that they can be smaller, more efficient, and cost less money to produce.
+Examples of single-purpose computers are the ones inside pocket calculators or digital watches.
+
+A _general-purpose_ computer can take a program as input data.
+General-purpose computers are also called _stored program_ computers.
+When most people think of a computer, they are thinking of a general-purpose computer.
+They are nearly everywhere:
+PC's, smart phones, Web servers, and video game consoles are all built upon general-purpose computers.
+It is now common for devices to have general-purpose computers embedded inside of them;
+these devices can be anything from printers to thermostats.
+
+Even aside from their versatility, general-purpose computers have a major advantage over single-purpose computers.
+Because they take programs as input data, those programs can be distributed separately from the computer itself.
+
+== Hardware and Software
+
+Computer _hardware_ consists of the parts of a computer that exist as physical objects.
+It includes everything from the silicon in its chips, to the plastic in its case.
+
+*****
+In fact, it is not necessary for computers to have hardware.
+For example, a surprising number of people have built so-called
+http://minecraft.gamepedia.com/Tutorials/Redstone_computers[Redstone computers].
+These are fully-functional computers that are built entirely inside the game Minecraft.
+*****
+
+Computer _software_ consists of the program, or set of programs, distributed separately from the hardware.
+
+The term "software" is an umbrella term, and as such, it can be kind of vague.
+Many people use the term "software" and "program" interchangeably.
+But many other people include things that are not programs at all.
+
+For example, all of these things could be considered a part of computer software:
+
+* Assets such as images, audio, or video files
+* Configuration files
+* Instruction manuals
+
+But no matter what, the term "software" does _not_ include computer hardware.
+
+== What Programs Do
+
+Recall that a program represents all the instructions that a computer must perform.
+These instructions include both data, and the operations on that data.
+
+The program usually does not just represent the data itself, but also _metadata._
+Metadata is "data about data," and includes things like the data's type (e.g. number vs. letter) or location in memory.
+If you think of data as "nouns," you could think of medatata as "adjectives."
+
+Of course, a program must also represent operations on that data.
+In our grammar analogy, these operations would be "verbs."
+
+When operating on data, a program follows an _algorithm._
+An algorithm is a sequence of instructions that perform a specific task.
+
+You can think of an algorithm like a recipe in a cookbook.
+Let's say you want to bake a cake for someone's birthday.
+In this analogy, you are the computer, and the cookbook is the program.
+The algorithm would be all the steps in the recipe that transform the ingredients (input data) into the cake (output data).
+// TODO: There's gotta be a "cake is a lie" joke in here somewhere
+
+But an algorithm can be much more complicated than a cake recipe.
+With an algorithm, the sequence of instructions does not _necessarily_ have to be executed in order.
+An algorithm can also contain _flow control_ instructions.
+These are instructions to make a decision, and perform different instructions according to that decision.
+Instructions can be skipped or repeated as necessary, so long as the desired output is produced.
+Most algorithms must also contain a _terminating instruction._
+Reaching this instruction means the desired output has been produced, and the algorithm's work is complete.
+
+== Programming languages
+
+A _programming language_ is a human-comprehensible language that is used to create executable programs for a computer.
+
+The first thing to consider is that a programming language is comprehensible to humans.
+Remember that, to a computer, a program is just a set of voltages.
+Humans represent these voltages as binary numbers, but even that is far too abstract for most humans to understand.
+A programming language bridges the gap between human comprehension and machine execution.
+
+Of course, just because a language is _able_ to be comprehended, doesn't mean it's _easy_ to be comprehended.
+Programming languages are "languages" in the same way that music notation or mathematical equations are "languages."
+Humans' natural languages are unsuitable when you need to avoid ambiguity and contradictions.
+This applies to computers just as much, if not more, than it applies to music or math.
+
+Even so, the basic point of a programming language is to be used by humans.
+As long as the language is unambiguous, anything goes.
+This means that programming languages have evolved and changed over time.
+New programming languages are created often according to the needs and desires of their users.
+At the time of this writing, there are hundreds of programming languages.
+Within the lifespan of most readers, that number will probably rise to thousands.
+
+The second thing to consider is that a programming language is used to create _executable programs._
+Not all computer languages do this.
+
+For example, these kinds of computer languages are not programming languages:
+* _markup_ languages, such as Markdown, AsciiDoc, or HTML
+* _style sheet_ languages, such as CSS
+* _data modeling_ languages, such as JSON or YAML
+
+By saying these are not _programming_ languages, I am not being derogatory.
+All of these languages are just as important as any programming language.
+They just serve a different purpose.
+
+=== Language syntax vs. semantics
+
+Syntax:: determines what constitutes a well-formed string in a specific programming language
+    Example: infix - `2 + 3` is syntactically correct; `+ 2 3` is not
+
+Semantics:: deals with the meaning of programming languages; how the syntax is interpreted in an abstract sense
+    originates with advanced theories of computation; won't cover that +
+    (theories largely due to Robert W. Floyd, 1936 - 2001)
+
+    Static semantics;;
+        whether a well-formed string has meaning +
+        Example: `2 + '5'` may be syntactically correct, but what is the result?
+          .. `'25'` (2 converted to char)
+          .. `7` ('5' converted to number)
+          .. `55` (2 + ASCII value of '5')
+          .. Nothing; `+` requires numbers on both sides, so it's semantically incorrect
+
+    Language semantics;;
+        what the meaning of a semantically correct string actually is +
+        In above example, language semantics would choose between a, b, and
+          c; d cannot be part of language semantics (since it's incorrect)

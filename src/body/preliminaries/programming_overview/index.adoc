@@ -5,7 +5,7 @@ include::intro.adoc[]
 // Push titles down one level.
 :leveloffset: +1
 
-include::what_is_programming.adoc[]
+include::computers_and_programs.adoc[]
 
 include::c_family_syntax.adoc[]
 
