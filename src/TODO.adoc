@@ -1,0 +1,34 @@
+= TODO List
+This is a list of all the things that are still to do.
+
+Most of this list consists of topics that aren't yet part of the outline.
+It is here to remind myself to incorporate these changes later.
+
+Some of this list consist of topics that may or may not be covered in the book.
+
+NOTE: This is not part of the book.
+    If "remixing" this book, do not include it in any index file.
+
+== OOP
+* Composition (vs. inheritance)
+** see also Dependency Injection in OOP Design Philosopies
+* Design Philosopies
+** S.O.L.I.D. (via Robert "Uncle Bob" Martin)
+*** Dependency Injection/IoC
+*** High Cohesion/Low Coupling (from GRASP)
+** DRY
+** KISS
+** YAGNI
+
+== Maybe
+* Other class/object relationships
+** Mixins
+** Aspect-Oriented Programming (AOP)
+* Asynchronous programming
+** Event-based, with callbacks/anon. objects
+** Continuations/futures/Promises
+* Details of build tools: Make, Maven, Gradle, Grunt, whatever
+* Basic Design Patterns
+** Factories
+** Decorators
+** Singletons
