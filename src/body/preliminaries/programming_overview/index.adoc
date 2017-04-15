@@ -7,7 +7,7 @@ include::intro.adoc[]
 
 include::computers_and_programs.adoc[]
 
-include::c_family_syntax.adoc[]
+include::c_style_syntax.adoc[]
 
 include::paradigms.adoc[]
 

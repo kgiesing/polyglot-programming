@@ -1,99 +1,367 @@
 = Programming paradigms
-A _programming paradigm_ is a way to classify programming languages according to their style and semantics.
+
+A _programming paradigm_ is a way to classify programming languages according to their programming style.
+A programming paradigm is concerned with programming's underlying concepts or principles,
+and not with a programming language's syntax or static semantics.
+These classifications allow programmers to talk about language features in a broad and abstract way.
+
+There are multiple programming paradigms, and they are not mutually exclusive.
+Most programming languages support more than one paradigm, including most C-style languages.
+
+Moreover, programming paradigms are not always concerned with the same concepts.
+Some paradigms are concerned with the execution model (how code gets translated and executed).
+Others are concerned with how the language represents abstract data.
+Each of these "families" of paradigms are distinct, but inter-related.
+
+This can get fairly confusing, especially to beginners.
+Nonetheless, programmers should have a general knowledge of them.
+This is especially true when programmers are learning multiple languages.
+
+Fortunately, there are a few different programming paradigms that are historically well-defined.
+Things should become a lot less confusing just by talking about the paradigms themselves.
 
 == Imperative vs. declarative programming
 
 // TODO Is this too much or too confusing?
-Originates from theory of knowledge.
-_Declarative knowledge_ involves statements of facts about the world.
-Includes axioms, definitions, etc.
-Example from math is the definition of a square root:
 
-asciimath:[sqrt(x) = y | y^2 = x]
+[WARNING]
+=====
+This is a tricky subject to talk about.
+Nobody in the programming world seems to agree about what "declarative" actually means.
+See <<Harper1>>, <<Harper2>>, and <<foldoc>>.
+For the definitions as most people understad them, see <<McGinnis>>, <<Kashivskyy>>, <<StackOverflow>>, or <<Wikipedia>>.
+For more rigorous theoretical definitions (which sometimes contradict each other), see
+<<Coenen>>, <<Torgersson>>, <<Barbour>>, and <<MooreIII>>.
+Related to <<MSDN>>.
+=====
 
-_Imperative knowledge_ involves descriptions of how to do something (i.e. how to obtain declarative knowledge).
-In computer science, imperative knowledge is
-Example from math is the algorithm to find a square root, `y`, of `x`:
+One way to discuss programming styles is by dividing them into imperative or declarative styles.
 
-1. Guess a square root, `G`
-2. If asciimath:[G^2 ~~ x] then asciimath:[y = G] and stop
-3. asciimath:[G = (G + x/G)/2]
-4. Go to 2.
+In the _imperative_ style, the code consists of an explicit sequence of steps, which alter the program's state.
+When you program in the imperative style, you are concerned with _how_ a program accomplishes a task.
+The imperative style duplicates an algorithm's process in the code itself.
 
+In the _declarative_ style, the code is a set of declarations about what a program should do.
+When you program in the declarative style, you are concerned with _what_ a program should do to accomplish a task.
+How it actually does this "behind the scenes" is not determined by the programmer.
+Programming in the declarative style adds a layer of abstraction on top of an algorithm,
+and the layer below this abstraction is usually not available to the programmer.
 
-imperative::
-    program is an explicit sequence of steps that alter state
+A non-programming analogy will probably help.
+Let's say you are leaving a bar, and getting in a cab to get home.
+In this analogy, the "program" is the set of directions to the cab driver.
 
-* focuses on the "how" of algorithms
-* imperative process is the basis for algorithms
-* majority of programming languages are imperative
+If you are using the imperative style, your directions would be something like this:
+....
+Go East on Bar Street until you reach Main Street.
+Take a right onto Main Street.
+Follow Main Street until you reach Foo Street.
+Take a left onto Foo Street.
+Stop in front of 123 Foo Street.
+....
 
-declarative::
-    program is a sequence of declarations about what the program should do
+This style has a number of advantages.
+It is explicit, so there is no chance that the cab driver will take the wrong route.
+You also determine the route itself, so you know exactly how efficient it is;
+you know the route's distance, what the traffic is usually like, and so forth.
 
-* focuses on the "what" of algorithms; "how" is handled by language semantics, and program state is not managed directly
-* control flow is secondary or even absent altogether
-* based on "declarative knowledge" - statements about the world that are true or false (i.e. "5 is a prime number")
-* adds a layer of abstraction; often based on formal logic
+But these advantages can also be disadvantages.
+There may be a better route that you don't know about, but the cab driver does.
+The cab driver may have other information that you don't, like the fact that there was an accident on Main Street.
+Moreover, if you are in an unfamiliar part of town, you may not even know the exact directions.
 
-Example:
-You are given a list of numbers (`n`), and you want to sum them.
+On the other hand, if you are using the declarative style, your directions would be:
+....
+Take me to 123 Foo Street.
+....
 
-Pseudocode:
-* upper-case words are are part of the programming language
-* lower-case words are programmer-defined variables
-* parentheses are used for grouping (for readability)
-* `RESULT:` ends the execution and gives the right-hand-side as result
+By using this style, you are placing your trust in the cab driver to do the right thing.
+You are expecting the driver to be knowledgeable (and honest) enough to find the best route on their own.
 
-Imperative:
+But the advantage is obvious: these directions are a lot simpler, at least from your point of view.
+You don't have to worry about things like traffic lights or one-way streets.
+In fact, you don't even need to know how to drive at all.
+
+So, how does this translate into programming?
+Again, it is probably easier to just show you an example.
+
+At this point in the book, you haven't actually learned any programming language syntax.
+So, I will give this example in _pseudocode._
+Pseudocode is not actual code; it is just something that "looks like" code.
+It is used to discuss algorithms and programs in a way that is language-independent.
+There is no standard for pseudocode, and everyone is free to use anything that gets the point across.
+
+In this example, I have chosen pseudocode that looks nothing at all like the C syntax.
+This is so that I do not inadvertently confuse you when the real syntax is introduced.
+It is designed to be readable to any English speakers (I hope).
+
+In the example below, words in CAPS are part of the programming language syntax.
+Words that are lowercase are defined by the programmer.
+Parentheses are used for grouping, similar to their use in math equations.
+
+For this example, we want to find the average of a list of numbers.
+As input, we are given the list of numbers, `n`.
+As output, we expect the sum of all of the numbers in the list, divided by the length of the list.
+
+Here is how we could write this program in the imperative style:
 ----
-LET sum EQUAL 0
-LET len EQUAL (LENGTH-OF n)
-LET i EQUAL 0
-WHILE i IS-LESS-THAN len:
-    LET sum EQUAL sum PLUS (VALUE-OF n AT-POSITION i)
-    LET i EQUAL i PLUS 1
-RESULT: sum
+INPUT-> n
+SET sum TO 0
+SET length TO (COUNT n)
+SET i TO 0
+LOCATION loop-start
+IF (i EQUALS length) (GOTO loop-end)
+SET sum TO (sum PLUS (VALUE-OF n AT-POSITION i))
+SET i TO (i PLUS 1)
+GOTO loop-start
+LOCATION loop-end
+SET sum TO (sum DIVIDED-BY length)
+OUTPUT<- sum
 ----
 
-Declarative:
+Notice that this code has a number of characteristics.
+
+. It explicitly defines the algorithm as a series of ordered steps.
+. It sets _variables_ that change the _program state_ (`sum`, `length`, and `i`).
+. The order of execution is important;
+    `SET sum TO (sum MULTIPLIED-BY 2)` *must* come after the `WHILE` loop.
+
+Here is how we could write this program in the declarative style:
 ----
-RESULT: (WITH-EACH-VALUE-OF n
-    ACCUMULATE (CURRENT-VALUE-OF n)
-    USING-OPERATION (PLUS))
+INPUT-> n
+OUTPUT<- (ACCUMULATE n USING (PLUS)) DIVIDED-BY (COUNT n)
 ----
 
-== Common programming paradigms
+The `ACCUMULATE` command, above, is performing a _list accumulation._
+This takes a list of values, and reduces it into a single value,
+using some operation (or set of operations) on each item in the list.
+In our example, the operation used is `PLUS`.
 
-=== Procedural
-* Program is a sequence of function calls, which may alter global state
-* Imperative
-* Languages: C, PHP 4
+This code does not have the same characteristics as the imperative style.
 
-=== Object-oriented programming (OOP)
-* Program is a collection of objects, each with their own state, that
-        interact with each other
-* Imperative
-* Languages: C++, C=, Java, JavaScript, PHP 5
+. It does not explicitly implement the algorithm; it specifies what the algorithm is supposed to do.
+. It does not set any variables, or directly alter the program state.
+. The order of execution does not need to be specified.
+    It does not matter if `ACCUMULATE` is executed before `LENGTH-OF`, or afterwards,
+    so long as both are executed before `DIVIDED-BY`.
 
-=== Functional
-Note: need to read section on functions to truly understand this
-* Has roots in Church's Lambda Calculus, a formal system in math. logic;
-first functional language was Lisp (by John McCarthey, 1958-1960)
-* Declarative
-* Common features:
-* Focus on immutable data, lack of program state
-** Functions are pure functions (to the degree possible)
-** vars discouraged; "mutation" is achieved by passing the result of fn call (e.g. "add") to another fn as arg.
-* Uses tail recursion instead of iteration
-* Functions are first-class objects: may be assigned to vars, passed
-  to other fn's, returned from other fn's
-* Function passing and returning allows:
-** Closures
-** Function currying/partial application (not quite the same)
-** Delayed evaluation/continuations
-  These will be briefly discussed in section on functions.
-* Languages: Lisp family (incl. Scheme), Haskell, XSLT
-* None of the C-syntax languages are purely functional,
-    but JavaScript can implement most of these features;
-    others can achieve similar features with different implementations
+This code is much shorter than the imperative code.
+It is also much easier to read and understand - _if_ you know what "accumulate" means.
+
+Of course, that's a big "if."
+Reducing a list of values to a single value is a very common task, both in programming and mathematics.
+But it also goes by a number of different names:
+"accumulate," "reduce," "inject," "fold," and others.
+You have to know which one a particular language is using.
+
+Furthermore, the language itself must support list accumulation.
+If it doesn't, you must either write the code that performs a list accumulation,
+use library written by someone else,
+or find a way to do without list accumulation altogether.
+
+=== Declarative Programming Languages
+So far, we have been talking about imperative and declarative as different _styles of programming._
+We can also talk about imperative and declarative _programming languages._
+When we do this, we are discussing whether the programming language supports that paradigm at all.
+
+Most programming languages are primarily imperative, but also support _some_ declarative statements.
+This includes all of the C-syntax languages covered in this book.
+
+So, when people discuss this distinction at the language level,
+they are usually concerned with _declarative languages._
+These are computer languages that do not support the imperative style at all.
+In these languages, it is not even possible to directly manipulate the program state,
+or explicitly declare the order of operations.
+
+Computer languages which are not programming languages are almost always declarative languages.
+When a declarative language is also a programming language, it is _often_ a domain-specific language.
+But this is not always the case, and there are several general-purpose languages that are also declarative.
+
+== Structured Programming
+
+The earliest computer languages were little more than a translation of machine operations into human-readable words.
+They were a lot like the pseudocode for the imperative program above.
+If you wanted to re-use code for any reason, you had to jump directly to a specific location in the program.
+(This jump operation is usually called a "goto," after the name of the operation in many languages.)
+The program state was available everywhere in the program, and could be altered at any time.
+
+This can lead to what is colloquially known as "spaghetti code."
+It is so named because the program structure resembles a bowl of spaghetti:
+tangled, twisted, and a mess to straighten out.
+
+This led to the adoption of _structured programming._
+The vast, _vast_ majority of modern programming languages are structured programming languages.
+Structured programming is the basis for most of the other programming paradigms discussed in this section.
+
+Structured programming introduced a number of features into programming languages.
+Each feature is important enough to introduce in its own section.
+
+=== Code Blocks
+
+The idea behind code blocks is rather simple.
+A _code block_ consists of multiple lines of source code that can be grouped into a unit.
+In structured programming languages, a code block is often used instead of a single operation.
+
+It may be a simple concept, but it is fundamental to structured programming.
+Without code blocks, the other structured programming features would be relatively useless.
+
+=== Control Structures
+
+_Control structures_ allow the program's flow control to be specified in the code.
+The flow control is represented by structures that are part of the programming language itself.
+
+Generally speaking, there are three kinds of control structures that are used in structured programming.
+
+. _Sequence_ structures, where one part of the program executes immediately after another.
+    This is the the most trivial control structure, and usually doesn't need to be specified in the code.
+
+. _Selection_ structures, where one or another part of a program is executed, depending upon some value.
+
+. _Iteration_ structures, where a part of the program executes over and over, until some terminating condition is reached.
+    The condition is represented by some value which can be either `true` or `false`,
+    and iteration stops when that value becomes `true`.
+
+These are not the only kinds of control structures used in programming.
+They are not considered part of structured programming, but are nonetheless widely used in languages today.
+
+. _Jump_ structures, where the control flow immediately jumps to some point in the code.
+    This includes the "goto" operation from unstructured programming.
+    It also includes statements that allow programmers to stop or continue iteration,
+    even when the terminating condition isn't reached.
+
+. _Exception_ structures, where the control flow immedately stops, and raises some signal that an error has occurred.
+    If not handled, this signal results in the entire program crashing.
+
+More details about control structures will be given in the section called "Flow Control."
+
+=== Functions
+
+Structured programming introduced the use of _functions._
+Functions make it easier for code to be modularized and re-used.
+
+Functions in computer science are very similar to mathematical functions.
+They take input data, called _arguments,_ and operate on that data.
+The result of the operation(s) is the _return value_ of the function.
+
+A function does nothing until you give it arguments and tell it to return a value.
+In mathematics, this is the _application_ of the function.
+In computer science, this is _calling_ or _invoking_ the function.
+
+Functions my also be called "subroutines," "subprograms," "procedures," or, if associated with objects, "methods."
+The use of these terms is often inconsistent in the vast body of computer science literature.
+For the time being, just consider the terms to be synonymous.
+
+More details about functions (and terminology) will be given in the section called "Functions."
+
+== Procedural Programming
+
+In _procedural_ programming, the program consists of an ordered sequence of operations and function calls,
+which may explicitly alter the program state.
+
+As you might expect, procedural programming follows the imperative style.
+
+This style of programming is the most common today, and the one learned first by most programmers.
+
+Most of the languages in this book support procedural programming.
+Those languages are C, C++, C#, JavaScript, and PHP.
+
+The C language itself is _purely_ procedural.
+It does not support any of the other programming paradigms we talk about.
+
+The only language that does not support procedural programming is Java.
+
+== Object-oriented programming (OOP)
+
+In _object-oriented_ programming, the program consists of a collection of objects,
+each with their own state, that interact with each other.
+Object-oriented programming is usually abbreviated _OOP._
+
+The state of an object is represented by its _properties_ (or _member variables_).
+Objects interact with each other through _methods,_
+which are essentially functions that are associated with the object.
+In fact, methods are called _member functions_ in C++ nomenclature.
+
+Object-oriented programming also follows the imperative style.
+
+This style of programming is the most common style in the world today.
+Most of the languages in this book support OOP.
+They are C++, C#, Java, JavaScript, and PHP.
+
+Java is _purely_ OOP; it does not support other programming paradigms.
+
+C is the only language covered in this book that does not support OOP.
+
+There are two different styles of OOP that are used by C-style languages.
+The first, and by far the most common, is _classical OOP._
+This style uses _classes_ as "blueprints" for creating objects.
+C++, C#, Java, and PHP all use classical OOP.
+
+The other type of OOP is _prototypal_ OOP.
+This style uses prototypes to share behavior between different objects.
+The only C-style language that uses prototypal OOP is JavaScript.
+
+== Functional Programming
+
+In _functional programming,_ the program consists of function calls.
+Other than this, there are no other programming structures.
+This ends up having a profound effect on the way programs are written.
+
+In functional programming languages, functions are _first-class citizens._
+This means a function may be passed to another functions as an argument,
+or returned from another function as its return value.
+What is passed or returned is _the function itself,_ not the result of calling the function.
+
+Because functional programs consist of function calls, they do not have control structures.
+The program output is the return value of the last function called, and any intermediate return values are ignored.
+Selection structures are represented by special functions, which are usually supplied by the language.
+Iteration is discouraged in favor of recursion, where a function "loops" by calling itself until the terminating condition is reached.
+
+Functional programming languages discourage changing the program state.
+Function arguments are immutable, meaning they cannot be changed.
+Setting variables is also discouraged.
+Instead of storing the result of a function call in a variable,
+the result is passed directly to another function as an argument.
+
+If this all seems confusing, don't worry - you're not alone.
+Even seasoned programmers can have a hard time wrapping their head around functional programming.
+It is a deep subject, and requires a seismic shift in thinking about how programs are written.
+
+As you might have guessed, functional programming languages are purely declarative languages.
+Functional programming is the only paradigm mentioned thus far that does not support the imperative style.
+
+None of the C-style languages are functional programming languages.
+Nonetheless, most of them support _some_ features that are taken from the functional paradigm.
+Even those that historically did not (like Java or C++) have recently added functional programming features.
+
+Functional programming will be covered in the section called "Functional Programming."
+
+= Bibliography
+[bibliography]
+.Imperative vs. Declarative
+- [[[Harper1]]] https://existentialtype.wordpress.com/2013/07/18/what-if-anything-is-a-declarative-language/[What, If Anything, Is A Declarative Language?]
+    by Robert Harper, Professor of Computer Science at Carnegie Mellon University
+- [[[Harper2]]] https://existentialtype.wordpress.com/2013/07/22/there-is-such-a-thing-as-a-declarative-language[There Is Such A Thing As A Declarative Language, and It’s The World’s Best DSL]
+    by Robert Harper, Professor of Computer Science at Carnegie Mellon University
+- [[[foldoc]]] http://foldoc.org/imperative%20languages[imperative language],
+    http://foldoc.org/declarative%20language[declarative language], and
+    http://foldoc.org/procedural%20languages[procedural language]
+    from the Free On-Line Dictionary of Computing
+- [[[McGinnis]]] https://tylermcginnis.com/imperative-vs-declarative-programming/[Imperative vs Declarative Programming]
+    by Tyler McGinnis
+- [[[StackOverflow]]] http://stackoverflow.com/questions/1784664/what-is-the-difference-between-declarative-and-imperative-programming[What is the difference between declarative and imperative programming]
+    on Stack Overflow
+- [[[Kashivskyy]]] https://www.netguru.co/blog/imperative-vs-declarative[Imperative vs. Declarative Programming - Pros and Cons]
+    by Adrian Kashivskyy
+- [[[Wikipedia]]] https://en.wikipedia.org/wiki/Comparison_of_programming_paradigms[Comparison of programming paradigms]
+    on Wikipedia
+- [[[Coenen]]] http://cgi.csc.liv.ac.uk/~frans/OldLectures/2CS24/declarative.html[Declarative Languages]
+    by Prof. Frans Coenen, from the CS24 course at the University of Liverpool
+- [[[Torgersson]]] http://www.cse.chalmers.se/~oloft/Papers/wm96/wm96.html[A Note on Declarative Programming Paradigms and the Future of Definitional Programming]
+    by Olof Torgersson, Department of Computing Science, Chalmers University of Technology
+- [[[Barbour]]] https://awelonblue.wordpress.com/2012/01/12/defining-declarative/[Defining 'Declarative']
+    by David Barbour
+- [[[MooreIII]]] the answer to
+    http://stackoverflow.com/questions/602444/functional-declarative-and-imperative-programming/8357604#8357604[Functional, Declarative, and Imperative Programming]
+    from Shelby Moore III
+- [[[MSDN]]] https://msdn.microsoft.com/en-us/library/mt693186.aspx[Functional Programming vs. Imperative Programming (C#)]
+    on MSDN

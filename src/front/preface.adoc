@@ -59,38 +59,8 @@ These languages were chosen according to two criteria:
 1. They share their basic syntax with the C language (they have a "C-style" syntax).
 2. They are widely used and in demand.
 
-You probably have questions about these criteria and why I chose them.
-
-The first question, and probably most obvious, is "what do you mean by 'C-style' syntax?"
-After all, no language shares its _entire_ syntax with C (if it did, it would be C).
-And there are plenty of languages not on this list that share _some_ syntax with C.
-
-For the purposes of this book, a "C-style" syntax has all of these attributes:
-* Extra whitespace is ignored.
-* Statements are distinct from expressions, and end with a semicolon.
-* Statement blocks are delimited by curly braces ("{" and "}"),
-    and not by indentation (a.k.a. "off-side rule"), or by explicitly ending them (with `end` or similar).
-* The language shares most of C's operators, and uses infix notation (not e.g. Hungarian notation).
-* Functions are called using C's syntax (the function name, followed by arguments enclosed in parentheses).
-
-This eliminates a huge swath of languages: Python, Ruby, Visual Basic, Lua, Lisp, assembly, XSLT, SQL, etc.
-Still, there are some that seem like they should make the cut but don't, such as Swift and Perl.
-This is because they are not widely used or in demand (right now).
-
-This leads to a second question: "how do you determine 'widely used and in demand'?"
-It's a good question, because the answer is often driven by opinion or bias.
-
-Here, "widely used and in demand" means that it has consistently been in the top 10 of rankings of popular languages.
-I use a couple widely-known rankings for this:
-* The http://www.tiobe.com/tiobe-index/[Tiobe Index]
-* The http://pypl.github.io/PYPL.html[PYPL PopularitY of Programming Language Index]
-
-I chose these because they show historical data, and not just current trends.
-Having said that, if a programming language does make it into the top 10 and stays there,
-I will probably add it to a later "edition" of the book.
-(And I would want to learn that language anyway.)
-
-I am also open to suggestions for any other ranking sites.
+For details about why these languages are chosen, see the section 
+<<C-style_programming_languages>>.
 
 [NOTE]
 =====
