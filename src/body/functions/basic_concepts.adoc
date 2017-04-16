@@ -168,8 +168,11 @@ But these langauages are not covered in this book, so I will also be avoiding th
 * return type: value representing the function's output value passed back to caller
 ** omitted in implicitly-typed languages: JavaScript, PHP
 ** "void functions"
+// TODO cover this beforehand in arrays and associative arrays
+** destructuring (ES6, PHP `list`/`extract` - different >=7.1)
 * body: statements that are executed when the function is called
 ** body may include any kind of statements: variable definitions, operations,
       or other function calls
-** however, except for JavaScript, functions cannot be DEFINED inside another
-      function
+** functions can be _defined_ inside other functions _only if_ functions are first-class citizens
+*** Javascript, PHP
+*** More in section on functional programming

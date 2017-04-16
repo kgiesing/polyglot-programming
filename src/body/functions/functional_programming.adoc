@@ -1,25 +1,245 @@
 = Functional Programming
-== Functions as first-class objects
-* JavaScript is only C-syntax language with function objects
+
+In functional programming, all computation consists of the evaluation of pure functions.
+Program state is avoided, and data is immutable.
+
+Functional programming has its roots in _lambda calculus,_ a formal system in mathematical logic.
+Lambda calculus was developed by Alonzo Church in the 1930's as an exploration of the foundations of mathematics.
+In lambda calculus, mathematical operations are represented as function calls;
+operands are represented as values passed to the function.
+In this way, _all_ mathematical operations can be mapped onto function calls.
+
+The oldest functional language is Lisp, created in 1958 by John McCarthy.
+It is still in use today, and has many different "dialects."
+The two that are historically the most popular are Common Lisp and Scheme.
+A Lisp dialect that is becoming more popular is Clojure, which can be compiled and run on the Java VM.
+
+Naturally, there are many other languages that are primarily functional.
+These include:
+
+* Erlang
+* Haskell (the only one here that is _purely_ functional)
+* OCaml
+* Standard ML (SML)
+
+But many other languages support functional programming _features._
+That includes many of the C-style languages covered in this book.
+
+Each language is slightly different, but most have converged on a very similar syntax and semantics.
+This is hardly surprising, since programming languages evolve just as human languages do.
+A feature that becomes popular in one language will often be adopted (with variations) into another.
+
+I should mention one thing about terminology.
+Recall that Java and C# do not have "functions" _per se._
+Named functions must be members of a class, making them _methods_ rather than functions.
+For the rest of this section, I will use the term "function" to include methods as well,
+unless I'm talking about a specific language that uses methods instead.
+
+== Functional Programming Language Features
+
+In this section, I'll go through some common functional language features,
+and give the details about which C-style language(s) support them.
+
+=== Functions as First-Class Citizens
+
+In order to support functional programming features, a function must be able to be used as data.
+In other words, functions should be entities with their own data type, just like integers or strings.
+
+The term for an entity like this is _first-class citizen._
+The term was coined by Christopher Strachey in the 1960's, when discussing the Algol programming language.
+
+NOTE: In programming terminology, first-class citizens are also called _first-class objects._
+    In this context, the term "object" means "any entity that can be manipulated as data."
+    It has nothing to do with object-oriented programming.
+    When programmers talk about "functions as first-class objects,"
+    they are talking about functional programming,
+    and not object-oriented programming.
+
+// Not true!
+// * JavaScript is only C-syntax language with function objects
 
 * May be assigned to variable, passed to function as argument, returned from function as a return value
 ** Variable or parameter becomes the function identifier
-** Function is not called until
-
-* May be anonymous; "function literal"
+** Function itself is passed or returned; must be explicitly invoked
 
 * Instead of stack frame, function is "object"
 ** Context object is allocated when fn. is called, garbage collected when no more references to it
 ** Probably stored in heap memory (implementation detail)
 
-== Closures
+=== Higher-Order Functions
+
+A _higher-order function_ is a function that uses other functions as values.
+To be a higher-order function, a function must do one of the following:
+
+* Have a _procedural parameter_ - a parameter of a function type
+* Return a function as a value
+
+Higher-order functions are only possible in languages that support functions as first-class citizens.
+
+=== Anonymous Functions and Lambdas
+
+Anonymous functions are simply functions that do not have an identifier (name) when they are defined.
+
+Anonymous functions are often called _lambdas,_ and most programmers consider the terms synonymous.
+They have good reason to do so, since many computer languages (like Python or Scheme) use the `lambda` keyword to define anonymous functions.
+However, some programmers choose to differentiate the two terms.
+When they do, they define _lambda_ as a function that is actually used as data, whether anonymous or not.
+For example, see https://gist.github.com/ericelliott/414be9be82128443f6df[TL;DR - Lambda means "function used as data".]
+
+Many programming languages differentiate between anonymous functions and lambdas in the language syntax.
+In these languages, labmdas usually created using some kind of arrow syntax.
+For some languages, this is the only way to create an anonymous function.
+Each programming language is slightly different, and I'll cover those differences as they arise.
+
+In any case, the most common use of anonymous functions or lambdas, is to use them with higher-order functions.
+
+==== C#
+
+C# has several ways to define either anonymous methods or lambdas.
+
+The first way is to use the `delgate` keyword to define an anonymous method:
+
+
+// TODO Move this to an "arrow functions" section, since it's mostly the same in all languages
+The second way is to define a lambda expression.
+This is done using the fat arrow operator.
+
+There are three types of lambda expressions in C#:
+_expression lambdas_ and _statement lambdas._
+There is no semantic difference between the two; the difference is with the syntax.
+
+Here is an example of a statement lambda:
+[source,csharp]
+-----
+(params) => {
+    // statement(s)
+}
+-----
+
+The statement(s) in the lambda body must be enclosed in curly braces.
+This is the case even when there is only one statement.
+
+Here is an example of an expression lambda:
+[source,csharp]
+-----
+(params) => expression
+-----
+
+The body must contain only one expression, and it is not enclosed in curly braces.
+The result of the expression is the value returned when the lambda expression is called.
+In other words, there is an implicit `return` kewword before the expression.
+
+In both cases, the parentheses may be omitted if there is only one parameter.
+If there are no parameters, you must use empty parentheses.
+
+[source,csharp]
+-----
+// Statement lambda with only one parameter
+param => {
+    // statement(s)
+}
+// Expression lambda with only one parameter
+param => expression
+
+// Statement lambda with no parameters
+() => {
+    // statement(s)
+}
+// Expression lambda with no parameters
+() => expression; // TODO the semicolon is only here because my editor chokes otherwise(!)
+-----
+
+Lambda expresions were introduced in C# 3.0.
+
+==== JavaScript
+
+As of this writing, there are two ways to define an anonymous function in JavaScript.
+They have different language semantics, so they're not interchangable.
+
+The first is with the `function` keyword:
+
+[source,javascript]
+-----
+function (args) {
+    // ...body...
+    return something;
+}
+-----
+
+Anonymous functions have been supported in all versions of JavaScript.
+
+* Anonymous functions have their own lexical scope
+** `this`
+** `arguments`
+** `super` (ES6)
+** May be used as constructors
+
+The second way is to use _arrow function_ syntax:
+[source,javascript]
+-----
+(args) => {
+    // statements
+}
+// Short form:
+arg => expression
+-----
+
+Though JavaScript doesn't differentiate between them, arrow functions follow the same syntactic rules as C# lambdas.
+
+* If the body of the function is an expression, the curly braces can be omitted.
+    The result of the expression will be the return value of the arrow function.
+* If there is only one parameter, the parentheses may be omitted.
+*
+
+Arrow functions were introduced in ECMAScript 2015.
+
+* Arrow functions inherit lexical scope
+** `this`
+** `arguments`
+** `super`
+** May _not_ be used as constructors (throws `TypeError`)
+
+Arrow functions are the equivalent of lambdas in othe programming languages.
+
+==== PHP
+
+PHP has only one syntax that can be used to create anonymous functions:
+
+[source,php]
+-----
+function($args) {
+    // ...body...
+    return $something;
+}
+-----
+
+There is no PHP equivalent of the arrow syntax in other languages.
+
+=== Closures
 Variables still have function scope, so what about nested functions?
 
 * Nested function contains reference to its enclosing scope
 * When interpreter sees variable that's not in the immediate function's scope, it searches the parent scope
 * Functions can be infinitely "nested," so parent scope may itself be searched
-* If no parent scope, and variable still isn't found, error is thrown
+* If no parent scope, and variable still isn't found, variable is unbound (undefined)
 
+==== JavaScript
+JavaScript handles closures automatically:
+[source,javascript]
+-----
+function addTo(x) {
+    return function(y) {
+        return x + y;
+    }
+}
+
+addFive = addTo(5);
+addSixToFive = addFive(6);
+
+console.log(addSixToFive); // outputs 11
+-----
+
+Enclosed variables are in _lexical_ scope, not the calling scope:
 
 [source, javascript]
 ----
@@ -44,7 +264,52 @@ function average(a, b) {
 }
 ----
 
+
+==== PHP
+
+PHP functions must have the `use` language construct to enclose variables:
+
+[source,php]
+-----
+// Won't work:
+function addTo($x) {
+    // No "use" construct
+    return function($y) {
+        return $x + $y;
+    }
+}
+
+addFive = addTo(5);
+addSixToFive = addFive(6);
+
+echo addSixToFive; // outputs 6 - $x is unbound!
+
+// Will work:
+function addTo($x) {
+    // Must explicity use $x in enclosed scope
+    return function($y) use($x) {
+        return $x + $y;
+    }
+}
+
+addFive = addTo(5);
+addSixToFive = addFive(6);
+
+echo addSixToFive; // outputs 11
+-----
+
 == Functional Programming Techniques
+
+In the previous section, we talked about the different features of functional programming.
+In this section, we'll talk about _what can be done_ using functional programming features.
+
+I have chosen JavaScript as the language to use for all examples.
+This is because I believe JavaScript's syntax is easier to understand than the others.
+Also, unlike most other C-style languages, JavaScript has supported functional programming since it was created.
+This means there are a lot more examples in JavaScript for readers who want to explore these techniques in more depth.
+
+Nonetheless, all of these techniques should be portable to the other languages in this book.
+If you follow the syntax guides in the previous section, it should not be too difficult.
 
 === Partial Application/Currying
 * Partial application: a function that takes only some of another function's arguments,
