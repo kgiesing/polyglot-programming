@@ -9,7 +9,8 @@ But there are a number of differences between mathematical functions, and functi
 * Mathematical functions must accept at least one number as input.
 * Mathematical functions do not change the variables used as input.
 * Mathematical functions must return a unique output for each different set of inputs.
-    That is, asciimath:[f(1)] cannot produce the same value as asciimath:[f(3)] (provided those numbers are in its domain).
+    That is, asciimath:[f(1)] cannot produce the same value as asciimath:[f(3)]
+    (provided those numbers are in its domain).
 * Mathematical functions must produce an output value.
 
 None of those constraints exist with functions in programming languages.
@@ -131,7 +132,7 @@ The point of a program is to give an output value in some way, and that requires
 Choosing when to make a function impure is a design choice programmers constantly have to make.
 Whatever the case, it is important to document any side effects a function might have.
 Aside from the actual documentation, there are certain conventions that are used when writing impure functions.
-I'll explain these conventions as they arise.
+These conventions will be explained as they arise.
 
 == Methods
 
@@ -142,27 +143,33 @@ The purpose of a method is to modify the state of the object in some way,
 or to return a value that is dependent upon the object's state.
 In this sense, methods could be considered impure functions.
 However, in all other respects, methods are usually designed to be pure functions.
-They do not modify _global_ state, and they usually do not modify their input values.
+They usually do not modify _global_ state, or modify their input values.
 
 Even though the term is pretty well established, there are a couple of times when other terms are used.
 
 * In C++ literature, methods are called _member functions._
     (But even so, plenty of C++ programmers use the term "method.")
 
-* Some programmers use the term _message_ instead.
+* Some programmers use the term _message_ instead.footnote:[
+    "The idea of objects as actors fits nicely with the principal metaphor of object-oriented programming—the idea that objects communicate through messages.
+    Instead of calling a method as you would a function, you send a message to an object requesting it to perform one of its methods." -
+    <<oop_objective_c, "Object-Oriented Programming with Objective-C">>]
     This reflects the idea that using a method is "sending a message" to the object.
 
 I'll use those terms when appropriate, but like most other programmers, I'll usually use the term "method."
+
+Because methods are defined when their objects are defined,
+the discussion about methods will have to wait until I cover <<oop, Object-Orented Programming>>.
 
 == Other terms for "function"
 There are many other terms that are often used instead of the term "function."
 The terms include "procedure," "routine," "subroutine," and some others.
 This has led to a great deal of confusion about which term to use.
 
-The prolifieration of terms is generally due to changing programming paradigms..footnote:[
+The prolifieration of terms is generally due to changing programming paradigms.footnote:[
 "In the early days of programming we composed our systems of routines and subroutines.
 Then, in the era of Fortran and PL/1 we composed our systems of programs, subprograms, and functions.
-Nowadays only the function survives from those early days." - <<codecomplete, "Robert C. Martin, Clean Code">>]
+Nowadays only the function survives from those early days." - <<cleancode, "Robert C. Martin, Clean Code">>]
 But, unfortunately, that confusion remains to this day.
 Programmers in different languages tend to use these terms in their own way,
 and argue with other programmers who use them in a different way.
@@ -196,14 +203,29 @@ The difference between the two is specific to each "flavor" of SQL.
 Generally speaking, a stored procedure can be any prepared block of SQL statements, and may return any number of values (including zero).
 A function must return a single value, cannot alter the database, and has other limitations.
 
-On the other hand, some programmers use the term "procedure" for any function.
-This is usually to distinguish between the procedures used in programming, and the functions used in mathematics.
-For an example, see
-https://mitpress.mit.edu/books/structure-and-interpretation-computer-programs[Structure and Interpretation of Computer Programs]
-by Ableson, Sussman, and Sussman.
-(But only if you really want to learn the Scheme programming language.)
+On the other hand, some programmers use the term "procedure" for _any_ function.
+This is usually to distinguish between the functions used in programming, and the functions used in mathematics.
+
+Take, for example, these quotes from <<sicp, Structure and Interpretation of Computer Programs>>:
+[quote, "Ableton, Sussman, and Sussman", "Structure and Interpretation of Computer Programs (1.1.7)"]
+_____
+Procedures, as introduced above, are much like ordinary mathematical functions.
+They specify a value that is determined by one or more parameters.
+But there is an important difference between mathematical functions and computer procedures.
+Procedures must be effective.
+
+[...] The contrast between function and procedure is a reflection of the general distinction between describing properties of things and describing how to do things,
+or, as it is sometimes referred to, the distinction between declarative knowledge and imperative knowledge.
+In mathematics we are usually concerned with declarative (what is) descriptions,
+whereas in computer science we are usually concerned with imperative (how to) descriptions.
+_____
+
+Making things even more confusing, the language used in that book is Scheme (a dialect of Lisp).
+Scheme is both a _functional_ and _declarative_ language, as modern programmers use these terms.
+It does not even support the procedural programming paradigm.
 
 Because of this confusion, I will avoid using the term "procedure" altogether.
+Instead, I will use the term "impure function" where appropriate.
 
 === Subroutines
 The term "subroutine" has historically been used as a synonym for what we now call a function.
@@ -212,10 +234,10 @@ If the author distinguished them at all, he or she used the term "function" for 
 and "subroutine" to include both pure and impure functions.
 
 Today, the term seems to have fallen out of widespread use among practical programmers.
-The main exceptions are assembly language programmers, and the Fortran language.
+The main exceptions are assembly language, and the Fortran language.
 
 In assembly language, a subroutine is _a named location where program execution can jump._
-It is essentially the equivalent of a `goto` statement.
+It is essentially a `goto` statement.
 Returning from the subroutine involves jumping back to the location where the subroutine was called.
 
 In this context, a subroutine is about as impure as a function can get.
@@ -231,9 +253,18 @@ Inputs that can be changed are defined differently than inputs that cannot be ch
 But these langauages are not covered in this book, so I will also be avoiding the term "subroutine."
 
 [bibliography]
-- [[codecomplete]]Steve McConnell.
-    _Code Complete: A Practical Handbook of Software Construction, Second Edition._
-    Microsoft Press; 2nd edition (June 19, 2004).
-- [[cleancode]]Robert C. Martin.
+- [[cleancode]] Robert C. Martin.
     _Clean Code._
     Prentice Hall (August 2008).
+
+- [[codecomplete]] Steve McConnell.
+    _Code Complete: A Practical Handbook of Software Construction, Second Edition._
+    Microsoft Press; 2nd edition (June 19, 2004).
+
+- [[oop_objective_c]] https://mitpress.mit.edu/books/structure-and-interpretation-computer-programs[Object-Oriented Programming with Objective-C].
+    Apple Developer (2010).
+
+- [[sicp]] Harold Abelson and Gerald Jay Sussman, with Julie Sussman.
+    https://mitpress.mit.edu/books/structure-and-interpretation-computer-programs[Structure and Interpretation of Computer Programs],
+    Second Edition.
+    MIT Press (1996).
