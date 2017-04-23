@@ -2,7 +2,158 @@
 
 == The Function's Domain
 
-[quote, , Clean Code]
+// Summary of the quotes below...
+* Do one thing, and one thing only
+** Cohesion (from Code Complete)
+
+* As short as practical
+** less than 200 lines
+** shorter is generally better
+
+* Minimize the number of formal parameters
+
+* Return only one kind of value
+** No sentinels for errors (throw instead)
+** No overloaded return values (for loosly typed lang's), e.g.
+
+* Perfer pure functions
+** If impure:
+*** signify mutation in formal parameters (make them pointers/references, not const)
+*** make them void functions (don't return e.g. success or failure)
+
+[quote]
+_____
+*Design at the Routine Level*
+
+The idea of cohesion was introduced in a paper by Wayne Stevens, Glenford Myers, and Larry Constantine (1974).
+Other more modern concepts, including abstraction and encapsulation, tend to yield more insight at the class level
+(and have, in fact, largely superceded cohesion at the class level),
+but cohesion is still alive and well as the workhorse design heuristic at the individual-routine level.
+
+For routines, cohesion refers to how closely the operations in a routine are related.
+Some programmers prefer the term "strength": how strongly related are the operations in a routine?
+[...] ]The goal is to have each routine do one thing well and not do anything else.
+
+The payoff is higher reliability.
+One study of 450 routines found that 50 percent of the highly cohesive routines were fault free, whereas only 18 percent of routines with low cohesion were fault free (Card, Church, and Agresti 1986).
+Another study of a different 450 routines (which is just an unusual coincidence) found that routines with the highest coupling-to-cohesion ratios had 7 times as many errors as those with the lowest coupling-to-cohesion ratios and were 20 times as costly to fix (Selby and Basili 1991).
+
+Discussions about cohesion typically refer to several levels of cohesion.
+Understanding the concepts is more important than remembering specific terms.
+Use the concepts as aids in thinking about how to make routines as cohesive as possible.
+
+*Functional cohesion* is the strongest and best kind of cohesion, occurring when a routine performs one and only one operation.
+Examples of highly cohesive routines include sin(), GetCustomerName(), EraseFile(), CalculateLoanPayment(), and AgeFromBirthdate().
+Of course, this evaluation of their cohesion assumes that the routines do what their names say they do —
+if they do anything else, they are less cohesive and poorly named.
+
+Several other kinds of cohesion are normally considered to be less than ideal:
+
+* *Sequential cohesion* exists when a routine contains operations that must be performed in a specific order,
+    that share data from step to step,
+    and that don't make up a complete function when done together.
+
+* *Communicational cohesion* occurs when operations in a routine make use of the same data and aren't related in any other way.
+    If a routine prints a summary report and then reinitializes the summary data passed into it, the routine has communicational cohesion:
+    the two operations are related only by the fact that they use the same data.
+
+To give this routine better cohesion, the summary data should be reinitialized close to where it's created, which shouldn't be in the report-printing routine. Split the operations into individual routines. The first prints the report. The second reinitializes the data, close to the code that creates or modifies the data. Call both routines from the higher-level routine that originally called the communicationally cohesive routine.
+
+* *Temporal cohesion* occurs when operations are combined into a routine because they are all done at the same time.
+    Typical examples would be Startup(), CompleteNewEmployee(), and Shutdown().
+    Some programmers consider temporal cohesion to be unacceptable because it's sometimes associated with bad programming practices such as having a hodgepodge of code in a Startup() routine.
+
+    To avoid this problem, think of temporal routines as organizers of other events.
+    The Startup() routine, for example, might read a configuration file, initialize a scratch file, set up a memory manager, and show an initial screen.
+    To make it most effective, have the temporally cohesive routine call other routines to perform specific activities rather than performing the operations directly itself.
+    That way, it will be clear that the point of the routine is to orchestrate activities rather than to do them directly.
+
+The remaining kinds of cohesion are generally unacceptable.
+They result in code that's poorly organized, hard to debug, and hard to modify.
+If a routine has bad cohesion, it's better to put effort into a rewrite to have better cohesion than investing in a pinpoint diagnosis of the problem.
+Knowing what to avoid can be useful, however, so here are the unacceptable kinds of cohesion:
+
+* *Procedural cohesion* occurs when operations in a routine are done in a specified order.
+    An example is a routine that gets an employee name, then an address, and then a phone number.
+    The order of these operations is important only because it matches the order in which the user is asked for the data on the input screen.
+    Another routine gets the rest of the employee data.
+    The routine has procedural cohesion because it puts a set of operations in a specified order and the operations don't need to be combined for any other reason.
+
+    To achieve better cohesion, put the separate operations into their own routines.
+    Make sure that the calling routine has a single, complete job: GetEmployee() rather than GetFirstPartOfEmployeeData().
+    You'll probably need to modify the routines that get the rest of the data too.
+    It's common to modify two or more original routines before you achieve functional cohesion in any of them.
+
+* *Logical cohesion* occurs when several operations are stuffed into the same routine
+    and one of the operations is selected by a control flag that's passed in.
+    It's called logical cohesion because the control flow or "logic" of the routine is the only thing that ties the operations together —
+    they're all in a big if statement or case statement together.
+    It isn't because the operations are logically related in any other sense.
+    Considering that the defining attribute of logical cohesion is that the operations are unrelated, a better name might "illogical cohesion."
+
+    It's usually all right, however, to create a logically cohesive routine
+    if its code consists solely of a series of if or case statements and calls to other routines.
+    In such a case, if the routine's only function is to dispatch commands and it doesn't do any of the processing itself,
+    that's usually a good design.
+    The technical term for this kind of routine is "event handler."
+    An event handler is often used in interactive environments such as the Apple Macintosh, Microsoft Windows, and other GUI environments.
+    [NOTE: Or dispatching options from a command-line menu, or factory methods...]
+
+* *Coincidental cohesion* occurs when the operations in a routine have no discernible relationship to each other.
+    Other good names are "no cohesion" or "chaotic cohesion."
+    The low-quality C++ routine at the beginning of this chapter had coincidental cohesion.
+    It's hard to convert coincidental cohesion to any better kind of cohesion—you usually need to do a deeper redesign and reimplementation.
+
+None of these terms are magical or sacred. Learn the ideas rather than the terminology. It's nearly always possible to write routines with functional cohesion, so focus your attention on functional cohesion for maximum benefit.
+
+*How Long Can a Routine Be?*
+
+The theoretical best maximum length is often described as one screen or one or two pages of program listing, approximately 50 to 150 lines.
+In this spirit, IBM once limited routines to 50 lines, and TRW limited them to two pages (McCabe 1976).
+Modern programs tend to have volumes of extremely short routines mixed in with a few longer routines.
+
+[...] A mountain of research on routine length has accumulated over the years,
+some of which is applicable to modern programs, and some of which isn't:
+
+* A study by Basili and Perricone found that routine size was inversely correlated with errors:
+    as the size of routines increased (up to 200 lines of code), the number of errors per line of code decreased (Basili and Perricone 1984).
+
+* Another study found that routine size was not correlated with errors,
+    even though structural complexity and amount of data were correlated with errors (Shen et al. 1985).
+
+* A 1986 study found that small routines (32 lines of code or fewer) were not correlated with lower cost or fault rate
+    (Card, Church, and Agresti 1986; Card and Glass 1990).
+    The evidence suggested that larger routines (65 lines of code or more) were cheaper to develop per line of code.
+
+* An empirical study of 450 routines found that small routines
+    (those with fewer than 143 source statements, including comments)
+    had 23 percent more errors per line of code than larger routines
+    but were 2.4 times less expensive to fix than larger routines
+    (Selby and Basili 1991).
+
+* Another study found that code needed to be changed least when routines averaged 100 to 150 lines of code
+    (Lind and Vairavan 1989).
+
+* A study at IBM found that the most error-prone routines were those that were larger than 500 lines of code.
+    Beyond 500 lines, the error rate tended to be proportional to the size of the routine (Jones 1986a).
+
+Where does all this leave the question of routine length in object-oriented programs?
+A large percentage of routines in object-oriented programs will be accessor routines, which will be very short.
+From time to time, a complex algorithm will lead to a longer routine,
+and in those circumstances, the routine should be allowed to grow organically up to 100–200 lines.
+(A line is a noncomment, nonblank line of source code.)
+Decades of evidence say that routines of such length are no more error prone than shorter routines.
+Let issues such as the routine's cohesion, depth of nesting, number of variables,
+ number of decision points, number of comments needed to explain the routine,
+ and other complexity-related considerations dictate the length of the routine rather than imposing a length restriction per se.
+
+That said, if you want to write routines longer than about 200 lines, be careful.
+None of the studies that reported decreased cost, decreased error rates, or both with larger routines
+distinguished among sizes larger than 200 lines,
+and you're bound to run into an upper limit of understandability as you pass 200 lines of code.
+_____
+
+[quote, Tim Ottinger, Clean Code]
 _____
 *Small!*
 
@@ -51,6 +202,7 @@ To say this differently, we want to be able to read the program as though it wer
 each of which is describing the current level of abstraction and referencing subsequent TO paragraphs at the next level down.
 
 *Switch Statements*
+[NOTe: This is called "logical cohesion" in Code Complete -Karl]
 
 It’s hard to make a small switch statement.
 [And, of course, I include if/else chains in this.]
@@ -193,6 +345,49 @@ _____
 
 == Naming Functions
 // TODO Much of this should be moved to a "designing variables" section
+
+[quote, Steve McConnell, "Code Complete, Second Edition"]
+_____
+*Good Routine Names*
+
+A good name for a routine clearly describes everything the routine does. Here are guidelines for creating effective routine names:
+
+Describe everything the routine does. In the routine's name, describe all the outputs and side effects.
+[...] If you have routines with side effects, you'll have many long, silly names.
+The cure is not to use less-descriptive routine names;
+the cure is to program so that you cause things to happen directly rather than with side effects.
+
+Avoid meaningless, vague, or wishy-washy verbs.
+[...] Sometimes the only problem with a routine is that its name is wishy-washy;
+the routine itself might actually be well designed.
+[...] In other cases, the verb is vague because the operations performed by the routine are vague.
+The routine suffers from a weakness of purpose, and the weak name is a symptom.
+
+[...] Don't differentiate routine names solely by number.
+
+[...] Make names of routines as long as necessary.
+Research shows that the optimum average length for a variable name is 9 to 15 characters.
+Routines tend to be more complicated than variables, and good names for them tend to be longer.
+
+[...] To name a function ["pure function" - Karl], use a description of the return value.
+A function returns a value, and the function should be named for the value it returns.
+
+[...] To name a procedure ["impure function" - Karl], use a strong verb followed by an object.
+A procedure with functional cohesion usually performs an operation on an object.
+The name should reflect what the procedure does, and an operation on an object implies a verb-plus-object name.
+
+[...] In object-oriented languages,
+you don't need to include the name of the object in the procedure name because the object itself is included in the call.
+
+[...] Use opposites precisely.
+Using naming conventions for opposites helps consistency, which helps readability.
+Opposite-pairs like first/last are commonly understood.
+[In the book, there is a table of such pairs. -Karl]
+
+[...] Establish conventions for common operations.
+In some systems, it's important to distinguish among different kinds of operations.
+A naming convention is often the easiest and most reliable way of indicating these distinctions.
+_____
 
 [quote, Tim Ottinger, Clean Code]
 _____
