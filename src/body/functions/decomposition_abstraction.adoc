@@ -1,11 +1,39 @@
 = Decomposition and abstraction
 
-- Decomposition: breaking a complex problem/system into smaller parts
+* Decomposition: breaking a complex problem/system into smaller parts
     (sometimes called "modules," but this is has a different meaning)
-    - creates structure
-    - self-contained
-    - promotes code re-use
+** creates structure
+** self-contained
+** promotes code re-use
 
-- Abstraction: suppressed details of implementation
-    - code is "black box:" takes inputs, responds with output, but how it
+* Abstraction: suppressed details of implementation
+** code is "black box:" takes inputs, responds with output, but how it
       produces that output is immaterial (provided it's correct)
+
+
+[quote, Steve McConnell, "Code Complete, second edition"]
+_____
+*SUMMARY OF REASONS TO CREATE A ROUTINE*
+
+Here's a summary list of the valid reasons for creating a routine:
+
+* Reduce complexity
+* Introduce an intermediate, understandable abstraction
+* Avoid duplicate code
+* Support subclassing
+* Hide sequences
+* Hide pointer operations
+* Improve portability
+* Simplify complicated boolean tests
+* Improve performance
+
+In addition, many of the reasons to create a class are also good reasons to create a routine:
+
+* Isolate complexity
+* Hide implementation details
+* Limit effects of changes
+* Hide global data
+* Make central points of control
+* Facilitate reusable code
+* Accomplish a specific refactoring
+_____

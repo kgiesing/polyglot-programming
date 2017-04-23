@@ -1,0 +1,89 @@
+[[function_prototypes]]
+= Function Prototypes in C and C++
+// TODO moar
+
+In C and C++, the body of the function does not have to be specified when it is declared.
+Instead, a program may first declare a _function prototype._
+The function prototype specifies the function signature and return type, but not the body.
+This allows the compiler to check the code that _calls_ the function, before the function itself is defined.
+For instance, it can verify that the arguments passed to the function are the correct type.
+
+The general term for this is a _forward declaration._
+It is not limited to function prototypes; in fact, we've covered it in the section on structures.
+
+When you specify only the prototype, you are creating the function _declaration._
+When you specify the body of the function, you are creating the function _definition._
+
+== Header Files and Source Files
+
+Function declarations are often kept in their own files, separate from the code that defines the body.
+These are called _header files,_ and usually have a `.h` extension.
+
+* Include guard:
+[source,c]
+-----
+// add_five.h
+#ifndef FOO_H_
+#define FOO_H_
+
+int add_five(int x);
+
+#endif
+-----
+
+Source files then import the header files, and define the function:
+[source,c]
+-----
+// add_five.c
+#include "add_five.h"
+
+/* Function definition */
+int add_five(int x)
+{
+    return x + 5;
+}
+-----
+
+When the program wants to use the function, it imports the header file, not the source file:
+[source,c]
+-----
+// foo.c
+#include "add_five.h"
+
+int eleven = add_five(6);
+-----
+
+This is a fairly trivial example.
+In most cases the header and source files would include many functions, not just one.
+The functions would be related by their general purpose or problem domain.
+For example, they may include all the functions relevant to manipulating strings.
+This is exactly what the C standard `string` library does.
+
+Additionally, header files are not limited to function declarations.
+For example, they may also define constants or macros that are used throughout the application.
+In C++, it is also standard practice to create forward declarations of entire classes.
+This will be covered in the section on <<oop, Object-Oriented Programming>>.
+
+== Separate Compilation and Distirbution
+
+There is another benefit to separating the function definitions and declarations into their own files.
+Each of these files may be compiled separately.
+
+When the entire program is compiled, it first checks to see if the other source files are already compiled.
+If not, the compiler will compile the source files into binary object files.
+But if they are already compiled, the compiler doesn't need to compile them again.
+Instead, it simply links to the already-compiled binaries.
+
+This can lead to significant improvements in compiling the application.
+On large projects, there are often dozens (or even hundreds) of different source files used as libraries.
+It would slow down compilation significantly if each one had to be re-compiled with every minor code change.
+Build tools (such as GNU Make) can also be used to make sure the source has not changed since the binary was compiled.
+
+This also means the distributor of a library may distribute only the binaries, and not the source files.
+This is common when standard libraries are distributed along with compiler software.
+The compiler and library binaries can be combined into a single package.
+This package is much smaller than it would be if the source code had to be included.
+
+It is also important if the source files contain proprietary information,
+or if the distributor wants to discourage copyright infringement.
+Distribution in binary form means they can keep the source code private.

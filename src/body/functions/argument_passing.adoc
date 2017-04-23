@@ -1,13 +1,16 @@
+[[argument_passing]]
 = Argument passing and evaluation
 // TODO: Much of this can probably be combined with the section on pointers and references...?
 * Arguments can be any expression that produces a value:
     literal, variable, operation(s), result of another function call
-* Strict evaluation
+
+== Strict evaluation
 ** Argument expressions are evaluated before the function is called;
       the resulting value is passed to the fn.
 ** The vast majority of languages, and all C-style languages, use strict eval
       for functions
-* Pass (call) by value vs. by reference
+
+== Pass (call) by value vs. by reference
 ** Pass by value: argument's value is copied to parameter
 ***  Good, because argument won't be changed if parameter is altered inside
         function
@@ -116,6 +119,8 @@ f(5);   // this will compile! arg is reference to immutable rvalue
 ***  In PHP, references are aliases to symbol table entries:
           http://php.net/manual/en/language.references.php
         HOWEVER, they behave semantically like pass-by-pointer
+== Variadic Functions
+// TODO
 
 // TODO: Merge this with the "Argument Evaluation Strategy" section in "Using Functions"?
 == Non-strict evaluation strategies

@@ -3,6 +3,7 @@ The first thing we should cover is how to actually use functions.
 Later, we'll cover how to write your own.
 
 == Function Terminology
+// TODO remove; this is now in "basic concepts"
 These are the terms that programmers use when talking about functions.
 
 call::
@@ -59,7 +60,7 @@ And here it is:
 . This return value is "substituted" for the function call.
 
 This evaluation strategy is called _eager evaluation_ or _strict evaluation._
-There are other kinds of evaluation strategies, which will be covered in a later section.
+There are other kinds of evaluation strategies, which will be covered in the section called <<argument_passing, Argument Passing>>.
 However, eager evaluation is the only evaluation strategy used by the languages covered in this book.
 
 == Functions and return values
