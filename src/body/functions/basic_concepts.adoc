@@ -23,6 +23,7 @@ Functions have a number of different parts, and each part has its own term assoc
 Additionally, there are different terms referring to how a function is used.
 
 The function _identifier_ is the name of the function.
+Like variables, the identifier for a function is often just called its _name._
 Funtion identifiers must follow the same naming rules as variable identifiers.
 // TODO repeat those here
 
@@ -50,20 +51,22 @@ For this reason, such functions are often called "void functions."
 
 A function does nothing until you give it arguments and tell it to return a value.
 In computer science, this is _calling_ or _invoking_ the function.
-In mathematics, this is called the _application_ of the function,
-and this term is sometimes used in programming as well.
+
+In mathematics, this is called the _application_ of the function.
+This term is also used, especially when discussing the formal theory of programming langues.
 
 The "inside" of a function is called the _body_ of the function.
 The body consists of statements that are executed when the function is called.
-It is the body of the function which does all of the calculations, and returns a value.
+It is the body of the function which performs all of the operations, and returns a value.
 The function body is always a code block, so it must be surrounded by curly braces.
 
 In general, any statement that can be used outside of a function can be used in the function body.
 These include variable definitions, operations, expressions, or calls to other functions.
 
 There is one exception, however.
-In most C-style languages, a function cannot be defined inside another function's body.
-Specifically, functions can be defined inside other functions _only if_ functions are first-class citizens.
+In most C-style languages, a function cannot be _declared or defined_ inside the body of another function.
+(In languages that do allow this, such functions are called _nested_ functions.)
+Specifically, functions can be nested inside other functions _only if_ functions are first-class citizens.
 We will go into much more detail in the section about <<functional_programming, Functional Programming>>.
 
 In C and C++, the body of the function does not have to be specified when it is declared.
@@ -85,7 +88,7 @@ To be classified as a pure function, a function must:
 
 2. have no _side effects._
     A side effect is a change in the system state, outside the scope of the function itself.
-    For example, it cannot change the state of input or output devices, or set global variables.
+    For example, a pure function cannot change the state of input or output devices, or set global variables.
     Furthermore, it cannot change the input passed to the function;
     after the function has finished executing, the values used as input must remain the same.
 
@@ -99,7 +102,7 @@ And, when it was finished executing, `b` would still be 10, and `e` would still 
 
 An _impure_ function is any function that is not a pure function.
 Impure functions commonly change the state of the system in some way, or modify the input value.
-They may also use a value that is not part of the input to produce the output value.
+They could also use a value that is not part of the input to produce the output value.
 
 Here are some examples of impure functions:
 
@@ -234,7 +237,6 @@ Instead, I will use the term "impure function" where appropriate.
 
 === Subroutines
 The term "subroutine" has historically been used as a synonym for what we now call a function.
-From what I can tell, theoretical computer scientists usually used "function," and practical programmers usually used "subroutine."
 If the author distinguished them at all, he or she used the term "function" for pure functions,
 and "subroutine" to include both pure and impure functions.
 

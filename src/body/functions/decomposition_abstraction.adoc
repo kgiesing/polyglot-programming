@@ -1,15 +1,22 @@
 = Decomposition and abstraction
 
-* Decomposition: breaking a complex problem/system into smaller parts
-    (sometimes called "modules," but this is has a different meaning)
-** creates structure
-** self-contained
-** promotes code re-use
+Decomposition:: break down a complex problem/system into smaller parts
+// (sometimes called "modules," but this is has a different meaning)
+* creates structure
+** leads to better design; avoids "spaghetti code"
+* promotes code re-use/avoids duplication
+* easier to fix/improve
 
-* Abstraction: suppressed details of implementation
-** code is "black box:" takes inputs, responds with output, but how it
-      produces that output is immaterial (provided it's correct)
+Abstraction:: hide implementation details
 
+code is "black box:" takes inputs, responds with output, but how it
+    produces that output is immaterial (provided it's correct)
+
+* encapsulates complex operations
+* easier to improve performance
+* promotes portability
+** different operating systems
+** different interpreters (e.g. browser-specific JavaScript)
 
 [quote, Steve McConnell, "Code Complete, second edition"]
 _____

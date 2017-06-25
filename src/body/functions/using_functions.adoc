@@ -1,33 +1,15 @@
-= Using functions
-The first thing we should cover is how to actually use functions.
+= Calling functions
+The first thing we should cover is how to call existing functions.
 Later, we'll cover how to write your own.
 
-== Function Terminology
-// TODO remove; this is now in "basic concepts"
-These are the terms that programmers use when talking about functions.
-
-call::
-    to use a function in the code.
-    The part of the code that calls the function is the _caller._
-
-invoke::
-    A synonym for "call."
-    It seems to be used more often with methods than with functions.
-
-pass::
-    to send input values from the caller to the function.
-
-return::
-    to send an output value from the function to the caller.
-
-arguments::
-    the values that are passed to the function as input.
-
 == Syntax
-. function name
-. opening parentheses
-. list of arguments, separated by commas
-. closing parentheses
+The syntax for invoking a function should be familiar to anyone who studied functions in mathematics.
+To invoke a function, the code must specify:
+
+. the function identifier
+. an opening parentheses
+. a list of arguments, separated by commas
+. a closing parentheses
 
 For example, let's say you have two variables, `x` and `y`.
 You want to raise `x` to the power of `y` using a the `pow` function,
@@ -120,7 +102,7 @@ What happens if you try to assign the return value to a variable, or pass it as 
 In strongly-typed languages, you cannot even attempt to use the function's return value.
 It cannot be assigned to any variable, and it cannot be used as arguments for another function call.
 Most strongly-typed languages (and all languages covered in this book) are compiled.
-This means that attempting to do this will cause a compiler error.
+So, attempting to do this will cause a compiler error.
 
 In C, C++, C#, and Java, this would not compile:
 [source,c]
@@ -129,7 +111,7 @@ x = print("Hello, world!");
 -----
 
 In weakly-typed languages, the return type of these functions is some variant of "not a value."
-The actual value that is used, varies by programming language.
+Each programming language uses a different variant.
 
 - In JavaScript, the return type is `undefined`.
 - In PHP, the return type is `NULL`.

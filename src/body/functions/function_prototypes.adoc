@@ -34,7 +34,7 @@ int add_five(int x);
 Source files then import the header files, and define the function:
 [source,c]
 -----
-// add_five.c
+/* add_five.c */
 #include "add_five.h"
 
 /* Function definition */
@@ -47,7 +47,7 @@ int add_five(int x)
 When the program wants to use the function, it imports the header file, not the source file:
 [source,c]
 -----
-// foo.c
+/* foo.c */
 #include "add_five.h"
 
 int eleven = add_five(6);

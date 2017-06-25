@@ -47,4 +47,4 @@ Arguments are matched according to these rules:
 * PHP: functions can be defined inside other functions, but are always global in scope
 * JavaScript: functions are first-class objects
 * All other languages: functions can *not* be defined inside other functions
-* See section on function scope
+* See section on <<functional_programming, Functional Programming>>

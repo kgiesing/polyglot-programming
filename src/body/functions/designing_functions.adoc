@@ -5,21 +5,35 @@
 // Summary of the quotes below...
 * Do one thing, and one thing only
 ** Cohesion (from Code Complete)
+** Command/query separation (from )
 
 * As short as practical
 ** less than 200 lines
 ** shorter is generally better
 
 * Minimize the number of formal parameters
+** Complex data should become its own class (or struct, or object literal...)
+** If more than one parameter, be consistent with the ordering
+*** example of badness:
+    `bool greaterThan(int x, int y);` returns `true` if `x` is greater than `y`, while
+    `bool lessThan(int x, int y);` returns `true` if `y` is less than `x`
 
 * Return only one kind of value
-** No sentinels for errors (throw instead)
-** No overloaded return values (for loosly typed lang's), e.g.
+** No specific values (sentinels) for errors; throw instead
+** No overloaded return values (for loosly typed lang's)
+*** example: a function that searches for a string inside another string.
+    Do *not* return the (integer) position if found, or (Boolean) `false` if not found!
 
 * Perfer pure functions
-** If impure:
+** avoid output arguments (hard to understand; mixes inputs and outputs)
+** avoid side effects (pollutes global data; creates temporal cohesion)
+
+** If a function must be impure:
 *** signify mutation in formal parameters (make them pointers/references, not const)
-*** make them void functions (don't return e.g. success or failure)
+*** be *absolutely* consistent with the position of mutated parameters
+    (always first argument, or always last argument; never mix them among functions)
+*** make them void functions (don't return e.g. Boolean for success or failure)
+*** explicitly document if any global data is mutated (e.g. console output)
 
 [quote]
 _____
@@ -254,7 +268,6 @@ More than three (polyadic) requires very special justification—and then should
 [...] Arguments are even harder from a testing point of view.
 Imagine the difficulty of writing all the test cases to ensure that all the various combinations of arguments work properly.
 
-
 [...] Output arguments are harder to understand than input arguments.
 When we read a function, we are used to the idea of information going in to the function through arguments and out through the return value.
 We don’t usually expect information to be going out through the arguments.
@@ -344,7 +357,116 @@ _____
 
 
 == Naming Functions
-// TODO Much of this should be moved to a "designing variables" section
+// TODO Much of this should be moved to/repeated in the "designing variables" section
+
+* Semantically describe everything the function does
+** "A good name for a routine clearly describes everything the routine does." (Code Complete)
+** "It should tell you why it exists, what it does, and how it is used." (Clean Code)
+
+* Make function names as long as semantically necessary, but no longer
+** longer is OK if it avoids confusion
+** ideal variable length is 9 - 15 characters; function names are often longer (Code Complete)
+** *but,* if a function name is long because it describes more than one thing,
+    then the function is badly designed
+
+* Use semantic terms
+** In most cases, use terms from the *problem domain*
+** For functions that are generalized (not used in only one problem domain),
+    use terms from the *solution domain*
+
+* Use consistent terms
+** Use industry-standard terms according to the industry standard
+*** Example: "set" is a standard Java term for a setter;
+    don't use it for anything else
+** Don't use the same term for different things
+    ("DON’T PUN," "Pick One Word per Concept" in Clean Code)
+** Use precise terms for opposites, e.g. "first/last" vs. "first/final" (Code Complete)
+** Use *only* abbrviations that are in common use
+*** used in existing libraries (e.g. "max" for "maximum")
+*** used in problem domain (e.g. "cos" for "cosine")
+*** agreed upon by the company or team
+** If a word can be interpreted as a verb or a noun, always make the context clear
+*** examples: "control," "count," "display," "end," "email," "guess," "handle,"
+    "help," "input," "limit," "order," "output," "process," "record," "stream,"
+
+* Don't differentiate functions by number
+** example: `printOutput1`, `printOutput2`
+
+// TODO move first to "designing variables," others to "designing classes"
+* Avoid encoding type or scope information into names
+** Hungarian notation
+** `m_` for private variables
+** `I` prefix or `Interface` suffix
+
+=== Common naming patterns
+
+==== Noun only
+Function name is semantic description of the returned data
+
+Only if not ambiguous:
+
+* Function can act on only one kind of data
+* Only one kind of data can conceivably be returned
+
+Example::
+    functions from C/C++ math library: `sqrt` (square root), `pow` (power), etc.
+
+==== Verb/Noun
+* Verb is semantic description of the actions performed
+* Noun is semantic description of the returned data
+
+Usually the best naming convention for:
+
+* Pure functions
+** "To name a [pure] function, use a description of the return value.
+A function returns a value, and the function should be named for the value it returns." (Code Complete)
+
+* Method names
+
+==== Verb/Preposition/Noun
+* Verb is semantic description of the action performed
+* Preposition signifies that noun is being acted upon
+* Noun is semantic description what is being acted upon
+
+Usually the best naming convention for impure functions (if you can't avoid them)
+
+Example::
+    a function that takes a string, and writes it to an output stream:
+    `void writeToStream(String message, OuptutStream out);`
+
+=== Function names that indicate bad design
+If you can't name the function according to the above conventions,
+it is usually a symptom of a function that is badly designed.
+
+The most common badly-designed function is a function that does more than one thing.
+In this case, the solution is to decompose that function into two or more functions.
+
+==== The function name contains a conjunction
+"and," "or," etc.
+
+Example::
+    `void formatAndWriteToStream(String message, ostream ouptutStream);`
+
+This name shows that the function is doing more than one thing.
+You should break it up into two functions:
+```
+String formatMessage(String message);
+void writeToStream(String formattedMessage, ostream ouptutStream);
+```
+
+==== The function's verb is vague
+Examples of vague verb terms are "perform," "process," "dealWith," or (my personal bane) "do."
+
+Sometimes, the solution is to rename the function with a more specific verb.
+
+If this is impossible, it usually means that the action itself is too vague.
+This is a dead giveaway that the function is trying to do more than one thing.
+
+==== The function accepts a Boolean flag as an argument
+// TODO: I'm not sure about this one; too many possible exceptions
+"Flag arguments are ugly. Passing a boolean into a function is a truly terrible practice.
+It immediately complicates the signature of the method, loudly proclaiming that this function does more than one thing.
+It does one thing if the flag is true and another if the flag is false!" (Code Complete)
 
 [quote, Steve McConnell, "Code Complete, Second Edition"]
 _____
@@ -528,7 +650,6 @@ At least the programmer who maintains your code can ask a domain expert what it 
 There are a few names which are meaningful in and of themselves—most are not.
 Instead, you need to place names in context for your reader by enclosing them in well-named classes, functions, or namespaces.
 When all else fails, then prefixing the name may be necessary as a last resort.
-
 
 *Don’t Add Gratuitous Context*
 
