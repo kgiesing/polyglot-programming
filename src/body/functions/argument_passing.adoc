@@ -10,18 +10,21 @@
 ** The vast majority of languages, and all C-style languages, use strict eval
       for functions
 
-== Pass (call) by value vs. by reference
+== Values and References
 ** Pass by value: argument's value is copied to parameter
 ***  Good, because argument won't be changed if parameter is altered inside
         function
 ***  Bad, because value must be copied in memory (e.g. big obj.)
 ** Pass by reference: argument's memory location copied to parameter
 ***  Good, because you only need to copy a memory location (not entire obj.)
-***  Bad, because argument is shared
+***  Bad, because argument is shared (mutable)
 **** change to param will also change arg - ignores scope
           semantics, automatically makes fn. an impure fn.
 ***  Some languages (Clu) refer to this as "call-by-sharing;"
         but the term is not widely used
+*** Only a memory location can be passed by reference
+**** No literals, e.g. `5` or `"Hello, world!"`
+**** No results of expressions, e.g. `5 + 7` or `x - 1`
 ** C/C++ reference semantics
 ***  Start with these, because they are the basis for other lang's, and the
         explicit differences will make understanding other lang's easier
@@ -52,8 +55,7 @@ result = f(&arr[0]); // Identical behavior!
 ****  The C/C++ term for this is a "simulated reference"
             Semantically identical to pointer, but does not use pointer syntax
 ***  C++: References
-****  When passing by reference, the parameter becomes an alias of the
-              argument value
+****  When passing by reference, the parameter becomes an alias of the argument value
 ****  Pass a value type by reference:
 [source,{cpp}]
 ----
@@ -119,6 +121,8 @@ f(5);   // this will compile! arg is reference to immutable rvalue
 ***  In PHP, references are aliases to symbol table entries:
           http://php.net/manual/en/language.references.php
         HOWEVER, they behave semantically like pass-by-pointer
+
+// TODO These are advanced topics - I should put them in their own section
 == Variadic Functions
 // TODO
 

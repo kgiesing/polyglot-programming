@@ -1,8 +1,8 @@
 = Designing Functions
-
-== The Function's Domain
-
 // Summary of the quotes below...
+
+== The Function's Purpose
+
 * Do one thing, and one thing only
 ** Cohesion (from Code Complete)
 ** Command/query separation (from )
@@ -11,8 +11,21 @@
 ** less than 200 lines
 ** shorter is generally better
 
+* Perfer pure functions
+** avoid output arguments (hard to understand; mixes inputs and outputs)
+** avoid side effects (pollutes global data; creates temporal cohesion)
+
+** If a function must be impure:
+*** signify mutation in formal parameters (make them pointers/references, not const)
+*** be *absolutely* consistent with the position of mutated parameters
+(always first argument, or always last argument; never mix them among functions)
+*** make them void functions (don't return e.g. Boolean for success or failure)
+*** explicitly document if any global data is mutated (e.g. console output)
+
+== Inputs and Outputs
+
 * Minimize the number of formal parameters
-** Complex data should become its own class (or struct, or object literal...)
+** Complex data should become its own type (class, struct, object literal...)
 ** If more than one parameter, be consistent with the ordering
 *** example of badness:
     `bool greaterThan(int x, int y);` returns `true` if `x` is greater than `y`, while
@@ -23,17 +36,6 @@
 ** No overloaded return values (for loosly typed lang's)
 *** example: a function that searches for a string inside another string.
     Do *not* return the (integer) position if found, or (Boolean) `false` if not found!
-
-* Perfer pure functions
-** avoid output arguments (hard to understand; mixes inputs and outputs)
-** avoid side effects (pollutes global data; creates temporal cohesion)
-
-** If a function must be impure:
-*** signify mutation in formal parameters (make them pointers/references, not const)
-*** be *absolutely* consistent with the position of mutated parameters
-    (always first argument, or always last argument; never mix them among functions)
-*** make them void functions (don't return e.g. Boolean for success or failure)
-*** explicitly document if any global data is mutated (e.g. console output)
 
 [quote]
 _____
@@ -46,7 +48,7 @@ but cohesion is still alive and well as the workhorse design heuristic at the in
 
 For routines, cohesion refers to how closely the operations in a routine are related.
 Some programmers prefer the term "strength": how strongly related are the operations in a routine?
-[...] ]The goal is to have each routine do one thing well and not do anything else.
+[...] The goal is to have each routine do one thing well and not do anything else.
 
 The payoff is higher reliability.
 One study of 450 routines found that 50 percent of the highly cohesive routines were fault free, whereas only 18 percent of routines with low cohesion were fault free (Card, Church, and Agresti 1986).
@@ -71,7 +73,11 @@ Several other kinds of cohesion are normally considered to be less than ideal:
     If a routine prints a summary report and then reinitializes the summary data passed into it, the routine has communicational cohesion:
     the two operations are related only by the fact that they use the same data.
 
-To give this routine better cohesion, the summary data should be reinitialized close to where it's created, which shouldn't be in the report-printing routine. Split the operations into individual routines. The first prints the report. The second reinitializes the data, close to the code that creates or modifies the data. Call both routines from the higher-level routine that originally called the communicationally cohesive routine.
+To give this routine better cohesion, the summary data should be reinitialized close to where it's created, which shouldn't be in the report-printing routine.
+Split the operations into individual routines.
+The first prints the report.
+The second reinitializes the data, close to the code that creates or modifies the data.
+Call both routines from the higher-level routine that originally called the communicationally cohesive routine.
 
 * *Temporal cohesion* occurs when operations are combined into a routine because they are all done at the same time.
     Typical examples would be Startup(), CompleteNewEmployee(), and Shutdown().

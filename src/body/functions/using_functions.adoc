@@ -63,7 +63,7 @@ But you can also use the return value as an argument to another function:
 double s = sin(degree_to_radian(180));
 -----
 
-This does not mean that function calls cannot be used _as_ a statement.
+This does not mean that a function call cannot be used _as_ a statement.
 For example, this is a valid function call:
 [source,c]
 -----
@@ -76,7 +76,7 @@ If the return value of a function is not used, it is simply discarded.
 Though syntactically correct, this is _probably_ a programming mistake.
 If a function returns a value, and you're not using it, then why call the function at all?
 
-In compiled languages, not using a function's return value will usually result in a warning from the compiler.
+In compiled languages, discarding a function's return value will usually result in a warning from the compiler.
 However, the code will still compile.
 Most compilers have an option to turn off this warning (though I recommend leaving it on).
 
@@ -128,7 +128,7 @@ x = print("Hello, world!");
 After the statement is evaluated, the value of `x` would be `undefined`.
 
 Likewise, in PHP, this is perfectly legal:
-[source,PHP]
+[source,php]
 -----
 $x = print("Hello, world!");
 -----
