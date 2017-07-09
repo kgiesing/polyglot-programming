@@ -1,0 +1,64 @@
+== Strict evaluation
+** Argument expressions are evaluated before the function is called;
+      the resulting value is passed to the fn.
+** The vast majority of languages, and all C-style languages, use strict eval
+      for functions
+
+// TODO: Merge this with the "Argument Evaluation Strategy" section in "Using Functions"?
+== Non-strict evaluation
+* Argument expressions are not evaluated until/unless they are used in the function body
+* Example problem: mimic if/then/else statement with function
+[source,{cpp}]
+----
+// Function definition
+int if_then_else(bool if_exp, int then_exp, int else_exp) {
+   if (if_exp) {
+       return then_exp;
+   }
+   else {
+       return else_exp;
+   }
+}
+// Function call - parentheses are for clarity
+a = 1;
+b = 0;
+if_then_else((b > 0), (5 / b), (5 / a));
+----
+
+Strict evaluation produces a divide-by-zero error at runtime!
+This shouldn't happen, because `(5 / b)` should not be evaluated.
+(Other example: sort-circuiting for `||` and `&&` operators)
+
+Non-strict evaluation can "fix" this behavior.
+
+=== Call-by-macro-expansion
+the argument expression code is literally substituted for the parameter when it is used. Example:
+[source,{cpp}]
+----
+ // function call as before:
+ if_then_else((b > 0), (5 / b), (5 / a));
+ // The body of the function literally becomes:
+ int if_then_else(bool if_exp, int then_exp, int else_exp) {
+    if ((b > 0)) {
+        return (5 / b);
+    }
+    else {
+        return (5 / a);
+    }
+}
+----
+
+But, call-by-macro-expansion needs a way for `f()` to know values for `a` and `b`;
+only possible if they have global scope, otherwise it's an error
+
+=== Call-by-name
+similar to call-by-macro-expansion, but language
+    automatically keeps reference to caller's scope
+
+=== Call-by-need
+similar to call-by-name, but the language holds a record
+    of the results of a function call with specific parameters; so the
+    function is only evaluated once (per set of parameter values), and is
+    returned from the record on subsequent calls
+* Memoization
+* Won't work for impure functions (e.g. random number generator)

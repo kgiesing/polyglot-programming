@@ -1,0 +1,36 @@
+== Variadic Functions
+// TODO
+
+=== JavaScript `arguments`
+// TODO
+
+Careful! Parameters are *references* to `arguments` elements:
+[source,javascript]
+----
+// The intent was to make favoriteColor optional, and default to "green"
+var makePerson = function(favoriteColor, name, age) {
+    if (arguments.length < 3) {
+        favoriteColor = "green";
+        name = arguments[0];
+        age = arguments[1];
+    }
+
+    return {
+        name: name,
+        age: age,
+        favoriteColor: favoriteColor
+    };
+};
+
+// ...but that's not what happens:
+var person = makePerson("Joe", 18);
+console.log(person);
+// => {"name":"green","age":"green","favoriteColor":"green"}
+----
+This is because `favoriteColor` is a reference to `arguments[0]`;
+`name` is a reference to `arguments[1]`; and
+`age` is a reference to `arguments[2]`.
+When `favoriteColor` was set to "green," `arguments[0]` was also set to "green."
+
+// Source:
+// https://spin.atomicobject.com/2011/04/10/javascript-don-t-reassign-your-function-arguments/

@@ -1,0 +1,9 @@
+// Passing arguments to functions
+
+include::intro.adoc[]
+
+include::values_references.adoc[]
+
+include::evaluation_strategies.adoc[]
+
+include::variadic_functions.adoc[]

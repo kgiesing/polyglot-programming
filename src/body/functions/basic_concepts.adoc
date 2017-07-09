@@ -28,7 +28,7 @@ Funtion identifiers must follow the same naming rules as variable identifiers.
 // TODO repeat those here
 
 The input values sent to a function are called the function's _arguments._
-When you send values to the function, you are _passing_ those values as aguments.
+When you send values to the function, you are _passing_ those values as arguments.
 Anything that produces a value (of the correct type) can be passed as an argument to a function.
 This can be a literal value, a variable, an expression that produces a value, or the result of another function call.
 
@@ -53,7 +53,7 @@ A function does nothing until you give it arguments and tell it to return a valu
 In computer science, this is _calling_ or _invoking_ the function.
 
 In mathematics, this is called the _application_ of the function.
-This term is also used, especially when discussing the formal theory of programming langues.
+This term is also used in computer science, especially when discussing the formal theory of programming languages.
 
 The "inside" of a function is called the _body_ of the function.
 The body consists of statements that are executed when the function is called.
