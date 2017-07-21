@@ -5,7 +5,7 @@
 
 == Beyond Legacy Code (Bernstein)
 
-=== Function Design
+=== Design
 
 [quote, David Scott Bernstein, Beyond Legacy Code]
 _____
@@ -19,6 +19,14 @@ Smaller is better for four essential reasons:
 Smaller tasks are also far less risky because they give us more opportunity for feedback.
 _____
 (Note: Bernstein was talking about smaller stories, but it applies to pretty much everything.)
+
+=== Naming
+
+[quote, David Scott Bernstein, Beyond Legacy Code]
+_____
+Virtually everything in software requires a name and the name should reveal the intention behind the thing.
+Coming up with good intention-revealing names is a critical part of writing good software.
+_____
 
 == Code Complete, Second Edition (McConnell)
 
@@ -205,11 +213,11 @@ In some systems, it's important to distinguish among different kinds of operatio
 A naming convention is often the easiest and most reliable way of indicating these distinctions.
 _____
 
-== Clean Code (Ottinger)
+== Clean Code (Martin/Ottinger)
 
 === Function Design
 
-[quote, Tim Ottinger, Clean Code]
+[quote, Robert C. Martin, Clean Code]
 _____
 *Small!*
 
@@ -397,7 +405,7 @@ and can sometimes even be more expressive than the single-entry, single-exit rul
 On the other hand, `goto` only makes sense in large functions, so it should be avoided.
 _____
 
-=== Naming Functions
+=== Naming
 
 [quote, Tim Ottinger, Clean Code]
 _____
