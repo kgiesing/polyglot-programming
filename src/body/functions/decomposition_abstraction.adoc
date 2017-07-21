@@ -1,8 +1,57 @@
 = Decomposition and abstraction
+Functions are a fundamental part of all structured programming languages.
+But, any statements or expressions inside a function can also be used outside a function.
+So, why write functions at all?
+
+Creating functions accomplishes two things, which are distinct but very much related.
+Those things are _decomposition,_ a.k.a. _factoring,_ and _abstraction._
+Decomposition and abstraction result in a number of benefits, which we'll discuss below.
+
+I should point out that functions are not the _only_ things that provide decomposition and abstraction.
+For example, in object-oriented programming, decomposition and abstraction are accomplished using classes and objects.
+But functions exist in nearly all programming paradigms, and all C-syntax languages.
+Also, decomposition and abstraction were the reasons that functions were first created.
+
+== Decomposition
+Decomposition is the process of breaking down a complex problem or system into smaller parts.
+Those parts, in turn, may be further decomposed into smaller parts.
+In the case of programming, the "system" is the code for the program itself.
+
+Consider a word processing program.
+Even a basic word processor needs to do a whole lot of things:
+display the user interface, edit the text in the document, save the document to a file, and so forth.
+Using decomposition, we can break down each thing into its own part, and focus on each part by itself.
+
+The biggest advantage to decomposition is the fact that smaller parts are easier to understand and implement.
+If we are writing the code to save the document to file, we do not need to know anything about the code for the user interface.
+We don't need to include any of the code that handles windows, menus, buttons, and so forth.
+We limit our scope to the code that writes data to disk.
+
+This also makes code easier to debug, fix, and maintain.
+If something goes wrong when writing a document to file,
+we know it is not due to a bug in our user interface code.
+If we need to update the file format, we only change the code that handles file output;
+the rest of the code should not have to be changed at all.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Decomposition:: break down a complex problem/system into smaller parts
 // (sometimes called "modules," but this is has a different meaning)
-* creates structure
+* creates structure (cohesion)
 ** leads to better design; avoids "spaghetti code"
 * promotes code re-use/avoids duplication
 * easier to fix/improve
