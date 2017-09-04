@@ -3,6 +3,11 @@
 // References in the "technically correct" sense should go into src/back/references.adoc.
 :toc:
 
+NOTE: The copyrights for these quotes remain the property of the respective authors and/or publishers.
+    They are not covered in the copyright of this book.
+    These quotes are intended solely for my own reference.
+    They will not appear in this form in the final book.
+
 == Beyond Legacy Code (Bernstein)
 
 === Design
@@ -245,7 +250,7 @@ THEY SHOULD DO IT ONLY.
 [...] If a function does only those steps that are one level below the stated name of the function,
 then the function is doing one thing.
 
-[...] Another way to know that a function is doing more than “one thing”
+[...] Another way to know that a function is doing more than "one thing"
 is if you can extract another function from it
 with a name that is not merely a restatement of its implementation [G34].
 
@@ -336,8 +341,8 @@ It immediately complicates the signature of the method, loudly proclaiming that 
 [...] Choosing good names for a function can go a long way toward explaining the intent of the function and the order and intent of the arguments.
 In the case of a monad, the function and argument should form a very nice verb/noun pair.
 For example, write(name) is very evocative.
-Whatever this “name” thing is, it is being “written.”
-An even better name might be writeField(name), which tells us that the “name” thing is a “field.”
+Whatever this "name" thing is, it is being "written."
+An even better name might be writeField(name), which tells us that the "name" thing is a "field."
 
 This last is an example of the *keyword* form of a function name.
 Using this form we encode the names of the arguments into the function name.
@@ -458,7 +463,7 @@ If a variable or constant might be seen or used in multiple places in a body of 
 
 We have enough encodings to deal with without adding more to our burden.
 Encoding type or scope information into names simply adds an extra burden of deciphering.
-It hardly seems reasonable to require each new employee to learn yet another encoding “language” in addition to learning the (usually considerable) body of code that they’ll be working in.
+It hardly seems reasonable to require each new employee to learn yet another encoding "language" in addition to learning the (usually considerable) body of code that they’ll be working in.
 It is an unnecessary mental burden when trying to solve a problem.
 Encoded names are seldom pronounceable and are easy to mis-type.
 
@@ -538,7 +543,7 @@ So go ahead and use computer science (CS) terms, algorithm names, pattern names,
 
 *Use Problem Domain Names*
 
-When there is no “programmer-eese” for what you’re doing, use the name from the problem domain.
+When there is no "programmer-eese" for what you’re doing, use the name from the problem domain.
 At least the programmer who maintains your code can ask a domain expert what it means.
 
 *Add Meaningful Context*
@@ -549,7 +554,7 @@ When all else fails, then prefixing the name may be necessary as a last resort.
 
 *Don’t Add Gratuitous Context*
 
-In an imaginary application called “Gas Station Deluxe,” it is a bad idea to prefix every class with GSD.
+In an imaginary application called "Gas Station Deluxe," it is a bad idea to prefix every class with GSD.
 Frankly, you are working against your tools.
 You type G and press the completion key and are rewarded with a mile-long list of every class in the system.
 Is that wise?
@@ -563,4 +568,274 @@ Ten of 17 characters are redundant or irrelevant.
 
 Shorter names are generally better than longer ones, so long as they are clear.
 Add no more context to a name than is necessary.
+_____
+
+== The Practice Of Programming (Kernighan & Pike)
+
+=== Naming
+
+[quote, Brian Kernighan and Rob Pike, The Practice Of Programming]
+_____
+1.1. NAMES
+What’s in a name? A variable or function name labels an object and conveys information about its purpose.
+A name should be informative, concise, memorable, and pronounceable if possible.
+Much information comes from context and scope; the broader the scope of a variable, the more information should be conveyed by its name.
+
+*Use descriptive names for globals, short names for locals.*
+Global variables, by definition, can crop up anywhere in a program, so they need names long enough and descriptive enough to remind the reader of their meaning.
+It’s also helpful to include a brief comment with the declaration of each global:
+
+[source,java]
+-----
+int npending = 0;  // current length of input queue
+-----
+
+Global functions, classes, and structures should also have descriptive names that suggest their role in a program.
+
+By contrast, shorter names suffice for local variables;
+within a function, `n` may be sufficient, `npoints` is fine, and `numberOfPoints` is overkill.
+
+Local variables used in conventional ways can have very short names.
+The use of `i` and `j` for loop indices, `p` and `q` for pointers, and `s` and `t` for strings is so frequent that there is little profit and perhaps some loss in longer names.
+Compare
+
+[source,java]
+-----
+for (theElementIndex = 0; theElementIndex < numberOfElements; theElementIndex++)
+    elementArray[theElementIndex] = theElementIndex;
+-----
+
+to
+
+[source,java]
+-----
+    for (i = 0; i < nelems; i++)
+        elem[i] = i;
+-----
+
+Programmers are often encouraged to use long variable names regardless of context.
+That is a mistake: clarity is often achieved through brevity.
+
+There are many naming conventions and local customs.
+Common ones include using names that begin or end with `p`, such as `nodep`, for pointers;
+initial capital letters for `Globals`;
+and all capitals for `CONSTANTS`.
+Some programming shops use more sweeping rules,
+such as notation to encode type and usage information in the variable,
+perhaps `pch` to mean a pointer to a character and `strTo` and `strFrom` to mean strings that will be written to and read from.
+As for the spelling of the names themselves,
+whether to use `npending` or `numPending` or `num_pending` is a matter of taste;
+specific rules are much less important than consistent adherence to a sensible convention.
+
+Naming conventions make it easier to understand your own code, as well as code written by others.
+They also make it easier to invent new names as the code is being written.
+The longer the program, the more important is the choice of good, descriptive, systematic names.
+
+Namespaces in C++ and packages in Java provide ways to manage the scope of names and help to keep meanings clear without unduly long names.
+
+*Be consistent.*
+Give related things related names that show their relationship and highlight their difference.
+
+Besides being much too long, the member names in this Java class are wildly inconsistent:
+
+[source,java]
+-----
+class UserQueue {
+    int noOfItemsInQ, frontOfTheQueue, queueCapacity;
+    public int noOfUsersInQueue() {...}
+}
+-----
+
+The word "queue" appears as Q, Queue and queue.
+But since queues can only be accessed from a variable of type UserQueue, member names do not need to mention "queue" at all;
+context suffices, so
+
+[source,java]
+-----
+queue.queueCapacity
+-----
+
+is redundant.
+This version is better:
+
+[source,java]
+-----
+class UserQueue {
+    int nitems, front, capacity;
+    public int nusers() {...}
+}
+-----
+
+since it leads to statements like
+
+[source,java]
+-----
+queue.capacity++;
+n = queue.nusers();
+-----
+
+No clarity is lost.
+This example still needs work, however:
+"items" and "users" are the same thing, so only one term should be used for a single concept.
+
+Use active names for functions.
+Function names should be based on active verbs, perhaps followed by nouns:
+
+[source,java]
+-----
+now = date.getTime();
+putchar('\n');
+-----
+
+Functions that return a boolean (true or false) value should be named so that the return value is unambiguous.
+Thus
+
+[source,java]
+-----
+if (checkoctal(c)) ...
+-----
+
+does not indicate which value is true and which is false, while
+
+[source,java]
+-----
+if (isoctal(c)) ...
+-----
+
+makes it clear that the function returns true if the argument is octal and false if not.
+
+Be accurate.
+A name not only labels, it conveys information to the reader.
+A misleading name can result in mystifying bugs.
+
+One of us wrote and distributed for years a macro called isoctal with this incorrect implementation:
+
+[source,{cpp}]
+-----
+#define isoctal(c) ((c) >= '0' && (c) <= '8')
+-----
+
+instead of the proper
+
+[source,{cpp}]
+-----
+#define isoctal(c) ((c) >= '0' && (c) <= '7')
+-----
+
+In this case, the name conveyed the correct intent but the implementation was wrong;
+it’s easy for a sensible name to disguise a broken implementation.
+
+Here’s an example in which the name and the code are in complete contradiction:
+
+[source,java]
+-----
+public boolean inTable(Object obj) {
+    int j = this.getIndex(obj);
+    return (j == nTable);
+}
+-----
+
+The function getIndex returns a value between zero and nTable-1 if it finds the object, and returns nTable if not.
+The boolean value returned by inTable is thus the opposite of what the name implies.
+At the time the code is written, this might not cause trouble,
+but if the program is modified later, perhaps by a different programmer, the name is sure to confuse.
+_____
+
+=== Function Macros
+[quote, Brian Kernighan and Rob Pike, The Practice Of Programming]
+_____
+1.4. FUNCTION MACROS
+There is a tendency among older C programmers to write macros instead of functions for very short computations that will be executed frequently;
+I/O operations such as getchar and character tests like isdigit are officially sanctioned examples.
+The reason is performance: a macro avoids the overhead of a function call.
+This argument was weak even when C was first defined, a time of slow machines and expensive function calls; today it is irrelevant.
+With modern machines and compilers, the drawbacks of function macros outweigh their benefits.
+
+Avoid function macros. In C++, inline functions render function macros unnecessary; in Java, there are no macros.
+In C, they cause more problems than they solve.
+
+One of the most serious problems with function macros is that a parameter that appears more than once in the definition might be evaluated more than once;
+if the argument in the call includes an expression with side effects, the result is a subtle bug.
+This code attempts to implement one of the character tests from <ctype.h>:
+
+[source,c]
+-----
+#define isupper(c) ((c) >= 'A' && (c) <= 'Z')
+-----
+Note that the parameter c occurs twice in the body of the macro.
+If isupper is called in a context like this,
+
+[source,c]
+-----
+while (isupper(c = getchar()))
+    ...
+-----
+
+then each time an input character is greater than or equal to A, it will be discarded and another character read to be tested against Z.
+The C standard is carefully written to permit isupper and analogous functions to be macros,
+but only if they guarantee to evaluate the argument only once, so this implementation is broken.
+
+It’s always better to use the ctype functions than to implement them yourself,
+and it’s safer not to nest routines like getchar that have side effects.
+Rewriting the test to use two expressions rather than one makes it clearer and also gives an opportunity to catch end-of-file explicitly:
+
+[source,c]
+-----
+while ((c = getchar()) != EOF && isupper(c))
+    ...
+-----
+
+Sometimes multiple evaluation causes a performance problem rather than an outright error.
+Consider this example:
+
+[source,c]
+-----
+#define ROUND_TO_INT(x) ((int) ((x)+(((x)>0)?0.5:-0.5)))
+    ...
+size = ROUND_TO_INT(sqrt(dx*dx + dy*dy));
+-----
+
+This will perform the square root computation twice as often as necessary.
+Even given simple arguments, a complex expression like the body of ROUND_TO_INT translates into many instructions,
+which should be housed in a single function to be called when needed.
+Instantiating a macro at every occurrence makes the compiled program larger. (C++ inline functions have this drawback, too.)
+
+Parenthesize the macro body and arguments.
+If you insist on using function macros, be careful.
+Macros work by textual substitution:
+the parameters in the definition are replaced by the arguments of the call and the result replaces the original call, as text.
+This is a troublesome difference from functions.
+The expression
+[source,c]
+-----
+1 / square(x)
+-----
+
+works fine if square is a function, but if it’s a macro like this,
+
+[source,c]
+-----
+#define square(x)   (x) * (x)
+-----
+
+the expression will be expanded to the erroneous
+
+[source,c]
+-----
+1 / (x) * (x)
+-----
+
+The macro should be rewritten as
+
+[source,c]
+-----
+#define square(x)   ((x) * (x))
+-----
+
+All those parentheses are necessary.
+Even parenthesizing the macro properly does not address the multiple evaluation problem.
+If an operation is expensive or common enough to be wrapped up, use a function.
+
+In C++, inline functions avoid the syntactic trouble while offering whatever performance advantage macros might provide.
+They are appropriate for short functions that set or retrieve a single value.
 _____
