@@ -26,6 +26,8 @@ include::recursion.adoc[]
 
 include::functional_programming.adoc[]
 
+include::function_like_macros.adoc[]
+
 include::designing_functions.adoc[]
 
 // Return to normal title levels.

@@ -1,0 +1,280 @@
+= Function-Like Macros (C/C++)
+
+It is possible to create macros that behave similar to functions.
+Such macros are called _function-like macros,_ or just _function macros_ for short.
+
+WARNING: The use of function-like macros has been discouraged for over a decade.
+  They are slightly more efficient than function calls, and were originally used for this reason.
+  Even so, they have so many pitfalls that their use is not considered to be worth it.footnote:[
+      "There is a tendency among older C programmers to write macros instead of functions
+      for very short computations that will be executed frequently (...).
+      The reason is performance: a macro avoids the overhead of a function call.
+      This argument was weak even when C was first defined, a time of slow machines and expensive function calls; today it is irrelevant.
+      With modern machines and compilers, the drawbacks of function macros outweigh their benefits." -
+      <<practice_of_programming, "Brian W. Kernighan and Rob Pike, The Practice of Programming">>]
+  I am including this chapter solely for completeness.
+
+We discussed macros in the chapter on data types, but let's recap.
+Compilers for C and C++ include a preprocessor, which parses the text of the code before it is compiled.
+You can include special strings in your code, called _preprocessor directives,_
+and the preprocessor will interpret the strings and perform some action.
+
+C and C++ preprocessor directives start with a pound sign, `#`, and must be the first thing on the line.
+They are not actually C or C++ code, so they are not followed by a semicolon; the end of the line is the end of the directive.
+Directives that span multiple lines must have a backslash, `\`, before a line break,
+to signify that the directive is continuing on the next line.
+
+A very common use of preprocessor directives is to define a _macro._
+A macro is a simple text substitution.
+Whenever the macro text is encountered in the code, it is substituted with the defined text.
+The process of substituting the text, is called _expanding_ the macro.
+Macros are defined using the `#define` preprocessor directive.
+
+Macros are especially common for creating constants in C, which does not have the equivalent of a `const` keyword.
+Here is an example:
+[source,c]
+-----
+#define PI 3.14159
+-----
+
+Whenever the string "PI" is encountered in your code, it is replaced with the string "3.14159".
+
+== Macros with arguments
+
+Nearly all compilers allow macros to take arguments.
+This is done by enclosing a parameter in parentheses, immediately following the macro definition.
+The parameter names must be valid C identifiers; by convention, they are usually upper-case letters.
+If there is more than one, they must be comma-separated, possibly with a space after the comma.
+
+The parameter(s) can then be used anywhere in the macro body.
+As a rule, they are automatically replaced with the literal text passed as the argument.
+The only exception is when they appear within a string literal in the macro body.
+Preprocessors don't touch string literals, so they are not expanded in that case.
+
+To invoke a function-like macro, write the name of the macro,
+followed by a comma-separated list of arguments enclosed in parentheses.
+
+This syntax is identical to invoking a function, and that is intentional.
+When calling a "function," it shouldn't matter if it's a _bona fide_ function or a function-like macro.
+This is an implementation detail that is hidden from the caller.
+
+As an example, let's create a function-like macro called `max`.
+The intent of this macro is to evaluate to the maximum of two values.
+
+Here is the definition of the `max` macro:
+[source,c]
+-----
+#define max(X, Y) ((X) > (Y) ? (X) : (Y))
+-----
+
+Here are some uses of the `max` macro in the C source code.
+Their expanded text is shown in the comments.
+[source,c]
+-----
+x = max(a, b);           // x = ((a) > (b) ? (a) : (b));
+y = max(1, 2);           // y = ((1) > (2) ? (1) : (2));
+z = max(a + 28, b + 23); // z = ((a + 28) > (b + 23) ? (a + 28) : (b + 23));
+-----
+
+== Pitfalls of function-like macros
+
+As you can see from the code above, there are a number of pitfalls when using function-like macros.
+
+Some of these pitfalls are caused by formatting errors.
+But by far, the greatest source of problems is that macros perform simple text substitution.
+Unlike function calls, arguments are _not_ evaluated before the macro is expanded.
+
+=== Typos in macros
+
+Because macros are substituted before the code is evaluated,
+they are not themselves subject to compile-time syntax checks.
+This makes any typos in a macro definition extremely easy to miss, and extremely hard to debug.
+
+Let's include a subtle typo in our `max` macro:
+[source,c]
+-----
+#define max(X, Y) (X) > (Y) ? (X) : (Y))
+-----
+If you didn't catch it, there is a missing opening parentheses around the macro body.
+
+Here's a call to the `max` macro, along with its text expansion:
+[source,c]
+-----
+x = max(2,3);
+// ...expands to:
+x = (2) > (3) ? (2) : (3));
+-----
+
+The expanded code is invalid C code, and the compiler will in fact throw a syntax error.
+But the compiler won't have any way to know it is a typo in the macro definition.
+Instead, it will be a typo in the code that _invokes_ the macro, since that is the code that is expanded.
+
+In our example, the compiler will show *this line* as being the source of the syntax error:
+[source,c]
+-----
+x = max(2,3);
+-----
+But there is no syntax error in that line of source code.
+Unless you know that `max` is a macro, and you have access to the source code for that macro,
+debugging this syntax error will be next to impossible.
+
+=== Lack of type checking
+
+Because macro arguments are literally strings of characters, they are exempt from type checking.
+This can lead to code that may be a syntax error, which leads to all the same problems as a typo in the macro itself.
+
+Let's see what happens when we invoke our `max` function using strings:
+[source,c]
+-----
+x = max("yabba","dabba");
+// ...expands to:
+x = ("yabba") > ("dabba") ? ("yabba") : ("dabba"));
+-----
+
+The greater-than operator, `>`, cannot be used to compare string literals in C.
+When compiled, the compiler will throw a syntax error,
+and the syntax error will be in the code that invokes the macro.
+
+=== Missing arguments
+
+You _must_ include all of the arguments to a macro -
+but there is no requirement that they be non-empty strings.
+To insert an empty string into the macro, put nothing at all into the argument;
+just include whatever commas are necessary.
+
+This is allowed by the preprocessor, but doing so will often generate invalid code.
+Here are some examples, using our `max` function:
+
+[source,c]
+-----
+x = max(, b); // x = (() > (b) ? () : (b));
+y = max(a,);  // y = ((a) > () ? (a) : ());
+z = max(,);   // z = (() > () ? () : ());
+-----
+
+All of the above will cause syntax errors, arising from the code that invokes the macro.
+
+=== Operator precedence errors
+
+Whenever you write a macro, be sure to parenthesize both the macro body, *and* individual macro parameters.
+Failing to do so will undoubtedly lead to logical errors.
+Worse, these logical errors will probably not result in any compile-time or runtime errors at all.
+
+As an example, let's create another macro, `square`, that squares a number.
+Here's a very naive implementation:
+
+[source,c]
+-----
+#define square(X) X * X
+-----
+
+Now, recall that users of the macro won't necessarily know it _is_ a macro, rather than a function.
+So, the user writes some C code that uses an expression as an argument:
+[source,c]
+-----
+int y = 5;
+int x = square(y + 5);
+-----
+When this code is run, we expect `x` to become (5 + 5)^2^, or 100.
+But that's not what we get.
+Here is the expanded version:
+[source,c]
+-----
+int y = 5;
+int x = y + 5 * y + 5;
+-----
+Because the multiplication operator has higher precedence, `x` becomes 5 + (5 * 5) + 5,
+or 35.
+
+To fix this bug, we do a less-naive implementation, with parentheses around the substituted parameters:
+
+[source,c]
+-----
+#define square(X) (X) * (X)
+-----
+
+This will solve the above issue, but it still isn't good enough.
+
+Functions return values, so they can be used in expressions.
+If a user of the macro doesn't know it's not a function, they will surely do something like this:
+
+[source,c]
+-----
+double y = 5;
+double x = 1 / square(y);
+-----
+
+The expected result is 1 / 25, or 0.04.
+Again, that's not what we get.
+Here is the expanded version:
+
+[source,c]
+-----
+double y = 5;
+double x = 1 / (y) * (y);
+-----
+
+Division and multiplication operators have the same precedence, and are evaluated left-to-right.
+So, the expression evaluates to (1 / 5) * 5, or 1.
+
+To avoid operator precedence problems, you must place parentheses around the parameters _and_ the macro body as a whole:
+
+[source,c]
+-----
+#define square(X) ((X) * (X))
+-----
+
+=== Multiple evaluation of arguments
+
+Recall, again, that macro expansion is simple text substitution.
+Any arguments passed to a function-like macro are substituted as-is in the macro body.
+
+This means that any repeated parameters in the body will be substituted multiple times.
+If the arguments passed to the macro have any side effects,
+those side effects will happen multiple times - once for each duplicated parameter.
+
+Let's take the `square` macro from above:
+
+[source,c]
+-----
+#define square(X) ((X) * (X))
+-----
+
+What happens when we invoke it with side effects?
+
+[source,c]
+-----
+int y = 5;
+int x = square(++y);
+-----
+
+If this were a function, the prefix increment operator would be evaluated before the function is called.
+So, we would expect `y` to become 6, and `x` to become 36.
+But, again, that's not what happens.
+
+Here is the expanded version:
+
+[source,c]
+-----
+int y = 5;
+double x = ((++y) * (++y));
+-----
+
+The prefix operator will be invoked _twice_ on `y`.
+At the end of the macro invocation, `y` will be 7, and `x` will be 49.
+
+There is no simple fix for this, and it is one of the strongest arguments against using macros.
+The only practical "solution" is to document the fact that is a macro,
+specify that it should not be called with arguments that have side effects,
+and hope that the users of the code actually follow the documentation.
+
+[bibliography]
+- [[practice_of_programming]] Brian W. Kernighan and Rob Pike.
+    _The Practice of Programming._
+    Addison-Wesley Professional (August 1999).
+- [[macro_pitfalls]] Free Software Foundation.
+    https://gcc.gnu.org/onlinedocs/cpp/Macro-Pitfalls.html[_Macro Pitfalls_].
+    Part of the _CPP Manual_ (https://gcc.gnu.org.onlinedocs/cpp/[Online]/
+    https://gcc.gnu.org.onlinedocs/gcc.pdf[PDF]/
+    https://gcc.gnu.org.onlinedocs/gcc.ps.gz[PostScript]/
+    https://gcc.gnu.org.onlinedocs/gcc-html.tar.gz[HTML tarball]).
