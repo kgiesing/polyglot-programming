@@ -1,11 +1,152 @@
 = C
-the C language
 
-== About
+The C language is one of the first structured programming languages invented.
+It is also the most widely-used language in the world.
+Because of its popularity, its syntax and semantics have influenced most other programming languages.
+
+C is an imperative, procedural programming language.
+It is also the only language in this book that does *not* support object-oriented programming.
+(Some programmers love it for precisely this reason.)
+
+== History
 about the C language
 
 == Installation
-installing C
+C is a compiled language.
+In order to execute C code on your computer, it must first be compiled to a binary executable.
+
+There are a huge number of C compilers.
+Because of C's popularity, most operating systems come with a C compiler already installed.
+If not, most IDEs install a compiler if one is not already installed.
+
+For beginners, I recommend installing and using an IDE.
+The C code in this book should compile and run just fine with any compiler or IDE.
+
+But you will eventually need to learn how to compile from the command line.
+To do this, you will need to install a compiler if one is not installed.
+Here are some widely-used compilers, and instructions on how to install them on your system.
+
+=== The https://gcc.gnu.org/[Gnu Compiler Collection] (GCC)
+
+This is probably the most popular compiler used in the world.
+It is part of the http://www.gnu.org/[GNU Project],
+and released under the https://gcc.gnu.org/onlinedocs/gcc-7.1.0/gcc/Copying.html[GNU General Public License].
+
+For this book, I am going to assume that you are using the GCC to compile C code.
+This is because it is widely-used, cross-platform, and open source.
+However, the examples in this book will usually work with other compilers.
+You simply have to substitute the `gcc` command for the other compiler's command.
+
+The GCC is already installed on most Linux distributions.
+To find out if you have GCC installed, enter this command on the command line:
+[source]
+-----
+$ which gcc
+-----
+You should see a response like this:
+[source]
+-----
+usr/bin/gcc
+-----
+That is the most common location, but some Linux distributions may install it in a different location.
+
+If the response was instead a blank line, it means GCC is not installed.
+The easiest way to install it is with the package manager for your Linux distribution.
+
+You _could_ install GCC only, but for most readers of this book,
+it would be better to install the Debian `build-essentials` package.
+This package includes the GCC, the C standard libraries, GNU Make, and Debian package development tools.
+Here is how you would install it using Debian's Aptitude package manager:
+[source]
+-----
+$ sudo apt-get update
+$ sudo apt-get install build-essentials
+-----
+
+The easiest way to get GCC on Mac OS X, is to download and install XCode Command Line Tools.
+On many systems, it is already installed.
+To double-check, open Terminal, and run this command:
+[source]
+-----
+$ xcode-select -p
+-----
+You should get something like this:
+[source]
+-----
+/Applications/Xcode.app/Contents/Developer
+-----
+
+If XCode Command Line Tools are not installed, you should install them yourself.
+The easiest way to do this is with this command:
+[source]
+-----
+$ xcode-select --install
+-----
+This will open an alert box.
+You should hit the "Install" button in that alert box.
+
+If you wish, you can also download and install the entire XCode IDE.
+It is a very large application, over six gigabytes at the time of this writing.
+But if you are developing on a Mac, it is probably worth it.
+
+Windows does not come with a C compiler.
+The Visual Studio IDE contains the *???* compiler, and this is what Microsoft wants developers to use.
+
+So, to get GCC, you will need to get a package that is Windows specific.
+The one that is currently the most popular is http://www.mingw.org/[MinGW] (Minimalist GNU for Windows).
+This compiler is installed with many popular Windows C and C++ compilers (that are not Visual Studio).
+However, https://www.cygwin.com/[Cygwin] is also widely used.
+
+=== The http://clang.llvm.org/[Clang] compiler
+
+Clang is a front-end for the http://www.llvm.org/[LLVM] compiler infrastructure.
+It supports C, C++, Objective-C, and other languages.
+
+This is the compiler that usually ships with XCode on OS X.
+
+=== Visual C++
+
+As the name suggests, this tool suite is used with Visual Studio.
+It is designed to be used with C++, but can easily be used for C code as well.
+
+With Visual Studio 2015 and previous, you could get the command-line tools as http://landinghub.visualstudio.com/visual-cpp-build-tools[a separate download] from Microsoft.
+However, as of Visual Studio 2017, it can only be installed with https://www.visualstudio.com/downloads/[Visual Studio] itself.
+
+Visual Studio is only available for Windows and OS X (and only recently for OS X).
+If you want to use a Microsoft IDE to compile C code on Linux,
+I suggest using https://code.visualstudio.com[Visual Studio Code],
+and installing the https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools[Microsoft C/C++ Extension].
 
 == Execution
-compiling & executing C
+Because C is a compiled language, executing the source code is a two-step process.
+First you must compile the code, then you must run the executable.
+
+If you are using an integrated development environment (IDE),
+there is usually a handy "play" button in the UI that will compile and execute the code in one step.
+Most IDEs will also show you the commands used and their output, so you can follow along.
+This is what I recommend for most readers, since it is the easiest and most convenient method.
+
+If you're not using an IDE, then you must compile the C code on the command line.
+For single files, you can just compile the soure file directly.
+For multiple files, you will probably want to use a build tool like GNU Make.
+
+If you have the GCC installed, open a Bash command shell, and compile source code using this command:
+[source]
+-----
+$ gcc -o [executable] [source.c]
+-----
+...where `[executable]` is the name of the executable, and `[source.c]` is the name of the C source file.
+(Don't include the square braces.)
+
+On Linux and OS X systems, the executable usually has no extension, but it may also have an `.out` or `.o` extension.
+On Windows, it almost always has an `.exe` extension.
+
+Once the code is compiled, you do not need additional software to run it.
+It should already be in a binary format that is executable on your OS and hardware architecture.
+So, in a Bash shell, you would run the executable directly:
+[source]
+-----
+$ ./[executable]
+-----
+(The `./` is to specify the executable in the _current_ directory,
+in case you named the executable the same as a system executable.)

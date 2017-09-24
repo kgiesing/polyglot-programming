@@ -5,7 +5,9 @@ include::intro.adoc[]
 // Push titles down one level.
 :leveloffset: +1
 
-include::programming_overview/index.adoc[]
+include::programming_overview/index.adoc[Programming Overview]
+
+include::tools/index.adoc[]
 
 include::languages/index.adoc[]
 

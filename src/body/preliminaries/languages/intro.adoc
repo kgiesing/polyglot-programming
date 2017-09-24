@@ -1,1 +1,6 @@
-= Languages covered in this book
+= The C-Syntax Languages
+
+This section is an overview of the C-syntax languages covered in this book.
+It will give you a brief history of each language,
+installation instructions,
+and language-specific topics.
