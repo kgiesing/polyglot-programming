@@ -31,6 +31,14 @@ In these cases, the most common type expression is used.
 | `char`
 | `char`
 
+| 8-bit unsigned integer
+| `char`{nbsp}footnoteref:[signedchar] +
+ `unsigned char`
+| `char`{nbsp}footnoteref:[signedchar] +
+ `unsigned char`
+| N/A
+| `byte`
+
 | 8-bit signed integer
 | `char`{nbsp}footnoteref:[signedchar,Whether a `char` is signed or unsigned is implementation-specific] +
 `signed char`
@@ -39,13 +47,15 @@ In these cases, the most common type expression is used.
 | `byte`
 | `sbyte`
 
-| 8-bit unsigned integer
-| `char`{nbsp}footnoteref:[signedchar] +
- `unsigned char`
-| `char`{nbsp}footnoteref:[signedchar] +
- `unsigned char`
+| 16-bit unsigned integer
+| `*unsigned{nbsp}short*` +
+`unsigned{nbsp}short{nbsp}int`{nbsp}footnoteref:[intsize] +
+`unsigned{nbsp}int`{nbsp}footnoteref:[intsize]
+| `*unsigned{nbsp}short*` +
+`unsigned{nbsp}short{nbsp}int`{nbsp}footnoteref:[intsize] +
+`unsigned{nbsp}int`{nbsp}footnoteref:[intsize]
 | N/A
-| `byte`
+| `ushort`
 
 | 16-bit signed integer
 | `*short*` +
@@ -63,15 +73,17 @@ In these cases, the most common type expression is used.
 | `short`
 | `short`
 
-| 16-bit unsigned integer
-| `*unsigned{nbsp}short*` +
-`unsigned{nbsp}short{nbsp}int`{nbsp}footnoteref:[intsize] +
-`unsigned{nbsp}int`{nbsp}footnoteref:[intsize]
-| `*unsigned{nbsp}short*` +
-`unsigned{nbsp}short{nbsp}int`{nbsp}footnoteref:[intsize] +
-`unsigned{nbsp}int`{nbsp}footnoteref:[intsize]
+| 32-bit unsigned integer
+| `*unsigned*`{nbsp}footnoteref:[intsize] +
+`unsigned{nbsp}int` +
+`unsigned{nbsp}long` +
+`unsigned{nbsp}long{nbsp}int`
+| `*unsigned*`{nbsp}footnoteref:[intsize] +
+`unsigned{nbsp}int` +
+`unsigned{nbsp}long` +
+`unsigned{nbsp}long{nbsp}int`
 | N/A
-| `ushort`
+| `uint`
 
 | 32-bit signed integer
 | `*int*`{nbsp}footnoteref:[intsize] +
@@ -90,17 +102,13 @@ In these cases, the most common type expression is used.
 | `int`
 | `int`
 
-| 32-bit unsigned integer
-| `*unsigned*`{nbsp}footnoteref:[intsize] +
-`unsigned{nbsp}int` +
-`unsigned{nbsp}long` +
-`unsigned{nbsp}long{nbsp}int`
-| `*unsigned*`{nbsp}footnoteref:[intsize] +
-`unsigned{nbsp}int` +
-`unsigned{nbsp}long` +
-`unsigned{nbsp}long{nbsp}int`
+| 64-bit unsigned integer
+| `*unsigned{nbsp}long{nbsp}long*`{nbsp}footnoteref:[longlong] +
+`unsigned{nbsp}long{nbsp}long{nbsp}int`
+| `*unsigned{nbsp}long{nbsp}long*`{nbsp}footnoteref:[longlong] +
+`unsigned{nbsp}long{nbsp}long{nbsp}int`
 | N/A
-| `uint`
+| `ulong`
 
 | 64-bit signed integer
 | `*long{nbsp}long*`{nbsp}footnoteref:[longlong,`long long` was defined in the C99 and C++11 standards.] +
@@ -113,14 +121,6 @@ In these cases, the most common type expression is used.
 `signed{nbsp}long{nbsp}long{nbsp}int`
 | `long`
 | `long`
-
-| 64-bit unsigned integer
-| `*unsigned{nbsp}long{nbsp}long*`{nbsp}footnoteref:[longlong] +
-`unsigned{nbsp}long{nbsp}long{nbsp}int`
-| `*unsigned{nbsp}long{nbsp}long*`{nbsp}footnoteref:[longlong] +
-`unsigned{nbsp}long{nbsp}long{nbsp}int`
-| N/A
-| `ulong`
 
 | 32-bit floating-point
 | `float`

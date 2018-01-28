@@ -8,8 +8,6 @@ http://www.fnal.gov/docs/working-groups/fpcltf/Pkg/ISOcxx/doc/POD.html[POD Types
 
 include::type_systems.adoc[]
 
-include::literals.adoc[]
-
 include::named_data.adoc[]
 
 include::primitive_types/index.adoc[]

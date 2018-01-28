@@ -1,5 +1,10 @@
 = Named Data
 
+Obviously, a program that used only literals could not do very much.
+There would be no way to run it with different sets of data;
+you would need to change the source code every time you wanted to re-run the application.
+
+
 == Explicit vs. Implicit Typing
 // TODO: Moar research!
 * explicit typing (aka manifest typing)
@@ -91,7 +96,7 @@
 * initialization: variable is given initial value
 ** Often, but not always, done
 * assignment: variable is given value (initial or not)
-* Both initialization and assignment use the assignment operator: =
+* Both initialization and assignment use the assignment operator: `=`
 ** Don't confuse this with testing for equality! Rookie mistake.
 * Language support
 ** Default values (declared but uninitialized)

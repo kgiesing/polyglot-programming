@@ -1,0 +1,5 @@
+= Primitive Types
+Usually:
+* Value types
+* Simple types (scalars)
+* Built-in language support
