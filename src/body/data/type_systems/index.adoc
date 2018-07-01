@@ -5,7 +5,7 @@
 
 include::type_systems.adoc[]
 
-include::named_checking.adoc[]
+include::type_checking.adoc[]
 
 // Return to normal title levels.
 :leveloffset: -1

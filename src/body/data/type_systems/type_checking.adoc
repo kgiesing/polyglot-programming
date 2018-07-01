@@ -114,10 +114,20 @@ But this does not mean it can hold any type of data.
 Instead, its type is fixed the first time it is assigned data of a specific type in the source code.
 Attempting to assign a different type to it later in the code will result in an error.
 
-Note the "in the code" qualifiers in the preceding paragraph.
+Note the "in the code" qualifier in the preceding paragraph.
 The type determination is taken from the first time assignment is seen _during static analysis._
 This makes it a form of static, not dynamic, type checking.
 
-Currently, the only C-style language that supports implicit typing is C#.
+Because the type does not need to be specified, the code becomes briefer and easier to create.
+However, you also lose the ability to use the manifest type as a form of documentation.
+Whether this is a benefit or a detriment is a matter of opinion.
+
+But there is a more important benefit to using implicit typing.
+Objects can be created with types that do not have any type declaration.
+Such types are called _anonymous types._
+Anonymous types still have some kind of unique name or ID, but they are not available to the programmer;
+they are created during static code analysis, and are only known at that time.
+
+Currently, the only C-style language that supports implicit typing is C#, which it added in C# 3.0.
 This means C# supports both manifest _and_ implicit typing,
-and it is up to the programmer to choose which one is appropriate.
+and it is up to programmers to choose which one is appropriate.
