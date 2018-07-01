@@ -1,12 +1,20 @@
 = Type Systems
 
+NOTE: When talking about type systems, the word "type" has to do with classifying data.
+It does not mean the physical act of typing on a keyboard.
+
 Whenever you represent any kind of data in a computer, that data has a _type._
 The data type acts like "metadata" - data about the data.
+The type tells the compiler or interpreter what "kind" of data it is dealing with.
 
 Remember, at the machine level, data is represented as bits in memory.
-The data type specifies how this binary data is to be interpreted;
-for example, whether to treat it as a letter or as a number.
+The data type specifies how these bits data should be interpreted;
+for example, whether to treat them as a letter or as a number.
 In this sense, the type supplies _meaning_ to the data.
+
+A _type system_ is the way in which a programming languages handles data types.
+It includes the language's syntax and semantics, as they deal with types.
+When referring to a language's semantics, its type system is often called its _typing._
 
 A language's type system applies to anything in a programming language that is capable of representing data.
 This includes:
@@ -15,29 +23,31 @@ This includes:
 * Named variables and constants
 * The operands and results of operators
 * The parameters and return values of functions or methods
+* Programmer-defined types, such as classes or interfaces
 
 We will go into detail about each of those in later sections.
 
 But before we do, we should introduce some concepts that apply to all type systems.
-These concepts will help us talk about the similarities and differences between programming languages.
+These concepts will help us understand the similarities and differences between programming languages.
 
 == Literals
 
 A _literal_ is a direct representation of data in the code itself.
 
 An example of a literal is the number five.
-To represent the number five in code, you can simply type the character `5`.
+To represent the number five in code, you can simply enter the character `5`.
 
 Another example of a literal is a character literal, like the letter "C".
-To represent this letter in code, you put the character in single-quotes: `'C'`.
+To represent this letter in code, you usually enter the character in single-quotes: `'C'`.
 
 This assumes that the language actually supports single characters as a separate type,
-as opposed to one type representing _strings_ of characters.
+as opposed to a single type representing _strings_ of characters.
 String literals are usually represented by double-quotes: `"Hello, world!"`.
 
 As you can tell even from this brief overview, different languages have different rules for literals,
-depending upon which types they support.
-We will go over the different ways of representing literals when we cover the specific data type.
+depending upon which types they natively support.
+
+We will go over the different ways of representing literals when we cover each specific data type.
 
 == Mutable vs. immutable data
 
@@ -55,19 +65,10 @@ Different languages have different mutability rules.
 Some allow things to be declared explicitly immutable, and some don't.
 We will cover this in the section about named data (covering variables and constants).
 
-== Value types and reference types
-
-If something such as a variable directly represents the data in memory, it is a _value type._
-Value types are often simple or scalar types: numbers, single letters, or true/false values.
-
-On the other hand, something such as a variable can also be a _reference type._
-If it is a reference type, it does not directly represent the data.
-Instead, its value is a reference to the memory location of some piece of data.
-Reference types often represent some kind of compound data type, such as an object or array.
-
-Some programming languages (such as Python or Ruby) consider all types to be reference types.
-But this is not the case with any C-syntax languages.
-All the languages covered in this book use both value and reference types.
+However, there is one rule all programming languages have in common:
+literals are _always_ immutable.
+The reason why should be pretty obvious.
+You wouldn't want any program to mutate the literal `5` to have a numeric value of six.
 
 == Lvalues and rvalues
 
@@ -87,9 +88,26 @@ On the other hand, an _rvalue_ is anything that is not an lvalue.
 It may have a location in memory, but this location is temporary or read-only.
 As you could probably guess, an rvalue is immutable.
 
-An example of an rvalue is the temporary result of an operation, such as `x + 5`.
+An example of an rvalue is the temporary result of an operation, such as `1 + 5`.
 Another example of an rvalue is a literal representation of data in code, such as `6`.
 In neither case could you change those values to, say, `8`.
+
+== Value types and reference types
+
+If something such as a variable directly represents the data in memory, it is a _value type._
+Value types are often simple or scalar types: numbers, single letters, or true/false values.
+
+On the other hand, something such as a variable can also be a _reference type._
+If it is a reference type, it does not directly represent the data.
+Instead, its value is the _memory location_ of some piece of data.
+Reference types often represent some kind of compound data type, such as an object or array.
+
+Some programming languages (such as Python or Ruby) consider all types to be reference types.
+But this is not the case with any C-syntax languages.
+All the languages covered in this book use both value and reference types.
+
+Many C-syntax languages allow you to create references to types that would otherwise be value types.
+This will be covered later, in the section called Pointers and References.
 
 == Type conversion
 
@@ -122,3 +140,9 @@ For this reason, the actual type conversion rules will be given on a case-by-cas
 On the other hand, since programming languages are created for humans,
 most of the rules make sense once you think about them.
 _(Most_ of them.)
+We will go over those rules when we discuss the relevant types.
+
+Programmers of some languages distinguish between casting and conversion in a different way.
+In those programmers, type conversion creates a new value in memory.
+On the other hand, type casting merely re-interprets the bits in memory as the new type.
+But this is usually not how programmers in C-style languages use those terms.

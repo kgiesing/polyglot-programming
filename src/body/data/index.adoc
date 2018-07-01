@@ -6,7 +6,7 @@ http://www.fnal.gov/docs/working-groups/fpcltf/Pkg/ISOcxx/doc/POD.html[POD Types
 // Push titles down one level.
 :leveloffset: +1
 
-include::type_systems.adoc[]
+include::type_systems/index.adoc[]
 
 include::named_data.adoc[]
 

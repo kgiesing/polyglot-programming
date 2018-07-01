@@ -4,25 +4,6 @@ Obviously, a program that used only literals could not do very much.
 There would be no way to run it with different sets of data;
 you would need to change the source code every time you wanted to re-run the application.
 
-
-== Explicit vs. Implicit Typing
-// TODO: Moar research!
-* explicit typing (aka manifest typing)
-** representation of data must specify a data type
-** usually, static typed: types determined at compile time (when parsed)
-        commonly used in compiled languages
-** usually, strongly typed: variables may only represent data that matches its
-        explicit type
-** Languages: C, C++, Java, C#
-
-* implicit typing (aka latent typing)
-** representation of data does not have a type
-*** data itself, however, always has a type
-** usually, dynamically typed: types determined at runtime
-*** commonly used in interpreted languages
-** usually, weakly typed: variables may represent any type of data
-** Languages: JavaScript, PHP
-
 == Variables
 * variables: named, mutable lvalues
 ** similar to variables in mathematics:
@@ -47,6 +28,8 @@ you would need to change the source code every time you wanted to re-run the app
 ** C (before C99) used `#define` preprocessor directive
 
 == Static Data
+NOTE: Not related to static type checking!
+
 * only one copy of data exists in memory; kept with global variables in
     compiled lang's
 * however, still follows scope rules
@@ -107,20 +90,27 @@ you would need to change the source code every time you wanted to re-run the app
 ** PHP does not have separate declaration; declared when initialized
 
 == Syntax
+
 * declare variable `x` (as an integer) without initialization
-** C/C++/Java:
+** Manifest typed (C/C++/Java/C#):
       `int x;`
 ** JavaScript:
       `var x; // ES5 and below`
-      `let x; // ES6`
+      `let x; // ES6; different rules`
+** PHP: impossible
+** C# implicit: impossible
+
 * declare variable `x` (as an integer), initialize to 5
-** C/C++/Java:
+** C/C++/Java/C#:
       `int x = 5;`
 ** JavaScript:
       `var x = 5; // ES5 and below`
       `let x = 5; // ES6`
 ** PHP:
       `$x = 5;`
+** C# implicit:
+      `var x = 5;`
+
 * assign 7 to that variable
 ** C/C++/Java/JavaScript:
       `x = 7;`
