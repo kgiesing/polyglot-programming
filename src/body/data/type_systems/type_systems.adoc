@@ -1,17 +1,5 @@
 = Type Systems
 
-NOTE: When talking about type systems, the word "type" has to do with classifying data.
-It does not mean the physical act of typing on a keyboard.
-
-Whenever you represent any kind of data in a computer, that data has a _type._
-The data type acts like "metadata" - data about the data.
-The type tells the compiler or interpreter what "kind" of data it is dealing with.
-
-Remember, at the machine level, data is represented as bits in memory.
-The data type specifies how these bits data should be interpreted;
-for example, whether to treat them as a letter or as a number.
-In this sense, the type supplies _meaning_ to the data.
-
 A _type system_ is the way in which a programming languages handles data types.
 It includes the language's syntax and semantics, as they deal with types.
 When referring to a language's semantics, its type system is often called its _typing._
@@ -25,10 +13,9 @@ This includes:
 * The parameters and return values of functions or methods
 * Programmer-defined types, such as classes or interfaces
 
-We will go into detail about each of those in later sections.
+We will go into detail about each of those in later chapters.
 
 But before we do, we should introduce some concepts that apply to all type systems.
-These concepts will help us understand the similarities and differences between programming languages.
 
 == Literals
 
@@ -45,20 +32,20 @@ as opposed to a single type representing _strings_ of characters.
 String literals are usually represented by double-quotes: `"Hello, world!"`.
 
 As you can tell even from this brief overview, different languages have different rules for literals,
-depending upon which types each language supports.
+depending upon which types each language natively supports.
 
 We will go over the different ways of representing literals when we cover each specific data type.
 
 == Mutable vs. immutable data
 
-In general, everything that has a type can be considered either mutable or immutable.
+In general, everything that represents a type can be considered either mutable or immutable.
 
 If it is _mutable,_ it can be changed.
 You can provide an initial value, then change that value later.
 
 If it is _immutable,_ it cannot be changed.
 Once an initial value has been provided, it must remain at that initial value.
-Anything other than a read operation on that data will either produce entirely new data,
+Anything operation that attempts to change that data will either produce entirely new data,
 or fail with an error, as appropriate.
 
 Different languages have different mutability rules.
@@ -69,6 +56,24 @@ However, there is one rule all programming languages have in common:
 literals are _always_ immutable.
 The reason why should be pretty obvious.
 You wouldn't want any program to mutate the literal `5` to have a numeric value of six.
+
+== Volatile data
+
+If data is _volatile,_ it is *extremely* short-lived.
+Unless something is immediately done with that data, it is lost forever.
+
+Volatile data is usually the temporary result of an operation.
+For example, let's say you're calculating the value of `5 * (2 + 4)`
+(in English, "five times the sum of two and four").
+
+In our example, the result of `2 + 4` would be volatile data.
+After its value has been calculated as `6`, it is then used to calculate the value of `5 * 6`.
+But after that, it is gone forever;
+it cannot be used in another calculation, stored in a variable, or whatever.
+
+Volatile data is usually stored somewhere in the processor, like a machine register.
+If it ever was stored at some location in memory,
+there is absolutely no guarantee that the same memory location will hold that data if it is accessed later.
 
 == Lvalues and rvalues
 
@@ -87,7 +92,7 @@ On the other hand, an _rvalue_ is anything that is not an lvalue.
 It may have a location in memory, but this location is temporary or read-only.
 As you could probably guess, an rvalue is immutable.
 
-An example of an rvalue is the temporary result of an operation, such as `1 + 5`.
+An example of an rvalue is the volatile result of an operation, such as `2 + 4`.
 Another example of an rvalue is a literal representation of data in code, such as `6`.
 In neither case could you assign, say, `8` to those rvalues.
 

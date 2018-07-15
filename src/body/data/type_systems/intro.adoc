@@ -1,0 +1,45 @@
+= An Introduction to Types
+
+NOTE: When talking about types in computer languages, the word "type" refers to classifying data.
+It does not refer to the physical act of typing on a keyboard.
+
+Whenever you represent any kind of data in a computer, that data has a _type._
+The data type acts like "metadata" - data about the data.
+The type tells the compiler or interpreter what "kind" of data it is dealing with.
+
+Remember, at the machine level, data is represented as electronic bits in memory.
+The data type specifies how these bits data should be interpreted;
+for example, whether to treat them as a letter or as a number.
+In this sense, the type supplies _meaning_ to the data.
+
+== Types define behavior
+
+The "meaning" of a type is expressed in terms of _behavior._
+This behavior may be associated with the data itself,
+or it may be associated with things that _manipulate_ the data (such as operators or functions).
+
+This might be a hard concept to grasp at first, so let me give an example.
+All programming languages have some built-in type that represents a numeric value;
+for the sake of argument, let's say it's `42`.
+
+It may seem odd that defining data as a number will also define behavior.
+After all, the number 42 doesn't "do" anything; it just sits there, saying "I'm forty-two."
+
+But, because the compiler or interpreter "knows" it is a number,
+it also "knows" that certain operations can be performed on it.
+You can add another number to it;
+subtract another number from it;
+determine whether it is greater or less than another number;
+take its square root;
+and so forth.
+
+This is the behavior associated with numeric types.
+That same behavior could not be associated with other data types,
+or at least not in any straightforward way.
+
+As a counter-example, all programming languages also have some type that can represent a string of characters.
+For this example, let's say it's `"Bob"'`.
+
+Since the compiler or interpreter "knows" that `"Bob"` is a string,
+it "knows" that it cannot be treated as a number.
+So, if you try to take the square root of `"Bob"`, the compiler or interpreter will produce an error.

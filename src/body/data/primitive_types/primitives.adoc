@@ -1,3 +1,4 @@
+// deprecated
 = PRIMITIVE TYPES
 * Primitive types are value types
 

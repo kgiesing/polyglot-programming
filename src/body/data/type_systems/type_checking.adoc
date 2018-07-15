@@ -8,7 +8,7 @@ But most things that represent data are not literals.
 These include variables, constants, and the parameters and return types of functions or methods.
 In all of these cases, the compiler or interpreter needs to determine the types of data they represent.
 
-This is because most operations can only be performed on specific data types.
+This is because most behavior only applies to specific data types.
 For example, the division operator requires that its operands be numbers;
 you could not divide the letter "A" by "true."
 The requirement that data be of a certain type, is called a _constraint_ on the type.

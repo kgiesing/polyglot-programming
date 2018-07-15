@@ -3,6 +3,8 @@
 // Push titles down one level.
 :leveloffset: +1
 
+include::intro.adoc[]
+
 include::type_systems.adoc[]
 
 include::type_checking.adoc[]
