@@ -1,0 +1,15 @@
+= Function Overloading
+
+* Functions with same identifier, but different formal parameters
+* Compiler chooses one or the other according to argument number and types
+
+== Pitfalls
+
+There cannot be any ambiguity for the compiler in determining which overloaded function to call.
+This can lead to a number of pitfalls.
+
+* return type cannot be used for overloading
+
+* variadic functions
+
+* type coercion

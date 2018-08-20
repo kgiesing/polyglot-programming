@@ -1,0 +1,47 @@
+[[argument_passing]]
+= Passing Arguments to Functions
+// TODO - cover all of this when talking about assignment?
+// In fact, is argument passing literally identical to assingment?
+To recap, functions usually accept data as input.
+When data is passed to the function, this data becomes an argument to the function.
+The arguments are bound to parameters, which act as local variables in the function body.
+
+We have to be careful to distinguish between arguments and parameters.
+
+Parameters are how the arguments are represented _inside_ the function.
+A function's parameters are determined by the function signature,
+which is fixed when the program is either compiled or interpreted.
+They cannot change while the program is running (though, of course, their _values_ can).
+
+On the other hand, arguments are are set _outside_ the function,
+and are determined by the calling code.
+Arguments can, and almost always do, change at runtime.
+An argument can be any expression that produces a value:
+a literal, a variable, the result of operations, or the return value of a function call.
+
+A number of programmers use the terms "arguments" and "parameters" interchangeably.
+To those programmers,
+"arguments" are called _actual arguments_ or _actual parameters,_
+while "parameters" are called _formal arguments_ or _formal parameters._
+The most commonly used terms are "actual arguments" and "formal parameters,"
+with the other two being rarely used.
+But in my experience, people find this confusing, so I'm sticking to just "arguments" and "parameters."
+
+As it turns out, the process by which arguments become parameters is not straightforward.
+Nearly all programmers (and not just beginners) end up asking questions like these:
+
+* If I pass a variable to a function,
+    and it is changed inside the function,
+    is it also changed outside the function?
+
+* If I have a value with a lot of data in it (like a large array),
+    is the whole thing copied when I pass it as an argument?
+
+* If an argument's value is the result of an operation,
+    and its corresponding parameter is never used in the function body,
+    is the operation still performed?
+
+* How can a variadic function be passed different numbers of arguments,
+    since it has a fixed number of parameters?
+
+After reading this section, you should be able to answer all of these questions.

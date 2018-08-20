@@ -6,19 +6,80 @@ The concept should be familiar to anyone who has studied mathematics.
 Mathematical functions also take values (usually variables) as input, and produce an output value.
 But there are a number of differences between mathematical functions, and functions in programming languages:
 
+* Mathematical functions must accept at least one number as input.
 * Mathematical functions do not change the variables used as input.
 * Mathematical functions must return a unique output for each different set of inputs.
-    That is, asciimath:[f(1)] cannot produce the same value as asciimath:[f(3)] (provided those numbers are in its domain).
+    That is, asciimath:[f(1)] cannot produce the same value as asciimath:[f(3)]
+    (provided those numbers are in its domain).
 * Mathematical functions must produce an output value.
 
 None of those constraints exist with functions in programming languages.
 Functions can take any number of inputs, including zero.
-They can provide any value as output, including no value at all.
+They may change the values that are passed to the function.
+They can return any value as output, including no value at all, and may return the same value for different inputs.
 
-This has led programmers to classify functions into two broad categories.
-Those categories are called _pure_ and _impure._
+== Terminology
+Functions have a number of different parts, and each part has its own term associated with it.
+Additionally, there are different terms referring to how a function is used.
+
+The function _identifier_ is the name of the function.
+Like variables, the identifier for a function is often just called its _name._
+Funtion identifiers must follow the same naming rules as variable identifiers.
+// TODO repeat those here
+
+The input values sent to a function are called the function's _arguments._
+When you send values to the function, you are _passing_ those values as arguments.
+Anything that produces a value (of the correct type) can be passed as an argument to a function.
+This can be a literal value, a variable, an expression that produces a value, or the result of another function call.
+
+Many C-syntax languages allow a function to accept a variable number of arguments.
+Such functions are called _variadic_ functions.
+Variadic functions are explained in the section about <<argument_passing, Argument Passing>>.
+
+Those arguments are represented by the function's _formal parameters,_ or "parameters" for short.
+The parameters act as variables, holding the values passed as arguments.
+A function's formal parameters specify the number of arguments it will accept, and the type of each argument.
+The combination of the identifier and formal parameters determines the function _signature._
+
+Most functions calculate a value, and pass it back to the code that is using the function.
+When a function does this, it is _returning_ a value (and the value is called the _return value_).
+To return a value, C-style languages use the `return` keyword.
+
+In strongly-typed languages (C, C++, C#, Java), the return value's type must be specified.
+In these languages, functions that do not return a value have the return type of `void`.
+For this reason, such functions are often called "void functions."
+
+A function does nothing until you give it arguments and tell it to return a value.
+In computer science, this is _calling_ or _invoking_ the function.
+
+In mathematics, this is called the _application_ of the function.
+This term is also used in computer science, especially when discussing the formal theory of programming languages.
+
+The "inside" of a function is called the _body_ of the function.
+The body consists of statements that are executed when the function is called.
+It is the body of the function which performs all of the operations, and returns a value.
+The function body is always a code block, so it must be surrounded by curly braces.
+
+In general, any statement that can be used outside of a function can be used in the function body.
+These include variable definitions, operations, expressions, or calls to other functions.
+
+There is one exception, however.
+In most C-style languages, a function cannot be _declared or defined_ inside the body of another function.
+(In languages that do allow this, such functions are called _nested_ functions.)
+Specifically, functions can be nested inside other functions _only if_ functions are first-class citizens.
+We will go into much more detail in the section about <<functional_programming, Functional Programming>>.
+
+In C and C++, the body of the function does not have to be specified when it is declared.
+Instead, a program may first declare a _function prototype._
+The function prototype specifies the function signature and return type, but not the body.
+This allows the compiler to check the code that _calls_ the function, before the function itself is defined.
+For instance, it can verify that the arguments passed to the function are the correct type.
+We will discuss function prototypes in the section about <<function_prototypes, Function Prototypes in C and C++>>.
 
 == Pure vs. Impure Functions
+
+Functions can be classified as _pure_ or _impure_ functions.
+
 To be classified as a pure function, a function must:
 
 1. be _deterministic._
@@ -27,7 +88,7 @@ To be classified as a pure function, a function must:
 
 2. have no _side effects._
     A side effect is a change in the system state, outside the scope of the function itself.
-    For example, it cannot change the state of input or output devices, or set global variables.
+    For example, a pure function cannot change the state of input or output devices, or set global variables.
     Furthermore, it cannot change the input passed to the function;
     after the function has finished executing, the values used as input must remain the same.
 
@@ -41,7 +102,7 @@ And, when it was finished executing, `b` would still be 10, and `e` would still 
 
 An _impure_ function is any function that is not a pure function.
 Impure functions commonly change the state of the system in some way, or modify the input value.
-They may also use a value that is not part of the input to produce the output value.
+They could also use a value that is not part of the input to produce the output value.
 
 Here are some examples of impure functions:
 
@@ -74,9 +135,10 @@ The point of a program is to give an output value in some way, and that requires
 Choosing when to make a function impure is a design choice programmers constantly have to make.
 Whatever the case, it is important to document any side effects a function might have.
 Aside from the actual documentation, there are certain conventions that are used when writing impure functions.
-I'll explain these conventions as they arise.
+These conventions will be explained as they arise.
 
 == Methods
+
 A method is _a function that is associated with an object._
 A method is not considered an entity unto itself, but is considered a _member_ of that object.
 
@@ -84,28 +146,46 @@ The purpose of a method is to modify the state of the object in some way,
 or to return a value that is dependent upon the object's state.
 In this sense, methods could be considered impure functions.
 However, in all other respects, methods are usually designed to be pure functions.
-They do not modify _global_ state, and they usually do not modify their input values.
+They usually do not modify _global_ state, or modify their input values.
 
 Even though the term is pretty well established, there are a couple of times when other terms are used.
 
 * In C++ literature, methods are called _member functions._
     (But even so, plenty of C++ programmers use the term "method.")
 
-* Some programmers use the term _message_ instead.
+* Some programmers use the term _message_ instead.footnote:[
+    "The idea of objects as actors fits nicely with the principal metaphor of object-oriented programming—the idea that objects communicate through messages.
+    Instead of calling a method as you would a function, you send a message to an object requesting it to perform one of its methods." -
+    <<oop_objective_c, "Object-Oriented Programming with Objective-C">>]
     This reflects the idea that using a method is "sending a message" to the object.
 
 I'll use those terms when appropriate, but like most other programmers, I'll usually use the term "method."
 
-== Procedures and subroutines
-The terms "procedure" and "subroutine" are often used instead of the term "function."
+Because methods are defined when their objects are defined,
+the discussion about methods will have to wait until I cover <<oop, Object-Orented Programming>>.
+
+== Other terms for "function"
+There are many other terms that are often used instead of the term "function."
+The terms include "procedure," "routine," "subroutine," and some others.
 This has led to a great deal of confusion about which term to use.
 
-And, unfortunately, that confusion remains to this day.
+The prolifieration of terms is generally due to changing programming paradigms.footnote:[
+"In the early days of programming we composed our systems of routines and subroutines.
+Then, in the era of Fortran and PL/1 we composed our systems of programs, subprograms, and functions.
+Nowadays only the function survives from those early days." - <<cleancode, "Robert C. Martin, Clean Code">>]
+But, unfortunately, that confusion remains to this day.
 Programmers in different languages tend to use these terms in their own way,
 and argue with other programmers who use them in a different way.
 Things fall apart, the centre cannot hold, and we all slouch towards Bethlehem.
 
 But each term is _usually_ used to mean a specific kind of function.
+
+=== Routines
+The term "routine" is sometimes used as an umbrella term for any named, callable block of code.
+Functions, methods, procedures, subroutines, and even macros are all considered different kinds of routines.footnote:[
+"A routine is an individual method or procedure invocable for a single purpose.
+Examples include a function in pass:[C++], a method in Java, a function or sub procedure in Microsoft Visual Basic.
+For some uses, macros in C and pass:[C++] can also be thought of as routines." - <<codecomplete, "Steve McConnell, Code Complete">>]
 
 === Procedures
 To most programmers, a procedure is _a function that does not return a value._
@@ -114,7 +194,12 @@ All procedures are impure functions (there would be no reason to write one other
 In C-syntax languages, there is no _syntactic_ difference between a function and a procedure.
 Both are defined the same way, and the syntax for calling them is identical.
 If a programmer in a C-syntax language even makes a distinction at all,
-that distinction is purely semantic.
+that distinction is purely semantic.footnote:[
+"Modern languages such as C++, Java, and Visual Basic support both functions and procedures.
+A function is a routine that returns a value; a procedure is a routine that does not.
+In C++, all routines are typically called "functions"; however, a function with a void return type is semantically a procedure.
+The distinction between functions and procedures is as much a semantic distinction as a syntactic one, and semantics should be your guide." -
+<<codecomplete, "Steve McConnell, Code Complete">>]
 
 This is not true in other languages such as Ada and Pascal.
 Unlike C-syntax languages, these languages have a different syntax for procedures and functions.
@@ -126,26 +211,40 @@ The difference between the two is specific to each "flavor" of SQL.
 Generally speaking, a stored procedure can be any prepared block of SQL statements, and may return any number of values (including zero).
 A function must return a single value, cannot alter the database, and has other limitations.
 
-On the other hand, some programmers use the term "procedure" for any function.
-This is usually to distinguish between the procedures used in programming, and the functions used in mathematics.
-For an example, see
-https://mitpress.mit.edu/books/structure-and-interpretation-computer-programs[Structure and Interpretation of Computer Programs]
-by Ableson, Sussman, and Sussman.
-(But only if you really want to learn the Scheme programming language.)
+On the other hand, some programmers use the term "procedure" for _any_ function.
+This is usually to distinguish between the functions used in programming, and the functions used in mathematics.
+
+Take, for example, these quotes from <<sicp, Structure and Interpretation of Computer Programs>>:
+[quote, "Ableton, Sussman, and Sussman", "Structure and Interpretation of Computer Programs (1.1.7)"]
+_____
+Procedures, as introduced above, are much like ordinary mathematical functions.
+They specify a value that is determined by one or more parameters.
+But there is an important difference between mathematical functions and computer procedures.
+Procedures must be effective.
+
+[...] The contrast between function and procedure is a reflection of the general distinction between describing properties of things and describing how to do things,
+or, as it is sometimes referred to, the distinction between declarative knowledge and imperative knowledge.
+In mathematics we are usually concerned with declarative (what is) descriptions,
+whereas in computer science we are usually concerned with imperative (how to) descriptions.
+_____
+
+Making things even more confusing, the language used in that book is Scheme (a dialect of Lisp).
+Scheme is both a _functional_ and _declarative_ language, as modern programmers use these terms.
+It does not even support the procedural programming paradigm.
 
 Because of this confusion, I will avoid using the term "procedure" altogether.
+Instead, I will use the term "impure function" where appropriate.
 
 === Subroutines
 The term "subroutine" has historically been used as a synonym for what we now call a function.
-From what I can tell, theoretical computer scientists usually used "function," and practical programmers usually used "subroutine."
 If the author distinguished them at all, he or she used the term "function" for pure functions,
 and "subroutine" to include both pure and impure functions.
 
 Today, the term seems to have fallen out of widespread use among practical programmers.
-The main exceptions are assembly language programmers, and the Fortran language.
+The main exceptions are assembly language, and the Fortran language.
 
 In assembly language, a subroutine is _a named location where program execution can jump._
-It is essentially the equivalent of a `goto` statement.
+It is essentially a `goto` statement.
 Returning from the subroutine involves jumping back to the location where the subroutine was called.
 
 In this context, a subroutine is about as impure as a function can get.
@@ -160,16 +259,19 @@ Inputs that can be changed are defined differently than inputs that cannot be ch
 
 But these langauages are not covered in this book, so I will also be avoiding the term "subroutine."
 
-== Parts of a function
-* identifier: name
-* formal parameters: variables that represent the function's input values
-** parameters vs. arguments
-** variadic: variable # of args ("varargs")
-* return type: value representing the function's output value passed back to caller
-** omitted in implicitly-typed languages: JavaScript, PHP
-** "void functions"
-* body: statements that are executed when the function is called
-** body may include any kind of statements: variable definitions, operations,
-      or other function calls
-** however, except for JavaScript, functions cannot be DEFINED inside another
-      function
+[bibliography]
+- [[cleancode]] Robert C. Martin.
+    _Clean Code._
+    Prentice Hall (August 2008).
+
+- [[codecomplete]] Steve McConnell.
+    _Code Complete: A Practical Handbook of Software Construction, Second Edition._
+    Microsoft Press; 2nd edition (June 19, 2004).
+
+- [[oop_objective_c]] https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/OOP_ObjC/Introduction/Introduction.html[Object-Oriented Programming with Objective-C].
+    Apple Developer (2010).
+
+- [[sicp]] Harold Abelson and Gerald Jay Sussman, with Julie Sussman.
+    https://mitpress.mit.edu/books/structure-and-interpretation-computer-programs[Structure and Interpretation of Computer Programs],
+    Second Edition.
+    MIT Press (1996).

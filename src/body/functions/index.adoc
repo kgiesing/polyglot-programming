@@ -4,6 +4,7 @@ include::intro.adoc[]
 
 // Push titles down one level.
 :leveloffset: +1
+// TODO verify that this order makes sense
 
 include::decomposition_abstraction.adoc[]
 
@@ -15,13 +16,19 @@ include::creating_functions.adoc[]
 
 include::function_scope.adoc[]
 
-include::argument_passing.adoc[]
+include::argument_passing/index.adoc[]
+
+include::function_overloading.adoc[]
 
 include::functions_and_memory.adoc[]
 
+include::recursion.adoc[]
+
 include::functional_programming.adoc[]
 
-include::recursion.adoc[]
+include::function_like_macros.adoc[]
+
+include::designing_functions.adoc[]
 
 // Return to normal title levels.
 :leveloffset: -1

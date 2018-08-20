@@ -1,1 +1,3 @@
 = Functions
+
+This section talks about functions.

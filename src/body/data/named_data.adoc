@@ -119,14 +119,17 @@ NOTE: Not related to static type checking!
 
 == Scope
 * The _scope_ of an identifier is the part of the program where that identifier is valid
+** When an identifier is associated with an entity, it is _bound_ to that entity
+**
 ** A valid identifier is said to be _visible_
 ** Two identifiers will clash if they have the same name, and are in the same namespace
 ** If an identifier is visible throught the entire program, it is in the _global scope_
-** In C-syntax languages, a variable's scope depends upon where it is _declared_
+** In C-syntax languages, a variable's scope depends upon where it is _declared_ in the source code
 *** Technical term for this is _lexical scope_
 *** There is also _dynamic scope,_ but it is not used in any languages covered in this book
 
 === Namespaces
+// TODO This talks about explicit namespaces - differentiate between the "generic" term namespace
 A _namespace_ is an explicit declaration of a scope in the source code
 
 * Not all languages have explicitly declared scope
@@ -139,3 +142,11 @@ A _namespace_ is an explicit declaration of a scope in the source code
 ** Java uses various different packages
 
 See section on namespaces
+
+== Lifecycle
+* The _lifecycle_ of data describes the time when data exists in the program
+** Lifecycle begins when the data is created
+** Lifecycle ends when the data is destroyed (or otherwise made unavaliable)
+* Lifecycle and scope are not the same, but are often confused
+** Data may still exist in a program, even when the data is out of scope
+**
