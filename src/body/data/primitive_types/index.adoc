@@ -1,0 +1,16 @@
+// Compound types
+
+// Push titles down one level.
+:leveloffset: +1
+include::intro.adoc[]
+
+include::arithmetic_types/index.adoc[]
+
+include::booleans.adoc[]
+
+include::chars.adoc[]
+
+include::summary.adoc[]
+
+// Return to normal title levels.
+:leveloffset: -1

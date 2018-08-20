@@ -1,0 +1,143 @@
+= Summary of primitive data types
+
+For convenience, here is a table comparing each language's primitive data types.
+Only languages that are explicitly typed are included.
+
+Because of the lack of standardization for integer byte sizes in C and C++,
+and because of the (often optional) modifiers used,
+the same type may be expressed in different ways.
+In these cases, the most common type expression is used.
+
+.Primitive types
+[options="header"]
+|=========================================================
+| Type | C | C++ | Java | C#
+
+| Boolean
+| `bool`{nbsp}footnote:[Include `<stdbool.h>`]
+| `bool`
+| `boolean`
+| `bool`
+
+| 8-bit{nbsp}character (ASCII)
+| `char`
+| `char`
+| N/A{nbsp}footnote:[However, `byte` is sometimes used]
+| N/A
+
+| 16-bit character (UTF-16)
+| `wchar_t`{nbsp}footnote:[Include `<wchar.h>`]
+| `wchar_t`{nbsp}footnote:[Include `<cwchar>`]
+| `char`
+| `char`
+
+| 8-bit unsigned integer
+| `char`{nbsp}footnoteref:[signedchar] +
+ `unsigned char`
+| `char`{nbsp}footnoteref:[signedchar] +
+ `unsigned char`
+| N/A
+| `byte`
+
+| 8-bit signed integer
+| `char`{nbsp}footnoteref:[signedchar,Whether a `char` is signed or unsigned is implementation-specific] +
+`signed char`
+| `char`{nbsp}footnoteref:[signedchar] +
+`signed char`
+| `byte`
+| `sbyte`
+
+| 16-bit unsigned integer
+| `*unsigned{nbsp}short*` +
+`unsigned{nbsp}short{nbsp}int`{nbsp}footnoteref:[intsize] +
+`unsigned{nbsp}int`{nbsp}footnoteref:[intsize]
+| `*unsigned{nbsp}short*` +
+`unsigned{nbsp}short{nbsp}int`{nbsp}footnoteref:[intsize] +
+`unsigned{nbsp}int`{nbsp}footnoteref:[intsize]
+| N/A
+| `ushort`
+
+| 16-bit signed integer
+| `*short*` +
+`short{nbsp}int` +
+`signed{nbsp}short` +
+`signed{nbsp}short{nbsp}int` +
+`int`{nbsp}footnoteref:[intsize,In C and C++, `int` size is _usually_ 32 bits (4 bytes), but may be 16 bits (2 bytes).] +
+`signed{nbsp}int`{nbsp}footnoteref:[intsize]
+| `*short*` +
+`short{nbsp}int` +
+`signed{nbsp}short` +
+`signed{nbsp}short{nbsp}int` +
+`int`{nbsp}footnoteref:[intsize] +
+`signed{nbsp}int`{nbsp}footnoteref:[intsize]
+| `short`
+| `short`
+
+| 32-bit unsigned integer
+| `*unsigned*`{nbsp}footnoteref:[intsize] +
+`unsigned{nbsp}int` +
+`unsigned{nbsp}long` +
+`unsigned{nbsp}long{nbsp}int`
+| `*unsigned*`{nbsp}footnoteref:[intsize] +
+`unsigned{nbsp}int` +
+`unsigned{nbsp}long` +
+`unsigned{nbsp}long{nbsp}int`
+| N/A
+| `uint`
+
+| 32-bit signed integer
+| `*int*`{nbsp}footnoteref:[intsize] +
+`signed{nbsp}int` +
+`long`{nbsp}footnoteref:[longsize,In C and C++, `long` size is _usually_ 32 bits (4 bytes),
+    but may be 64 bits (8 bytes) if compiled in 64-bit mode on specific compilers and OS's.] +
+`long{nbsp}int` +
+`signed{nbsp}long` +
+`signed{nbsp}long{nbsp}int`
+| `*int*`{nbsp}footnoteref:[intsize] +
+`signed{nbsp}int` +
+`long`{nbsp}footnoteref:[longsize] +
+`long{nbsp}int` +
+`signed{nbsp}long` +
+`signed{nbsp}long{nbsp}int`
+| `int`
+| `int`
+
+| 64-bit unsigned integer
+| `*unsigned{nbsp}long{nbsp}long*`{nbsp}footnoteref:[longlong] +
+`unsigned{nbsp}long{nbsp}long{nbsp}int`
+| `*unsigned{nbsp}long{nbsp}long*`{nbsp}footnoteref:[longlong] +
+`unsigned{nbsp}long{nbsp}long{nbsp}int`
+| N/A
+| `ulong`
+
+| 64-bit signed integer
+| `*long{nbsp}long*`{nbsp}footnoteref:[longlong,`long long` was defined in the C99 and C++11 standards.] +
+`long{nbsp}long{nbsp}int` +
+`signed{nbsp}long{nbsp}long` +
+`signed{nbsp}long{nbsp}long{nbsp}int`
+| `*long{nbsp}long*`{nbsp}footnoteref:[longlong] +
+`long{nbsp}long{nbsp}int` +
+`signed{nbsp}long{nbsp}long` +
+`signed{nbsp}long{nbsp}long{nbsp}int`
+| `long`
+| `long`
+
+| 32-bit floating-point
+| `float`
+| `float`
+| `float`
+| `float`
+
+| 64-bit floating-point
+| `double`
+| `double`
+| `double`
+| `double`
+
+| Higher-bit floating-point
+| `long double`{nbsp}footnoteref:[longdouble,In C99 and C++, `long double` is usually implemented as 80 bits.]
+| `long double`{nbsp}footnoteref:[longdouble]
+| N/A
+| `decimal`{nbsp}footnote:[128 bits.]
+
+|=========================================================

@@ -1,0 +1,176 @@
+= Type Systems
+
+A _type system_ is the way in which a programming languages handles data types.
+It includes the language's syntax and semantics, as they deal with types.
+When referring to a language's semantics, its type system is often called its _typing._
+
+A language's type system applies to anything in a programming language that is capable of representing data.
+This includes:
+
+* Literal representations of data in the code
+* Named variables and constants
+* The operands and results of operators
+* The parameters and return values of functions or methods
+* Programmer-defined types, such as classes or interfaces
+
+We will go into detail about each of those in later chapters.
+
+But before we do, we should introduce some concepts that apply to all type systems.
+
+== Literals
+
+A _literal_ is a direct representation of data in the code itself.
+
+An example of a literal is the number five.
+To represent the number five in code, you can simply enter the character `5`.
+
+Another example of a literal is a character literal, like the letter "C".
+To represent this letter in code, you usually enter the character in single-quotes: `'C'`.
+
+This assumes that the language actually supports single characters as a separate type,
+as opposed to a single type representing _strings_ of characters.
+String literals are usually represented by double-quotes: `"Hello, world!"`.
+
+As you can tell even from this brief overview, different languages have different rules for literals,
+depending upon which types each language natively supports.
+
+We will go over the different ways of representing literals when we cover each specific data type.
+
+== Mutable vs. immutable data
+
+In general, everything that represents a type can be considered either mutable or immutable.
+
+If it is _mutable,_ it can be changed.
+You can provide an initial value, then change that value later.
+
+If it is _immutable,_ it cannot be changed.
+Once an initial value has been provided, it must remain at that initial value.
+Anything operation that attempts to change that data will either produce entirely new data,
+or fail with an error, as appropriate.
+
+Different languages have different mutability rules.
+Some allow things to be declared explicitly immutable, and some don't.
+We will cover this in the section about named data (covering variables and constants).
+
+However, there is one rule all programming languages have in common:
+literals are _always_ immutable.
+The reason why should be pretty obvious.
+You wouldn't want any program to mutate the literal `5` to have a numeric value of six.
+
+== Volatile data
+
+If data is _volatile,_ it is *extremely* short-lived.
+Unless something is immediately done with that data, it is lost forever.
+
+Volatile data is usually the temporary result of an operation.
+For example, let's say you're calculating the value of `5 * (2 + 4)`
+(in English, "five times the sum of two and four").
+
+In our example, the result of `2 + 4` would be volatile data.
+After its value has been calculated as `6`, it is then used to calculate the value of `5 * 6`.
+But after that, it is gone forever;
+it cannot be used in another calculation, stored in a variable, or whatever.
+
+Volatile data is usually stored somewhere in the processor, like a machine register.
+If it ever was stored at some location in memory,
+there is absolutely no guarantee that the same memory location will hold that data if it is accessed later.
+
+== Lvalues and rvalues
+
+These terms come from the C++ literature, but they are useful when discussing other languages as well.
+
+An _lvalue_ is anything that is capable of having data assigned to it.
+Things that can be lvalues include variables, constants, and the parameters of functions or methods.
+
+Depending upon who you ask, the term stands for either "location value" or "left-hand-side value."
+The first term comes from the fact that an lvalue must have a persistent location in memory.
+The latter term comes from the fact that that an lvalue can be on the left-hand side of an assignment operator.
+Given the behavior of the assignment operator, this really amounts to the same thing.
+(The assignment operator is covered later.)
+
+On the other hand, an _rvalue_ is anything that is not an lvalue.
+It may have a location in memory, but this location is temporary or read-only.
+As you could probably guess, an rvalue is immutable.
+
+An example of an rvalue is the volatile result of an operation, such as `2 + 4`.
+Another example of an rvalue is a literal representation of data in code, such as `6`.
+In neither case could you assign, say, `8` to those rvalues.
+
+== Value types and reference types
+
+If something such as a variable directly represents the data in memory, it is a _value type._
+Value types are often simple or scalar types: numbers, single letters, or true/false values.
+
+On the other hand, something such as a variable can also be a _reference type._
+If it is a reference type, it does not directly represent the data.
+Instead, its value is the _memory location_ of some piece of data.
+Reference types often represent some kind of compound data type, such as an object or array.
+
+Some programming languages (such as Python or Ruby) consider all types to be reference types.
+But this is not the case with any C-syntax languages.
+All the languages covered in this book use both value and reference types.
+
+Many C-syntax languages allow you to create references to types that would otherwise be value types.
+This will be covered later, in the section called Pointers and References.
+
+== Type conversion
+
+All C-syntax languages have the ability to treat data of one type as if it were another.
+This conversion can be either explicit or implicit.
+
+With _explicit_ type conversion, the programmer specifies the new, target type in the code itself.
+_How_ the type is specified, is determined by the programming language's syntax.
+Explicit type conversion is usually called _type casting_ (often combined to one word, _typecasting)._
+
+With _implicit_ type conversion, the language itself will convert one type of data into another in certain situations.
+This is done "behind the scenes," without the programmer explicitly putting anything into the code.
+Implicit type conversion is usually called _coercion._
+
+Why would any programming language perform implicit type conversion?
+Ultimately, it makes the language easier to use.
+
+Consider, for example, the code `2.5 + 3`.
+This seems like a perfectly sensible thing to write, and you would expect the result to be `5.5`.
+But now consider that many C-syntax languages treat integers and floating-point numbers as different types.
+Without type conversion, this code would throw an error in those languages.
+It is trivial to convert `3` into a floating-point number, so being forced to explicitly include a cast would be a waste of code.
+Instead, the integer `3` is _automatically_ converted to a floating-point number, without the programmer having to ask.
+
+Each language has slightly different coercion rules for their supported types.
+They may be different even for types that seem the same to humans;
+for example, they may have different rules for coercing integers to characters.
+On the other hand, since programming languages are created for humans,
+most of the rules make sense once you think about them.
+_(Most_ of them.)
+
+The various type coercion rules will be given on a case-by-case basis when we cover the different data types.
+
+=== Other terms
+
+The above definitions, while by far the most common, are not universally used.
+For whatever reason, the term "casting" (or "typecasting") has become more popular than other terms.
+So, may programmers use the term "casting" as a synonym of "conversion," whether explicit or implicit.
+For example, some programmers use the term _implicit casting_ for type coercion.
+
+Other terms are also used for type conversion.
+The PHP manual uses the term  _type juggling_ for both explicit and implicit conversion.
+
+Many programmers distinguish between casting and conversion in a different way.
+To those programmers, type conversion _allocates new memory_ for the new type.
+On the other hand, type casting _re-interprets the exiting bits in memory_ as the new type.
+
+This distinction comes mostly from the ALGOL family of programming languages.
+But this is usually not how programmers in C-syntax languages use those terms.
+
+When a programmer uses type casting to re-interpret the existing bits in memory,
+this is usually called _type punning._
+Programmers sometimes use type punning in order to deliberately circumvent the type system of a language,
+and perform operations on the "raw bits" in memory that are not otherwise allowed.
+
+Most C-syntax languages have semantics that do not allow type punning at all.
+For those that do, I will cover how it is done (and why you probably shouldn't) in the relevant sections.
+
+The term "conversion" can also be used in a more general sense.
+For example, in many C-syntax languages, you cannot convert a string to a number, purely by using the language syntax.
+To do so, you must include a call to some kind of library function.
+This may be considered type "conversion," but it is neither type casting nor type coercion.
