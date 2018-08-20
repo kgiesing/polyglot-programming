@@ -1,0 +1,133 @@
+= Type Checking
+
+It is easy for a compiler or interpreter to know the type of a literal.
+Each language has a specific syntax for representing data in code,
+and the compiler or interpreter automatically determines its type when parsing the code.
+
+But most things that represent data are not literals.
+These include variables, constants, and the parameters and return types of functions or methods.
+In all of these cases, the compiler or interpreter needs to determine the types of data they represent.
+
+This is because most behavior only applies to specific data types.
+For example, the division operator requires that its operands be numbers;
+you could not divide the letter "A" by "true."
+The requirement that data be of a certain type, is called a _constraint_ on the type.
+Determining whether a type meets a constraint is called _type checking._
+
+== Static and Dynamic Type Checking
+
+Each compiler or interpreter may use two type-checking semantics.
+These are _static_ type-checking, and _dynamic_ type-checking.
+
+Static type checking (or static typing) is so named because it occurs during static code analysis.
+Specifically, it happens during semantic analysis, prior to any code being executed.
+For this reason, static typing is strongly associated with compilation.
+
+Dynamic type checking (or dynamic typing) does not happen during static code analysis.
+Instead, type checks occur at runtime, during program execution.
+For this reason, dynamic typing is strongly associated with interpretation.
+
+The primary advantage of static type checking is that it provides a rudimentary form of program verification.
+Type errors are caught immediately, and the erroneous code is never executed.
+To proponents of static typing, this results in programs that are more robust and less error-prone.
+
+With compiled programs, static typing can also allow various compiler optimizations.
+Because type errors can be caught at compile time,
+many runtime type checks can be eliminated.
+This results in smaller and faster executables.
+
+However, not _all_ runtime type checks can be eliminated.
+All C-syntax languages allow runtime type conversion, both explicit and implicit.
+If the types are incompatible, this will cause errors,
+and these errors cannot be caught during static analysis.
+
+For this reason, many programmers consider static type checking to be a secondary concern;
+the number of errors it can catch is fairly limited.
+
+Furthermore, every type must be known prior to execution.
+It is impossible to create an object that does not have a statically-defined type.
+Proponents of dynamic typing consider this a severe limitation.
+
+Of course, proponents of static typing consider this a benefit.
+Without this limitation, static type checks are impossible.
+Moreover, since static types must be supplied by the source code,
+this can force programmers to think more rigorously about how they write that code.
+
+== Annotating Types
+
+The language's type semantics are reflected in how types are annotated in the language syntax.
+Generally speaking, programming languages use any of three different type annotation strategies:
+_manifest_ (a.k.a _explicit_) typing, _dynamic_ typing, or _implicit_ typing.
+
+=== Explicit Typing
+
+If a language uses explicit typing, anything that represents data, other than a literal,
+must have its data type explicitly annotated in the source code.
+Explicit typing is also called _manifest_ typing.
+
+In C-style languages, the type annotation consists of the type name preceding the declaration of the non-literal.
+The type name may also be preceded by type modifiers, that give further information about the type
+(such as how many bits are used to store the data).
+The details of these type annotations will be given in later chapters,
+when we cover the various types supported by C-style languages.
+
+Explicit typing is a form of static typing.
+It is not the only form of static typing, but it is by far the most widely used.
+It's not hard to understand why.
+If a compiler needs to know a type during static code analysis,
+the most straightforward way it can know this is if you tell it.
+
+This also has the benefit of being a form of documentation.
+Because all types are explicitly annotated, any programmer looking at the code
+will immediately know what type of data they are dealing with.
+
+But there are disadvantages to explicit typing, even if you are a proponent of static typing.
+Types must not just _be determined by_ the source code, they must be _explicitly defined in_ the source code.
+This can lead to code that detractors consider far too verbose.
+
+Nearly all programs have dozens, sometimes hundreds, of programmer-defined types.
+Every single one needs an explicit type definition, even if it is only used once or twice.
+
+=== Dynamic Typing
+
+With dynamic typing, the type of any non-literal is not fixed until the program is run.
+Furthermore, as long as it is mutable, its type can change at any point during the program's execution.
+
+In most dynamically-typed languages, including JavaScript, you annotate any type of variable in the same way.
+There is some keyword, like `var`, signifying that the next sequence of characters is the name of a variable.
+But no type information given.
+
+In some dynamically-typed languages, like PHP, not even this annotation is necessary.
+Variables are declared simply by using them.
+If no variable of that name is already declared, one is created then and there.
+
+Other kinds of non-literals follow similar rules, depending upon what they are.
+None of them require any explicit type annotation.
+We will go over them later in the book, when they are introduced.
+
+=== Implicit Typing
+
+With implicit typing, it is not required to annotate the type in the source code.
+As with dynamic typing, you annotate all non-literals the same, using a keyword like `var`.
+
+But this does not mean it can hold any type of data.
+Instead, its type is fixed the first time it is assigned data of a specific type in the source code.
+Attempting to assign a different type to it later in the code will result in an error.
+
+Note the "in the code" qualifier in the preceding paragraph.
+The type determination is taken from the first time assignment is seen _during static analysis._
+This makes it a form of static, not dynamic, type checking.
+
+Because the type does not need to be specified, the code becomes briefer and easier to create.
+However, you also lose the ability to use the manifest type as a form of documentation.
+Whether this is a benefit or a detriment is a matter of opinion.
+
+But there is a more important benefit to using implicit typing.
+Objects can be created with types that do not have any type declaration.
+Such types are called _anonymous types._
+Anonymous types still have some kind of unique name or ID, but they are not available to the programmer;
+they are created during static code analysis, and are only known at that time.
+
+Currently, the only C-style language that supports implicit typing is C#, which it added in C# 3.0.
+This means C# supports both manifest _and_ implicit typing,
+and it is up to programmers to choose which one is appropriate.

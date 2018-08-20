@@ -1,0 +1,27 @@
+= Character Types
+
+A character type represents a _single character_ in a particular programming language.
+
+This type does not represent _multiple_ characters, like an English word or sentence.
+Instead, multiple characters are represented by _string_ types.
+String types are compound types, not primitive types, and are covered in their own section.
+
+== Character Encodings
+
+=== ASCII
+
+=== Unicode
+
+== The `char` type in C and C++
+
+* Single byte (8 bits)
+* ASCII characters
+* Single quotes
+
+== The `char` type in Java and C#
+
+* Two bytes (16 bits)
+* Unicode characters
+* Also single quotes
+
+== No character types in Java or PHP

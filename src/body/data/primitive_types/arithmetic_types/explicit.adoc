@@ -1,0 +1,37 @@
+= Explicitly-Typed Languages
+C, C++, Java, C#
+
+== Integer Types
+
+* `int`
+* literals:
+** decimal: `18`
+** hex: `0x12`
+** octal: `022` - note leading zero (don't include in decimals)
+** binary: `0b10010`
+
+== Floating-Point Types
+
+* `float`
+* `double`
+* literals:
+** float: `0.2f` or `0.2F`
+** double: `0.2`
+** long double: `0.2l` or `0.2L` - use the latter so `l` isn't confused with `1`
+
+== Type Modifiers
+
+=== Signed and Unsigned
+
+* `signed`
+* `unsigned`
+* literals:
+** unsigned: `2u` or `2U`
+* Java has only signed types
+
+=== Long and Short
+
+* `short`
+* `long`
+* `long long`
+* literals

@@ -1,0 +1,19 @@
+= Dynamically-Typed Languages
+
+== JavaScript
+
+* Number type: 64-bit floating-point; no integer or unsigned data types
+* `NaN`: "Not a Number" - result when attempting to do a mathematical operation on non-numeric data
+* `Infinity` and `-Infinity`: result when dividing by `0` or `-0` (respectively)
+
+== PHP
+
+* integers
+** always unsigned
+** size is platform-dependent (usually 32-bit)
+** overflow results in conversion to a floating-point number
+
+* floating-point
+** size is platform-dependent (usually 64-bit)
+** Warning: internally represented as binary, so e.g. 0.3 will not be exact.
+    See http://php.net/manual/en/language.types.float.php[Floating point numbers]

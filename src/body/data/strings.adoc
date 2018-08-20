@@ -1,4 +1,5 @@
-= STRINGS
+= Strings of Characters
+
 == lang. semantics
 * C/C++: null-terminated array of char elements ("C-string")
 * others (managed): immutable object
@@ -14,10 +15,37 @@
 ** PHP: single-quotes do not interpret escape sequences
 ** JavaScript: no difference (convention is single quotes)
 
+== Character Encodings
+* ASCII: American Standard Code for Information Interchange
+** Used by C, C++ `char` types
+** Uses 1 byte of storage; usually considered unsigned, i.e. 0-255, but this is compiler-dependent;
+    values 0-127 are standardized
+** *Not* good for representing non-English characters!
+
+// TODO Put this in an appendix or supplimentary chapter?
+* UTF: Unicode Transformation Format
+** UTF-16: 2 or 4 bytes; 2 bytes for BMP (Basic Multilingual Plane)
+*** UCS-2 (Universal Character Set): Earlier encoding; similar to UTF-16
+** UTF-8: 1-4 bytes; used to exchange strings in a variety of situations, but especially on the Web
+
+* By language
+** C, C++: `char` is ASCII; `wchar_t` is 16-bit "wide character" (encoding is otherwise not specified)
+** Java, C#: `char` is 16-bit Unicode (UTF-16 BMP) - U+0000 to U+FFFF
+** Javascript: no `char` type; strings are either UTF-16 or UCS-2
+    see: https://mathiasbynens.be/notes/javascript-encoding
+** PHP: no `char` type; string encoding matches encoding of PHP source file
+    see: http://php.net/manual/en/language.types.string.php#language.types.string.details
+
 == Escape sequences
 * Often used to represent control characters
 * Table:
     https://en.wikipedia.org/wiki/Escape_sequences_in_C#Table_of_escape_sequences
+
+== String Concatenation
+* Most languages: overloaded addition operator, `+`
+* PHP: period or "dot" operator, `.`
+* Concatenation rules
+** Easy string conversion: `s + ''`
 
 == String formatting
 * `printf` format:
@@ -34,3 +62,10 @@
 *** before 6.0: `String.format("{0}", <expression>)`
 *** after 6.0: `$"{<expression>}"`
     https://msdn.microsoft.com/en-us/library/dn961160.aspx
+
+== String interning
+Java, C#, PHP >= 5.4 (Zend implementation), some JS interpreters (V8)
+
+** string literals of the same value are stored (globally) as the same data
+** global storage of string literals is called _string pool_
+** happens at parse time

@@ -1,0 +1,119 @@
+= Boolean Types
+
+NOTE: The name "Boolean" comes from George Boole (1815 – 1864), the English logician and mathematician.
+    Among other things, he was the founder of Boolean algebra, which is widely used in digital electronics, logic, and set theory.
+    A full explanation of Boolean algebra is outside the scope of this book, but it is definitely required learning for any serious programmer.
+    (It's also one of the easier branches of mathematics to learn, so fret not.)
+
+A _Boolean_ is a piece of data that can be represented as two values: _true_ and _false._
+As in spoken English, these values are mutually exclusive; a value that is true cannot also be false, and vice versa.
+
+Boolean values can be used represent anything with two distinct values or states.
+For example, they can represent whether a light switch is on or off, or whether a button on an HTML page is shown or hidden.
+
+Boolean values are most commonly used in flow control statements.
+These statements execute different blocks of code, depending upon whether a value is true or false.
+Flow control statements will be covered in a later section in this book.
+
+Boolean values have a strong correlation to binary digits.
+In Boolean algebra, true is represented as `1`, and false is represented as `0`.
+
+Because of this correlation, you may think (as I once did) that a Boolean data type is represented as a single bit in memory.
+However, you would be wrong.
+This is mainly due to the arcitecture of computer processors.
+Processors simply cannot use values smaller than their register size.
+
+// TODO: mention bit fields here?
+
+== "Booleans" in C
+
+Because Boolean values are so important and widely used, you would think that C would support them from its earliest days.
+Surprisingly, you would be wrong.
+(Essentially, Dennis Ritchie did not consider type safety to be as important as it turned out to be.
+    footnote:["Other issues, particularly type safety and interface checking, did not seem as important then as they became later."
+    - http://csapp.cs.cmu.edu/3e/docs/chistory.html[The Development of the C Language]])
+
+Instead, many C programmers used the `int` type to represent Boolean values.
+This convention was generally followed:
+
+* The `int` value `0` represented Boolean false.
+* The `int` value `1` represented Boolean true.
+
+However, this was merely a convention, and not any kind of official standard.
+For example, to save memory, a programmer might use a `char` type instead of an `int`.
+And there was no particular reason to use `1`, since in the C language, _any_ non-zero value evaluates to `true` when converted to a Boolean type.
+(I will have much more to say about Boolean conversion in the section covering logical operators.)
+
+To standardize C's treatment of Booleans, the C99 standard created a library to define Boolean types.
+This became part of the C Standard Library, and is shipped with any compiler that supports C99 or later.
+To use it, you must include the `<stdbool.h>` header file.
+
+That library explicitly defines `true` as the integer value `1`, and `false` as the integer value `0`.
+So, you could also use `1` and `0` rather than `true` or `false`.
+But I would not recommend this, for two reasons:
+
+1. It makes your code less clear; using a Boolean type reveals your intent.
+2. If the standard changes in the future, for whatever reason, then your code will break.
+
+Here is an example:
+[source,c]
+-----
+#include <stdbool.h>
+
+bool isWednesday = true;
+bool isThursday = false;
+-----
+
+If you absolutely can not use the C99 library, then I suggest you use the relevant `int` values:
+[source,c]
+-----
+int isWednesday = 1;
+int isThursday = 0;
+-----
+This will, at least, make it _likely_ to be compatible with other C libraries or programs.
+
+== Booleans in C++, Java, and C#
+
+By the time C++, Java, and C# were invented, the problems with C's handling of Booleans was widely recognized.
+So, fortunately, all these languages support a native Boolean type.
+The Boolean type and literals are all keywords in these languages,
+and no special library or header file is required to work with them.
+
+All of these languages use the same literals for Boolean types:
+* `true` represents Boolean true.
+* `false` represents Boolean false.
+
+However, the languages have _slightly_ different ways to declare a Boolean type:
+* C++ and C# use the `bool` keyword.
+* Java uses the `boolean` keyword.
+
+Here is an example in C++ or C#:
+[source,{cpp}]
+-----
+bool isWednesday = true;
+bool isThursday = false;
+-----
+
+Java is nearly identical:
+[source,java]
+-----
+boolean isWednesday = true;
+boolean isThursday = false;
+-----
+
+== Booleans in JavaScript and PHP
+
+In JavaScript and PHP, variables and constants do not have an explicit type.
+For this reason, they do not have a type named `bool` or `boolean`.
+
+However, both languages have _literals_ that represent Boolean true or false.
+Each language has a slightly different literal syntax:
+
+* In JavaScript, Boolean values are represented as either `true` or `false`.
+    These literals are case-sensitive.
+* In PHP, Boolean values are represented as either `TRUE` or `FALSE`.
+    These literals are _not_ case-sensitive.
+    So, `TRUE` can also be written `True`, `true`, or even `tRuE` if you really want to.
+
+Both of these languages have (somewhat confusing) rules for evaluating variables as Boolean values.
+These rules will becovered in the section about logical operators.
