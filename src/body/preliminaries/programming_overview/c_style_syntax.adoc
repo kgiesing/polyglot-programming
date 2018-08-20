@@ -1,0 +1,81 @@
+[[C-style_programming_languages]]
+= C-style programming languages
+
+This book covers widely-used programming langauges that share their basic syntax with the C programming language.
+For our purposes, I will call call this shared syntax "C-style,"
+and programming languages that share it will be called "C-style" languages.
+
+That syntax is shared by many programming languages, but not by all of them.
+Of those that do not, many are in widespread use, and programmers usually learn them eventually.
+Furthermore, this book does not cover _all_ C-style languages.
+
+This naturally leads to a number of questions about why these languages should be covered.
+
+== What constitutes a C-style syntax?
+
+The first question, and probably most obvious, is "what do you mean by 'C-style' syntax?"
+After all, no language shares its _entire_ syntax with C.
+(If it did, it would be C).
+And nearly every programming language shares _some_ of its syntax with C.
+
+For this book, a C-style syntax has all of these attributes:
+
+* Extra whitespace is ignored.
+* Statements are distinct from expressions, and end with a semicolon.
+* Statement blocks are delimited by curly braces ("{" and "}"),
+    and not by indentation (a.k.a. "off-side rule"),
+    nor by explicitly beginning and ending them using keywords (`begin`/`end` or similar).
+* The language shares most of C's operators, and uses infix notation (not e.g. Polish notation).
+* Functions are called using C's syntax (the function name, followed by arguments enclosed in parentheses).
+
+This eliminates a huge swath of languages: Python, Ruby, Visual Basic, Lua, Lisp, assembly, XSLT, SQL, etc.
+
+== Why cover C-style languages?
+
+There are a number of reasons I chose to write about C-style langagues,
+and why I chose to write about many of those languages in the same book.
+
+Most of the popular programming languages are C-style languages.
+The vast majority of introductory programming courses are taught in one of these programming languages.
+They are among the languages that are in high demand with employers.
+When programmers are surveyed about their preference for programming languages, C-style languages routinely show up among their top choices.
+This means that any programmer worth his salt should have _some_ familiarity with every language in this book.
+
+These programming languages share their basic _syntax_ with C.
+But they do not necessarily share their _semantics_ with C.
+
+This can lead to problems if programmers learn one language first, and another later.
+They will likely be prejudiced towards the semantics of the first language they learned.
+Most books (and courses, and websites...) do not cover these differences in semantics.
+This can lead to programmers believing, falsely, that they know how the other language works.
+
+By covering several different languages at once, we can discuss the semantic differences as they come up.
+My hope is that programmers will gain a deeper understanding of programming in general,
+and that they gain this understanding early, without having to struggle later.
+
+This should also help programmers who learn languages that are _not_ C-style.
+It is very difficult to learn a language whose syntax _and_ symantics are unfamiliar.
+(I know this from my experience learning Scheme in college.)
+
+The final reason is that I know C-style languages better than others.
+
+== Why cover these specific C-style languages?
+
+This book covers many languages that meet the definition of a "C-style" language.
+Still, there are some that seem like they should make the cut but don't, such as D, Swift, or Perl.
+This is because they are not widely used and in demand (right now).
+
+The question is, how do I define "widely used and in demand"?
+It's a good question, because the answer is often driven by opinion or bias.
+
+Here, "widely used and in demand" means that the language has consistently been among the top 10 in rankings of popular languages.
+I use a couple widely-known rankings for this:
+* The http://www.tiobe.com/tiobe-index/[Tiobe Index]
+* The http://pypl.github.io/PYPL.html[PYPL PopularitY of Programming Language Index]
+
+I chose these rankings because they show historical data, and not just current trends.
+I am open to suggestions for any other ranking sites.
+
+Having said all that: if a programming language does make it into the top 10 and stays there,
+I will probably add it to a later "edition" of the book.
+(Plus, I would want to learn that language anyway.)

@@ -1,0 +1,281 @@
+= Computers and Programs
+
+A _computer_ is a machine that can be instructed to perform operations on data.
+The computer accepts data as input, processes data using instructions, and sends the processed data to output.
+
+A _program_ is the set of instructions given to a computer.
+The computer uses those instructions to operate on its data.
+When the computer does this, it is _executing_ or _running_ the program.
+
+Keep in mind that "input" and "output" are intentionally abstract concepts.
+Anything that provides data can be considered an input,
+and anything that accepts data can be considered an output.
+
+When most people say "computer," they are talking about a _digital computer._
+Digital computers process data as _discrete_ values.
+There are also _analog computers,_ which process data as _continuous_ values.
+But digital computers are far, far more common.
+
+Digital computers use only two discrete values: "on" or "off."
+Electronically, these discrete values are represented by voltage thresholds.
+For example, the range of +3 volts to +5 volts is considered "on,"
+and the range of -3 volts to -5 volts is considered "off."
+
+Numerically, humans represent "on" or "off" as _bits._
+The term "bit" is a shortened form of "binary digit," meaning a digit in the binary numeral system.
+The digit `1` corresponds to "on," while `0` corresponds to "off."
+
+This may seem limited, but in fact it makes digital computers very powerful.
+It means _anything that can be represented by a number_ can be used as data.
+This can include nearly everything, from the running speed of an antelope, to the number of stripes on a zebra.
+
+== Single-purpose vs. general-purpose computers
+A _single-purpose_ computer has one program, and can only run that program.
+Single-purpose computers are also called _fixed-program_ computers.
+These computers give up versatility in favor of simplicity.
+This usually means that they can be smaller, more efficient, and cost less money to produce.
+Examples of single-purpose computers are the ones inside pocket calculators or digital watches.
+
+A _general-purpose_ computer can take a program as input data.
+General-purpose computers are also called _stored program_ computers.
+When most people think of a computer, they are thinking of a general-purpose computer.
+They are nearly everywhere:
+PC's, smart phones, Web servers, and video game consoles are all built upon general-purpose computers.
+It is now common for devices to have general-purpose computers embedded inside of them;
+these devices can be anything from printers to thermostats.
+
+Even aside from their versatility, general-purpose computers have a major advantage over single-purpose computers.
+Because they take programs as input data, those programs can be distributed separately from the computer itself.
+
+== Hardware and Software
+
+Computer _hardware_ consists of the parts of a computer that exist as physical objects.
+It includes everything from the silicon in its chips, to the plastic in its case.
+
+*****
+In fact, it is not necessary for computers to have hardware.
+For example, a surprising number of people have built so-called
+http://minecraft.gamepedia.com/Tutorials/Redstone_computers[Redstone computers].
+These are fully-functional computers that are built entirely inside the game Minecraft.
+*****
+
+Computer _software_ consists of the program, or set of programs, distributed separately from the hardware.
+
+The term "software" is an umbrella term, and as such, it can be kind of vague.
+Many people use the term "software" and "program" interchangeably.
+But many other people include things that are not programs at all.
+
+For example, each of these things could be considered a part of computer software:
+
+* Assets such as fonts, images, audio, or video files
+* Configuration files
+* Instruction manuals
+
+But no matter what, the term "software" does _not_ include computer hardware.
+
+The software used for a particular activity is called _application software._
+Colloquially, the term is often shortened to _application_ or _app._
+But this can sometimes cause confusion, because not all software is considered an application.
+For example, a computer's operating system is software, but is not usually considered an application.
+
+The term "application" can also be used to refer to the activity itself, rather than the software that is used.
+Consider the sentence "Microsoft Word is a word processing application."
+The term "application" refers to "word processing" (the activity) rather than "Microsoft Word" (the software).
+
+== What Programs Do
+
+Recall that a program represents all the instructions that a computer must perform.
+These instructions include both data, and the operations on that data.
+
+The program usually does not just represent the data itself, but also _metadata._
+Metadata is "data about data," and includes things like the data's type (e.g. number vs. letter) or location in memory.
+If you think of data as "nouns," you could think of medatata as "adjectives."
+
+Of course, a program must also represent operations on that data.
+The operations constitute the _logic_ of the program.
+In our grammar analogy, these operations would be "verbs."
+
+When operating on data, a program follows an _algorithm._
+An algorithm is a sequence of instructions that perform a specific task.
+
+You can think of an algorithm like a recipe in a cookbook.
+Let's say you want to bake a cake for someone's birthday.
+In this analogy, you are the computer, and the cookbook is the program.
+The algorithm would be all the steps in the recipe that transform the ingredients (input data) into the cake (output data).
+// TODO: There's gotta be a "cake is a lie" joke in here somewhere
+
+But an algorithm can be much more complicated than a cake recipe.
+With an algorithm, the sequence of instructions does not _necessarily_ have to be executed in order.
+An algorithm can also contain _flow control_ instructions.
+These are instructions to make a decision, and perform different instructions according to that decision.
+Instructions can be skipped or repeated as necessary, so long as the desired output is produced.
+Most algorithms must also contain a _terminating instruction._
+Reaching this instruction means the desired output has been produced, and the algorithm's work is complete.
+
+During the time when the program is executing, the data in the program will have different values.
+The input data may remain the same, but operations will produce some kind of data that will be stored in memory.
+For example, if you add two numbers, the sum must be stored somewhere.
+It is usually saved in memory, to be used by later operations.
+
+The program _state_ is the status of all the program's data in memory.
+The program state changes, depending upon which step of the algorithm it is executing.
+
+Let's say you're following the cake recipe above.
+You have gotten halfway through the recipe, and are about to add the eggs.
+Program state would be analogous to the ingredients that are already mixed,
+the heat of the oven, whether or not the pan is greased, and so forth.
+
+== Programming languages
+
+A _programming language_ is a human-comprehensible language that is used to create executable programs for a computer.
+
+The first thing to consider is that a programming language is comprehensible to humans.
+Remember that, to a computer, a program is just a set of voltages.
+Humans represent these voltages as binary numbers, but even that is far too abstract for most humans to understand.
+A programming language bridges the gap between human comprehension and machine execution.
+
+Of course, just because a language is _able_ to be comprehended, doesn't mean it's _easy_ to comprehend.
+Programming languages are "languages" in the same way that music notation or mathematical equations are "languages."
+Humans' natural languages are unsuitable when you need to avoid ambiguity and contradictions.
+This applies to computers just as much, if not more, than it applies to music or math.
+
+Even so, the basic point of a programming language is to be used by human beings.
+As long as the language is unambiguous, anything goes.
+This means that programming languages evolve and change over time.
+New programming languages are created often, according to the needs and desires of programmers.
+At the time of this writing, there are hundreds of programming languages.
+Within the lifespan of most readers, that number will probably rise to thousands.
+
+The second thing to consider is that a programming language is used to create _executable programs._
+Not all computer languages do this.
+
+For example, these kinds of computer languages are not programming languages:
+
+* _markup_ languages, such as Markdown, AsciiDoc, or HTML
+* _style sheet_ languages, such as CSS
+* _data modeling_ languages, such as JSON or YAML
+
+By saying these are not _programming_ languages, I am not being derogatory.
+All of these languages are just as important as any programming language.
+They just serve a different purpose.
+
+The last thing to consider is that programming languages cannot be directly executed on a machine.
+Code written in a programming language must be translated into a language the machine understands.
+These languages are called _machine languages,_ and are different for every kind of machine.
+
+This translation step happens in a separate piece of software.
+If the translator produces an executable file, then it is _compiling_ the code, and the translator is called a _compiler._
+The translator may also translate code "on the fly," without producing a separate executable file.
+In this case, the translator is _interpreting_ the code, and the translator is called an _interpreter._
+
+Compilation and interpretation are covered in later chapters.
+
+=== Language syntax vs. semantics
+
+Programming languages, like human languages, have sets of rules that specify what is and isn't valid in that language.
+The set of rules for each language is called the language's _grammar._
+The grammar of a programming language is defined by the languages syntax and semantics.
+
+The _syntax_ of a programming language determines what constitutes _a well-formed string_ in that language.
+It has rules that determine the language's alphabet, how characters are interpreted symbolically, and so forth.
+
+For example, all programming languages allow mathematical addition.
+Most programming languages use _infix notation,_ where a mathematical operator is between two numeric values.
+This is the type of notation that we all learned in math class.
+The string `2 + 3` is an example of of a valid string using infix notation.
+
+But this is not the only kind of notation that can be used.
+Another type of notation is _prefix notation,_ also called _Polish notation._
+In this notation, the operator comes first, followed by the values it operates on.
+The string `+ 2 3` is an example of of a valid string using Polish notation.
+
+Most programming languages (and all C-style languages) use infix notation.
+If you put the string `+ 2 3` into a C program, it will be a syntax error.
+
+The _semantics_ of a programming language determine the _meaning_ of a well-formed string in that language.
+
+When considering the semantics of a programming _language,_ we are considering the language's _static semantics._
+This defines how well-formed strings should be treated _by the compiler or interpreter._
+
+For example, the string `2 + '5'` is syntactically correct in all C-style languages.
+The value `2` represents the number two, and the value `'5'` represents the _letter_ "5".
+So, what does that string actually _mean?_
+That is, what value should be produced when this string is translated and executed?
+
+There are a number of different possibilities:
+
+* The number `2` is converted to a letter, the letters are concatenated, and the result is `"25"`.
+* The letter `'5'` is converted to the number 5, and the result is `7`.
+* The letter `'5'` is converted to its ASCII code, which is 52, and the result is `55`.
+    (ASCII will be covered in the chapter on strings.)
+* The addition operator, `+`, must have numbers on both sides, so this is a semantic error.
+
+Remarkably, the last possibility is the only one that is _not_ part of the semantics for any language in this book.
+
+The term "semantics" can also be used to describe the meaning of a string in the context of the _program._
+This is different from the meaning of a string in the programming language.
+The meaning of the program is usually determined by the programmer, not the language used.
+
+Take, for example, the string `11`.
+This is obviously correct in terms of syntax and static semantics; it refers to the number eleven.
+But it does not tell us what the number eleven should _mean_ when the program is executed.
+It could be the number of eggs in one basket, or the air-speed velocity of an unladen swallow.
+The programming language does not, and should not, concern itself with this kind of semantics.
+
+// TODO: Talk about different errors here? e.g. syntax, runtime, logical
+
+NOTE: The formal study of programming language semantics is outside the scope of this book.
+    It is a rigorous mathematical study, and may involve different formal approaches.
+    Robert W. Floyd (1936 - 2001) is usually credited as the founder of this formal study.
+    For the curious, I suggest reading his 1967 paper,
+    http://www.cs.virginia.edu/~weimer/2007-615/reading/FloydMeaning.pdf[Assigning Meanings to Programs].
+
+=== General-purpose and domain-specific languages
+In software engineering, the term _domain_ refers to the body of knowledge relevant to a particular purpose or kind of use.
+Each domain has its own set of requirements, and likely its own terminology.
+The term "domain" can refer to purposes that are as specific or as general as is desired.
+
+An _application domain_ is the domain of an application program.
+It is analogous to the use of "application" to describe an activity rather than a program.
+For example, "word processing" would be the application domain of Microsoft Word.
+Of course, that domain includes other, more nuanced, application domains.
+For example, "file manipulation," "text formatting," and so forth.
+
+A related term is _problem domain._
+This is the area of knowledge required to solve a particular problem.
+Here, "problem" means a proposition for something to be done, as in "a homework problem."
+Usually, it does _not_ mean something harmful or unwelcome, as in "a social problem."
+
+A _programming domain_ is the domain of a programming language.
+It defines the kinds of programs that can be written in that language.
+For example, since you can use C++ to write an application like Microsoft Word,
+then "word processing" is part of the programming domain of C++.
+
+The computer languages covered in this book are all _general-purpose_ programming languages.
+General-purpose languages, as the name suggests, can be used across a wide variety of programming domains.
+They can be used to write programs that manipulate databases, do word processing,
+calculate mathematical formulas, play games, and so forth.
+In fact, to be truly general-purpose, a programming language should be usable across _all_ programming domains.
+
+But these are not the only kinds of computer languages that exist.
+There are many different languages that were designed for one particular purpose.
+Unsurprisingly, such a language is called a _domain-specific language,_ abbreviated _DSL._
+
+Computer languages that are not _programming_ languages are domain-specific languages.
+However, there are many programming languages that are also DSL's.
+These languages are often designed to be used by specific applications, which act as interpreters.
+
+DSL's can have many advantages over general-purpose programming languages.
+Since they are limited to a single programming domain, they are usually much simpler.
+Their syntax and semantics can also be tailored to experts in the domain, who may be relatively unfamiliar with programming.
+
+Examples of domain-specific programming languages include:
+
+* Symbolic mathematical languages, such as the languages used by MATLAB, Mathematica, or Maple
+* Game engine scripting languages, such as Lua or GameMaker's GML
+* Audio programming languages, such as CSound or SuperCollider's sclang
+
+This is only a small sample; there are many more.
+
+However, none of these languages are covered in this book.
+Despite the fact that many share C's basic syntax, this book will only cover general-purpose programming languages.
