@@ -130,7 +130,7 @@ Why would any programming language perform implicit type conversion?
 Ultimately, it makes the language easier to use.
 
 Consider, for example, the code `2.5 + 3`.
-This seems like a perfectly sensible thing to type, and you would expect the result to be `5.5`.
+This seems like a perfectly sensible thing to write, and you would expect the result to be `5.5`.
 But now consider that many C-syntax languages treat integers and floating-point numbers as different types.
 Without type conversion, this code would throw an error in those languages.
 It is trivial to convert `3` into a floating-point number, so being forced to explicitly include a cast would be a waste of code.
@@ -145,7 +145,7 @@ _(Most_ of them.)
 
 The various type coercion rules will be given on a case-by-case basis when we cover the different data types.
 
-=== Other terminologies
+=== Other terms
 
 The above definitions, while by far the most common, are not universally used.
 For whatever reason, the term "casting" (or "typecasting") has become more popular than other terms.
@@ -166,6 +166,7 @@ When a programmer uses type casting to re-interpret the existing bits in memory,
 this is usually called _type punning._
 Programmers sometimes use type punning in order to deliberately circumvent the type system of a language,
 and perform operations on the "raw bits" in memory that are not otherwise allowed.
+
 Most C-syntax languages have semantics that do not allow type punning at all.
 For those that do, I will cover how it is done (and why you probably shouldn't) in the relevant sections.
 

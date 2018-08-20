@@ -33,7 +33,7 @@ determine whether it is greater or less than another number;
 take its square root;
 and so forth.
 
-This is the behavior associated with numeric types.
+This behavior is associated with numeric types.
 That same behavior could not be associated with other data types,
 or at least not in any straightforward way.
 
