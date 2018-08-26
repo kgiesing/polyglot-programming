@@ -1,2 +1,0 @@
-// Placeholder for the auto-generated table of contents.
-:toc:
