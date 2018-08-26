@@ -43,12 +43,6 @@ The `src` folder contains several sub-folders, which represent the different par
 Each of those sub-folders may also have sub-folders, to organize the book better (into e.g. sections and chapters).
 The directories are not prefixed by numbers; I believe this makes it more clear that the book can be "remixed" at will.
 
-.Tree structure of `src` folder
-[source]
-----
-include::src/tree.txt[]
-----
-
 Within each directory is a file called `index.adoc`.
 The purpose of this file is to import all the other AsciiDoc documents that make up that part of the book.
 If you would like to remix the book, the easiest way is to fork the repo, and simply change the `index.adoc` files.
@@ -56,7 +50,48 @@ You can include the files in any order you prefer, or not include specific files
 
 NOTE: There may be some files in the `src` folder that are not included by any `index.adoc` file.
     These files should be regarded as working files that are not yet ready to be included in the book itself.
-    (In most cases they are outlines, and named as such.)
+
+=== Branch Structure
+
+This repository uses the GitFlow branching model.
+
+For those unfamiliar with this model, here is a brief overview:
+
+* The `master` branch is reserved for released versions.
+  Since this is a book, a "released version" will be a published edition.
+* The most up-to-date working branch is named `develop`.
+  If you want to read the book as it is being written, this is the branch to view.
+* New features are done on feature branches, named `feature/[feature-to-implement]`.
+  Feature branches are branched off of, and merged to, the `develop` branch (not `master`).
+  In this case, a "feature" is text to be written or changed in the book.
+* Release branches are dedicated to a single release version, and created _just prior_ to that release.
+  They are named `release/[upcoming-version]`.
+  They are branched off of `develop` (which is now used for the next version).
+  When that version is released, the branch is merged into both `develop` and `master`,
+  and `master` is tagged with that version.
+  In software development, the version string is usually a semantic version (major.minor.patch);
+  but since this is a book, the "version" will be an edition, in the form "Nth_ed".
+* Hotfixes (or maintenance fixes) are created when there is an issue with the released version,
+  and it cannot wait until the next version to be fixed.
+  They are named `hotfix/[fix-to-implement]`, are branched off of `master`,
+  and merged into both `master` and `develop` when finished.
+  Since this is a book, a hotfix will result in a revision to that edition.
+
+In addition, I'm using a convention that seems to be very common,
+especially to people like me who use Attlassian Jira for a living:
+I am naming all branches after issues.
+
+The branch name will start with the issue number, followed by a summary of the issue title,
+with spaces separated by hyphens (similar to how blog titles are translated to URLs).
+So, if an issue on GitHub is issue number 42, with the title "Find: meaning of life, the universe, and everything",
+the branch would be named something like `feature/42-find-life-universe-everything`.
+
+Further reading:
+
+* https://nvie.com/posts/a-successful-git-branching-model/[A successful Git branching model] by Vincent Driessen
+* https://datasift.github.io/gitflow/IntroducingGitFlow.html[Introducing GitFlow] at DataSift
+* https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow[Gitflow Workflow] at Atlassian
+
 
 == Content changes
 If you have found a mistake in any part of the book, I would appreciated it if you raised an issue in the GitHub issue tracker.
