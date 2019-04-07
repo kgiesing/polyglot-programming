@@ -70,6 +70,7 @@ It's a good question, because the answer is often driven by opinion or bias.
 
 Here, "widely used and in demand" means that the language has consistently been among the top 10 in rankings of popular languages.
 I use a couple widely-known rankings for this:
+
 * The http://www.tiobe.com/tiobe-index/[Tiobe Index]
 * The http://pypl.github.io/PYPL.html[PYPL PopularitY of Programming Language Index]
 

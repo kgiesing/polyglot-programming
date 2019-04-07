@@ -89,7 +89,7 @@ These instructions include both data, and the operations on that data.
 
 The program usually does not just represent the data itself, but also _metadata._
 Metadata is "data about data," and includes things like the data's type (e.g. number vs. letter) or location in memory.
-If you think of data as "nouns," you could think of medatata as "adjectives."
+If you think of data as "nouns," you could think of metadata as "adjectives."
 
 Of course, a program must also represent operations on that data.
 The operations constitute the _logic_ of the program.
@@ -174,7 +174,7 @@ Compilation and interpretation are covered in later chapters.
 
 Programming languages, like human languages, have sets of rules that specify what is and isn't valid in that language.
 The set of rules for each language is called the language's _grammar._
-The grammar of a programming language is defined by the languages syntax and semantics.
+The grammar of a programming language is defined by the language's syntax and semantics.
 
 The _syntax_ of a programming language determines what constitutes _a well-formed string_ in that language.
 It has rules that determine the language's alphabet, how characters are interpreted symbolically, and so forth.
