@@ -1,5 +1,6 @@
 = Integrated Development Environments
 Include all the features of a source code editor, plus:
+
 * One-click build and run of a project
 * Integrated command-line interface
 * Hierarchical view of classes, objects, methods, etc.
@@ -9,6 +10,7 @@ Include all the features of a source code editor, plus:
 * Integration with VCS
 
 == Popular IDE's
+
 * Visual Studio (Microsoft, closed-source)
 ** Xamarin Studio
 
