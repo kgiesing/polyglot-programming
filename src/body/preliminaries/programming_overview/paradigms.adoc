@@ -93,7 +93,7 @@ There is no standard for pseudocode, and everyone is free to use anything that g
 
 In this example, I have chosen pseudocode that looks nothing at all like the C syntax.
 This is so that I do not inadvertently confuse you when the real syntax is introduced.
-It is designed to be readable to any English speakers (I hope).
+It is designed to be readable by any English speakers (I hope).
 
 In the example below, words in CAPS are part of the programming language syntax.
 Words that are lowercase are defined by the programmer.
@@ -142,7 +142,7 @@ This code does not have the same characteristics as the imperative style.
 . It does not explicitly implement the algorithm; it specifies what the algorithm is supposed to do.
 . It does not set any variables, or directly alter the program state.
 . The order of execution does not need to be specified.
-    It does not matter if `ACCUMULATE` is executed before `LENGTH-OF`, or afterwards,
+    It does not matter if `ACCUMULATE` is executed before `COUNT`, or afterwards,
     so long as both are executed before `DIVIDED-BY`.
 
 This code is much shorter than the imperative code.
@@ -157,7 +157,7 @@ You have to know which one a particular language is using.
 Furthermore, the language itself must support list accumulation.
 If it doesn't, you must either write the code that performs a list accumulation,
 use library written by someone else,
-or find a way to do without list accumulation altogether.
+or find a way to solve the problem without using list accumulation at all.
 
 === Declarative Programming Languages
 So far, we have been talking about imperative and declarative as different _styles of programming._
