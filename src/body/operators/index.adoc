@@ -1,10 +1,9 @@
 // Operators
 
+include::intro.adoc[]
 
 // Push titles down one level.
 :leveloffset: +1
-
-include::intro.adoc[]
 
 include::assignment.adoc[]
 

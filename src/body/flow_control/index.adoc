@@ -1,9 +1,9 @@
 // Flow control
 
+include::intro.adoc[]
+
 // Push titles down one level.
 :leveloffset: +1
-
-include::intro.adoc[]
 
 include::expressions_statements_blocks.adoc[]
 

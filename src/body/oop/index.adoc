@@ -5,9 +5,7 @@ include::intro.adoc[]
 // Push titles down one level.
 :leveloffset: +1
 
-include::principles.adoc[]
-
-include::flavors.adoc[]
+include::principles/index.adoc[]
 
 include::classical/index.adoc[]
 

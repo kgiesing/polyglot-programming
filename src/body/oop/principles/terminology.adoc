@@ -1,6 +1,4 @@
-= Principles
-
-== Terminology
+= Terminology
 encapsulation::
     related data and functions are grouped together into one data structure
 information hiding::
@@ -15,7 +13,7 @@ polymorphism:: object of a subtype can be used as if it were an object of its su
 ** not the same as inheritance; inheritance is necessary for polymorphism,
       but the reverse is not true
 
-=== Other terms
+== Other terms
 class:: a kind of "blueprint" for creating an object
 ** a class defines a data type
 instance:: an object that is created and resides in memory; usually an object
