@@ -1,5 +1,4 @@
 OUTPUT_FILENAME = polyglot_programming
-OUTPUT_EXT =
 OUTPUT_DIR = output
 OUTPUT_PATH = ./$(OUTPUT_DIR)
 INPUT_FILENAME = src/index.adoc
@@ -43,17 +42,14 @@ help:
 	@echo.
 	@echo All output files will be placed into $(OUTPUT_PATH).
 
-html html-asciidoc: $(eval OUTPUT_EXT = html)
-pdf pdf-a2x: $(eval OUTPUT_EXT = pdf)
-
 html:
-	asciidoctor -b html5 -d book -a toc -o $(OUTPUT_PATH)/$(OUTPUT_FILENAME).$(OUTPUT_EXT) $(INPUT_FILENAME)
+	asciidoctor -b html5 -d book -a toc -o $(OUTPUT_PATH)/$(OUTPUT_FILENAME).html $(INPUT_FILENAME)
 
 html-asciidoc:
-	asciidoc -b html5 -d book -a toc -o $(OUTPUT_PATH)/$(OUTPUT_FILENAME).$(OUTPUT_EXT) $(INPUT_FILENAME)
+	asciidoc -b html5 -d book -a toc -o $(OUTPUT_PATH)/$(OUTPUT_FILENAME).html $(INPUT_FILENAME)
 
 pdf:
-	asciidoctor-pdf -d book -a toc -a allow-uri-read -o $(OUTPUT_PATH)/$(OUTPUT_FILENAME).$(OUTPUT_EXT) $(INPUT_FILENAME)
+	asciidoctor-pdf -d book -a toc -a allow-uri-read -o $(OUTPUT_PATH)/$(OUTPUT_FILENAME).pdf $(INPUT_FILENAME)
 
 pdf-a2x:
 	a2x -f pdf -a toc -L -D $(OUTPUT_PATH) $(INPUT_FILENAME)
