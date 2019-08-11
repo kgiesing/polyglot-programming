@@ -1,4 +1,4 @@
-== tags in comments (for IDE highlighting)
+= tags in comments (for IDE highlighting)
 * `TODO`: task needs to be started/finished
 * `FIXME`: code needs fixing
 * `NOTE`: notes for other programmers (usually about implementation)

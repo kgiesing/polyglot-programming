@@ -1,4 +1,6 @@
-// OOP
+// Classical OOP
+
+include::intro.adoc[]
 
 // Push titles down one level.
 :leveloffset: +1

@@ -1,7 +1,6 @@
 // Representing Data
 
-see also:
-http://www.fnal.gov/docs/working-groups/fpcltf/Pkg/ISOcxx/doc/POD.html[POD Types]
+include::intro.adoc[]
 
 // Push titles down one level.
 :leveloffset: +1
@@ -17,6 +16,8 @@ include::strings.adoc[]
 include::pointers_and_references.adoc[]
 
 include::compound_types/index.adoc[]
+
+include::null_and_void.adoc[]
 
 include::parameterized_types.adoc[]
 
