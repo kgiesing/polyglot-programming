@@ -1,63 +1,431 @@
 = Computer hardware
 
-== Components
-* motherboard, SoC ("system on chip")
+This chapter will give a brief overview of computer hardware.
+It will also cover how programs and data are stored at the hardware level.
 
-=== CPU
-* ALU: Arithmetic Logic Unit (aka Execution Unit, Processing Unit)
-** performs all computations
-** integer and floating-point computations are usually separate parts
-          of the ALU (or, perhapes, separate ALU's)
-** Modern processors have many ALU's, called "cores"
+Because this is a book about programming, it will focus on hardware that is most relevant to computer programmers.
+If you want something like an in-depth guide to power supplies,
+or the pros and cons of different computer cases,
+this is not the chapter for you.
+Even so, hopefully the information in this chapter should be valuable to anyone who works with computers.
 
-* Control Unit: handles control flow
+Since computers are now so ubiquitous in most peoples' daily lives,
+many readers will undoubtedly know a lot of this information already.
+(Or, at least, think that they do.)
+I still suggest reading through this chapter.
+This knowledge is invaluable for anyone who hopes to be a programmer,
+and if nothing else, it can serve as a refresher when you read the chapters that follow.
 
-* Register: one word of hardware memory in ALU, used to hold transitory data needed for computation
-** Electronically, are usually flip-flop circuits
-** Processor-specific; different architectures have different approaches
-** General-purpose registers: can hold any value (data or address);
-          meaning determined by program (not CPU)
-** Special-purpose registers: data has special meaning to CPU
-*** instruction pointer/program counter: address of next instruction to perform
-*** stack pointer: address of the start of stack memory (see below)
-*** others: segment (memory), control, program status (flag), interrupt
-**** highly architecture-dependent
-**** not handled by programmers (outside of ASM)
+== Computer Architectures
 
-* cache memory: small amount of memory stored directly on processor
-** used to hold instructions or data that are commonly used, so they won't have to be repeatedly copied from RAM
-** organized by levels: L1, L2, (sometimes) L3
-*** lower number mean less memory, but faster
+There are lots of different kinds of computer hardware, just as there are lots of different kinds of computers.
+The specific hardware components change rapidly, often within the space of months.
+Computer hardware companies are constantly innovating, to get an advantage over their competitors.
+Each new kind of computer (like a modern smartphone) introduces new hardware requirements.
 
-=== RAM (random-access memory): volatile (erased after powered off)
-* when most CS people say "memory," they really mean "RAM";
-        most programmers won't have to worry about other kinds
+But modern computers often share the same computer _architecture._
+A computer architecture models the computer's components at a more theoretical level,
+leaving the details to hardware manufacturers or standards organizations.
 
-=== I/O (Input/Output): keyboard, mouse, GPU, USB, network card, etc.
-* Including hard drives, CD/DVD/Blu-Ray, memory cards, and other varieties of persistent storage
+By far the most common computer architecture is _von Neumann architecture._
+It is named after physicist John von Neumann,
+who (along with others) first described it in the _First Draft of a Report on the EDVAC_ in 1945.
+This architecture is what is used in modern personal computers, laptops, and most smartphones.
 
-=== Clock generator
-* synchronizes the system
-* square wave; at each edge, a new cycle of operations is performed
+In a computer using von Neumann architecture, the hardware uses the same memory for instructions and data.
+This makes the architecture ideal for stored-program computers (where programs are stored in memory),
+rather than fixed-program computers (where programs are fixed in the hardware).
+It also makes the architecture simple, and therefore cheap, to implement as hardware.
 
-=== Bus: handles data transfer between components
+Another, less widely used, architecture is called _Harvard architecture._
+It is named after the Harvard Mark I relay-based computer used in World War II.
+Most modern computers that use Harvard architecture are special-purpose computers,
+like MCUs (microcontroller units, used in embedded devices),
+or those used for DSP (digital signal processing).
+For various reasons, modern computers usually use a variation called _modified Harvard architecture._
 
-== Representation of program
+Computers using the Harvard architecture treat instructions and data differently.
+The Harvard architecture has hardware that is dedicated to storing and fetching instructions,
+and different hardware dedicated to storing and fetching data.
+Because it needs two sets of dedicated hardware,
+it is often more complicated to design, and more expensive to implement.
+It is usually a more practical choice only for fixed-program computers.
+It is certainly capable of supporting stored-program computers as well,
+but the von Neumann architecture is usually a more practical choice in this case.
+
+Regardless of computer architecture, all modern digital computers use the same types of hardware components.
+This because digital computers need to do roughly the same kinds of functions,
+such as "get user input," "add two numbers," "store something in memory," or "output something to the user."
+Computers have different hardware components that are dedicated to each of these functions.
+
+== Hardware Components
+
+Remember, the computer hardware can include any physical, tangible part of the computer.
+This can include things like the computer case, power supply, audio jacks, monitor connection ports, and so forth.
+
+The hardware that most concerns a computer programmer is found on a piece of hardware called a _motherboard._
+In modern PCs and laptops, the motherboard is a PCB (printed circuit board) designed to house components,
+and route connections between these components.
+A motherboard usually includes standardized connections to mount these components,
+so that they can be customized or replaced as desired.
+
+For computers where size and power efficiency is paramount,
+like computers in smartphones or embedded devices,
+motherboards are replaced by a _system on a chip_ (SoC).
+These include all of the necessary components in a single integrated circuit.
+But though they are all integrated and produced together,
+a system on a chip can still be understood in terms of the same components used on a motherboard.
+
+This section will give a brief overview of each of these components.
+
+=== Main Memory
+
+The _main memory_ is the store of programs and data that is used by the CPU.
+Another term for main memory is _primary storage._
+
+In modern computers, the main memory consists of _random-access memory_ (RAM).
+This is memory whose data can be accessed directly by its _memory address._
+A memory address is a number, and it is usually the same size as a binary word in the computer's architecture.
+
+Main memory is _volatile_ storage.
+This means that all the data in memory is lost when the memory is not powered.
+It also means that if data in a memory address is overwritten, the old value is gone;
+unless a program has explicitly stored it somewhere else, it cannot be restored.
+
+To preserve data, it will need to be stored in _persistent_ storage.
+Examples of persistent storage are a magnetic disk drive, or a modern SSD (solid state drive).
+Such storage devices are called _secondary storage._
+
+=== The CPU
+
+At the heart of any digital computer is a component called a _central processing unit_ (CPU).
+The CPU may also be called the _processor._
+It is the CPU that performs any instructions that are specified in a computer program.
+
+Modern CPUs are very complex.
+Intense competition in the field of processor design has resulted in tremendous gains in performance.
+But this performance usually requires hardware optimizations that are both complicated and constantly evolving.
+Additionally, many of the details are considered trade secrets by CPU manufacturers.
+For that reason, this chapter gives only a brief overview of the CPU (believe it or not).
+
+The CPU is itself composed of different components.
+Regardless of the specific architecture, nearly all CPUs have certain components in common.
+
+==== ALU
+
+An _arithmetic logic unit_ (ALU) is a component of the CPU that executes arithmetic and logical instructions in the CPU.
+Typical operations include addition or subtraction; increment or decrement; binary bit shift; or bitwise logical operations.
+
+In most CPUs, the ALU will only handle integers, or numbers representing Boolean values (true or false).
+It will not handle arithmetic on floating-point numbers, or operations that result in floating-point numbers.
+
+Instead, these operations will be performed by a type of ALU called a _floating-point unit_ (FPU).
+The FPU typically handles operations like multiplication and division.
+Some special-purpose FPUs can handle transcendental functions (like calculating exponents),
+though this is typically done by a program.
+
+The hardware required for an FPU is more expensive than the hardware required for an ALU.
+For that reason, some CPUs do not include an FPU at all.
+(This is not uncommon in CPUs used for embedded devices.)
+But most modern general-purpose CPUs include at least one FPU.
+
+Certain CPUs may contain other kinds of ALUs as well.
+For example, modern Intel chips have more than one ALU dedicated to integer operations.
+One ALU handles operations involving big integers with large values;
+another, cheaper, ALU handles operations involving small-value integers and Booleans.
+
+==== Registers
+
+Each CPU will also contain special areas to store data called _registers._
+Registers are small amounts of memory, like main memory, but can be accessed much faster.
+In most CPUs, the ALU cannot get any data directly from main memory.
+Instead, this data must first be transferred into one or more CPU registers.
+
+There are always a fixed number of registers in any CPU.
+But each processor, or family of processors, may have a different number of registers,
+and may have registers devoted to different purposes.
+
+Many registers are considered _general-purpose_ registers.
+The values of those registers have no specific meaning to the CPU,
+and can be used by programs for whatever purpose they deem fit.
+
+But most CPUs have _special-purpose_ registers,
+that are used by the CPU for very specific purposes.
+These registers usually cannot be accessed directly by programs,
+and can be modified only by sending specific instructions to the CPU.
+
+A CPU's special-purpose registers usually include:
+
+* The _program counter,_ also called the _instruction pointer,_ which holds the memory address of the next instruction
+* The _instruction register,_ which holds the current instruction as it is fetched and decoded
+* The _stack pointer,_ which holds the address of the top of stack memory (we will talk about the stack later)
+* The _status register,_ also called the _flag register_ or _condition code register,_
+  which holds single-bit flags representing information about the last operation
+
+==== Control Unit
+
+The _control unit_ (CU) is the component of the CPU that controls the flow of program execution.
+Its basic job is to perform these steps:
+
+1. Fetch the next instruction
+2. Decode the instruction for the next operation (and usually store it in a register)
+3. Route the instruction to the relevant component for execution
+   (e.g. a floating-point instruction should be routed to the FPU)
+4. Write the results, e.g. to registers or memory (the "write-back" phase)
+
+These steps are repeated for as long as the computer is running.
+The cycle of steps is called the _instruction cycle,_ or often the _fetch-decode-execute cycle._
+
+In most processors, the CPU is not totally occupied by one step at a time.
+Instead, each step is handled by separate circuitry within the CPU, and can be performed independently.
+So, while one instruction is being decoded, the next instruction can simultaneously be fetched, and so on.
+
+This process is known as _pipelining,_ and with pipelining, the instruction cycle is called the _instruction pipeline._
+Each family of CPUs has a different number of distinct steps in the instruction pipeline.
+
+By making it possible to process instructions in parallel, it greatly improves processor speed.
+But, as with most parallel processing, care must be taken to avoid accidental data corruption in shared memory.
+For example, a register should not be read at the same time as it is being written.
+A potential cause of data corruption due to pipelining is called a _hazard._
+There are many causes of pipelining hazards, and several ways to deal with them;
+but it is a complex subject, and outside the scope of this book.
+
+==== CPU Caches
+
+Reading information from main memory is a relatively slow process.
+If instructions and data had to always be accessed from main memory,
+the CPU would spend a lot of its time idle, waiting for these operations to complete.
+Each clock tick of wasted CPU time is called a _CPU stall._
+
+The problem becomes worse as CPUs become faster;
+a modern CPU can execute hundreds of instructions in the time it takes to fetch a single instruction from main memory.
+
+To solve this problem, modern CPUs also have _cache memory._
+These are small amounts of memory that are housed on the CPU itself, for much faster access.
+Cache memory is often separated into instruction and data caches, an idea borrowed from Harvard architecture.
+
+When information (instructions or data) is first read from main memory, a copy is placed in cache memory.
+Information is usually transferred in blocks, not as a single instruction or piece of data.
+
+If that information is needed later, it is taken from the cache, to speed up operations.
+First, the cache is checked to see if the information is there.
+If it is not, this is a _cache miss._
+Information is only taken from main memory on a cache miss.
+
+Many processors, such as the Intel family of processors, have multiple levels of caching.
+The L1 ("level 1") cache is fastest, followed by the L2 cache.
+Newer processors have an L3 cache, and some have an L4 cache.
+
+Because caches must be very fast, and located within the CPU itself,
+cache memory is more expensive to manufacture than main memory.
+This is why less expensive chips have fewer caches, or smaller cache sizes.
+
+Some modern CPUs do not have cache memory at all.
+These CPUs are usually designed to be used as microcontrollers,
+e.g. for embedded devices.
+
+Great care must be taken to make sure the information in the caches matches the information in main memory.
+Data that is written back to the cache must subsequently be written to main memory.
+Most CPUs have "writeback" policies that will handle these cases.
+
+Additionally, since the cache is small in size, information must frequently be evicted from it.
+It would speed up performance if the CPU could evict the information that will be needed the least.
+But this requires predicting which information is going to be needed in the future,
+and that depends upon the flow of the computer program itself.
+
+This is called _branch prediction,_ and modern CPUs have made great strides in branch prediction algorithms.
+Branch prediction can also be used to cache instructions *before* the instructions are actually needed.
+This is called _cache prefetching,_ and is a very powerful optimization technique.
+
+If there is a cache miss, the CPU should not sit idle while the next instruction is being fetched from main memory.
+Instead, it should execute the next instruction that _is_ in the cache,
+then store those results until they are needed, often in some kind of hardware buffer.
+
+This process is called _out-of-order execution_ (OoOE).
+In CPUs that include OoOE, the control unit must fetch instructions according to the order that they are available in the caches.
+This order is referred to as the _data order._
+After processing, the results must be assembled into the original order that they were needed by the program.
+This order is called the _program order._
+
+Both branch prediction and OoOE are very complicated topics, and outside the scope of this book.
+Fortunately, since they are done by the CPU itself, the average programmer does not need to know the details.
+
+==== Multi-Core Processors
+
+Nobody likes a slow CPU.
+Unfortunately, there are physical limits to the speed that a single CPU can go.
+Transistors have internal capacitance, and need time to charge and discharge.
+The faster a processor goes, exponentially more of the power it uses is dissipated as heat.
+And electricity needs time to travel between components, even if it's a very short time.
+These issues can be improved by making smaller components.
+But as these components become the size of nanometers, they tend to "leak" electrons, making them unreliable.
+
+Manufacturers have not yet reached the absolute limits of silicon transistors, but existing technology is not far from it.
+Even when innovations are discovered that work around these issues, these innovations are usually not cost effective,
+making the CPUs unaffordable to the general public.
+
+Instead, most modern high-speed CPUs use multiple _cores_ in their processors.
+Each core is like a "mini CPU."
+It has its own control unit, ALUs and FPUs, and cache.
+In most processors, each core only has its own L1 cache;
+L2 caches (and above, if applicable) are shared among processor cores.
+
+This allows CPUs to run faster, without CPU manufacturers needing to solve existing speed limitations.
+For programs that have multiple threads of execution, each thread can be handled by a different core.
+This must be supported by the operating system, but nearly all modern operating systems support multi-core CPUs.
+
+But it also means the program itself must be multi-threaded in order to take advantage of multi-core CPUs.
+(The reverse is not true; if the OS supports it, you do not need a multi-core CPU to run a muti-threaded program.)
+Today, nearly all software applications are multi-threaded.
+
+Multi-threaded applications will be _introduced_ in a later chapter.
+Unfortunately, because multi-threaded code is complicated, usually language-specific,
+and sometimes dependent upon the operating system,
+writing your own multi-threaded code is outside the scope of this book.
+
+=== Secondary Storage
+
+
+
+=== GPU
+
+
+
+=== Buses
+
+A _bus_ is a connection between components, through which information can be transferred.
+Physically, a bus is a set of electrical conductors: wires, "tracks" etched into a printed circuit board, etc.
+A bus may connect components in a motherboard, or components within the CPU.
+
+A bus has a number of parallel connectors, so that it can transfer more than one channel of information at a time.
+The number of channels that a bus can handle is called the _bus width._
+Each channel is capable of handling one bit of data, so the bus width is measured in bits.
+
+A system's bus width, along with the clock speed, is a primary factor affecting the hardware's performance.
+For this reason, there are usually many different buses in a motherboard or processor.
+
+As a general rule, you need separate buses for high-speed and low-speed components.
+For instance, the buses on a motherboard and the buses in a CPU are completely distinct buses.
+The buses connecting internal CPU components are capable of moving information much faster,
+and often have a higher bus width, than buses on the motherboard.
+
+There are several different kinds of buses, depending upon CPU and motherboard design.
+These designs vary greatly and change often, but most have certain buses in common.
+
+A _data bus_ is a bus used to carry data between components,
+either components on the motherboard, or components within the CPU.
+The _address bus_ is the bus used between the CPU and main memory,
+and is used to carry the memory address of the current read or write operation.
+The _control bus_ carries architecture-specific control information needed for communication between the CPU and the rest of the system:
+clock signals, read/write lines (determining the direction of data flow), and so forth.
+
+Historically, the _system bus_ combined the functions of all of these buses;
+this was common in the x86 architecture designed by Intel (and used by AMD).
+Since the mid 2000's, CPU and motherboard manufacturers have adopted more advanced designs.
+But many systems-on-a-chip still use system buses, for cost and/or design reasons.
+
+The term _front-side bus_ (FSB) has been used to refer to the bus between the CPU, main memory, and peripherals.
+The FSB is managed by a specialized integrated circuit called a _chipset._
+The contrasting term _backside bus_ referred to the buses inside the CPU,
+mainly to the buses between the processors and the CPU caches.
+
+The original FSB technology as been now been replaced by other technologies,
+which use separate specialized buses to improve performance.
+For example, modern Intel PCs include a _northbridge_ and _southbridge_ chipset.
+The northbridge, or _host bridge,_ manages the connections between the CPU and high-speed components,
+including the main memory and any high-speed GPU components.
+The southbridge is connected to the northbridge,
+and manages connections to low-speed components,
+such as secondary storage, keyboards, mice, or USB devices.
+Each bridge may use different clock speeds and have different bus widths;
+in some Intel designs, the northbridge is integrated into the CPU iteslf.
+
+=== Clock Generator
+
+A _clock generator_ is an oscillator circuit that is used for timing and synchronization.
+The oscillator is designed to produce a square wave at a certain frequency.
+Each edge of the square wave triggers another round of the instruction cycle.
+
+The standard unit of measurement of a periodic signal, such as a square wave, is _herz_ (Hz).
+One herz equals one cycle per second.
+
+Modern CPUs use clock signals in the gigaherz range (GHz), where one gigaherz is one billion Herz.
+This is often significantly higher than the signal speed used by other components, including main memory.
+Additionally, it is often more expensive to manufacture oscillators that can reliably generate waves of this speed.
+For these reasons, many computers use a _clock multiplier_ for synchronizing the CPU with external components.
+A clock multiplier simply outputs multiple cycles (say, 20) for each cycle of the clock generator.
+
+In order to be properly synchronized, all operations must be completed within one clock cycle.
+Otherwise, synchronization may be lost, resulting in data corruption or out-of-order instruction execution.
+This means the clock speed is limited by the _slowest_ operation.
+
+CPU manufacturers often err on the side of caution when setting clock speeds.
+They do not want programs running on their CPUs to have hardware-related failures,
+especially if these programs are critical in nature.
+Additionally, higher clock speeds result in the CPU working harder,
+which requires more power, and generates more heat as a byproduct.
+
+But some users do not particularly care about these issues,
+and are willing to push the CPU to get better performance.
+These users set the clock rate higher than the recommended specifications,
+a process called _overclocking._
+This is not an uncommon practice, and some CPU or motherboard manufactures even
+ship software to make overclocking easier.
+
+It is also very common to overclock the GPU.
+This is usually not done by users, but by the GPU vendors themselves.
+
+=== Input and output
+
+At its most basic, the point of a computer program is to take input, process it, and provide output.
+That input must come from a hardware component, and the output must go to a (usually different) hardware component.
+
+The term _peripheral_ is used to describe input and output hardware.
+Peripherals can include keyboards, mice, printers, monitors, touch screens, speakers, or other devices.
+Most motherboards have standardized connectors mounted on them, which different peripherals can be plugged into.
+
+Peripherals themselves are not counted among the components of a motherboard;
+however, _controllers for_ peripherals often are.
+Controllers for common peripherals (like computers and mice) are often integrated into the motherboard itself.
+
+== Hardware representations of programs
 * "program" is simply a set of electronic signals in memory
 ** Often thought of as sequence of 1's and 0's - but this is an abstraction!
         Really, it's +5V (high, "1") or 0V (low, "0"), +/-
 ** Sequences of 1's and 0's are _binary numbers_ - see next section
 
+
+=== Machine Languages
+
+Instructions to the CPU are encoded into special values called _machine code._
+The machine codes are specified in a _machine language,_
+and the set of all available machine codes is called the _instruction set._
+Each processor, or family of processors, has its own instruction set.
+
+An instruction to the CPU typically consists of an operation to perform, and data to use while performing it.
+The operation itself is encoded into a specific value called an _opcode._
+The data to use for the operation is called an _operand._
+
+
 * Machine instruction set: set of commands that a processor can run;
     pre-defined by CPU manufacturer
     (commands: "instruction codes" or "processor instructions")
 ** very simple: math operations, compare, jump, move data to/from register.
+** CISC (Intel) vs RISC (ARM, PowerPC Macs, game consoles)
 
 * Machine code: a binary representation of machine instructions and binary data
+** opcode: representation of operation
+** operands: data to operate on (usually one or two depending upon opcode)
+** microcode: component-specific representation of operation
+*** different components (ALU, FPU, etc) have different microcodes
+*** control unit translates CPU instruction to microcode
+*** not all CPUs use microcode
 
 * Assembly language (asm): a human-readable representation of machine code
-** also called "machine language"
-** binary information is represented by _mnemonic_
-*** machine instruction is represented by _opcode_
+** opcodes are represented by mnemonics
+** operands are represented by human-readable numeric strings (usually in hexadecimal)
+** can also include code comments, human-friendly labels, etc.
+** translated from asm to machine code by an assembler (MASM, NASM, GAS)
+** assembly languages vary from assembler to assembler, and from OS to OS
 
 // TODO: x86 machine instruction set in appendix?
