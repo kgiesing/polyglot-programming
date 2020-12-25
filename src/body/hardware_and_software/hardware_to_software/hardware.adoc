@@ -137,9 +137,9 @@ another, cheaper, ALU handles operations involving small-value integers and Bool
 ==== Registers
 
 Each CPU will also contain special areas to store data called _registers._
-Registers are small amounts of memory, like main memory, but can be accessed much faster.
+Registers are small amounts of memory, similar to main memory, but can be accessed much faster.
 In most CPUs, the ALU cannot get any data directly from main memory.
-Instead, this data must first be transferred into one or more CPU registers.
+Instead, it must first be transferred into one or more CPU registers.
 
 There are always a fixed number of registers in any CPU.
 But each processor, or family of processors, may have a different number of registers,
@@ -151,13 +151,13 @@ and can be used by programs for whatever purpose they deem fit.
 
 But most CPUs have _special-purpose_ registers,
 that are used by the CPU for very specific purposes.
-These registers usually cannot be accessed directly by programs,
+Usually, these registers cannot be accessed directly by programs,
 and can be modified only by sending specific instructions to the CPU.
 
 A CPU's special-purpose registers usually include:
 
 * The _program counter,_ also called the _instruction pointer,_ which holds the memory address of the next instruction
-* The _instruction register,_ which holds the current instruction as it is fetched and decoded
+* The _instruction register,_ which holds the current instruction as it is fetched, decoded, and executed
 * The _stack pointer,_ which holds the address of the top of stack memory (we will talk about the stack later)
 * The _status register,_ also called the _flag register_ or _condition code register,_
   which holds single-bit flags representing information about the last operation
@@ -183,7 +183,7 @@ So, while one instruction is being decoded, the next instruction can simultaneou
 This process is known as _pipelining,_ and with pipelining, the instruction cycle is called the _instruction pipeline._
 Each family of CPUs has a different number of distinct steps in the instruction pipeline.
 
-By making it possible to process instructions in parallel, it greatly improves processor speed.
+By making it possible to process instructions in parallel, pipelining greatly improves processor speed.
 But, as with most parallel processing, care must be taken to avoid accidental data corruption in shared memory.
 For example, a register should not be read at the same time as it is being written.
 A potential cause of data corruption due to pipelining is called a _hazard._
@@ -346,10 +346,10 @@ A _clock generator_ is an oscillator circuit that is used for timing and synchro
 The oscillator is designed to produce a square wave at a certain frequency.
 Each edge of the square wave triggers another round of the instruction cycle.
 
-The standard unit of measurement of a periodic signal, such as a square wave, is _herz_ (Hz).
-One herz equals one cycle per second.
+The standard unit of measurement of a periodic signal, such as a square wave, is _hertz_ (Hz).
+One hertz equals one cycle per second.
 
-Modern CPUs use clock signals in the gigaherz range (GHz), where one gigaherz is one billion Herz.
+Modern CPUs use clock signals in the gigahertz range (GHz), where one gigahertz is one billion hertz.
 This is often significantly higher than the signal speed used by other components, including main memory.
 Additionally, it is often more expensive to manufacture oscillators that can reliably generate waves of this speed.
 For these reasons, many computers use a _clock multiplier_ for synchronizing the CPU with external components.
@@ -377,7 +377,7 @@ This is usually not done by users, but by the GPU vendors themselves.
 
 === Input and output
 
-At its most basic, the point of a computer program is to take input, process it, and provide output.
+At its most basic, the purpose of a computer program is to take input, process it, and provide output.
 That input must come from a hardware component, and the output must go to a (usually different) hardware component.
 
 The term _peripheral_ is used to describe input and output hardware.
@@ -395,37 +395,96 @@ Controllers for common peripherals (like computers and mice) are often integrate
 ** Sequences of 1's and 0's are _binary numbers_ - see next section
 
 
-=== Machine Languages
+=== Machine Language
 
-Instructions to the CPU are encoded into special values called _machine code._
-The machine codes are specified in a _machine language,_
-and the set of all available machine codes is called the _instruction set._
-Each processor, or family of processors, has its own instruction set.
+Instructions to the CPU are encoded into a special binary language called _machine language._
+A program (or part of a program) written in those instructions is called _machine code._
+The machine instructions are specified in a _machine language,_
+and the set of all available machine instructions is called the _instruction set._
 
-An instruction to the CPU typically consists of an operation to perform, and data to use while performing it.
-The operation itself is encoded into a specific value called an _opcode._
+An instruction set is often considered an _abstraction_ of a CPU,
+and each specific model of a CPU is considered an _implementation_ of that instruction set.
+This means machine code written in one instruction set can be used in different CPU models,
+provided they share the same instruction set.
+However, there is no "standard" instruction set,
+and each CPU manufacturer is free to specify their own.
+
+Today, there are two main "family trees" of instruction sets,
+representing different styles of computer architectures.
+
+The first of the two is _RISC_ (Reduced Instruction Set Computer).
+This instruction set contains a small number of machine instructions,
+and every instruction has the same binary word length.
+It specifies a relatively large number of registers, and a standardized pipeline.
+This type of instruction set is used in architectures such as
+MIPS, SPARC, PowerPC, and the ARM processors used in modern mobile devices.
+Some game consoles (like the Sony PlayStation or Nintendo Wii) also used RISC CPUs.
+
+The second family of instruction sets is called _CISC_ (Complex Instruction Set Computer).
+CISC machine instructions can be more complicated that RISC instructions,
+some performing operations that would take two instructions in the RISC architecture.
+As a result, not all instructions are have the same binary word length,
+and a single instruction can take more than one CPU cycle to complete.
+CISC also specifies far fewer numbers of registers, and pipelining is more complicated.
+CISC instruction sets were used in PDP-11, VAX, Motorola 68xx, and Intel 8080 processors, and -
+most importantly - is now used in the x86-64 families of CPUs produced by Intel and AMD,
+which are in nearly all personal computers today.
+
+Because they are run directly on a CPU, machine instructions are extremely simple.
+Written in plain English, example machine instructions could be:
+
+- "move a numeric value from main memory into register A"
+- "increment the existing numeric value in register C by one"
+- "compare register C to register A, and if it's greater, set a flag in the status register"
+- "if a flag in the status register is set, jump to an instruction at this memory address"
+
+Each instruction to the CPU typically consists of an operation to perform, and data to use while performing it.
+The operation itself is encoded into a specific value called an _opcode_ (short for "operation code").
 The data to use for the operation is called an _operand._
 
+In the examples above, "move," "increment," "compare," and "jump" are opcodes;
+the registers, numbers, and memory locations are all operands.
 
-* Machine instruction set: set of commands that a processor can run;
-    pre-defined by CPU manufacturer
-    (commands: "instruction codes" or "processor instructions")
-** very simple: math operations, compare, jump, move data to/from register.
-** CISC (Intel) vs RISC (ARM, PowerPC Macs, game consoles)
+=== Assembly Language (asm)
 
-* Machine code: a binary representation of machine instructions and binary data
-** opcode: representation of operation
-** operands: data to operate on (usually one or two depending upon opcode)
-** microcode: component-specific representation of operation
-*** different components (ALU, FPU, etc) have different microcodes
-*** control unit translates CPU instruction to microcode
-*** not all CPUs use microcode
+Though it is a computer language, machine code is still just binary information.
+It is not meant to be human-readable.
 
-* Assembly language (asm): a human-readable representation of machine code
-** opcodes are represented by mnemonics
-** operands are represented by human-readable numeric strings (usually in hexadecimal)
-** can also include code comments, human-friendly labels, etc.
-** translated from asm to machine code by an assembler (MASM, NASM, GAS)
-** assembly languages vary from assembler to assembler, and from OS to OS
+For example, translated to binary, a single machine instruction could look like this:
+```
+1011 0000 0110 0001
+```
+Even if you knew this was a CISC instruction, it would be very difficult to understand.
+What is the opcode?
+What are the operands?
+How can we even tell that this is a single machine instruction, and not two or more?
 
-// TODO: x86 machine instruction set in appendix?
+To work better with machine code, _assembly language_ was created.
+The term "assembly language" is often shortened to _asm._
+Kathleen Booth is credited with writing the first assembly language,
+for the ARC computer, in 1947.
+
+Assembly language represents binary machine code as human-readable strings.
+Opcodes are represented by _mnemonics,_ symbols which look like abbreviations for the instruction.
+Operands are usually represented by what "kind" of data they are.
+For example, numeric values are represented as formatted numbers (usually in hexadecimal),
+while registers are usually given specific names
+(e.g. "EAX" for the 32-bit "accumulator" register in x86 architectures).
+
+A utility program, called an _assembler,_ translates assembly language instructions into binary machine instructions.
+Generally speaking, each assembler supports a slightly different assembly language syntax, even for the same instruction set.
+
+Different assemblers also support different features.
+For example, you can write a comment in the code,
+which is human-readable text that can be read by other programmers, but is completely removed during assembly.
+Or, instead of jumping to a specific memory address,
+you can add a label to a specific line of code,
+and jump to that label instead.
+Modern assemblers can integrate with a specific operating system, like Windows or Linux,
+so programmers can call the operating system's code.
+
+Even with all these features, assembly language is a low-level programming language.
+Programs written in assembly language can only be run on a computer with a matching instruction set.
+If the assembly code calls operating system code,
+then the assembled program can't be run in a different operating system,
+even if the program is run on the same computer architecture.
