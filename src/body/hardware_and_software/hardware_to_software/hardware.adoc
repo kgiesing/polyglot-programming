@@ -454,7 +454,7 @@ For example, translated to binary, a single machine instruction could look like 
 ```
 1011 0000 0110 0001
 ```
-Even if you knew this was a CISC instruction, it would be very difficult to understand.
+Even if you knew this was a CISC instruction for the x86 architecture, it would be very difficult to understand.
 What is the opcode?
 What are the operands?
 How can we even tell that this is a single machine instruction, and not two or more?
